@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class MainMenuHandler : MonoBehaviour
 {
+    public UnityAction SettingsButtonAction;
+
     private Button playButton;
     private Button settingsButton;
     private Button quitButton;
 
-    void Awake()
+    void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
 
@@ -23,6 +26,13 @@ public class MainMenuHandler : MonoBehaviour
         quitButton.clicked += OnQuitButtonClicked;
     }
 
+    void OnDisable()
+    {
+        playButton.clicked -= OnPlayButtonClicked;
+        settingsButton.clicked -= OnSettingsButtonClicked;
+        quitButton.clicked -= OnQuitButtonClicked;
+    }
+
     void OnPlayButtonClicked()
     {
         Debug.Log("Play button clicked");
@@ -30,7 +40,7 @@ public class MainMenuHandler : MonoBehaviour
 
     void OnSettingsButtonClicked()
     {
-        Debug.Log("Settings button clicked");
+        SettingsButtonAction.Invoke();
     }
 
     void OnQuitButtonClicked()
