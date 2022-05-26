@@ -6,8 +6,9 @@
         </ui:VisualElement>
         <ui:VisualElement style="position: absolute; width: 100%; bottom: 50px; align-items: center;">
             <ui:Button text="Play" display-tooltip-when-elided="true" name="PlayButton" class="Button" />
+            <ui:Button text="Resume" name="ResumeButton" class="Button" />
             <ui:Button text="Settings" display-tooltip-when-elided="true" name="SettingsButton" class="Button" />
-            <ui:Button text="Quit" display-tooltip-when-elided="true" name="QuitButton" class="Button" />
+            <ui:Button text="Quit" name="QuitButton" class="Button" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

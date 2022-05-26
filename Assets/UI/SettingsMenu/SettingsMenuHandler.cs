@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 public class SettingsMenuHandler : MonoBehaviour
 {
-    public UnityAction OnSettingsBackButtonClicked;
+    public UnityAction OnSettingsBackButtonClicked = delegate { };
 
     private Button backButton;
 

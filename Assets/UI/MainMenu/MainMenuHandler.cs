@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class MainMenuHandler : MonoBehaviour
 {
-    public UnityAction SettingsButtonAction;
+    public UnityAction SettingsButtonAction = delegate { };
 
     private Button playButton;
     private Button settingsButton;
