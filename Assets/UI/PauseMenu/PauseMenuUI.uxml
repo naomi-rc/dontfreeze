@@ -3,6 +3,7 @@
     <ui:VisualElement name="Screen" style="width: 100%; height: 100%; background-color: rgba(56, 56, 56, 0.57);">
         <ui:VisualElement style="bottom: 50px; position: absolute; width: 100%; align-items: center; left: auto;">
             <ui:Button text="Resume" display-tooltip-when-elided="true" name="ResumeButton" class="PrimaryButton" />
+            <ui:Button text="Restart" display-tooltip-when-elided="true" name="RestartButton" class="PrimaryButton" />
             <ui:Button text="Settings" display-tooltip-when-elided="true" name="SettingsButton" class="PrimaryButton" />
             <ui:Button text="Quit" display-tooltip-when-elided="true" name="QuitButton" class="PrimaryButton" />
         </ui:VisualElement>
