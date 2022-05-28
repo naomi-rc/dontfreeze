@@ -6,73 +6,27 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class HvacSystem : MonoBehaviour
 {
-  [SerializeField] private float _temperature = 0f;
+    [SerializeField] private HvacEventChannelSO _hvacEventChannelSO;
 
-  [SerializeField] private float _interval = 1f;
+    public float temperatureChangeValue = 0f;
 
-  private List<HvacListener> _listeners = new List<HvacListener>();
-
-  private IEnumerator coroutine;
-
-  private void Start()
-  {
-    coroutine = EventRoutine();
-  }
-
-  private void OnTriggerEnter(Collider other)
-  {
-    var listener = other.GetComponent<HvacListener>();
-
-    if (listener is not null)
+    private void OnTriggerEnter(Collider other)
     {
-      RegisterListener(listener);
-    }
-  }
+        var receptor = other.GetComponent<Receptor>();
 
-  private void OnTriggerExit(Collider other)
-  {
-    var listener = other.GetComponent<HvacListener>();
-
-    if (listener is not null)
-    {
-      UnregisterListener(listener);
-    }
-  }
-
-  // Refactor into unity event
-  public void Raise()
-  {
-    foreach (HvacListener listener in _listeners)
-    {
-      listener.HvacUpdate(_temperature);
-    }
-  }
-
-  public void RegisterListener(HvacListener listener)
-  {
-    if (_listeners.Count == 0)
-    {
-      StartCoroutine(coroutine);
+        if (receptor is not null)
+        {
+            _hvacEventChannelSO.RaiseHvacSystemEntered(this, receptor);
+        }
     }
 
-    _listeners.Add(listener);
-  }
-  public void UnregisterListener(HvacListener listener)
-  {
-    _listeners.Remove(listener);
-
-    if (_listeners.Count == 0)
+    private void OnTriggerExit(Collider other)
     {
-      StopCoroutine(coroutine);
-    }
-  }
+        var receptor = other.GetComponent<Receptor>();
 
-  public IEnumerator EventRoutine()
-  {
-    for (; ; )
-    {
-      Raise();
-      yield return new WaitForSeconds(_interval);
+        if (receptor is not null)
+        {
+            _hvacEventChannelSO.RaiseHvacSystemExited(this, receptor);
+        }
     }
-  }
 }
