@@ -1,5 +1,5 @@
 .PrimaryButton {
-    font-size: 30px;
+    font-size: 50px;
     min-width: 250px;
     max-width: 400px;
     color: rgb(210, 210, 210);
@@ -11,6 +11,7 @@
 }
 
 .PrimaryButton:hover {
+    font-size: 50px;
     min-width: 250px;
     max-width: 400px;
     color: rgb(210, 210, 210);
@@ -22,6 +23,7 @@
 }
 
 .PrimaryButton:active {
+    font-size: 50px;
     min-width: 250px;
     max-width: 400px;
     color: rgb(210, 210, 210);
