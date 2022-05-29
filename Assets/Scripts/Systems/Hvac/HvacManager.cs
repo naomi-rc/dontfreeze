@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class HvacManager : MonoBehaviour
 {
-    [SerializeField] private TemperatureEventChannelSO _temperatureEventChannelSO;
-    [SerializeField] private HvacEventChannelSO _hvacEventChannelSO;
+    [SerializeField] private TemperatureEventChannel _temperatureEventChannel;
+
+    [SerializeField] private HvacEventChannel _hvacEventChannel;
 
     [SerializeField] private float _interval = 1f;
 
-    private Dictionary<HvacSystem, List<Receptor>> _hvacPool;
+    private Dictionary<Hvac, List<Receptor>> _hvacPool;
 
     private IEnumerator _hvacCoroutine;
 
     private void Awake()
     {
-        _hvacPool = new Dictionary<HvacSystem, List<Receptor>>();
+        _hvacPool = new Dictionary<Hvac, List<Receptor>>();
 
-        _hvacEventChannelSO.OnHvacSystemEntered += AddListener;
-        _hvacEventChannelSO.OnHvacSystemExited += RemoveListener;
+        _hvacEventChannel.OnHvacEntered += AddListener;
+        _hvacEventChannel.OnHvacExited += RemoveListener;
 
         _hvacCoroutine = HvacCoroutine();
         StartCoroutine(_hvacCoroutine);
     }
 
-    private void AddListener(HvacSystem system, Receptor receptor)
+    private void AddListener(Hvac system, Receptor receptor)
     {
         // hvacPool should be filled at launch.
         // This function should be refactored => High risk of bugs.
@@ -42,7 +43,7 @@ public class HvacManager : MonoBehaviour
         }
     }
 
-    private void RemoveListener(HvacSystem system, Receptor receptor)
+    private void RemoveListener(Hvac system, Receptor receptor)
     {
         // hvacPool should be filled at launch
         if (_hvacPool.ContainsKey(system))
@@ -59,13 +60,14 @@ public class HvacManager : MonoBehaviour
     {
         for (; ; )
         {
-            foreach (KeyValuePair<HvacSystem, List<Receptor>> kv in _hvacPool)
+            foreach (KeyValuePair<Hvac, List<Receptor>> kv in _hvacPool)
             {
-                var system = kv.Key;
+                var hvac = kv.Key;
+                var receptors = kv.Value;
 
-                foreach (Receptor receptor in kv.Value)
+                foreach (Receptor receptor in receptors)
                 {
-                    _temperatureEventChannelSO.Raise(receptor.temperatureData, system.temperatureChangeValue);
+                    _temperatureEventChannel.Raise(receptor.temperatureSO, hvac.temperatureChangeValue);
                 }
             }
             yield return new WaitForSeconds(_interval);

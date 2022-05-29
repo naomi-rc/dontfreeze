@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider))]
-public class HvacSystem : MonoBehaviour
+public class Hvac : MonoBehaviour
 {
-    [SerializeField] private HvacEventChannelSO _hvacEventChannelSO;
+    [SerializeField] private HvacEventChannel _hvacEventChannelSO;
 
     public float temperatureChangeValue = 0f;
 
@@ -16,7 +16,7 @@ public class HvacSystem : MonoBehaviour
 
         if (receptor is not null)
         {
-            _hvacEventChannelSO.RaiseHvacSystemEntered(this, receptor);
+            _hvacEventChannelSO.RaiseHvacEntered(this, receptor);
         }
     }
 
@@ -26,7 +26,7 @@ public class HvacSystem : MonoBehaviour
 
         if (receptor is not null)
         {
-            _hvacEventChannelSO.RaiseHvacSystemExited(this, receptor);
+            _hvacEventChannelSO.RaiseHvacExited(this, receptor);
         }
     }
 }
