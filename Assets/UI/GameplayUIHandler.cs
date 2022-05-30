@@ -11,6 +11,9 @@ public class GameplayUIHandler : MonoBehaviour
     private SettingsMenuHandler settingsMenuHandler;
 
     [SerializeField]
+    private GameObject mobileControlsDocument;
+
+    [SerializeField]
     private InputReader inputReader;
 
     void Awake()
@@ -53,6 +56,9 @@ public class GameplayUIHandler : MonoBehaviour
         // TODO: Disable HUD when we have it
         pauseMenuHandler.gameObject.SetActive(true);
         settingsMenuHandler.gameObject.SetActive(false);
+#if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
+        mobileControlsDocument.SetActive(false);
+#endif
     }
 
     void EnableSettingsMenu()
@@ -60,6 +66,9 @@ public class GameplayUIHandler : MonoBehaviour
         // TODO: Disable HUD when we have it
         pauseMenuHandler.gameObject.SetActive(false);
         settingsMenuHandler.gameObject.SetActive(true);
+#if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
+        mobileControlsDocument.SetActive(false);
+#endif
     }
 
     void DisableMenus()
@@ -67,5 +76,8 @@ public class GameplayUIHandler : MonoBehaviour
         // TODO: Enable HUD when we have it
         pauseMenuHandler.gameObject.SetActive(false);
         settingsMenuHandler.gameObject.SetActive(false);
+#if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
+        mobileControlsDocument.SetActive(true);
+#endif
     }
 }
