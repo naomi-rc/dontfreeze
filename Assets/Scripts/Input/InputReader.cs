@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInput.IUIActions
 {
     public event UnityAction<Vector2> MoveEvent = delegate { };
+    public event UnityAction PauseEvent = delegate { };
 
     private GameInput gameInput;
 
@@ -38,6 +39,14 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     public void OnMove(InputAction.CallbackContext context)
     {
         MoveEvent.Invoke(context.ReadValue<Vector2>());
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            PauseEvent.Invoke();
+        }
     }
     #endregion
 
