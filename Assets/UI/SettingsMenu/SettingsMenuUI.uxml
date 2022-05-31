@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Screen" style="flex-grow: 1; background-color: rgb(0, 0, 0);">
+        <ui:Label text="Placeholder Settings Menu" style="font-size: 62px; color: rgb(123, 123, 123);" />
+        <ui:Button text="Back" name="BackButton" />
+    </ui:VisualElement>
+</ui:UXML>

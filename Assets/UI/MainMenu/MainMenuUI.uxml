@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MainMenu/MainMenuStyles.uss?fileID=7433441132597879392&amp;guid=e158f41d1896e56499e8bb33b3b60465&amp;type=3#MainMenuStyles" />
+    <ui:VisualElement name="Screen" style="flex-grow: 1; background-color: rgb(131, 151, 255);">
+        <ui:VisualElement style="position: absolute; width: 100%; -unity-text-align: upper-center; top: 50px;">
+            <ui:Label text="Don&apos;t Freeze" name="Title" class="Title" />
+        </ui:VisualElement>
+        <ui:VisualElement style="position: absolute; width: 100%; bottom: 50px; align-items: center;">
+            <ui:Button text="Play" display-tooltip-when-elided="true" name="PlayButton" class="Button" />
+            <ui:Button text="Resume" name="ResumeButton" class="Button" />
+            <ui:Button text="Settings" display-tooltip-when-elided="true" name="SettingsButton" class="Button" />
+            <ui:Button text="Quit" name="QuitButton" class="Button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
