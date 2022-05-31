@@ -1,0 +1,14 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/MobileControls/MobileControlsStyles.uss?fileID=7433441132597879392&amp;guid=66921d4dfa209f14a913cbe093b7cada&amp;type=3#MobileControlsStyles" />
+    <ui:VisualElement name="Screen" style="flex-grow: 1;">
+        <OnScreenJoystick name="Joystick" style="bottom: 40px; position: absolute; left: 40px;" />
+        <ui:VisualElement name="Buttons" style="position: absolute; right: 40px; bottom: 40px; width: 150px;">
+            <ui:VisualElement>
+                <ui:Button text="Jump" focusable="false" name="JumpButton" class="OnScreenButton" />
+            </ui:VisualElement>
+            <ui:VisualElement style="align-items: flex-end;">
+                <ui:Button text="Attack" focusable="false" name="AttackButton" class="OnScreenButton" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
