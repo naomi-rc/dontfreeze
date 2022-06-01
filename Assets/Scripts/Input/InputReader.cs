@@ -9,6 +9,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 {
     public event UnityAction<Vector2> MoveEvent = delegate { };
     public event UnityAction PauseEvent = delegate { };
+    public event UnityAction JumpEvent = delegate { };
 
     private GameInput gameInput;
 
@@ -47,6 +48,17 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
         {
             PauseEvent.Invoke();
         }
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            JumpEvent.Invoke();
+        }
+    }
+    public void OnCamera(InputAction.CallbackContext context)
+    {
     }
     #endregion
 
