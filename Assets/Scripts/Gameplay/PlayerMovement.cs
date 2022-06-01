@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     //private GameInput playerInput;
     private Vector2 direction;
     public float speed = 4f;
+    public float gravity = -9.81f;
+    public float jumpHeight = 3f;
 
     float turnSmoothTime = 0.1f;
     float turnSmootVelocity;
@@ -23,11 +25,19 @@ public class PlayerMovement : MonoBehaviour
     {
         inputReader.EnableGameplayInput();
         inputReader.MoveEvent += Movement;
+        inputReader.JumpEvent += Jump;
+
     }
 
     private void Movement(Vector2 movement)
     {
         direction = movement;
+
+    }
+    private void Jump()
+    {
+
+        velocity.y = Mathf.Sqrt(jumpHeight * -0.5f * gravity);
 
     }
 
@@ -45,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
             characterController.Move(moveDirection.normalized * speed * Time.deltaTime);
         }
 
+        velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
     }
 
