@@ -49,12 +49,16 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
             PauseEvent.Invoke();
         }
     }
+
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             JumpEvent.Invoke();
         }
+    }
+    public void OnCamera(InputAction.CallbackContext context)
+    {
     }
     #endregion
 
