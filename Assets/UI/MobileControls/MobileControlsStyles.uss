@@ -1,0 +1,8 @@
+.OnScreenButton {
+    border-top-left-radius: 100%;
+    border-bottom-left-radius: 100%;
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+    width: 75px;
+    height: 75px;
+}
