@@ -19,9 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float turnSmoothTime = 0.1f;
     private float turnSmootVelocity;
 
-
     Vector3 velocity;
-    private bool isGrounded;
 
     private void Awake()
     {
