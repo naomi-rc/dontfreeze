@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Transform mainCamera;
     [SerializeField] private InputReader inputReader;
+    [SerializeField] private Transform groudCheckTransform = null;
 
     //private GameInput playerInput;
     private Vector2 direction;
@@ -15,12 +16,12 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
 
-    float turnSmoothTime = 0.1f;
-    float turnSmootVelocity;
+    private float turnSmoothTime = 0.1f;
+    private float turnSmootVelocity;
 
 
     Vector3 velocity;
-    bool isGrounded;
+    private bool isGrounded;
 
     private void Awake()
     {
@@ -37,9 +38,11 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
-
-        velocity.y = Mathf.Sqrt(jumpHeight * -0.5f * gravity);
-
+        if (Physics.OverlapSphere(groudCheckTransform.position, 0.4f).Length > 1)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -0.5f * gravity);
+        }
+   
     }
 
     // Update is called once per frame
@@ -59,6 +62,5 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         characterController.Move(velocity * Time.deltaTime);
     }
-
 
 }
