@@ -16,7 +16,9 @@ public class HvacBehavior : MonoBehaviour
 {
     private HvacEventChannel hvacEventChannel;
 
-    public float temperatureChangeValue = 1f;
+    public FloatReference temperature;
+
+    public FloatReference intensity;
 
     [Range(0, 10)]
     public int priority = 0;

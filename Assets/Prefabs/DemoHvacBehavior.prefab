@@ -58,6 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 712bf67e24f62914ea4d23436855f0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  temperatureChangeValue: 1
-  description: Demo Hvac
+  temperature:
+    useConstant: 1
+    constant: 0
+    variable: {fileID: 0}
+  intensity:
+    useConstant: 1
+    constant: 1
+    variable: {fileID: 0}
   priority: 0

@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Thermometer))]
 public class HvacHandler : MonoBehaviour
 {
-    public ThermometerSO thermometer = default;
-
+    private Thermometer thermometer = default;
 
     /* Todo
     * Use hashcodes as key
@@ -25,13 +25,10 @@ public class HvacHandler : MonoBehaviour
     {
         hvacSet = new SortedSet<HvacBehavior>(new HvacComparer());
 
+        thermometer = GetComponent<Thermometer>();
+
         coroutine = HvacCoroutine();
         StartCoroutine(coroutine);
-    }
-
-    private void Update()
-    {
-        // Update the temperature
     }
 
     public void Add(HvacBehavior hvac)
@@ -52,7 +49,7 @@ public class HvacHandler : MonoBehaviour
 
             if (hvacSet.TryGetValue(hvacSet.Min, out hvac))
             {
-                thermometer.Increment(hvac.temperatureChangeValue);
+                thermometer.UpdateTemperature(hvac.temperature.value, hvac.intensity.value);
 
                 // For demo purposes
                 Debug.Log("Update using " + hvac.name, this);

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2332854014032804337}
   - component: {fileID: 9122999313112827739}
   - component: {fileID: 1836215830076000224}
+  - component: {fileID: 2028374580157869160}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -111,8 +112,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33237c73cb765c547956acc879810ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thermometer: {fileID: 11400000, guid: 46153f9fe3ff981449f4f4b1f641456a, type: 2}
   interval: 2
+--- !u!114 &2028374580157869160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5152338285692623163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed0128050845e542965cfbede1a23f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temperature: {fileID: 11400000, guid: 530cd949486645140bf32dc9770e2067, type: 2}
+  temperatureMax:
+    useConstant: 1
+    constant: 40
+    variable: {fileID: 0}
+  temperatureMin:
+    useConstant: 1
+    constant: -5
+    variable: {fileID: 0}
 --- !u!1 &7382850420144769048
 GameObject:
   m_ObjectHideFlags: 0
