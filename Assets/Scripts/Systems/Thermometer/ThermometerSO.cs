@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "TemperatureSO", menuName = "Data/Temperature", order = 0)]
-public class TemperatureSO : ScriptableObject, ISerializationCallbackReceiver
+[CreateAssetMenu(fileName = "ThermometerSO", menuName = "Data/ThermometerSO", order = 0)]
+public class ThermometerSO : ScriptableObject, ISerializationCallbackReceiver
 {
     public float _initialTemperature;
 
