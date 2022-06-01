@@ -7,7 +7,14 @@ public class HvacHandler : MonoBehaviour
 {
     public ThermometerSO thermometer = default;
 
-    private SortedSet<HvacBehavior> hvacList; // todo: Create ordered list
+
+    /* Todo
+    * Use hashcodes as key
+    * i.e: Set<(Hashcode, Hvac config)>
+    */
+    private SortedSet<HvacBehavior> hvacSet;
+
+    // Implement a config for the handler
 
     [SerializeField]
     private float interval = 1f;
@@ -16,7 +23,7 @@ public class HvacHandler : MonoBehaviour
 
     private void Awake()
     {
-        hvacList = new SortedSet<HvacBehavior>(new HvacComparer());
+        hvacSet = new SortedSet<HvacBehavior>(new HvacComparer());
 
         coroutine = HvacCoroutine();
         StartCoroutine(coroutine);
@@ -29,28 +36,26 @@ public class HvacHandler : MonoBehaviour
 
     public void Add(HvacBehavior hvac)
     {
-        hvacList.Add(hvac);
+        hvacSet.Add(hvac);
     }
 
     public void Remove(HvacBehavior hvac)
     {
-        hvacList.Remove(hvac);
+        hvacSet.Remove(hvac);
     }
 
     IEnumerator HvacCoroutine()
     {
         for (; ; )
         {
-            var firstHvac = hvacList.Min;
+            HvacBehavior hvac;
 
-            if (hvacList.Count > 0 && firstHvac is not null)
+            if (hvacSet.TryGetValue(hvacSet.Min, out hvac))
             {
-                thermometer.temperature += firstHvac.temperatureChangeValue;
+                thermometer.Increment(hvac.temperatureChangeValue);
 
-                if (firstHvac.description.Length > 0)
-                {
-                    Debug.Log("Update using " + firstHvac.description, this);
-                }
+                // For demo purposes
+                Debug.Log("Update using " + hvac.name, this);
             }
 
             yield return new WaitForSeconds(interval);

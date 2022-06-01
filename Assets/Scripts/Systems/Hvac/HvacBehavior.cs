@@ -18,8 +18,6 @@ public class HvacBehavior : MonoBehaviour
 
     public float temperatureChangeValue = 1f;
 
-    public string description;
-
     [Range(0, 10)]
     public int priority = 0;
 
@@ -27,6 +25,10 @@ public class HvacBehavior : MonoBehaviour
 
     private void Awake()
     {
+        var collider = GetComponent<Collider>();
+
+        collider.isTrigger = true; // Enables OnTrigger events
+
         hvacEventChannel = ScriptableObject.CreateInstance<HvacEventChannel>();
     }
 
