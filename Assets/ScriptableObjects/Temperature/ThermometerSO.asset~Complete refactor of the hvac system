@@ -9,6 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29092923473fab34e9165a2c219642d3, type: 3}
-  m_Name: TemperatureEventChannel
+  m_Script: {fileID: 11500000, guid: 9471d6742c152a14a81b036ed639ce52, type: 3}
+  m_Name: ThermometerSO
   m_EditorClassIdentifier: 
+  _initialTemperature: 0

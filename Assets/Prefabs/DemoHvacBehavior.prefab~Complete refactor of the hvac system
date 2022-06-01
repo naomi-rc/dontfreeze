@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 600472523730618809}
   - component: {fileID: 8950436239015265055}
-  - component: {fileID: -3047867406024975864}
+  - component: {fileID: 3729368195098450926}
   m_Layer: 0
-  m_Name: DemoHvac
+  m_Name: DemoHvacBehavior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-3047867406024975864
+--- !u!114 &3729368195098450926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55,9 +55,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 222889475469647387}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ed357ffe3ce7934699e2cac4ee9abae, type: 3}
+  m_Script: {fileID: 11500000, guid: 712bf67e24f62914ea4d23436855f0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hvacEventChannelSO: {fileID: 11400000, guid: e4d9ede6da54677429636b4a3cb29826,
-    type: 2}
-  temperatureChangeValue: 2
+  temperatureChangeValue: 1
+  description: Demo Hvac
+  priority: 0
