@@ -29,4 +29,13 @@ public class HealthController : MonoBehaviour
             playerHealth.Health --;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.layer == 3)
+        {
+            playerHealth.Health += 10;
+            Destroy(other.gameObject);
+        }
+    }
 }
