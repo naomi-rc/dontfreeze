@@ -5,16 +5,9 @@ using UnityEngine;
 public class HealthController : MonoBehaviour
 {
     [SerializeField] private PlayerHealth playerHealth;
-    [SerializeField] private InputReader inputReader;
 
     [SerializeField] private HealthBarController healthBar;
-
-
     [SerializeField] private int maxHealth = 100;
-    private void Awake()
-    {
-        inputReader.JumpEvent += Damage; // TODO modifier
-    }
 
     private void Start()
     {
@@ -22,14 +15,18 @@ public class HealthController : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    void Damage()
-    {
-        playerHealth.Health -= 10;
-    }
 
     // Update is called once per frame
     void Update()
     {
         healthBar.SetHealth(playerHealth.Health);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.transform.tag == "Enemy")
+        {
+            playerHealth.Health --;
+        }
     }
 }
