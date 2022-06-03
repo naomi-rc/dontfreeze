@@ -49,7 +49,7 @@ public class HvacHandler : MonoBehaviour
 
             if (hvacSet.TryGetValue(hvacSet.Min, out hvac))
             {
-                thermometer.UpdateTemperature(hvac.temperature.value, hvac.intensity.value);
+                thermometer.ChangeTowards(hvac.temperature.value, hvac.intensity.value);
 
                 // For demo purposes
                 Debug.Log("Update using " + hvac.name, this);

@@ -9,6 +9,7 @@ public class FloatVariable : ScriptableObject
 {
     public UnityAction<float> OnValueChanged;
 
+    [SerializeField]
     private float _value;
 
     public float value

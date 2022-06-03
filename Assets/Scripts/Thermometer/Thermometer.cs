@@ -7,22 +7,32 @@ public class Thermometer : MonoBehaviour
     [SerializeField]
     private FloatVariable temperature;
 
-    public FloatReference temperatureMax;
+    [SerializeField]
+    private FloatReference defaultTemperature;
 
-    public FloatReference temperatureMin;
+    public void Change(float intensity)
+    {
+        temperature.value += intensity;
+    }
 
-    public void UpdateTemperature(float target, float intensity)
+    public void ChangeTowards(float target, float intensity)
     {
         int direction = target.CompareTo(temperature.value);
 
         float result = temperature.value + (intensity * direction);
 
-        if (result > temperatureMax.value) temperature.value = temperatureMax.value;
+        if (result > target && direction > 0 || result < target && direction < 0)
+        {
+            result = target;
+        }
 
-        else if (result < temperatureMin.value) temperature.value = temperatureMin.value;
-
-        else temperature.value = result;
+        temperature.value = result;
 
         Debug.Log("Temperature is " + temperature.value);
+    }
+
+    public void Reset()
+    {
+        temperature.value = defaultTemperature.value;
     }
 }
