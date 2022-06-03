@@ -2,21 +2,37 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "FloatVariable", menuName = "Variable/FloatVariable", order = 0)]
 public class FloatVariable : ScriptableObject
 {
-    public float value;
+    public UnityAction<float> OnValueChanged;
+
+    private float _value;
+
+    public float value
+    {
+        get => _value;
+        set
+        {
+            _value = value;
+            OnValueChanged?.Invoke(_value);
+        }
+    }
 }
 
 [Serializable]
 public class FloatReference
 {
-    public bool useConstant = true;
+    [SerializeField]
+    private bool useConstant = true;
 
-    public float constant;
+    [SerializeField]
+    private float constant;
 
-    public FloatVariable variable;
+    [SerializeField]
+    private FloatVariable variable;
 
     public float value => (useConstant) ? constant : variable.value;
 }
