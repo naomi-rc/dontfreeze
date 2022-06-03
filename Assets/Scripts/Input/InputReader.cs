@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     public event UnityAction<Vector2> MoveEvent = delegate { };
     public event UnityAction PauseEvent = delegate { };
     public event UnityAction JumpEvent = delegate { };
+    public event UnityAction OpenInventoryEvent = delegate { };
 
     private GameInput gameInput;
 
@@ -59,6 +60,14 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     }
     public void OnCamera(InputAction.CallbackContext context)
     {
+    }
+
+    public void OnOpenInventory(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OpenInventoryEvent.Invoke();
+        }
     }
     #endregion
 

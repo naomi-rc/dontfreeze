@@ -1,75 +1,25 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/InventoryMenu/InventoryMenuStyles.uss?fileID=7433441132597879392&amp;guid=32ef48ac5c46261d48ea9a3a9bcbc073&amp;type=3#InventoryMenuStyles" />
     <ui:VisualElement name="Screen" style="flex-grow: 1; padding-left: 20px; padding-right: 20px; padding-top: 20px; padding-bottom: 20px; background-color: rgb(62, 78, 107);">
-        <ui:Label text="Inventory" style="-unity-font-style: bold; font-size: 30px; color: rgb(209, 189, 145);" />
-        <ui:VisualElement style="flex-direction: row; flex-grow: 1; border-bottom-width: 2px; border-bottom-color: rgb(108, 139, 159);">
+        <ui:VisualElement name="TopBar" style="justify-content: space-between; flex-direction: row; align-items: center;">
+            <ui:Label text="Inventory" name="Title" style="-unity-font-style: bold; font-size: 30px; color: rgb(209, 189, 145);" />
+            <ui:Button text="X" display-tooltip-when-elided="true" name="CloseButton" class="CloseButton" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Container" style="flex-direction: row; flex-grow: 1; border-bottom-width: 2px; border-bottom-color: rgb(108, 139, 159);">
             <ui:ScrollView vertical-scroller-visibility="Hidden">
-                <ui:VisualElement style="align-items: stretch; justify-content: flex-start; flex-direction: row; flex-wrap: wrap;">
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                    <ui:VisualElement class="InventorySlot" />
-                </ui:VisualElement>
+                <ui:VisualElement name="Inventory" style="align-items: stretch; justify-content: flex-start; flex-direction: row; flex-wrap: wrap;" />
             </ui:ScrollView>
-            <ui:VisualElement style="margin-left: 20px; flex-shrink: 0;">
-                <ui:VisualElement style="width: 200px;">
-                    <ui:VisualElement style="background-color: rgb(114, 119, 140); border-top-left-radius: 4px; border-top-right-radius: 4px;">
-                        <ui:Label text="Label" display-tooltip-when-elided="true" style="-unity-font-style: bold; color: rgb(255, 255, 255);" />
+            <ui:VisualElement name="SideBar" style="margin-left: 20px; flex-shrink: 0;">
+                <ui:VisualElement name="InspectCard" style="width: 200px;">
+                    <ui:VisualElement name="TitleContainer" style="background-color: rgb(114, 119, 140); border-top-left-radius: 4px; border-top-right-radius: 4px;">
+                        <ui:Label text="Title" name="Title" style="-unity-font-style: bold; color: rgb(255, 255, 255);" />
                     </ui:VisualElement>
-                    <ui:VisualElement style="background-color: rgb(83, 87, 99); height: 80px;">
-                        <ui:Label text="Type" style="color: rgb(255, 255, 255);" />
+                    <ui:VisualElement name="TypeContainer" style="background-color: rgb(83, 87, 99); height: 80px;">
+                        <ui:Label text="Type" name="Type" style="color: rgb(255, 255, 255);" />
                     </ui:VisualElement>
-                    <ui:VisualElement style="height: 160px; background-color: rgb(239, 230, 214); border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;" />
+                    <ui:VisualElement name="DescriptionContainer" style="height: 160px; background-color: rgb(239, 230, 214); border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;">
+                        <ui:Label text="Description" name="Description" style="color: rgb(77, 89, 105); white-space: normal;" />
+                    </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

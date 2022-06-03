@@ -1,5 +1,5 @@
 .InventorySlot {
-    background-color: rgba(100, 104, 112, 255);
+    background-color: rgb(100, 104, 112);
     margin-left: 3px;
     margin-right: 3px;
     margin-top: 0;
@@ -10,4 +10,36 @@
     border-bottom-right-radius: 4px;
     width: 75px;
     height: 75px;
+}
+
+.SelectedInventorySlot {
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-left-color: rgba(146, 150, 156, 255);
+    border-right-color: rgba(146, 150, 156, 255);
+    border-top-color: rgba(146, 150, 156, 255);
+    border-bottom-color: rgba(146, 150, 156, 255);
+}
+
+.CloseButton {
+    border-top-left-radius: 100%;
+    border-bottom-left-radius: 100%;
+    border-top-right-radius: 100%;
+    border-bottom-right-radius: 100%;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(236, 229, 217);
+    color: rgb(59, 68, 84);
+    font-size: 17px;
+    -unity-font-style: bold;
+    border-left-width: 4px;
+    border-right-width: 4px;
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+    border-left-color: rgb(146, 150, 156);
+    border-right-color: rgb(146, 150, 156);
+    border-top-color: rgb(146, 150, 156);
+    border-bottom-color: rgb(146, 150, 156);
 }
