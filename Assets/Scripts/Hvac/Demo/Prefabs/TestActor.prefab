@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 171897477315950773}
   - component: {fileID: 171897477315950772}
   m_Layer: 0
-  m_Name: Actor
+  m_Name: TestActor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 171897477080283498}
-  - {fileID: 6694744279953768038}
+  - {fileID: 6384636580045078732}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -148,7 +148,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1001 &171897476714986591
+--- !u!1001 &437122459139064565
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -158,12 +158,28 @@ PrefabInstance:
     - target: {fileID: 371002814080917063, guid: 234dac60a8458e14ba2c964053c44295,
         type: 3}
       propertyPath: m_Height
-      value: 2.2
+      value: 2.1
       objectReference: {fileID: 0}
     - target: {fileID: 371002814080917063, guid: 234dac60a8458e14ba2c964053c44295,
         type: 3}
       propertyPath: m_Radius
-      value: 0.6
+      value: 0.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424652976588919000, guid: 234dac60a8458e14ba2c964053c44295,
+        type: 3}
+      propertyPath: temperature
+      value: 
+      objectReference: {fileID: 11400000, guid: 6686e64611ff5a04a8404f1a2a1d2c02,
+        type: 2}
+    - target: {fileID: 2424652976588919000, guid: 234dac60a8458e14ba2c964053c44295,
+        type: 3}
+      propertyPath: defaultTemperature.constant
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424652976588919000, guid: 234dac60a8458e14ba2c964053c44295,
+        type: 3}
+      propertyPath: defaultTemperature.useConstant
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6812312000783778361, guid: 234dac60a8458e14ba2c964053c44295,
         type: 3}
@@ -193,17 +209,17 @@ PrefabInstance:
     - target: {fileID: 6812312000783778361, guid: 234dac60a8458e14ba2c964053c44295,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6812312000783778361, guid: 234dac60a8458e14ba2c964053c44295,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6812312000783778361, guid: 234dac60a8458e14ba2c964053c44295,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6812312000783778361, guid: 234dac60a8458e14ba2c964053c44295,
         type: 3}
@@ -223,13 +239,13 @@ PrefabInstance:
     - target: {fileID: 7382850420144769048, guid: 234dac60a8458e14ba2c964053c44295,
         type: 3}
       propertyPath: m_Name
-      value: DemoHvacHandler
+      value: HvacHandler [Capsule]
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 234dac60a8458e14ba2c964053c44295, type: 3}
---- !u!4 &6694744279953768038 stripped
+--- !u!4 &6384636580045078732 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6812312000783778361, guid: 234dac60a8458e14ba2c964053c44295,
     type: 3}
-  m_PrefabInstance: {fileID: 171897476714986591}
+  m_PrefabInstance: {fileID: 437122459139064565}
   m_PrefabAsset: {fileID: 0}

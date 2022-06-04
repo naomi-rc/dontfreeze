@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2424652976588919000}
   - component: {fileID: 1744602537928532772}
   m_Layer: 0
-  m_Name: DemoHvacHandler
+  m_Name: HvacHandler [Capsule]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed0128050845e542965cfbede1a23f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  temperature: {fileID: 11400000, guid: 530cd949486645140bf32dc9770e2067, type: 2}
+  temperature: {fileID: 0}
   defaultTemperature:
     useConstant: 1
     constant: 0
@@ -77,4 +77,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33237c73cb765c547956acc879810ccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interval: 2
+  interval: 1

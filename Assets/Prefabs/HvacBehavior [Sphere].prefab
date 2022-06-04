@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8950436239015265055}
   - component: {fileID: 3729368195098450926}
   m_Layer: 0
-  m_Name: DemoHvacBehavior
+  m_Name: HvacBehavior [Sphere]
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
