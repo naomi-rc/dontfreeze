@@ -23,7 +23,7 @@
     border-bottom-color: rgba(146, 150, 156, 255);
 }
 
-.CloseButton {
+.InventoryCloseButton {
     border-top-left-radius: 100%;
     border-bottom-left-radius: 100%;
     border-top-right-radius: 100%;
@@ -42,4 +42,13 @@
     border-right-color: rgb(146, 150, 156);
     border-top-color: rgb(146, 150, 156);
     border-bottom-color: rgb(146, 150, 156);
+}
+
+.InventoryCloseButton:hover {
+    background-color: rgba(83, 87, 99, 255);
+    color: rgba(255, 255, 255, 255);
+}
+
+.InventoryCloseButton:active {
+    background-color: rgba(114, 119, 140, 255);
 }

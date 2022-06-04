@@ -29,6 +29,7 @@ public class GameplayUIHandler : MonoBehaviour
         pauseMenuHandler.ResumeButtonAction += OnPauseResumeButtonClicked;
         pauseMenuHandler.SettingsButtonAction += OnPauseSettingsButtonClicked;
         settingsMenuHandler.OnSettingsBackButtonClicked += OnSettingsBackButtonClicked;
+        inventoryMenuHandler.OnInventoryCloseButtonClicked += OnInventoryCloseButtonClicked;
     }
 
     void OnPause()
@@ -59,6 +60,12 @@ public class GameplayUIHandler : MonoBehaviour
     {
         inputReader.EnableGameplayInput();
         EnablePauseMenu();
+    }
+
+    void OnInventoryCloseButtonClicked()
+    {
+        inputReader.EnableGameplayInput();
+        DisableMenus();
     }
 
     void EnablePauseMenu()

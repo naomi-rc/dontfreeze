@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.Events;
 
 public class InventoryMenuHandler : MonoBehaviour
 {
+    public UnityAction OnInventoryCloseButtonClicked = delegate { };
+
     [SerializeField]
     private InventoryDatabase playerInventory;
 
     private VisualElement inventory;
+    private VisualElement sideBar;
     private VisualElement inspectCard;
     private VisualElement ghostIcon;
+    private Button closeButton;
     private List<InventorySlot> slotElementsReferences = new List<InventorySlot>();
     private int selectedSlot = -1;
     private InventoryEntry draggedEntry;
@@ -35,9 +40,20 @@ public class InventoryMenuHandler : MonoBehaviour
         var rootElement = GetComponent<UIDocument>().rootVisualElement;
         inventory = rootElement.Q<VisualElement>("Inventory");
         inspectCard = rootElement.Q<VisualElement>("InspectCard");
+        sideBar = rootElement.Q<VisualElement>("SideBar");
+        closeButton = rootElement.Q<Button>("CloseButton");
         rootElement.RegisterCallback<PointerDownEvent>(OnSlotClick, TrickleDown.TrickleDown);
         rootElement.RegisterCallback<PointerMoveEvent>(OnSlotDrag, TrickleDown.TrickleDown);
         rootElement.RegisterCallback<PointerUpEvent>(OnSlotRelease, TrickleDown.TrickleDown);
+
+        if (selectedSlot != -1)
+        {
+            FocusItem(slotElementsReferences[selectedSlot].item);
+        }
+        else
+        {
+            sideBar.style.display = DisplayStyle.None;
+        }
 
         rootElement.Add(ghostIcon);
 
@@ -48,6 +64,8 @@ public class InventoryMenuHandler : MonoBehaviour
 
         playerInventory.OnDatabaseChanged += OnInventoryChanged;
         OnInventoryChanged();
+
+        closeButton.clicked += OnCloseButtonClicked;
     }
 
     void OnDisable()
@@ -56,6 +74,12 @@ public class InventoryMenuHandler : MonoBehaviour
         inventory.UnregisterCallback<PointerMoveEvent>(OnSlotDrag, TrickleDown.TrickleDown);
         inventory.UnregisterCallback<PointerUpEvent>(OnSlotRelease, TrickleDown.TrickleDown);
         playerInventory.OnDatabaseChanged -= OnInventoryChanged;
+        closeButton.clicked -= OnCloseButtonClicked;
+    }
+
+    void OnCloseButtonClicked()
+    {
+        OnInventoryCloseButtonClicked.Invoke();
     }
 
     void OnInventoryChanged()
@@ -137,6 +161,11 @@ public class InventoryMenuHandler : MonoBehaviour
 
     void FocusItem(InventoryItem item)
     {
+        if (sideBar.style.display == DisplayStyle.None)
+        {
+            sideBar.style.display = DisplayStyle.Flex;
+        }
+
         Label title = inspectCard.Q<Label>("Title");
         Label type = inspectCard.Q<Label>("Type");
         Label description = inspectCard.Q<Label>("Description");

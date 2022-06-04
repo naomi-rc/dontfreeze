@@ -7,6 +7,8 @@ class InventorySlot : VisualElement
 {
     public new class UxmlFactory : UxmlFactory<InventorySlot, UxmlTraits> { }
 
+    public InventoryItem item;
+
     private VisualElement itemIcon;
     private Label itemCount;
 
@@ -37,6 +39,7 @@ class InventorySlot : VisualElement
 
     public void SetItem(InventoryItem item, int count)
     {
+        this.item = item;
         itemIcon.style.backgroundImage = new StyleBackground(item.icon);
         itemCount.text = count.ToString();
     }
