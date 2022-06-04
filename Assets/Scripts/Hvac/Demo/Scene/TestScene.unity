@@ -329,6 +329,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1638386315989694602, guid: 0771946ff592cb640b5d11c98c14ed85,
+        type: 3}
+      propertyPath: priority
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638386315989694602, guid: 0771946ff592cb640b5d11c98c14ed85,
+        type: 3}
+      propertyPath: intensity.constant
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638386315989694602, guid: 0771946ff592cb640b5d11c98c14ed85,
+        type: 3}
+      propertyPath: temperature.constant
+      value: -5
+      objectReference: {fileID: 0}
     - target: {fileID: 2768038105475464575, guid: 0771946ff592cb640b5d11c98c14ed85,
         type: 3}
       propertyPath: m_Name
@@ -403,6 +418,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1638386315989694602, guid: 0771946ff592cb640b5d11c98c14ed85,
+        type: 3}
+      propertyPath: intensity.constant
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1638386315989694602, guid: 0771946ff592cb640b5d11c98c14ed85,
+        type: 3}
+      propertyPath: temperature.constant
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 2768038105475464575, guid: 0771946ff592cb640b5d11c98c14ed85,
         type: 3}
       propertyPath: m_Name
@@ -416,7 +441,7 @@ PrefabInstance:
     - target: {fileID: 3254019668923263709, guid: 0771946ff592cb640b5d11c98c14ed85,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.55
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3254019668923263709, guid: 0771946ff592cb640b5d11c98c14ed85,
         type: 3}
