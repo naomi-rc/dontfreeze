@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
 
 [System.Serializable]
 public class InventoryEntry
@@ -44,13 +45,7 @@ public class InventoryDatabase : ScriptableObject
 
     public InventoryEntry GetEntry(int index)
     {
-        foreach (InventoryEntry entry in entries)
-        {
-            if (entry.index == index)
-                return entry;
-        }
-
-        return null;
+        return entries.FirstOrDefault(x => x.index == index);
     }
 
     public void AddItem(InventoryItem item)
@@ -85,6 +80,7 @@ public class InventoryDatabase : ScriptableObject
             fromEntry.index = toIndex;
             toEntry.index = fromIndex;
         }
+
         OnDatabaseChanged.Invoke();
     }
 }
