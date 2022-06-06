@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private IntVariable playerHealth;
 
     [SerializeField] private HealthBarController healthBar;
     [SerializeField] private int maxHealth = 100;
 
     private void Start()
     {
-        playerHealth.Health = maxHealth;
+        playerHealth.value = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
 
@@ -19,14 +19,14 @@ public class HealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        healthBar.SetHealth(playerHealth.Health);
+        healthBar.SetHealth(playerHealth.value);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.transform.tag == "Enemy")
         {
-            playerHealth.Health --;
+            playerHealth.value --;
         }
     }
 
@@ -34,7 +34,7 @@ public class HealthController : MonoBehaviour
     {
         if(other.gameObject.layer == 3)
         {
-            playerHealth.Health += 10;
+            playerHealth.value += 10;
             Destroy(other.gameObject);
         }
     }
