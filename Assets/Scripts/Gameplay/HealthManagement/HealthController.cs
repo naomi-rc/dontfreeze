@@ -34,7 +34,8 @@ public class HealthController : MonoBehaviour
     {
         if(other.gameObject.layer == 3)
         {
-            playerHealth.value += 10;
+            playerHealth.value = (playerHealth.value + 10 <= maxHealth) ? playerHealth.value + 10 : maxHealth;
+          
             Destroy(other.gameObject);
         }
     }
