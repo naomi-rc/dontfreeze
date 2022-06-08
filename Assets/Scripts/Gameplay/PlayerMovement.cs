@@ -19,9 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float turnSmoothTime = 0.1f;
     private float turnSmootVelocity;
 
-
     Vector3 velocity;
-    private bool isGrounded;
 
     private void Awake()
     {
@@ -38,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
-        if (Physics.OverlapSphere(groudCheckTransform.position, 0.4f).Length > 1)
+        if (Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -0.5f * gravity);
         }
