@@ -14,6 +14,9 @@ public class GameplayUIHandler : MonoBehaviour
     private GameObject mobileControlsDocument;
 
     [SerializeField]
+    private InventoryMenuHandler inventoryMenuHandler;
+
+    [SerializeField]
     private InputReader inputReader;
 
     void Awake()
@@ -22,15 +25,23 @@ public class GameplayUIHandler : MonoBehaviour
         DisableMenus();
 
         inputReader.PauseEvent += OnPause;
+        inputReader.OpenInventoryEvent += OnOpenInventory;
         pauseMenuHandler.ResumeButtonAction += OnPauseResumeButtonClicked;
         pauseMenuHandler.SettingsButtonAction += OnPauseSettingsButtonClicked;
         settingsMenuHandler.OnSettingsBackButtonClicked += OnSettingsBackButtonClicked;
+        inventoryMenuHandler.OnInventoryCloseButtonClicked += OnInventoryCloseButtonClicked;
     }
 
     void OnPause()
     {
         inputReader.EnableUiInput();
         EnablePauseMenu();
+    }
+
+    void OnOpenInventory()
+    {
+        inputReader.EnableUiInput();
+        EnableInventoryMenu();
     }
 
     void OnPauseResumeButtonClicked()
@@ -51,6 +62,12 @@ public class GameplayUIHandler : MonoBehaviour
         EnablePauseMenu();
     }
 
+    void OnInventoryCloseButtonClicked()
+    {
+        inputReader.EnableGameplayInput();
+        DisableMenus();
+    }
+
     void EnablePauseMenu()
     {
         // TODO: Disable HUD when we have it
@@ -59,6 +76,18 @@ public class GameplayUIHandler : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         mobileControlsDocument.SetActive(false);
 #endif
+        inventoryMenuHandler.gameObject.SetActive(false);
+    }
+
+    void EnableInventoryMenu()
+    {
+        // TODO: Disable HUD when we have it
+        pauseMenuHandler.gameObject.SetActive(false);
+        settingsMenuHandler.gameObject.SetActive(false);
+#if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
+        mobileControlsDocument.SetActive(false);
+#endif
+        inventoryMenuHandler.gameObject.SetActive(true);
     }
 
     void EnableSettingsMenu()
@@ -69,6 +98,7 @@ public class GameplayUIHandler : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         mobileControlsDocument.SetActive(false);
 #endif
+        inventoryMenuHandler.gameObject.SetActive(false);
     }
 
     void DisableMenus()
@@ -79,5 +109,6 @@ public class GameplayUIHandler : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         mobileControlsDocument.SetActive(true);
 #endif
+        inventoryMenuHandler.gameObject.SetActive(false);
     }
 }

@@ -14,16 +14,19 @@ public class OnScreenButtonHandler : OnScreenControl
     [SerializeField]
     private string m_ControlPath;
 
+    private Button onScreenButton;
+
     protected override string controlPathInternal
     {
         get => m_ControlPath;
         set => m_ControlPath = value;
     }
 
-    void Awake()
+    override protected void OnEnable()
     {
+        base.OnEnable();
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
-        var onScreenButton = rootVisualElement.Q<Button>(queryName);
+        onScreenButton = rootVisualElement.Q<Button>(queryName);
 
         if (onScreenButton == null)
         {
@@ -33,6 +36,12 @@ public class OnScreenButtonHandler : OnScreenControl
 
         onScreenButton.clicked += OnPointerDown;
         onScreenButton.RegisterCallback<PointerUpEvent>(OnPointerUp);
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        onScreenButton.UnregisterCallback<PointerUpEvent>(OnPointerUp);
     }
 
     private void OnPointerDown()
