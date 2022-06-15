@@ -12,6 +12,8 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     public event UnityAction JumpEvent = delegate { };
     public event UnityAction OpenInventoryEvent = delegate { };
 
+    public bool cursorLockEnabled = true;
+
     private GameInput gameInput;
 
     private void OnEnable()
@@ -29,12 +31,19 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     {
         gameInput.Gameplay.Enable();
         gameInput.UI.Disable();
+
+        if (cursorLockEnabled)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     public void EnableUiInput()
     {
         gameInput.Gameplay.Disable();
         gameInput.UI.Enable();
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     #region Gameplay actions
@@ -58,6 +67,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
             JumpEvent.Invoke();
         }
     }
+
     public void OnCamera(InputAction.CallbackContext context)
     {
     }
