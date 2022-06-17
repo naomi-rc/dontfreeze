@@ -6,9 +6,16 @@ public class StateMachine : MonoBehaviour
 {
 
     protected State currentState;
+    [SerializeField]
+    public InputReader inputReader;
+
+    private void Awake()
+    {
+        inputReader.EnableGameplayInput();
+    }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         currentState = GetInitialState();
         if(currentState != null)
@@ -18,20 +25,23 @@ public class StateMachine : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(currentState != null)
         {
             currentState.Update();
-            Debug.Log("Current state = " + currentState.ToString());
         }
     }
 
-    public void ChangeStage(State newState)
+    public void ChangeState(State newState)
     {
+        Debug.Log("Ancien state = " + currentState.ToString());
+
         currentState.Exit();
 
         currentState = newState;
+        Debug.Log("Nouveau state = " + currentState.ToString());
+
         currentState.Enter();
     }
 
