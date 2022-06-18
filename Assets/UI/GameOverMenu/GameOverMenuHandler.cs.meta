@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< master
-guid: dd67ab8458ba24a41b76cd29baf38319
-=======
-guid: f401c97f922bbae4da3d339059e9987d
->>>>>>> Game Over screen
+guid: 8a1a182d9ff0015418a8aa945b97879c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

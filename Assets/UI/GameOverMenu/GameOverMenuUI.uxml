@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/GameOverMenu/GameOverMenuStyles.uss?fileID=7433441132597879392&amp;guid=016f56f3a4385694f9acb3fa46e4255b&amp;type=3#GameOverMenuStyles" />
+    <ui:VisualElement name="Screen" style="width: 100%; height: 100%; transition-duration: 2s; transition-timing-function: ease-in; transition-property: background-color;">
+        <ui:VisualElement name="Buttons" style="bottom: 50px; position: absolute; width: 100%; align-items: center; left: auto; opacity: 0; transition-property: opacity; transition-duration: 2s; transition-timing-function: ease-in;">
+            <ui:Button text="Restart" name="RestartButton" class="PrimaryButton" />
+            <ui:Button text="Quit" name="QuitButton" class="PrimaryButton" />
+        </ui:VisualElement>
+        <ui:Label text="Game Over" name="Title" class="Hidden" style="-unity-text-align: upper-center; font-size: 150px; color: rgb(210, 210, 210); transition-property: opacity; transition-duration: 2s; transition-timing-function: ease-in; opacity: 0;" />
+    </ui:VisualElement>
+</ui:UXML>
