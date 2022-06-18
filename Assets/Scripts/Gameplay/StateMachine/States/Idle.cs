@@ -6,30 +6,32 @@ using UnityEngine.InputSystem;
 
 public class Idle : State
 {
-    private bool input;
-    [SerializeField]
-    private InputReader inputReader;
-
     private Vector2 movement;
+    private bool jump;
 
     public Idle(MovementSM stateMachine) : base("Idle", stateMachine) { }
-    
     
     public override void Enter() 
     {
         base.Enter();
-        input = false;
         stateMachine.inputReader.MoveEvent += CheckMovement;
-        // TODO activer l'idle animation
+        //stateMachine.inputReader.JumpEvent += ApplyJump;
+        stateMachine.animator.SetTrigger("idle");
     }
+
+    // TODO Implémenter ces méthodes
+    //public virtual void HandleInput() { }
+
+    //public virtual void LogicUpdate() { }
+
+    //public virtual void PhysicsUpdate() { }
     public override void Update() 
     { 
         base.Update();
         if (movement.sqrMagnitude > Mathf.Epsilon)
         {
-            stateMachine.ChangeState(((MovementSM)stateMachine).walkingState);
+            stateMachine.ChangeState(((MovementSM)stateMachine).walkingState);     
         }
-        // TODO vérifier si le joueur est en mouvement, si oui faire la transition vers le walking state
     }
     public override void Exit() 
     { 

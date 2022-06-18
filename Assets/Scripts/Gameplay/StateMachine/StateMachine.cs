@@ -9,6 +9,9 @@ public class StateMachine : MonoBehaviour
     [SerializeField]
     public InputReader inputReader;
 
+    [SerializeField]
+    public Animator animator;
+
     private void Awake()
     {
         inputReader.EnableGameplayInput();

@@ -5,25 +5,26 @@ using UnityEngine;
 public class Walk : State
 {
 
-    private bool input;
-
     private Vector2 movement;
-
+    private bool jump;
 
     public Walk(MovementSM stateMachine) : base("Walk", stateMachine) { }
-
-    private void Awake()
-    {
-        //inputReader.EnableGameplayInput();
-        //inputReader.MoveEvent += ApplyMovement;
-    }
 
     public override void Enter()
     {
         base.Enter();
         stateMachine.inputReader.MoveEvent += ApplyMovement;
+        //stateMachine.inputReader.JumpEvent += ApplyJump;
+        stateMachine.animator.SetTrigger("walk");
         // TODO activer l'idle animation
     }
+
+    // TODO Implémenter ces méthodes pour une meilleure gestion des input et des updates
+    //public virtual void HandleInput() { }
+
+    //public virtual void LogicUpdate() { }
+
+    //public virtual void PhysicsUpdate() { }
     public override void Update()
     {
         base.Update();
@@ -31,8 +32,7 @@ public class Walk : State
         {
             stateMachine.ChangeState(((MovementSM)stateMachine).idleState);
         }
-        // TODO vérifier si le joueur est en mouvement, si non faire la transition vers le idle state
-    }
+     }
     public override void Exit()
     {
         base.Exit();

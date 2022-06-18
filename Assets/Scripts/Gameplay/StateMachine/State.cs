@@ -20,6 +20,13 @@ public abstract class State
     }
 
     public virtual void Enter() { stage = Event.Update; }
+
+    // TODO Implémenter ces méthodes
+    //public virtual void HandleInput() { }
+
+    //public virtual void LogicUpdate() { }
+
+    //public virtual void PhysicsUpdate() { }
     public virtual void Update() { stage = Event.Update; }
     public virtual void Exit() { stage = Event.Exit; }
 
