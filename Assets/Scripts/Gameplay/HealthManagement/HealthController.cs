@@ -45,6 +45,11 @@ public class HealthController : MonoBehaviour
             isDead = true;
             onPlayerDeathEvent.Raise();
         }
+
+        if(hit.gameObject.TryGetComponent<EnemyHealthController>(out EnemyHealthController enemyHealthController))
+        {
+            enemyHealthController.TakeDamage(1);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -38,12 +38,12 @@ public class StateMachine : MonoBehaviour
 
     public void ChangeState(State newState)
     {
-        Debug.Log("Ancien state = " + currentState.ToString());
+        //Debug.Log("Ancien state = " + currentState.ToString());
 
         currentState.Exit();
 
         currentState = newState;
-        Debug.Log("Nouveau state = " + currentState.ToString());
+        //Debug.Log("Nouveau state = " + currentState.ToString());
 
         currentState.Enter();
     }
