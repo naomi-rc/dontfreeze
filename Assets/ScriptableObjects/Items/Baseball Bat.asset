@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3592be4094811c47945bb773794794b, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: bc5ecf8d0ead18d489ffe8e837fc69a4, type: 3}
+  m_Name: Baseball Bat
   m_EditorClassIdentifier: 
-  entries:
-  - index: 0
-    item: {fileID: 11400000, guid: be5849a8f4144a34fbf35311f30be0dc, type: 2}
-    count: 2
+  title: Baseball Bat
+  icon: {fileID: 0}
+  type: 0
+  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero
+    dui, malesuada quis dolor ut, mattis eleifend augue.

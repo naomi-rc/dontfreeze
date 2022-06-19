@@ -6,6 +6,7 @@ public enum InventoryItemType
 {
     Weapon,
     Food,
+    Resource,
 }
 
 [CreateAssetMenu(fileName = "Item", menuName = "Inventory/Item")]

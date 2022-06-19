@@ -11,6 +11,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     public event UnityAction PauseEvent = delegate { };
     public event UnityAction JumpEvent = delegate { };
     public event UnityAction OpenInventoryEvent = delegate { };
+    public event UnityAction InteractEvent = delegate { };
 
     public bool cursorLockEnabled = true;
 
@@ -77,6 +78,14 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
         if (context.performed)
         {
             OpenInventoryEvent.Invoke();
+        }
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            InteractEvent.Invoke();
         }
     }
     #endregion
