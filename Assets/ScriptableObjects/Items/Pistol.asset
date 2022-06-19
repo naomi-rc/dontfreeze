@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   title: Pistol
-  icon: {fileID: 2800000, guid: 1fdcc510fb7d8594dbbc6d18dd8f27ea, type: 3}
+  icon: {fileID: 2800000, guid: 76ef1b15f60a6cc4aa95ca64bdbcace4, type: 3}
   type: 0
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero
     dui, malesuada quis dolor ut, mattis eleifend augue.
