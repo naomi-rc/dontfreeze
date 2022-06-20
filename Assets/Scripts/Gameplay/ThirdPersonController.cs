@@ -39,6 +39,11 @@ public class ThirdPersonController : MonoBehaviour
     private bool isGrounded;
     private bool isAttacking;
 
+    private GameObject[] multipleEnemy;
+    Collider[] colliderZone;
+    public Transform closestEnemy;
+    public bool ennyContact;
+
     private void Awake()
     {
         inputReader.EnableGameplayInput();
@@ -111,10 +116,22 @@ public class ThirdPersonController : MonoBehaviour
         {
             isAttacking = false;
             animator.SetBool("isAttacking", true);
+            foreach(var thing in colliderZone)
+            {
+                if (thing.gameObject.TryGetComponent<EnemyHealthController>(out EnemyHealthController enemyHealthController))
+                {
+                    enemyHealthController.TakeDamage(5);
+                }
+            }
+            
         } else
         {
             animator.SetBool("isAttacking", false);
         }
+    }
+    private void FixedUpdate()
+    {
+        colliderZone = Physics.OverlapSphere(this.transform.position, 2f);
     }
 
     private void LateUpdate()

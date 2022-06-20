@@ -14,6 +14,8 @@ public class HealthController : MonoBehaviour
     [SerializeField] private Animator animator;
     private bool isDefending;
 
+  
+
     private void Start()
     {
         playerHealth.value = maxHealth;
@@ -42,8 +44,8 @@ public class HealthController : MonoBehaviour
             animator.SetBool("isDefending", false);
 
         }
-
     }
+    
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -62,11 +64,6 @@ public class HealthController : MonoBehaviour
             animator.SetBool("isDead", true);        
         }
        
-
-        if(hit.gameObject.TryGetComponent<EnemyHealthController>(out EnemyHealthController enemyHealthController))
-        {
-            enemyHealthController.TakeDamage(1);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
