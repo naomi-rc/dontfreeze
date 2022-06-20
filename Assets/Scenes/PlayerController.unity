@@ -1061,6 +1061,11 @@ PrefabInstance:
       propertyPath: m_Height
       value: 1.65
       objectReference: {fileID: 0}
+    - target: {fileID: 5262713833329196906, guid: e133a88d4e9458b46b7f696d3630961b,
+        type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1608403090}
     - target: {fileID: 7331511719926739178, guid: e133a88d4e9458b46b7f696d3630961b,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -1285,7 +1290,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731186109}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41221f2baefb12e4bb6f6657c1e48777, type: 3}
   m_Name: 
@@ -1407,11 +1412,11 @@ GameObject:
   - component: {fileID: 2095146243}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &2095146239
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1483,7 +1488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2095146238}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.53, y: 0.62920785, z: 4.05}
+  m_LocalPosition: {x: -0.84, y: 0.62920785, z: 6.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

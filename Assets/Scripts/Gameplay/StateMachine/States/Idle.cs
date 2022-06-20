@@ -16,7 +16,7 @@ public class Idle : State
         base.Enter();
         stateMachine.inputReader.MoveEvent += CheckMovement;
         //stateMachine.inputReader.JumpEvent += ApplyJump;
-        stateMachine.animator.SetTrigger("idle");
+        stateMachine.animator.SetBool("isMoving", false);
     }
 
     // TODO Implémenter ces méthodes

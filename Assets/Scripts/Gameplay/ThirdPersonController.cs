@@ -11,6 +11,9 @@ public class ThirdPersonController : MonoBehaviour
     private CharacterController characterController;
 
     [SerializeField]
+    private Animator animator;
+
+    [SerializeField]
     private Transform mainCamera;
 
     [SerializeField]
@@ -31,6 +34,9 @@ public class ThirdPersonController : MonoBehaviour
     private Vector2 movement;
     private Vector3 velocity;
 
+    private bool isJumping;
+    private bool jumpActivated;
+
     private void Awake()
     {
         inputReader.EnableGameplayInput();
@@ -46,15 +52,25 @@ public class ThirdPersonController : MonoBehaviour
 
     private void ApplyJump()
     {
+        jumpActivated = true;
         if (Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -0.5f * gravity);
-        }
+        } 
+        
     }
 
     private void ApplyMovement(Vector2 value)
     {
         movement = value;
+       
+        if (movement.sqrMagnitude < Mathf.Epsilon)
+        {
+            animator.SetBool("isMoving", false);
+        } else
+        {
+            animator.SetBool("isMoving", true);
+        }
     }
 
     // Update is called once per frame
@@ -62,6 +78,30 @@ public class ThirdPersonController : MonoBehaviour
     {
         Move();
         Gravity();
+
+        if (Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
+        {
+            animator.SetBool("isGrounded", true);
+            isJumping = false;
+            animator.SetBool("isJumping", false);
+
+            animator.SetBool("isFalling", false);
+            if (jumpActivated)
+            {
+                isJumping = true;
+                animator.SetBool("isJumping", true);
+                jumpActivated = false;
+            }
+        }
+        else
+        {
+            animator.SetBool("isGrounded", false);
+
+            if ((isJumping && velocity.y < 0f) || velocity.y < -2f)
+            {
+                animator.SetBool("isFalling", true);
+            }
+        }
     }
 
     private void LateUpdate()

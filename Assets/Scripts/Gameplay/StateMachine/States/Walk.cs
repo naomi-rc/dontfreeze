@@ -15,8 +15,8 @@ public class Walk : State
         base.Enter();
         stateMachine.inputReader.MoveEvent += ApplyMovement;
         //stateMachine.inputReader.JumpEvent += ApplyJump;
-        stateMachine.animator.SetTrigger("walk");
-        // TODO activer l'idle animation
+        //stateMachine.animator.SetTrigger("walk");
+        stateMachine.animator.SetBool("isMoving", true);
     }
 
     // TODO Implémenter ces méthodes pour une meilleure gestion des input et des updates

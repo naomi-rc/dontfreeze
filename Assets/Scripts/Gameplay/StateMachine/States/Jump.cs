@@ -34,7 +34,6 @@ public class Jump : State
         {
             stateMachine.ChangeState(((MovementSM)stateMachine).idleState);
         }
-        // TODO vérifier les conditions pour passer à la prochaine animation probablement idle
     }
     public override void Exit()
     {
