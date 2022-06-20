@@ -36,11 +36,14 @@ public class ThirdPersonController : MonoBehaviour
 
     private bool isJumping;
     private bool jumpActivated;
+    private bool isGrounded;
+    private bool isAttacking;
 
     private void Awake()
     {
         inputReader.EnableGameplayInput();
         inputReader.JumpEvent += ApplyJump;
+        inputReader.AttackEvent += AttackEnemy;
         inputReader.MoveEvent += ApplyMovement;
     }
 
@@ -79,9 +82,10 @@ public class ThirdPersonController : MonoBehaviour
         Move();
         Gravity();
 
-        if (Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
+        if(Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
         {
             animator.SetBool("isGrounded", true);
+            isGrounded = true;
             isJumping = false;
             animator.SetBool("isJumping", false);
 
@@ -96,11 +100,20 @@ public class ThirdPersonController : MonoBehaviour
         else
         {
             animator.SetBool("isGrounded", false);
-
-            if ((isJumping && velocity.y < 0f) || velocity.y < -2f)
+            isGrounded=false;
+            if ((isJumping && velocity.y < 0f) || velocity.y < -2f || !isGrounded)
             {
                 animator.SetBool("isFalling", true);
             }
+        }
+
+        if (isAttacking)
+        {
+            isAttacking = false;
+            animator.SetBool("isAttacking", true);
+        } else
+        {
+            animator.SetBool("isAttacking", false);
         }
     }
 
@@ -137,5 +150,10 @@ public class ThirdPersonController : MonoBehaviour
     private void Look()
     {
         // We could customize cinemachine behavior here, if we want.
+    }
+
+    private void AttackEnemy()
+    {
+        isAttacking = true;
     }
 }
