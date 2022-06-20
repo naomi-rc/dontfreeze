@@ -178,7 +178,7 @@ public class EnemyBehavior : MonoBehaviour
     public Node.Status Die()
     {
         state = ActionState.DEAD;
-        Destroy(gameObject, 5f);
+        Destroy(gameObject, 2f);
         return Node.Status.Success;
     }
 
