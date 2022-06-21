@@ -5,19 +5,18 @@ using UnityEngine;
 public class EnemyBehavior : MonoBehaviour
 {
     [SerializeField] float targetSpeed = 1f;
-    [SerializeField] float TargetMaxDistance = 15f;
-    [SerializeField] float TargetMinDistance = 2f;
-    [SerializeField] int LifeForce = 15;
-    [SerializeField] int MaxLifeForce = 15;
-
-    BehaviorTree tree;
-    UnityEngine.AI.NavMeshAgent agent;
+    [SerializeField] float targetMaxDistance = 15f;
+    [SerializeField] float targetMinDistance = 2f;
+    [SerializeField] float lifeForce = 15f;
+    [SerializeField] float maxLifeForce = 15f;
+        
+    BehaviorTree tree;    
     GameObject target;
+    UnityEngine.AI.NavMeshAgent agent;
 
-    public enum ActionState { MOVING, IDLE, ROAM, ATTACK, DEAD };
+    public enum ActionState { PURSUE, EVADE, IDLE, ROAM, ATTACK, DEAD };
     ActionState state = ActionState.IDLE;
 
-    Node.Status treeStatus = Node.Status.Running;
 
     void Start()
     {
@@ -66,28 +65,17 @@ public class EnemyBehavior : MonoBehaviour
         Leaf attack = new Leaf("Attack", Attack);
         s9.AddChild(targetAttained);
         s9.AddChild(attack);
-
-
+                
         Leaf idle = new Leaf("Idle", Idle);
-        Leaf roam = new Leaf("Roam", Roam);
-        s5.AddChild(roam);
+        Leaf roam = new Leaf("Roam", Roam);        
         s5.AddChild(idle);
-        
-        
+        s5.AddChild(roam);
 
-
-        
-        /*sequence.AddChild(pursue);
-        sequence.AddChild(attack);
-        sequence.AddChild(die);
-        tree.AddChild(sequence);*/
-        
     }
 
     private void Update()
     {
-        //if(treeStatus == Node.Status.Running)
-        treeStatus = tree.Process();
+        tree.Process();
     }
 
     public void UpdateTarget(GameObject t)
@@ -95,92 +83,97 @@ public class EnemyBehavior : MonoBehaviour
         target = t;
     }
 
-    Node.Status GoToPosition(Vector3 destination)
-    {
-        float distanceToDestination = Vector3.Distance(destination, transform.position); 
-        agent.SetDestination(destination);
-        state = ActionState.MOVING;
-        
-        if(Vector3.Distance(agent.pathEndPosition, destination) >= TargetMinDistance)
-        {
-            state = ActionState.IDLE; //or roam
-            return Node.Status.Failure;
-        }
-        else if(distanceToDestination < 2)
-        {
-            state = ActionState.IDLE; // or roam
-            return Node.Status.Success;
-        }
-        return Node.Status.Running;
-    }
 
-    //Actions
+    /* Behaviour tree actions */
     public Node.Status Pursue()
     {
-        Debug.Log("Imma get you!! Come here!");
+        Debug.Log("Pursue");
         Vector3 distance = target.transform.position - transform.position;
         Vector3 dp = distance.magnitude / agent.speed * target.transform.forward * targetSpeed;
         Vector3 predictedPosition = target.transform.position + dp;
         Vector3 d = predictedPosition - transform.position;
-        //return GoToPosition(transform.position + d);
         agent.SetDestination(transform.position + d);
         return Node.Status.Running;
     }
 
     public Node.Status Evade()
     {
-        Debug.Log("Ahh! No, I don't have the strength for this!");
+        Debug.Log("Evade");
         Vector3 distance = target.transform.position - transform.position;
         Vector3 dp = distance.magnitude / agent.speed * target.transform.forward * targetSpeed;
         Vector3 predictedPosition = target.transform.position + dp;
-        //return GoToPosition(transform.position + (transform.position - predictedPosition));
         agent.SetDestination(transform.position + (transform.position - predictedPosition));
         return Node.Status.Running;
     }
 
     public Node.Status Idle()
     {
-        Debug.Log("Imma stay put");
-        return Node.Status.Success;
+        //0.5% chance of failing
+        if (Random.Range(0f, 1f) * 1000 < 5)
+        {
+            return Node.Status.Failure;
+        }
+        Debug.Log("Idle");
+        state = ActionState.IDLE;
+        return Node.Status.Running;
     }
 
-    public Node.Status Roam()
+    void CanRoamAgain()
     {
-        Debug.Log("Ahh, what a beautiful day for a stroll");
-        //30% chance of failing
-        return Node.Status.Success;
+        if(state == ActionState.ROAM)
+            state = ActionState.IDLE;
+    }
+    public Node.Status Roam()
+    {       
+        Debug.Log("Roam");
+        if (state != ActionState.ROAM)
+        {
+            //Choose random angle to rotate by
+            float angle = Random.Range(-10, 10);
+            agent.transform.Rotate(0, angle * agent.speed * Time.deltaTime, 0);
+
+            //Choose random distance to travel
+            float distance = Random.Range(5, 15);
+            agent.SetDestination(agent.transform.forward * distance);
+            state = ActionState.ROAM;
+        }
+        else if (agent.remainingDistance < 0.1f)
+        {
+            Invoke("CanRoamAgain", 100);
+        }        
+        return Node.Status.Running;
     }
 
     public Node.Status Attack()
     {
-        Debug.Log("Grrr!!");
-        return Node.Status.Success;
+        Debug.Log("Attack");
+        return Node.Status.Running;
     }
 
     public Node.Status Die()
     {
-        Debug.Log("Tell my children.. I.. love them... *gasp*");
+        Debug.Log("Die");
         return Node.Status.Success;
     }
 
 
 
-    //Conditions
+    /* Behaviour tree conditions */
     public Node.Status HasLife()
     {
-        if(LifeForce > 0)
+        if(lifeForce > 0)
             return Node.Status.Success;
         return Node.Status.Failure;
     }
 
     public Node.Status TargetCloseby()
     {
-        if(agent.hasPath && Vector3.Distance(agent.pathEndPosition, agent.destination) >= TargetMinDistance)
+        if(agent.hasPath && Vector3.Distance(agent.pathEndPosition, agent.destination) >= targetMinDistance)
         {
             agent.isStopped = true;
 
         }
-        else if(target && Vector3.Distance(target.transform.position, transform.position) <= TargetMaxDistance)
+        else if(target && Vector3.Distance(target.transform.position, transform.position) <= targetMaxDistance)
         {
             return Node.Status.Success;
         }            
@@ -190,14 +183,14 @@ public class EnemyBehavior : MonoBehaviour
 
     public Node.Status IsStrong()
     {
-        if (LifeForce/MaxLifeForce > 0.1)
+        if (lifeForce/maxLifeForce > 0.1)
             return Node.Status.Success;
         return Node.Status.Failure;
     }
 
     public Node.Status TargetAttained()
     {
-        if (target && Vector3.Distance(target.transform.position, transform.position) <= TargetMinDistance)
+        if (target && Vector3.Distance(target.transform.position, transform.position) <= targetMinDistance)
             return Node.Status.Success;
         return Node.Status.Failure;
     }
