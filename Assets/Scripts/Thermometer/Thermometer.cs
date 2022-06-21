@@ -10,6 +10,34 @@ public class Thermometer : MonoBehaviour
     [SerializeField]
     private FloatReference defaultTemperature;
 
+    [SerializeField]
+    private FloatReference coldTemperature;
+
+    [SerializeField]
+    private BoolEventChannel onColdEvent = default;
+
+    private bool hasColdStatus = false;
+
+    private void Awake()
+    {
+        temperature.OnValueChanged += ManageStatus;
+    }
+
+    private void ManageStatus(float value)
+    {
+        if (temperatureIsCold(value) && !hasColdStatus
+        || !temperatureIsCold(value) && hasColdStatus)
+        {
+            hasColdStatus = !hasColdStatus;
+            onColdEvent.Raise(hasColdStatus);
+        }
+    }
+
+    public bool temperatureIsCold(float value)
+    {
+        return value <= coldTemperature.value;
+    }
+
     public void Change(float intensity)
     {
         temperature.value += intensity;

@@ -9,10 +9,19 @@ public class HealthController : MonoBehaviour
     [SerializeField] private HealthBarController healthBar;
     [SerializeField] private int maxHealth = 100;
 
-    private void Start()
+    [SerializeField] private FloatEventChannel onBleedingEvent = default;
+
+    private void Awake()
     {
         playerHealth.value = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+
+        onBleedingEvent.OnEventRaised += SetBleed;
+    }
+
+    private void OnDisable()
+    {
+        onBleedingEvent.OnEventRaised -= SetBleed;
     }
 
 
@@ -22,20 +31,43 @@ public class HealthController : MonoBehaviour
         healthBar.SetHealth(playerHealth.value);
     }
 
+    public void Decrease(int value)
+    {
+        playerHealth.value -= value;
+    }
+
+    private void SetBleed(float duration)
+    {
+        StartCoroutine(BleedCoroutine(duration));
+    }
+
+    // Damage per seconds (1)
+    private IEnumerator BleedCoroutine(float duration)
+    {
+        for (int time = 0; time < duration; ++time)
+        {
+            Decrease(1);
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.transform.tag == "Enemy")
-        {
-            playerHealth.value --;
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 3)
+        if (other.CompareTag("Enemy"))
+        {
+            Decrease(10);
+            SetBleed(5f);
+        }
+
+        if (other.gameObject.layer == 3)
         {
             playerHealth.value = (playerHealth.value + 10 <= maxHealth) ? playerHealth.value + 10 : maxHealth;
-          
+
             Destroy(other.gameObject);
         }
     }

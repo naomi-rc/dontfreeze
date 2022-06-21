@@ -19,7 +19,7 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField]
     private Transform groudCheckTransform = null;
 
-    public float speed = 4f;
+    public FloatReference speed;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
 
@@ -65,7 +65,7 @@ public class ThirdPersonController : MonoBehaviour
 
     private void Move()
     {
-        float targetSpeed = (movement != Vector2.zero) ? speed : 0f;
+        float targetSpeed = (movement != Vector2.zero) ? speed.value : 0f;
 
         // We could implement 'accelerate to target speed'
 
