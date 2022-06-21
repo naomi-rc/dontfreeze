@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc5ecf8d0ead18d489ffe8e837fc69a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ffe49f981bfe584ab8c1499101ba06a, type: 3}
   m_Name: Medkit
   m_EditorClassIdentifier: 
   title: Medkit
   icon: {fileID: 2800000, guid: 049b08feaf694584a9a1d87ce7081241, type: 3}
-  type: 1
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero
     dui, malesuada quis dolor ut, mattis eleifend augue.
+  healthResorationValue: 10

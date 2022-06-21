@@ -171,7 +171,18 @@ public class InventoryMenuHandler : MonoBehaviour
         Label description = inspectCard.Q<Label>("Description");
 
         title.text = item.name;
-        type.text = item.type.ToString();
+        switch (item)
+        {
+            case InventoryWeapon _:
+                type.text = "Weapon";
+                break;
+            case InventoryConsumable _:
+                type.text = "Consumable";
+                break;
+            default:
+                type.text = "Item";
+                break;
+        }
         description.text = item.description;
     }
 }
