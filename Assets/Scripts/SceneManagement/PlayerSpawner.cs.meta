@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 9e9cdee93fefe624b992cc323375a490
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - inputReader: {fileID: 11400000, guid: 03e55d179fcde374bb0cb89fc2a25faf, type: 2}
+  - playerPrefab: {instanceID: 0}
+  - spawnLocation: {instanceID: 0}
+  - onSceneReady: {fileID: 11400000, guid: 6c5193d76e7a33a499b4f4109e45e2fc, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

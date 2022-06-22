@@ -16,6 +16,12 @@ public class StartMenuHandler : MonoBehaviour
         settingsMenuHandler.OnSettingsBackButtonClicked += OnSettingsBackButtonClicked;
     }
 
+    private void OnDisable()
+    {
+        mainMenuHandler.SettingsButtonAction -= OnSettingsButtonClicked;
+        settingsMenuHandler.OnSettingsBackButtonClicked -= OnSettingsBackButtonClicked;
+    }
+
     void OnSettingsButtonClicked()
     {
         mainMenuHandler.gameObject.SetActive(false);

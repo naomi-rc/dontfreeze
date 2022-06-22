@@ -32,6 +32,16 @@ public class GameplayUIHandler : MonoBehaviour
         inventoryMenuHandler.OnInventoryCloseButtonClicked += OnInventoryCloseButtonClicked;
     }
 
+    private void OnDisable()
+    {
+        inputReader.PauseEvent -= OnPause;
+        inputReader.OpenInventoryEvent -= OnOpenInventory;
+        pauseMenuHandler.ResumeButtonAction -= OnPauseResumeButtonClicked;
+        pauseMenuHandler.SettingsButtonAction -= OnPauseSettingsButtonClicked;
+        settingsMenuHandler.OnSettingsBackButtonClicked -= OnSettingsBackButtonClicked;
+        inventoryMenuHandler.OnInventoryCloseButtonClicked -= OnInventoryCloseButtonClicked;
+    }
+
     void OnPause()
     {
         inputReader.EnableUiInput();

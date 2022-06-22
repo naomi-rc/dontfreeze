@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 1b7492a8ba620a546bfe41eb4400b601
+  m_SerializeEntries:
+  - m_GUID: 02a0ef5d6291bbe45b14d1a6242444de
+    m_Address: Assets/Scenes/SafeHouse.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e989f95f93a6b854585785b8b1afadfe
+    m_Address: Assets/Scenes/FirstWorld.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 34b8ed08c1711654083599c63fbe196c
+    m_Address: Assets/UI/StartMenuUITestScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 02c726e4fb676b84baa1658e40736d3b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7a406e6c0d25f5b46bfc4c114edff633, type: 2}
+    - {fileID: 11400000, guid: 5b84e90505e5bde40bc29b68a462b4ad, type: 2}

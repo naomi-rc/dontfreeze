@@ -13,6 +13,12 @@ public class MainMenuHandler : MonoBehaviour
     private Button settingsButton;
     private Button quitButton;
 
+    [SerializeField]
+    private LocationLoader locationLoader = default;
+
+    [SerializeField]
+    private SceneObject firstScene;
+
     void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
@@ -35,7 +41,7 @@ public class MainMenuHandler : MonoBehaviour
 
     void OnPlayButtonClicked()
     {
-        Debug.Log("Play button clicked");
+        locationLoader.Load(firstScene);
     }
 
     void OnSettingsButtonClicked()
