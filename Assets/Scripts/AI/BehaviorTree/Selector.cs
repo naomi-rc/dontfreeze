@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Selector : Node
 {
     public Selector() : base("Selector") { }
@@ -13,7 +9,6 @@ public class Selector : Node
             Status s = c.Process();
             if (s == Status.Running || s == Status.Success)
             {
-                //Debug.Log($"Node {c.name} is {s}");
                 return s;
             }
                 

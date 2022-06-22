@@ -126,7 +126,6 @@ public class EnemyBehavior : MonoBehaviour
 
     public Node.Status Pursue()
     {
-        Debug.Log("Pursue");
         state = ActionState.PURSUE;
         Vector3 distance = target.transform.position - transform.position;
         Vector3 dp = distance.magnitude / agent.speed * target.transform.forward * targetSpeed;
@@ -138,7 +137,6 @@ public class EnemyBehavior : MonoBehaviour
 
     public Node.Status Evade()
     {
-        Debug.Log("Evade");
         state = ActionState.EVADE;
         Vector3 distance = target.transform.position - transform.position;
         Vector3 dp = distance.magnitude / agent.speed * target.transform.forward * targetSpeed;
@@ -151,14 +149,12 @@ public class EnemyBehavior : MonoBehaviour
 
     public Node.Status Attack()
     {
-        Debug.Log("Attack");
         state = ActionState.ATTACK;
         return Node.Status.Running;
     }
 
     public Node.Status Die()
     {
-        Debug.Log("Die");
         state = ActionState.DEAD;
         Destroy(gameObject, 5f);
         return Node.Status.Success;
@@ -202,5 +198,4 @@ public class EnemyBehavior : MonoBehaviour
             return Node.Status.Success;
         return Node.Status.Failure;
     }
-
 }
