@@ -17,7 +17,7 @@ public class ThirdPersonController : MonoBehaviour
     private InputReader inputReader;
 
     [SerializeField]
-    private Transform groudCheckTransform = null;
+    private Transform groudCheckTransform;
 
     public float speed = 4f;
     public float gravity = -9.81f;
@@ -36,6 +36,12 @@ public class ThirdPersonController : MonoBehaviour
         inputReader.EnableGameplayInput();
         inputReader.JumpEvent += ApplyJump;
         inputReader.MoveEvent += ApplyMovement;
+    }
+
+    private void OnDisable()
+    {
+        inputReader.JumpEvent -= ApplyJump;
+        inputReader.MoveEvent -= ApplyMovement;
     }
 
     private void ApplyJump()
