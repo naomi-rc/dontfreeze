@@ -171,8 +171,8 @@ MonoBehaviour:
   targetMinDistance: 2
   lifeForce: 15
   maxLifeForce: 15
---- !u!64 &5056777151115959349
-MeshCollider:
+--- !u!65 &8338008357165437827
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -181,10 +181,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 3329136176600644168, guid: 1d2cf5093f9467947a27e8f8b91feb42, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.75, y: 1.93, z: 4.22}
+  m_Center: {x: 0, y: 1.14, z: 0.37}
 --- !u!4 &863534826353487270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d2cf5093f9467947a27e8f8b91feb42,
