@@ -5,9 +5,12 @@ using UnityEngine;
 public class HealthController : MonoBehaviour
 {
     [SerializeField] private IntVariable playerHealth;
+    [SerializeField] private VoidEventChannel onPlayerDeathEvent;
 
     [SerializeField] private HealthBarController healthBar;
     [SerializeField] private int maxHealth = 100;
+
+    private bool isDead = false;
 
     private void Start()
     {
@@ -24,18 +27,26 @@ public class HealthController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if (isDead) { return; }
+
         if (hit.transform.tag == "Enemy")
         {
-            playerHealth.value --;
+            playerHealth.value--;
+        }
+
+        if (playerHealth.value <= 0)
+        {
+            isDead = true;
+            onPlayerDeathEvent.Raise();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == 3)
+        if (other.gameObject.layer == 3)
         {
             playerHealth.value = (playerHealth.value + 10 <= maxHealth) ? playerHealth.value + 10 : maxHealth;
-          
+
             Destroy(other.gameObject);
         }
     }
