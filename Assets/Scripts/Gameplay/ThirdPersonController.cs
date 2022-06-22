@@ -34,15 +34,11 @@ public class ThirdPersonController : MonoBehaviour
     private Vector2 movement;
     private Vector3 velocity;
 
-    private bool isJumping;
     private bool jumpActivated;
-    private bool isGrounded;
     private bool isAttacking;
 
-    private GameObject[] multipleEnemy;
-    Collider[] colliderZone;
-    public Transform closestEnemy;
-    public bool ennyContact;
+    private Collider[] colliderZone;
+
 
     private void Awake()
     {
@@ -64,21 +60,12 @@ public class ThirdPersonController : MonoBehaviour
         if (Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -0.5f * gravity);
-        } 
-        
+        }      
     }
 
     private void ApplyMovement(Vector2 value)
     {
         movement = value;
-       
-        if (movement.sqrMagnitude < Mathf.Epsilon)
-        {
-            animator.SetBool("isMoving", false);
-        } else
-        {
-            animator.SetBool("isMoving", true);
-        }
     }
 
     // Update is called once per frame
@@ -90,14 +77,11 @@ public class ThirdPersonController : MonoBehaviour
         if(Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
         {
             animator.SetBool("isGrounded", true);
-            isGrounded = true;
-            isJumping = false;
             animator.SetBool("isJumping", false);
-
             animator.SetBool("isFalling", false);
+
             if (jumpActivated)
             {
-                isJumping = true;
                 animator.SetBool("isJumping", true);
                 jumpActivated = false;
             }
@@ -105,26 +89,22 @@ public class ThirdPersonController : MonoBehaviour
         else
         {
             animator.SetBool("isGrounded", false);
-            isGrounded=false;
-            if ((isJumping && velocity.y < 0f) || velocity.y < -2f || !isGrounded)
-            {
-                animator.SetBool("isFalling", true);
-            }
+            animator.SetBool("isFalling", true);        
         }
 
         if (isAttacking)
         {
             isAttacking = false;
             animator.SetBool("isAttacking", true);
-            foreach(var thing in colliderZone)
+            foreach(var collider in colliderZone)
             {
-                if (thing.gameObject.TryGetComponent<EnemyHealthController>(out EnemyHealthController enemyHealthController))
+                if (collider.gameObject.TryGetComponent<EnemyHealthController>(out EnemyHealthController enemyHealthController))
                 {
                     enemyHealthController.TakeDamage(5);
                 }
-            }
-            
-        } else
+            }        
+        } 
+        else
         {
             animator.SetBool("isAttacking", false);
         }
@@ -152,6 +132,12 @@ public class ThirdPersonController : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmootVelocity, turnSmoothTime);
 
             transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
         }
 
         Vector3 targetDirection = Quaternion.Euler(0.0f, targetAngle, 0.0f) * Vector3.forward;
