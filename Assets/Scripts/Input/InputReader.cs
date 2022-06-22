@@ -69,6 +69,13 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
             JumpEvent.Invoke();
         }
     }
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            AttackEvent.Invoke();
+        }
+    }
 
     public void OnCamera(InputAction.CallbackContext context)
     {
@@ -130,14 +137,6 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
 
     public void OnTrackedDeviceOrientation(InputAction.CallbackContext context)
     {
-    }
-
-    public void OnAttack(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            AttackEvent.Invoke();
-        }
     }
     #endregion
 }
