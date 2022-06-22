@@ -97,10 +97,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4703394869070427607}
   - component: {fileID: 6274706499534994817}
+  - component: {fileID: 2328890367570176206}
   - component: {fileID: 4174834015457258280}
   - component: {fileID: 2043910351125604651}
   - component: {fileID: 6217315676358132054}
   - component: {fileID: 2003012954304040281}
+  - component: {fileID: 4573737918673078373}
   m_Layer: 5
   m_Name: MobileControlsDocument
   m_TagString: Untagged
@@ -140,6 +142,19 @@ MonoBehaviour:
   sourceAsset: {fileID: 9197481963319205126, guid: 50312a995dc25654190dfdb07ad73c9b,
     type: 3}
   m_SortingOrder: 0
+--- !u!114 &2328890367570176206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2215210672547741922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6908e0fdc3f546459fbba95ab0ee1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionManager: {fileID: 11400000, guid: e74801299fbbbe541a9342ae7a146538, type: 2}
 --- !u!114 &4174834015457258280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +211,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   queryName: InventoryButton
   m_ControlPath: <Gamepad>/select
+--- !u!114 &4573737918673078373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2215210672547741922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 629575df9c118ca49ab6bc9e85437690, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  queryName: InteractButton
+  m_ControlPath: <Gamepad>/buttonNorth
 --- !u!1 &3783039287691463794
 GameObject:
   m_ObjectHideFlags: 0
