@@ -27,7 +27,7 @@ public class SkyboxModifierHandler : MonoBehaviour
         RenderSettings.skybox.SetFloat("_SunSize", skyboxValues[0]);
         RenderSettings.skybox.SetFloat("_AtmosphereThickness", skyboxValues[1]);
         RenderSettings.skybox.SetFloat("_Exposure", skyboxValues[2]);
-        if (defaultSkyboxValues[3].Equals(1f) && lightSource != null)
+        if (skyboxValues[3].Equals(1f) && lightSource != null)
         {
             lightSource.SetActive(false);
         }
@@ -38,7 +38,7 @@ public class SkyboxModifierHandler : MonoBehaviour
         RenderSettings.skybox.SetFloat("_SunSize", defaultSkyboxValues[0]);
         RenderSettings.skybox.SetFloat("_AtmosphereThickness", defaultSkyboxValues[1]);
         RenderSettings.skybox.SetFloat("_Exposure", defaultSkyboxValues[2]);
-        if (defaultSkyboxValues[3].Equals(1f) && lightSource != null)
+        if (lightSource != null)
         {
             lightSource.SetActive(true);
         }
