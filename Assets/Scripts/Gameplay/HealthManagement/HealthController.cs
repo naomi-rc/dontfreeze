@@ -63,7 +63,7 @@ public class HealthController : MonoBehaviour
             onPlayerDeathEvent.Raise();
             animator.SetBool("isDead", true);        
         }
-       
+          
     }
 
     private void OnTriggerEnter(Collider other)
