@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 6ec3159239f71b7478c1253b592a952f
+guid: d7c3b9050dec619499bf83117a121004
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - speed: {instanceID: 0}
-  - coldStatusEffect: {fileID: 11400000, guid: 0e79687d4e996dc44a98299ff89f1263, type: 2}
+  - statusEventChannel: {fileID: 11400000, guid: bd6cfc5217a34084bab6c774544c1a94,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

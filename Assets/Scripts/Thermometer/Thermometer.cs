@@ -14,7 +14,7 @@ public class Thermometer : MonoBehaviour
     private FloatReference coldTemperature;
 
     [SerializeField]
-    private BoolEventChannel onColdEvent = default;
+    private StatusEffect coldStatusEffect = default;
 
     private bool hasColdStatus = false;
 
@@ -23,17 +23,26 @@ public class Thermometer : MonoBehaviour
         temperature.OnValueChanged += ManageStatus;
     }
 
+    private void OnDisable()
+    {
+        temperature.OnValueChanged -= ManageStatus;
+    }
+
     private void ManageStatus(float value)
     {
-        if (temperatureIsCold(value) && !hasColdStatus
-        || !temperatureIsCold(value) && hasColdStatus)
+        if (TemperatureIsCold(value) && !hasColdStatus)
         {
-            hasColdStatus = !hasColdStatus;
-            onColdEvent.Raise(hasColdStatus);
+            hasColdStatus = true;
+            coldStatusEffect.Activate();
+        }
+        else if (!TemperatureIsCold(value) && hasColdStatus)
+        {
+            hasColdStatus = false;
+            coldStatusEffect.Deactivate();
         }
     }
 
-    public bool temperatureIsCold(float value)
+    public bool TemperatureIsCold(float value)
     {
         return value <= coldTemperature.value;
     }

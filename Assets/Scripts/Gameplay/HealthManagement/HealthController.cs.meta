@@ -4,9 +4,9 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - playerHealth: {instanceID: 0}
+  - playerHealth: {fileID: 11400000, guid: 0251537d497a6a2478b33fed4e70e34f, type: 2}
   - healthBar: {instanceID: 0}
-  - onBleedingEvent: {fileID: 11400000, guid: e92d2db55d25d3c489dca85e37713154, type: 2}
+  - bleedEffect: {fileID: 11400000, guid: 1476b42b6079be34daf168fd49edbc71, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

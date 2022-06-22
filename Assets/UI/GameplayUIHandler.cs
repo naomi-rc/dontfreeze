@@ -17,6 +17,9 @@ public class GameplayUIHandler : MonoBehaviour
     private InventoryMenuHandler inventoryMenuHandler;
 
     [SerializeField]
+    private HUDHandler HUDHandler;
+
+    [SerializeField]
     private InputReader inputReader;
 
     void Awake()
@@ -70,45 +73,45 @@ public class GameplayUIHandler : MonoBehaviour
 
     void EnablePauseMenu()
     {
-        // TODO: Disable HUD when we have it
         pauseMenuHandler.gameObject.SetActive(true);
         settingsMenuHandler.gameObject.SetActive(false);
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         mobileControlsDocument.SetActive(false);
 #endif
+        HUDHandler.gameObject.SetActive(false);
         inventoryMenuHandler.gameObject.SetActive(false);
     }
 
     void EnableInventoryMenu()
     {
-        // TODO: Disable HUD when we have it
         pauseMenuHandler.gameObject.SetActive(false);
         settingsMenuHandler.gameObject.SetActive(false);
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         mobileControlsDocument.SetActive(false);
 #endif
+        HUDHandler.gameObject.SetActive(false);
         inventoryMenuHandler.gameObject.SetActive(true);
     }
 
     void EnableSettingsMenu()
     {
-        // TODO: Disable HUD when we have it
         pauseMenuHandler.gameObject.SetActive(false);
         settingsMenuHandler.gameObject.SetActive(true);
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         mobileControlsDocument.SetActive(false);
 #endif
+        HUDHandler.gameObject.SetActive(false);
         inventoryMenuHandler.gameObject.SetActive(false);
     }
 
     void DisableMenus()
     {
-        // TODO: Enable HUD when we have it
         pauseMenuHandler.gameObject.SetActive(false);
         settingsMenuHandler.gameObject.SetActive(false);
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         mobileControlsDocument.SetActive(true);
 #endif
+        HUDHandler.gameObject.SetActive(true);
         inventoryMenuHandler.gameObject.SetActive(false);
     }
 }

@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74cd2345945ee0c40bf9f9763314e65a, type: 3}
-  m_Name: OnColdEvent
+  m_Script: {fileID: 11500000, guid: d0888ddd221d0614e83ec4213fd17665, type: 3}
+  m_Name: PlayerStatusEventChannel
   m_EditorClassIdentifier: 

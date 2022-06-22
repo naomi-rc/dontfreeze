@@ -11,27 +11,28 @@ public class MovementController : MonoBehaviour
     private FloatReference initialSpeed;
 
     [SerializeField]
-    private FloatReference coldDebuff;
-
-    [SerializeField]
-    private BoolEventChannel onColdEvent = default;
+    private PermanentStatus coldStatusEffect = default;
 
     private void Awake()
     {
         speed.value = initialSpeed.value;
 
-        onColdEvent.OnEventRaised += SetCold;
+        coldStatusEffect.OnActivateEvent += ApplyCold;
+        coldStatusEffect.OnDeactivateEvent += RemoveCold;
     }
 
-    public void SetCold(bool isCold)
+    private void OnDisable()
     {
-        if (isCold)
-        {
-            speed.value -= coldDebuff.value;
-        }
-        else
-        {
-            speed.value += coldDebuff.value;
-        }
+        coldStatusEffect.OnActivateEvent -= ApplyCold;
+        coldStatusEffect.OnDeactivateEvent -= RemoveCold;
+    }
+
+    public void ApplyCold()
+    {
+        speed.value -= coldStatusEffect.value;
+    }
+    public void RemoveCold()
+    {
+        speed.value += coldStatusEffect.value;
     }
 }

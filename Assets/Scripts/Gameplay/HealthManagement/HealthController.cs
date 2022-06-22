@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// todo: Create controller class/interface
+
 public class HealthController : MonoBehaviour
 {
     [SerializeField] private IntVariable playerHealth;
@@ -9,19 +11,19 @@ public class HealthController : MonoBehaviour
     [SerializeField] private HealthBarController healthBar;
     [SerializeField] private int maxHealth = 100;
 
-    [SerializeField] private FloatEventChannel onBleedingEvent = default;
+    [SerializeField] private DPSStatus bleedEffect = default;
 
     private void Awake()
     {
         playerHealth.value = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
 
-        onBleedingEvent.OnEventRaised += SetBleed;
+        bleedEffect.OnActivateEvent += ApplyBleed;
     }
 
     private void OnDisable()
     {
-        onBleedingEvent.OnEventRaised -= SetBleed;
+        bleedEffect.OnActivateEvent -= ApplyBleed;
     }
 
 
@@ -36,20 +38,21 @@ public class HealthController : MonoBehaviour
         playerHealth.value -= value;
     }
 
-    private void SetBleed(float duration)
+    private void ApplyBleed()
     {
-        StartCoroutine(BleedCoroutine(duration));
+        StartCoroutine(BleedCoroutine(bleedEffect));
     }
 
-    // Damage per seconds (1)
-    private IEnumerator BleedCoroutine(float duration)
+    private IEnumerator BleedCoroutine(DPSStatus bleedEffect)
     {
-        for (int time = 0; time < duration; ++time)
+        for (int time = 0; time < bleedEffect.duration; ++time)
         {
-            Decrease(1);
+            playerHealth.value -= (int)bleedEffect.value;
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1f); // Wait for 1 second.
         }
+
+        bleedEffect.Deactivate();
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -61,7 +64,7 @@ public class HealthController : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Decrease(10);
-            SetBleed(5f);
+            bleedEffect.Activate();
         }
 
         if (other.gameObject.layer == 3)
