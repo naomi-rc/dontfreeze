@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class EnemyHealthController : MonoBehaviour
 {
-    //[SerializeField] private IntVariable playerHealth;
     private int enemytHealth;
 
     [SerializeField] private HealthBarController healthBarC;
