@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 940659091829910588}
   m_Layer: 0
-  m_Name: Ennemy
+  m_Name: WolfEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
