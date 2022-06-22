@@ -116,6 +116,11 @@ public class EnemyBehavior : MonoBehaviour
         {
             state = ActionState.IDLE;
         }
+        else if (agent.hasPath && Vector3.Distance(agent.pathEndPosition, agent.destination) >= targetMinDistance)
+        {
+            agent.ResetPath();
+
+        }
         return Node.Status.Running;
     }
 
