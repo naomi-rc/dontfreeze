@@ -15,14 +15,20 @@ public class HealthController : MonoBehaviour
     private void Start()
     {
         playerHealth.value = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        if (healthBar != null)
+        {
+            healthBar.SetMaxHealth(maxHealth);
+        }
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        healthBar.SetHealth(playerHealth.value);
+        if (healthBar != null)
+        {
+            healthBar.SetHealth(playerHealth.value);
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
