@@ -13,14 +13,16 @@ public class EnemyBehavior : MonoBehaviour
     BehaviorTree tree;    
     GameObject target;
     UnityEngine.AI.NavMeshAgent agent;
+    Animator anim;
 
-    public enum ActionState { PURSUE, EVADE, IDLE, ROAM, ATTACK, DEAD };
+    public enum ActionState { IDLE, WANDER, PURSUE, EVADE, ATTACK, DEAD };
     ActionState state = ActionState.IDLE;
 
 
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        anim = GetComponent<Animator>();
         tree = new BehaviorTree();
 
         Selector s1 = new Selector("s1");
@@ -67,7 +69,7 @@ public class EnemyBehavior : MonoBehaviour
         s9.AddChild(attack);
                 
         Leaf idle = new Leaf("Idle", Idle);
-        Leaf roam = new Leaf("Roam", Roam);        
+        Leaf roam = new Leaf("Wander", Wander);        
         s5.AddChild(idle);
         s5.AddChild(roam);
 
@@ -76,6 +78,7 @@ public class EnemyBehavior : MonoBehaviour
     private void Update()
     {
         tree.Process();
+        anim.SetInteger("state", ((int)state));
     }
 
     public void UpdateTarget(GameObject t)
@@ -85,9 +88,41 @@ public class EnemyBehavior : MonoBehaviour
 
 
     /* Behaviour tree actions */
+    public Node.Status Idle()
+    {
+        //0.5% chance of failing
+        if (state == ActionState.WANDER || Random.Range(0f, 1f) * 1000 < 5)
+        {
+            return Node.Status.Failure;
+        }
+        state = ActionState.IDLE;
+        return Node.Status.Running;
+    }
+
+    public Node.Status Wander()
+    {
+        if (state != ActionState.WANDER)
+        {
+            //Choose random angle to rotate by
+            float angle = Random.Range(-10, 10);
+            agent.transform.Rotate(0, angle * agent.speed * Time.deltaTime, 0);
+
+            //Choose random distance to travel
+            float distance = Random.Range(5, 15);
+            agent.SetDestination(agent.transform.forward * distance);
+            state = ActionState.WANDER;
+        }
+        else if (agent.remainingDistance < 0.1f)
+        {
+            state = ActionState.IDLE;
+        }
+        return Node.Status.Running;
+    }
+
     public Node.Status Pursue()
     {
         Debug.Log("Pursue");
+        state = ActionState.PURSUE;
         Vector3 distance = target.transform.position - transform.position;
         Vector3 dp = distance.magnitude / agent.speed * target.transform.forward * targetSpeed;
         Vector3 predictedPosition = target.transform.position + dp;
@@ -99,6 +134,7 @@ public class EnemyBehavior : MonoBehaviour
     public Node.Status Evade()
     {
         Debug.Log("Evade");
+        state = ActionState.EVADE;
         Vector3 distance = target.transform.position - transform.position;
         Vector3 dp = distance.magnitude / agent.speed * target.transform.forward * targetSpeed;
         Vector3 predictedPosition = target.transform.position + dp;
@@ -106,53 +142,20 @@ public class EnemyBehavior : MonoBehaviour
         return Node.Status.Running;
     }
 
-    public Node.Status Idle()
-    {
-        //0.5% chance of failing
-        if (Random.Range(0f, 1f) * 1000 < 5)
-        {
-            return Node.Status.Failure;
-        }
-        Debug.Log("Idle");
-        state = ActionState.IDLE;
-        return Node.Status.Running;
-    }
-
-    void CanRoamAgain()
-    {
-        if(state == ActionState.ROAM)
-            state = ActionState.IDLE;
-    }
-    public Node.Status Roam()
-    {       
-        Debug.Log("Roam");
-        if (state != ActionState.ROAM)
-        {
-            //Choose random angle to rotate by
-            float angle = Random.Range(-10, 10);
-            agent.transform.Rotate(0, angle * agent.speed * Time.deltaTime, 0);
-
-            //Choose random distance to travel
-            float distance = Random.Range(5, 15);
-            agent.SetDestination(agent.transform.forward * distance);
-            state = ActionState.ROAM;
-        }
-        else if (agent.remainingDistance < 0.1f)
-        {
-            Invoke("CanRoamAgain", 100);
-        }        
-        return Node.Status.Running;
-    }
+    
 
     public Node.Status Attack()
     {
         Debug.Log("Attack");
+        state = ActionState.ATTACK;
         return Node.Status.Running;
     }
 
     public Node.Status Die()
     {
         Debug.Log("Die");
+        state = ActionState.DEAD;
+        Destroy(gameObject, 5f);
         return Node.Status.Success;
     }
 
@@ -173,10 +176,10 @@ public class EnemyBehavior : MonoBehaviour
             agent.isStopped = true;
 
         }
-        else if(target && Vector3.Distance(target.transform.position, transform.position) <= targetMaxDistance)
+        else if (target && Vector3.Distance(target.transform.position, transform.position) <= targetMaxDistance)
         {
             return Node.Status.Success;
-        }            
+        }
         return Node.Status.Failure;
     }
 
