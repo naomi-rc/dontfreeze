@@ -8,7 +8,7 @@ public class EnemyHealthController : MonoBehaviour
     //[SerializeField] private IntVariable playerHealth;
     private int enemytHealth;
 
-    [SerializeField] private EnemyHealthBarController healthBarC;
+    [SerializeField] private HealthBarController healthBarC;
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private GameObject healthbar;
 
