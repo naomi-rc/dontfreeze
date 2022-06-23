@@ -7,8 +7,10 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] float targetSpeed = 1f;
     [SerializeField] float targetMaxDistance = 15f;
     [SerializeField] float targetMinDistance = 2f;
-    [SerializeField] float lifeForce = 15f;
-    [SerializeField] float maxLifeForce = 15f;
+    //[SerializeField] float lifeForce = 15f;
+    //[SerializeField] float maxLifeForce = 15f;
+
+    private EnemyHealthController enemyController;
         
     BehaviorTree tree;    
     GameObject target;
@@ -23,6 +25,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
+        enemyController = GetComponent<EnemyHealthController>();
         tree = new BehaviorTree();
 
         Selector s1 = new Selector("s1");
@@ -165,7 +168,7 @@ public class EnemyBehavior : MonoBehaviour
     /* Behaviour tree conditions */
     public Node.Status HasLife()
     {
-        if(lifeForce > 0)
+        if(enemyController.enemytHealth > 0)
             return Node.Status.Success;
         return Node.Status.Failure;
     }
@@ -187,7 +190,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public Node.Status IsStrong()
     {
-        if (lifeForce/maxLifeForce > 0.1)
+        if (enemyController.enemytHealth / enemyController.maxHealth > 0.1)
             return Node.Status.Success;
         return Node.Status.Failure;
     }

@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class EnemyHealthController : MonoBehaviour
 {
-    private int enemytHealth;
+    public float enemytHealth;
 
     [SerializeField] private HealthBarController healthBarC;
-    [SerializeField] private int maxHealth = 100;
-    [SerializeField] private GameObject healthbar;
+    public float maxHealth = 100f;
 
     private void Start()
     {
@@ -28,16 +27,6 @@ public class EnemyHealthController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         enemytHealth -= damage;
-
-        if(enemytHealth < 0)
-        {
-            OnDied();
-        }
-    }
-    private void OnDied()
-    {
-        Destroy(gameObject, 1f);
-        Destroy(healthbar.gameObject, 1f);
     }
 
     public void SetupHealthBar(Canvas Canvas, Camera Camera)
