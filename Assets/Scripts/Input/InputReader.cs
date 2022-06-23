@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
     public event UnityAction<Vector2> MoveEvent = delegate { };
     public event UnityAction PauseEvent = delegate { };
     public event UnityAction JumpEvent = delegate { };
+    public event UnityAction AttackEvent = delegate { };
     public event UnityAction OpenInventoryEvent = delegate { };
     public event UnityAction InteractEvent = delegate { };
 
@@ -66,6 +67,13 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
         if (context.performed)
         {
             JumpEvent.Invoke();
+        }
+    }
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            AttackEvent.Invoke();
         }
     }
 

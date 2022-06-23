@@ -11,6 +11,10 @@ public class HealthController : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
 
     private bool isDead = false;
+    [SerializeField] private Animator animator;
+    private bool isDefending;
+
+  
 
     private void Start()
     {
@@ -29,7 +33,19 @@ public class HealthController : MonoBehaviour
         {
             healthBar.SetHealth(playerHealth.value);
         }
+
+        if (isDefending)
+        {
+            animator.SetBool("isDefending", true);
+            isDefending = false;
+        }
+        else
+        {
+            animator.SetBool("isDefending", false);
+
+        }
     }
+    
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -38,13 +54,16 @@ public class HealthController : MonoBehaviour
         if (hit.transform.tag == "Enemy")
         {
             playerHealth.value--;
+            isDefending = true;
         }
 
         if (playerHealth.value <= 0)
         {
             isDead = true;
             onPlayerDeathEvent.Raise();
+            animator.SetBool("isDead", true);        
         }
+          
     }
 
     private void OnTriggerEnter(Collider other)

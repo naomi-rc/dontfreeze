@@ -11,6 +11,9 @@ public class ThirdPersonController : MonoBehaviour
     private CharacterController characterController;
 
     [SerializeField]
+    private Animator animator;
+
+    [SerializeField]
     private Transform mainCamera;
 
     [SerializeField]
@@ -31,10 +34,17 @@ public class ThirdPersonController : MonoBehaviour
     private Vector2 movement;
     private Vector3 velocity;
 
+    private bool jumpActivated;
+    private bool isAttacking;
+
+    private Collider[] colliderZone;
+
+
     private void Awake()
     {
         inputReader.EnableGameplayInput();
         inputReader.JumpEvent += ApplyJump;
+        inputReader.AttackEvent += AttackEnemy;
         inputReader.MoveEvent += ApplyMovement;
     }
 
@@ -46,10 +56,11 @@ public class ThirdPersonController : MonoBehaviour
 
     private void ApplyJump()
     {
+        jumpActivated = true;
         if (Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -0.5f * gravity);
-        }
+        }      
     }
 
     private void ApplyMovement(Vector2 value)
@@ -62,6 +73,45 @@ public class ThirdPersonController : MonoBehaviour
     {
         Move();
         Gravity();
+
+        if(Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
+        {
+            animator.SetBool("isGrounded", true);
+            animator.SetBool("isJumping", false);
+            animator.SetBool("isFalling", false);
+
+            if (jumpActivated)
+            {
+                animator.SetBool("isJumping", true);
+                jumpActivated = false;
+            }
+        }
+        else
+        {
+            animator.SetBool("isGrounded", false);
+            animator.SetBool("isFalling", true);        
+        }
+
+        if (isAttacking)
+        {
+            isAttacking = false;
+            animator.SetBool("isAttacking", true);
+            foreach(var collider in colliderZone)
+            {
+                if (collider.gameObject.TryGetComponent<EnemyHealthController>(out EnemyHealthController enemyHealthController))
+                {
+                    enemyHealthController.TakeDamage(5);
+                }
+            }        
+        } 
+        else
+        {
+            animator.SetBool("isAttacking", false);
+        }
+    }
+    private void FixedUpdate()
+    {
+        colliderZone = Physics.OverlapSphere(this.transform.position, 2f);
     }
 
     private void LateUpdate()
@@ -82,6 +132,12 @@ public class ThirdPersonController : MonoBehaviour
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmootVelocity, turnSmoothTime);
 
             transform.rotation = Quaternion.Euler(0.0f, angle, 0.0f);
+
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
         }
 
         Vector3 targetDirection = Quaternion.Euler(0.0f, targetAngle, 0.0f) * Vector3.forward;
@@ -97,5 +153,10 @@ public class ThirdPersonController : MonoBehaviour
     private void Look()
     {
         // We could customize cinemachine behavior here, if we want.
+    }
+
+    private void AttackEnemy()
+    {
+        isAttacking = true;
     }
 }
