@@ -20,6 +20,11 @@ public class HUDHandler : MonoBehaviour
 
         statuses = rootElement.Q<VisualElement>("StatusBar");
 
+        foreach (var slot in statusEffects.Values)
+        {
+            statuses.Add(slot);
+        }
+
         playerStatusEventChannel.OnStatusAppliedEvent += AddStatusEffect;
         playerStatusEventChannel.OnStatuRemovedEvent += RemoveStatusEffect;
     }
