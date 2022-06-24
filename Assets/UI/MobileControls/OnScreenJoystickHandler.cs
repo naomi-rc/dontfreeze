@@ -14,16 +14,19 @@ public class OnScreenJoystickHandler : OnScreenControl
     [SerializeField]
     private string m_ControlPath;
 
+    private OnScreenJoystick onScreenJoystick;
+
     protected override string controlPathInternal
     {
         get => m_ControlPath;
         set => m_ControlPath = value;
     }
 
-    void Awake()
+    override protected void OnEnable()
     {
+        base.OnEnable();
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
-        var onScreenJoystick = rootVisualElement.Q<OnScreenJoystick>(queryName);
+        onScreenJoystick = rootVisualElement.Q<OnScreenJoystick>(queryName);
 
         if (onScreenJoystick == null)
         {
@@ -32,6 +35,12 @@ public class OnScreenJoystickHandler : OnScreenControl
         }
 
         onScreenJoystick.MoveEvent += OnMove;
+    }
+
+    protected override void OnDisable()
+    {
+        onScreenJoystick.MoveEvent -= OnMove;
+        base.OnDisable();
     }
 
     private void OnMove(Vector2 move)

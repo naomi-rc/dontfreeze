@@ -1,0 +1,33 @@
+.PrimaryButton {
+    font-size: 30px;
+    min-width: 250px;
+    max-width: 400px;
+    color: rgb(210, 210, 210);
+    background-color: rgb(88, 88, 88);
+    border-left-color: rgb(88, 88, 88);
+    border-right-color: rgb(88, 88, 88);
+    border-top-color: rgb(88, 88, 88);
+    border-bottom-color: rgb(88, 88, 88);
+}
+
+.PrimaryButton:hover {
+    min-width: 250px;
+    max-width: 400px;
+    color: rgb(210, 210, 210);
+    background-color: rgb(103, 103, 103);
+    border-left-color: rgb(104, 104, 104);
+    border-right-color: rgb(104, 104, 104);
+    border-top-color: rgb(104, 104, 104);
+    border-bottom-color: rgb(104, 104, 104);
+}
+
+.PrimaryButton:active {
+    min-width: 250px;
+    max-width: 400px;
+    color: rgb(210, 210, 210);
+    background-color: rgb(77, 77, 77);
+    border-left-color: rgb(77, 77, 77);
+    border-right-color: rgb(77, 77, 77);
+    border-top-color: rgb(77, 77, 77);
+    border-bottom-color: rgb(77, 77, 77);
+}

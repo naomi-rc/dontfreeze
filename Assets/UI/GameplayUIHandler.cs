@@ -19,6 +19,11 @@ public class GameplayUIHandler : MonoBehaviour
     [SerializeField]
     private HUDHandler HUDHandler;
 
+    private GameOverMenuHandler gameOverMenuHandler;
+
+    [SerializeField]
+    private VoidEventChannel onPlayerDeathEvent;
+
     [SerializeField]
     private InputReader inputReader;
 
@@ -33,6 +38,17 @@ public class GameplayUIHandler : MonoBehaviour
         pauseMenuHandler.SettingsButtonAction += OnPauseSettingsButtonClicked;
         settingsMenuHandler.OnSettingsBackButtonClicked += OnSettingsBackButtonClicked;
         inventoryMenuHandler.OnInventoryCloseButtonClicked += OnInventoryCloseButtonClicked;
+        onPlayerDeathEvent.OnEventRaised += OnPlayerDeath;
+    }
+
+    private void OnDisable()
+    {
+        inputReader.PauseEvent -= OnPause;
+        inputReader.OpenInventoryEvent -= OnOpenInventory;
+        pauseMenuHandler.ResumeButtonAction -= OnPauseResumeButtonClicked;
+        pauseMenuHandler.SettingsButtonAction -= OnPauseSettingsButtonClicked;
+        settingsMenuHandler.OnSettingsBackButtonClicked -= OnSettingsBackButtonClicked;
+        inventoryMenuHandler.OnInventoryCloseButtonClicked -= OnInventoryCloseButtonClicked;
     }
 
     void OnPause()
@@ -71,47 +87,54 @@ public class GameplayUIHandler : MonoBehaviour
         DisableMenus();
     }
 
+    void OnPlayerDeath()
+    {
+        inputReader.EnableUiInput();
+        EnableGameOverMenu();
+    }
+
+    void DisableEverything()
+    {
+        HUDHandler.gameObject.SetActive(false);
+        var children = gameObject.GetComponentInChildren<Transform>();
+
+        foreach (Transform child in children)
+        {
+            if (child.gameObject.name != "EventSystem")
+                child.gameObject.SetActive(false);
+        }
+    }
+
     void EnablePauseMenu()
     {
+        DisableEverything();
         pauseMenuHandler.gameObject.SetActive(true);
-        settingsMenuHandler.gameObject.SetActive(false);
-#if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
-        mobileControlsDocument.SetActive(false);
-#endif
-        HUDHandler.gameObject.SetActive(false);
-        inventoryMenuHandler.gameObject.SetActive(false);
     }
 
     void EnableInventoryMenu()
     {
-        pauseMenuHandler.gameObject.SetActive(false);
-        settingsMenuHandler.gameObject.SetActive(false);
-#if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
-        mobileControlsDocument.SetActive(false);
-#endif
-        HUDHandler.gameObject.SetActive(false);
+        DisableEverything();
         inventoryMenuHandler.gameObject.SetActive(true);
     }
 
     void EnableSettingsMenu()
     {
-        pauseMenuHandler.gameObject.SetActive(false);
+        DisableEverything();
         settingsMenuHandler.gameObject.SetActive(true);
-#if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
-        mobileControlsDocument.SetActive(false);
-#endif
-        HUDHandler.gameObject.SetActive(false);
-        inventoryMenuHandler.gameObject.SetActive(false);
+    }
+
+    void EnableGameOverMenu()
+    {
+        DisableEverything();
+        gameOverMenuHandler.gameObject.SetActive(true);
     }
 
     void DisableMenus()
     {
-        pauseMenuHandler.gameObject.SetActive(false);
-        settingsMenuHandler.gameObject.SetActive(false);
+        DisableEverything();
+        HUDHandler.gameObject.SetActive(true);
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         mobileControlsDocument.SetActive(true);
 #endif
-        HUDHandler.gameObject.SetActive(true);
-        inventoryMenuHandler.gameObject.SetActive(false);
     }
 }

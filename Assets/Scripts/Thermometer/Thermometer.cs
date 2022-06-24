@@ -20,6 +20,7 @@ public class Thermometer : MonoBehaviour
 
     private void Awake()
     {
+        temperature.value = defaultTemperature.value;
         temperature.OnValueChanged += ManageStatus;
     }
 

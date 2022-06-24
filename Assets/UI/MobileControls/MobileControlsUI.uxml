@@ -3,6 +3,9 @@
     <ui:VisualElement name="Screen" style="flex-grow: 1;">
         <OnScreenJoystick name="Joystick" style="bottom: 40px; position: absolute; left: 40px;" />
         <ui:VisualElement name="Buttons" style="position: absolute; right: 40px; bottom: 40px; width: 150px;">
+            <ui:VisualElement style="align-items: flex-end;">
+                <ui:Button text="Interact" name="InteractButton" class="OnScreenButton" style="display: none;" />
+            </ui:VisualElement>
             <ui:VisualElement>
                 <ui:Button text="Jump" focusable="false" name="JumpButton" class="OnScreenButton" />
             </ui:VisualElement>

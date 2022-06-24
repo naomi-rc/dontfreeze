@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entries:
   - index: 0
-    item: {fileID: 11400000, guid: e6986334ff8d32d4fa7852d9d623646a, type: 2}
+    item: {fileID: 11400000, guid: be5849a8f4144a34fbf35311f30be0dc, type: 2}
     count: 2
-  maxInventorySize: 50

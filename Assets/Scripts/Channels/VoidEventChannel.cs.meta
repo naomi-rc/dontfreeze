@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<< master
+guid: dd67ab8458ba24a41b76cd29baf38319
+=======
+guid: f401c97f922bbae4da3d339059e9987d
+>>>>>>> Game Over screen
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
