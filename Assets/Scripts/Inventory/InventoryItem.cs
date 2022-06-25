@@ -8,4 +8,5 @@ public class InventoryItem : ScriptableObject
     public string title;
     public Texture2D icon;
     public string description;
+    public GameObject model;
 }
