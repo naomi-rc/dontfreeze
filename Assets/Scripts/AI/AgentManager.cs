@@ -4,7 +4,6 @@ public class AgentManager : MonoBehaviour
 {
     GameObject[] agents;
     [SerializeField] GameObject target;
-    [SerializeField] float TargetMaxDistance = 15f;
 
 
     void Start()

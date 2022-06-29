@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Screen" style="flex-direction: column; flex-wrap: nowrap; flex-basis: auto; flex-grow: 1;">
+        <ui:VisualElement name="TopBar" style="height: 137px; width: 403px;">
+            <ui:VisualElement name="StatusBar" style="height: 50px; width: 100%; bottom: 0; position: absolute; flex-direction: row; align-items: auto; top: auto; flex-grow: 0; background-color: rgba(0, 0, 0, 0); padding-left: 30px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

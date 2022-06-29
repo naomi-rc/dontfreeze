@@ -17,6 +17,9 @@ public class GameplayUIHandler : MonoBehaviour
     private InventoryMenuHandler inventoryMenuHandler;
 
     [SerializeField]
+    private HUDHandler HUDHandler;
+
+    [SerializeField]
     private GameOverMenuHandler gameOverMenuHandler;
 
     [SerializeField]
@@ -93,7 +96,7 @@ public class GameplayUIHandler : MonoBehaviour
 
     void DisableEverything()
     {
-        // TODO: Disable HUD when we have it
+        HUDHandler.gameObject.SetActive(false);
         var children = gameObject.GetComponentInChildren<Transform>();
 
         foreach (Transform child in children)
@@ -130,6 +133,7 @@ public class GameplayUIHandler : MonoBehaviour
     void DisableMenus()
     {
         DisableEverything();
+        HUDHandler.gameObject.SetActive(true);
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         mobileControlsDocument.SetActive(true);
 #endif
