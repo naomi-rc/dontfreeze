@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] private IntVariable playerHealth;
+    [SerializeField] private FloatVariable playerHealth;
     [SerializeField] private VoidEventChannel onPlayerDeathEvent;
 
     [SerializeField] private HealthBarController healthBar;
@@ -17,9 +17,6 @@ public class HealthController : MonoBehaviour
     private bool isDead = false;
     [SerializeField] private Animator animator;
     private bool isDefending;
-
-
-
 
     private void Start()
     {
@@ -58,26 +55,9 @@ public class HealthController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        if (isDead) { return; }
-
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            TakeDamage();
-        }
-
-        if (playerHealth.value <= 0)
-        {
-            isDead = true;
-            onPlayerDeathEvent.Raise();
-            animator.SetBool("isDead", true);
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == 3)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Life"))
         {
             playerHealth.value = (playerHealth.value + 10 <= maxHealth) ? playerHealth.value + 10 : maxHealth;
 
@@ -87,13 +67,23 @@ public class HealthController : MonoBehaviour
 
     public void TakeDamage()
     {
-        Decrease(10);
+        if (isDead)
+            return;
+       
         bleedEffect.Activate();
 
         isDefending = true;
+
+        if (playerHealth.value <= 0)
+        {
+            isDead = true;            
+            animator.SetBool("isDead", true);
+            onPlayerDeathEvent.Raise();
+        }
+        Decrease(1);
     }
 
-    public void Decrease(int value)
+    public void Decrease(float value)
     {
         playerHealth.value -= value;
     }
@@ -107,7 +97,7 @@ public class HealthController : MonoBehaviour
     {
         for (int time = 0; time < bleedEffect.duration; ++time)
         {
-            playerHealth.value -= (int)bleedEffect.value;
+            playerHealth.value -= bleedEffect.value;
 
             yield return new WaitForSeconds(1f); // Wait for 1 second.
         }

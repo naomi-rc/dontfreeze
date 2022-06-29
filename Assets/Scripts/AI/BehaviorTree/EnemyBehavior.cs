@@ -7,15 +7,14 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] float targetSpeed = 1f;
     [SerializeField] float targetMaxDistance = 15f;
     [SerializeField] float targetMinDistance = 2f;
-    //[SerializeField] float lifeForce = 15f;
-    //[SerializeField] float maxLifeForce = 15f;
 
     private EnemyHealthController enemyController;
-        
+    bool canAttackAgain = true;
     BehaviorTree tree;    
     GameObject target;
     UnityEngine.AI.NavMeshAgent agent;
     Animator anim;
+    private Collider[] colliderZone;
 
     public enum ActionState { IDLE, WANDER, PURSUE, EVADE, ATTACK, DEAD };
     ActionState state = ActionState.IDLE;
@@ -84,6 +83,11 @@ public class EnemyBehavior : MonoBehaviour
         anim.SetInteger("state", ((int)state));
     }
 
+    private void FixedUpdate()
+    {
+        colliderZone = Physics.OverlapSphere(this.transform.position, 2f);
+    }
+
     public void UpdateTarget(GameObject t)
     {
         target = t;
@@ -147,12 +151,27 @@ public class EnemyBehavior : MonoBehaviour
         agent.SetDestination(transform.position + (transform.position - predictedPosition));
         return Node.Status.Running;
     }
-
+        
+    void AttackAgain()
+    {
+        canAttackAgain = true;
+    }
     
-
     public Node.Status Attack()
     {
         state = ActionState.ATTACK;
+        if (canAttackAgain)
+         {
+             foreach (var collider in colliderZone)
+             {
+                 if (collider.gameObject.TryGetComponent(out HealthController playerHealthController))
+                 {
+                     playerHealthController.TakeDamage();
+                 }
+             }
+             canAttackAgain = false;
+             Invoke("AttackAgain", 3);
+         }
         return Node.Status.Running;
     }
 

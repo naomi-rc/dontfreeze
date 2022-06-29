@@ -19,6 +19,7 @@ public class GameplayUIHandler : MonoBehaviour
     [SerializeField]
     private HUDHandler HUDHandler;
 
+    [SerializeField]
     private GameOverMenuHandler gameOverMenuHandler;
 
     [SerializeField]
