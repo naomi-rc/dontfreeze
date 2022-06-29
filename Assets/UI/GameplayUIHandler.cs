@@ -23,7 +23,13 @@ public class GameplayUIHandler : MonoBehaviour
     private GameOverMenuHandler gameOverMenuHandler;
 
     [SerializeField]
+    private SceneTransitionHandler sceneTransitionHandler;
+
+    [SerializeField]
     private VoidEventChannel onPlayerDeathEvent;
+
+    [SerializeField]
+    private VoidEventChannel onLoadingRequest;
 
     [SerializeField]
     private InputReader inputReader;
@@ -31,7 +37,7 @@ public class GameplayUIHandler : MonoBehaviour
     void Awake()
     {
         inputReader.EnableGameplayInput();
-        DisableMenus();
+        DisableEverything();
 
         inputReader.PauseEvent += OnPause;
         inputReader.OpenInventoryEvent += OnOpenInventory;
@@ -40,6 +46,7 @@ public class GameplayUIHandler : MonoBehaviour
         settingsMenuHandler.OnSettingsBackButtonClicked += OnSettingsBackButtonClicked;
         inventoryMenuHandler.OnInventoryCloseButtonClicked += OnInventoryCloseButtonClicked;
         onPlayerDeathEvent.OnEventRaised += OnPlayerDeath;
+        onLoadingRequest.OnEventRaised += OnLoadingRequest;
     }
 
     private void OnDisable()
@@ -51,6 +58,19 @@ public class GameplayUIHandler : MonoBehaviour
         settingsMenuHandler.OnSettingsBackButtonClicked -= OnSettingsBackButtonClicked;
         inventoryMenuHandler.OnInventoryCloseButtonClicked -= OnInventoryCloseButtonClicked;
         onPlayerDeathEvent.OnEventRaised -= OnPlayerDeath;
+        onLoadingRequest.OnEventRaised -= OnLoadingRequest;
+    }
+
+    private IEnumerator Start()
+    {
+        sceneTransitionHandler.gameObject.SetActive(true);
+        yield return sceneTransitionHandler.FadeInAnimation();
+
+        HUDHandler.gameObject.SetActive(true);
+#if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
+        mobileControlsDocument.SetActive(true);
+#endif
+        sceneTransitionHandler.gameObject.SetActive(false);
     }
 
     void OnPause()
@@ -95,16 +115,36 @@ public class GameplayUIHandler : MonoBehaviour
         EnableGameOverMenu();
     }
 
+    void OnLoadingRequest()
+    {
+        DisableEverything();
+        inputReader.DisableInput();
+
+        sceneTransitionHandler.gameObject.SetActive(true);
+        sceneTransitionHandler.FadeOut();
+    }
+
     void DisableEverything()
     {
-        HUDHandler.gameObject.SetActive(false);
         var children = gameObject.GetComponentInChildren<Transform>();
 
         foreach (Transform child in children)
         {
+            //  || child.gameObject.name == sceneTransitionHandler.gameObject.name)s
             if (child.gameObject.name != "EventSystem")
+            {
                 child.gameObject.SetActive(false);
+            }
         }
+    }
+
+    void DisableMenus()
+    {
+        DisableEverything();
+        HUDHandler.gameObject.SetActive(true);
+#if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
+        mobileControlsDocument.SetActive(true);
+#endif
     }
 
     void EnablePauseMenu()
@@ -129,14 +169,5 @@ public class GameplayUIHandler : MonoBehaviour
     {
         DisableEverything();
         gameOverMenuHandler.gameObject.SetActive(true);
-    }
-
-    void DisableMenus()
-    {
-        DisableEverything();
-        HUDHandler.gameObject.SetActive(true);
-#if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
-        mobileControlsDocument.SetActive(true);
-#endif
     }
 }

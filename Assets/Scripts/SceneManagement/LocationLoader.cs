@@ -10,6 +10,9 @@ public class LocationLoader : MonoBehaviour
     [SerializeField]
     private VoidEventChannel onSceneReady = default;
 
+    [SerializeField]
+    private VoidEventChannel onLoadingRequest = default;
+
     private string currentSceneName;
 
     private void Awake()
@@ -19,15 +22,18 @@ public class LocationLoader : MonoBehaviour
 
     public void Load(SceneObject sceneToLoad)
     {
+        onLoadingRequest.Raise();
         StartCoroutine(TransitionToLocation(sceneToLoad));
     }
 
     private IEnumerator TransitionToLocation(SceneObject sceneToLoad)
     {
-        AsyncOperationHandle<SceneInstance> operation = sceneToLoad.reference.LoadSceneAsync(LoadSceneMode.Single, true);
-        operation.Completed += OnLoadComplete;
+        yield return new WaitForSeconds(1f);
 
-        yield return null;
+        AsyncOperationHandle<SceneInstance> operation = sceneToLoad.reference.LoadSceneAsync(LoadSceneMode.Single, true);
+
+        yield return operation.WaitForCompletion();
+        operation.Completed += OnLoadComplete;
     }
 
     private void OnLoadComplete(AsyncOperationHandle<SceneInstance> obj)
