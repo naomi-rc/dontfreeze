@@ -50,6 +50,7 @@ public class GameplayUIHandler : MonoBehaviour
         pauseMenuHandler.SettingsButtonAction -= OnPauseSettingsButtonClicked;
         settingsMenuHandler.OnSettingsBackButtonClicked -= OnSettingsBackButtonClicked;
         inventoryMenuHandler.OnInventoryCloseButtonClicked -= OnInventoryCloseButtonClicked;
+        onPlayerDeathEvent.OnEventRaised -= OnPlayerDeath;
     }
 
     void OnPause()
