@@ -14,6 +14,8 @@ public class MobileControlsHandler : MonoBehaviour
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
 
+        rootVisualElement.BringToFront();
+
         interactButton = rootVisualElement.Q<Button>("InteractButton");
 
         interactionManager.OnInteractableChanged += InteractableChanged;
