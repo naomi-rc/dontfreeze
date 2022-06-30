@@ -12,8 +12,9 @@ public partial class SceneTransitionHandler : MonoBehaviour
     private void OnEnable()
     {
         var rootElement = GetComponent<UIDocument>().rootVisualElement;
-        screen = rootElement.Q<VisualElement>("Screen");
+        rootElement.SendToBack();
 
+        screen = rootElement.Q<VisualElement>("Screen");
         foreach (string className in screenClassList)
             screen.AddToClassList(className);
     }

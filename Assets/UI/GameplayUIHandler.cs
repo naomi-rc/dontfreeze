@@ -70,7 +70,6 @@ public class GameplayUIHandler : MonoBehaviour
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         mobileControlsDocument.SetActive(true);
 #endif
-        sceneTransitionHandler.gameObject.SetActive(false);
     }
 
     void OnPause()
