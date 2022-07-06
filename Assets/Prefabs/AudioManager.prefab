@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7651068577739345559
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7651068577739345513}
+  - component: {fileID: 7651068577739345512}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7651068577739345513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7651068577739345559}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7651068577739345512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7651068577739345559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a9cbbe61b87944f90a71609ad08fb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Defense
+    clip: {fileID: 8300000, guid: aa7ecaff63f8b8c419e6f92166de3484, type: 3}
+    volume: 0.18
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: WolfAttack
+    clip: {fileID: 8300000, guid: b62da56f9398a734a976026e00b31c0f, type: 3}
+    volume: 0.073
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Wind
+    clip: {fileID: 8300000, guid: 5c1633ea945bcb64f92309d050323612, type: 3}
+    volume: 0.073
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Life
+    clip: {fileID: 8300000, guid: 1e6bbfa9ab64cae4b85ecd83b9c0ab84, type: 3}
+    volume: 0.112
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Death
+    clip: {fileID: 8300000, guid: 215708f13f6aacc4d846a5f81020daa5, type: 3}
+    volume: 0.186
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Fight
+    clip: {fileID: 8300000, guid: 14c29170221041840a33d8ac921250a2, type: 3}
+    volume: 0.186
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Landing
+    clip: {fileID: 8300000, guid: a0e550fef5e04b74cb29f3d23c02f538, type: 3}
+    volume: 0.186
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Moving
+    clip: {fileID: 8300000, guid: 969ce53fc5943f947b1acafbe2e27c1e, type: 3}
+    volume: 0.112
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Background
+    clip: {fileID: 8300000, guid: 339214f5d0df147349ae6ebe987870f6, type: 3}
+    volume: 0.095
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
