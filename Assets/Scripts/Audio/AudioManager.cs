@@ -36,8 +36,8 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         Play("Wind");
-        // TODO ? enlever -> T?che pour it?ration 4
-        Play("Background");
+        //Pour iteration 4
+        //Play("Background");
     }
 
     public void Play(string name)
