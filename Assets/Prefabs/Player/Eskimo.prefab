@@ -368,7 +368,7 @@ PrefabInstance:
     - target: {fileID: 6610276308304020395, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.0000000042431565
       objectReference: {fileID: 0}
     - target: {fileID: 7468836218415742007, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
@@ -393,7 +393,7 @@ PrefabInstance:
     - target: {fileID: 8252424577970191137, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.21506476
+      value: 0.21506478
       objectReference: {fileID: 0}
     - target: {fileID: 8252424577970191137, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
@@ -418,12 +418,12 @@ PrefabInstance:
     - target: {fileID: 8637355675083870655, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.7
+      value: 2.6999998
       objectReference: {fileID: 0}
     - target: {fileID: 8637355675083870655, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.8
+      value: -3.7999992
       objectReference: {fileID: 0}
     - target: {fileID: 8637355675083870655, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
@@ -539,6 +539,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: man-eskimo_Rig
+      objectReference: {fileID: 0}
+    - target: {fileID: 149839492312185576, guid: 1065600a8fa3d4e479b472167710cf00,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1065600a8fa3d4e479b472167710cf00, type: 3}
