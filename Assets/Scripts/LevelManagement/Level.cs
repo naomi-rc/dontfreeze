@@ -5,7 +5,7 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     // Script pour définir les paramètres d'un niveau
-    private int levelNumber;
+    private int levelNumber; // Equal world number
     private bool isComplete;
     private string difficulty;
     private int minEnnemyNumber;
