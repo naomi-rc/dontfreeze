@@ -9,8 +9,11 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] sounds;
     public static AudioManager instance;
+    private bool canAttack;
+
     void Awake()
     {
+        canAttack = true;
         if (instance == null)
         {
             instance = this;
@@ -48,7 +51,18 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound " + name + " not found");
             return;
         }
-        s.source.Play();
+        if((name == "WolfAttack" || name == "BearAttack"))
+        {
+            if (canAttack)
+            {
+                s.source.Play();
+            }
+        } 
+        else
+        {
+            s.source.Play();
+        }
+        
     }
 
     public void Stop(string name)
@@ -61,4 +75,10 @@ public class AudioManager : MonoBehaviour
         }
         s.source.Stop();
     }
+
+    public void StopAttack()
+    {
+        canAttack = false;
+    }
+
 }

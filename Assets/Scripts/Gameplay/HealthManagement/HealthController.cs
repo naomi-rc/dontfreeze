@@ -71,6 +71,7 @@ public class HealthController : MonoBehaviour
             isDead = true;
             animator.SetBool("isDead", true);
             FindObjectOfType<AudioManager>().Play("Death");
+            FindObjectOfType<AudioManager>().StopAttack();
             onPlayerDeathEvent.Raise();
         }
         Decrease(1);
