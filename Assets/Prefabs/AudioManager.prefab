@@ -117,3 +117,15 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
+  - name: HurtBear
+    clip: {fileID: 8300000, guid: b55a307ca2b4bd249899225166fc9f16, type: 3}
+    volume: 0.186
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: HurtWolf
+    clip: {fileID: 8300000, guid: 27a22efdd0a76244798577f06210fdd4, type: 3}
+    volume: 0.063
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

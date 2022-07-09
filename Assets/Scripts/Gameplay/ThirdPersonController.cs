@@ -116,6 +116,14 @@ public class ThirdPersonController : MonoBehaviour
                 {
                     var damage = inventoryDatabase.currentWeapon != null ? inventoryDatabase.currentWeapon.damage : unarmedDamage;
                     enemyHealthController.TakeDamage(damage);
+                    if (collider.gameObject.name.Contains("wolf"))
+                    {
+                        FindObjectOfType<AudioManager>().Play("HurtWolf");
+                    }
+                    if (collider.gameObject.name.Contains("bear"))
+                    {
+                        FindObjectOfType<AudioManager>().Play("HurtBear");
+                    }
                 }
             }
         }
