@@ -20,12 +20,32 @@ public class ParameterslSelectionHandler : MonoBehaviour
 
     private SliderInt enemyNumber;
 
+    private Label enemyValue;
+    private Label minEnemy;
+    private Label maxEnemy;
+
     //private RadioButtonGroup buttonGroup;
    
 
     private List<string> skyboxList = new List<string>{ "Daylight", "Nightlight", "DarkMoon", "MoonNight" };
 
-    private
+    private void Start()
+    {
+        enemyNumber.RegisterValueChangedCallback(x => updateValue());
+        easyButton.RegisterValueChangedCallback(x => updateValue());
+        normalButton.RegisterValueChangedCallback(x => updateValue());
+        hardButton.RegisterValueChangedCallback(x => updateValue());
+    }
+
+    private void updateValue()
+    {
+        getDifficultyChoicie();
+        enemyValue.text = enemyNumber.value.ToString();
+
+        minEnemy.text = enemyNumber.lowValue.ToString();
+
+        maxEnemy.text = enemyNumber.highValue.ToString();
+    }
     void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
@@ -41,7 +61,17 @@ public class ParameterslSelectionHandler : MonoBehaviour
         hardButton = rootVisualElement.Q<RadioButton>("HardButton");
 
         enemyNumber = rootVisualElement.Q<SliderInt>("EnemyNumber");
-        setMinEnemyValue(15); // Default minimum value
+        getDifficultyChoicie(); // Default minimum value for normal
+        //enemyNumber.value = 15;
+        
+        enemyValue = rootVisualElement.Q<Label>("EnemyValue");
+        enemyValue.text = enemyNumber.value.ToString();
+        
+        minEnemy = rootVisualElement.Q<Label>("Min");
+        minEnemy.text = enemyNumber.lowValue.ToString();
+        
+        maxEnemy = rootVisualElement.Q<Label>("Max");
+        maxEnemy.text = enemyNumber.highValue.ToString();
 
         //buttonGroup = rootVisualElement.Q<RadioButtonGroup>("DifficultyGroup");
 
@@ -74,6 +104,11 @@ public class ParameterslSelectionHandler : MonoBehaviour
         enemyNumber.lowValue = value;
     }
 
+    private void setMaxEnemyValue(int value)
+    {
+        enemyNumber.highValue = value;
+    }
+
     private string getDifficultyChoicie()
     {
         string difficulty = "Normal";
@@ -81,17 +116,20 @@ public class ParameterslSelectionHandler : MonoBehaviour
         if (easyButton.value)
         {
             difficulty = "Easy";
-            setMinEnemyValue(10);
+            setMinEnemyValue(5);
+            setMaxEnemyValue(15);
         }
         if (normalButton.value)
         {
             difficulty = "Normal";
-            setMinEnemyValue(15);
+            setMinEnemyValue(10);
+            setMaxEnemyValue(20);
         }
         if (hardButton.value)
         {
             difficulty = "Hard";
-            setMinEnemyValue(20);
+            setMinEnemyValue(15);
+            setMaxEnemyValue(30);
         }
         
         return difficulty;
