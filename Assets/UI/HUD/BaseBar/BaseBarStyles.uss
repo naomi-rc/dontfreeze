@@ -1,0 +1,7 @@
+.base-bar__background {
+    background-color: var(--base-bar-background-color, gray);
+}
+
+.base-bar__progress {
+    background-color: var(--base-bar-progress-color, red);
+}

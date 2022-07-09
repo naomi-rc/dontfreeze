@@ -20,7 +20,7 @@ public class HealthController : MonoBehaviour
 
     private void Start()
     {
-        playerHealth.value = maxHealth;
+        // playerHealth.value = maxHealth;
         if (healthBar != null)
         {
             healthBar.SetMaxHealth(maxHealth);
@@ -69,14 +69,14 @@ public class HealthController : MonoBehaviour
     {
         if (isDead)
             return;
-       
+
         bleedEffect.Activate();
 
         isDefending = true;
 
         if (playerHealth.value <= 0)
         {
-            isDead = true;            
+            isDead = true;
             animator.SetBool("isDead", true);
             onPlayerDeathEvent.Raise();
         }

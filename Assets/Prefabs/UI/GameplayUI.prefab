@@ -405,6 +405,7 @@ MonoBehaviour:
   mobileControlsDocument: {fileID: 2215210672547741922}
   inventoryMenuHandler: {fileID: 3581959971918784960}
   HUDHandler: {fileID: 5087145856570635329}
+  gameOverMenuHandler: {fileID: 0}
   onPlayerDeathEvent: {fileID: 11400000, guid: 52a90ecdcd475f141994dad5571d2299, type: 2}
   inputReader: {fileID: 11400000, guid: 03e55d179fcde374bb0cb89fc2a25faf, type: 2}
 --- !u!1 &7926962568536931137
@@ -531,6 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3fb5e8407eb53d478055f140df81c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 11400000, guid: 5a165dfd9a2392e449f556b5649c1582, type: 2}
   playerStatusEventChannel: {fileID: 11400000, guid: bd6cfc5217a34084bab6c774544c1a94,
     type: 2}
 --- !u!1 &8739718480993104058
