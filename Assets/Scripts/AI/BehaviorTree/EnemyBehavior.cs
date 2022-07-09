@@ -167,7 +167,17 @@ public class EnemyBehavior : MonoBehaviour
                  if (collider.gameObject.TryGetComponent(out HealthController playerHealthController))
                  {
                      playerHealthController.TakeDamage();
-                 }
+                    if (gameObject.name.Contains("wolf"))
+                    {
+                        FindObjectOfType<AudioManager>().Play("WolfAttack");
+
+                    }
+                    if (gameObject.name.Contains("bear"))
+                    {
+                        FindObjectOfType<AudioManager>().Play("BearAttack");
+
+                    }
+                }
              }
              canAttackAgain = false;
              Invoke("AttackAgain", 3);

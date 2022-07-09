@@ -45,9 +45,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - name: Wind
+    clip: {fileID: 8300000, guid: 5c1633ea945bcb64f92309d050323612, type: 3}
+    volume: 0.073
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Fight
+    clip: {fileID: 8300000, guid: 14c29170221041840a33d8ac921250a2, type: 3}
+    volume: 0.186
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
   - name: Defense
     clip: {fileID: 8300000, guid: aa7ecaff63f8b8c419e6f92166de3484, type: 3}
     volume: 0.18
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BearAttack
+    clip: {fileID: 8300000, guid: fe6dda97bbf615847a1e0439bd7a4387, type: 3}
+    volume: 0.112
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -56,12 +74,6 @@ MonoBehaviour:
     volume: 0.073
     pitch: 1
     loop: 0
-    source: {fileID: 0}
-  - name: Wind
-    clip: {fileID: 8300000, guid: 5c1633ea945bcb64f92309d050323612, type: 3}
-    volume: 0.073
-    pitch: 1
-    loop: 1
     source: {fileID: 0}
   - name: Life
     clip: {fileID: 8300000, guid: 1e6bbfa9ab64cae4b85ecd83b9c0ab84, type: 3}
@@ -75,21 +87,21 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Fight
-    clip: {fileID: 8300000, guid: 14c29170221041840a33d8ac921250a2, type: 3}
-    volume: 0.186
+  - name: Moving
+    clip: {fileID: 8300000, guid: 969ce53fc5943f947b1acafbe2e27c1e, type: 3}
+    volume: 0.112
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: 5f1210f8a8ff10a488f89765415594b8, type: 3}
+    volume: 0.112
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Landing
     clip: {fileID: 8300000, guid: a0e550fef5e04b74cb29f3d23c02f538, type: 3}
     volume: 0.186
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Moving
-    clip: {fileID: 8300000, guid: 969ce53fc5943f947b1acafbe2e27c1e, type: 3}
-    volume: 0.112
     pitch: 1
     loop: 0
     source: {fileID: 0}
