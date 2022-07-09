@@ -88,8 +88,8 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Moving
-    clip: {fileID: 8300000, guid: 969ce53fc5943f947b1acafbe2e27c1e, type: 3}
-    volume: 0.112
+    clip: {fileID: 8300000, guid: a91e6fda3eaac0e4783524b9906977f3, type: 3}
+    volume: 0.045
     pitch: 1
     loop: 0
     source: {fileID: 0}
@@ -101,6 +101,18 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Landing
     clip: {fileID: 8300000, guid: a0e550fef5e04b74cb29f3d23c02f538, type: 3}
+    volume: 0.186
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DyingBear
+    clip: {fileID: 8300000, guid: 765336d5f9194744b97f354e39ce6ecd, type: 3}
+    volume: 0.186
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DyingWolf
+    clip: {fileID: 8300000, guid: c5efa64d03b667148ac08a42451ac8f6, type: 3}
     volume: 0.186
     pitch: 1
     loop: 0

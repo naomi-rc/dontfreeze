@@ -177,7 +177,7 @@ public class EnemyBehavior : MonoBehaviour
                         FindObjectOfType<AudioManager>().Play("BearAttack");
 
                     }
-                }
+                 }
              }
              canAttackAgain = false;
              Invoke("AttackAgain", 3);
@@ -187,6 +187,15 @@ public class EnemyBehavior : MonoBehaviour
 
     public Node.Status Die()
     {
+        if (gameObject.name.Contains("wolf"))
+        {
+            FindObjectOfType<AudioManager>().Play("DyingWolf");
+
+        }
+        if (gameObject.name.Contains("bear"))
+        {
+            FindObjectOfType<AudioManager>().Play("DyingBear");
+        }
         state = ActionState.DEAD;
         Destroy(gameObject, 2f);
         return Node.Status.Success;
