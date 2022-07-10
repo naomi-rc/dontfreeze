@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3592be4094811c47945bb773794794b, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: 2e6b1f30d14e3344d86ba11eef6f2622, type: 3}
+  m_Name: RestoreHealthEvent
   m_EditorClassIdentifier: 
-  restoreHealthEvent: {fileID: 11400000, guid: 6d3aa06294a81be4d90f31ff302a9b42, type: 2}
-  entries: []
-  currentWeapon: {fileID: 0}

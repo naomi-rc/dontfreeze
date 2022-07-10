@@ -8,6 +8,7 @@ public class HealthController : MonoBehaviour
 {
     [SerializeField] private FloatVariable playerHealth;
     [SerializeField] private VoidEventChannel onPlayerDeathEvent;
+    [SerializeField] private IntEventChannel restoreHealthEvent;
 
     [SerializeField] private int maxHealth = 100;
 
@@ -21,11 +22,13 @@ public class HealthController : MonoBehaviour
     {
         playerHealth.value = maxHealth;
         bleedEffect.OnActivateEvent += ApplyBleed;
+        restoreHealthEvent.OnEventRaised += RestoreHealth;
     }
 
     private void OnDisable()
     {
         bleedEffect.OnActivateEvent -= ApplyBleed;
+        restoreHealthEvent.OnEventRaised -= RestoreHealth;
     }
 
 
@@ -70,6 +73,18 @@ public class HealthController : MonoBehaviour
             onPlayerDeathEvent.Raise();
         }
         Decrease(1);
+    }
+
+    public void RestoreHealth(int value)
+    {
+        if (playerHealth.value + value > maxHealth)
+        {
+            playerHealth.value = maxHealth;
+        }
+        else
+        {
+            playerHealth.value += value;
+        }
     }
 
     public void Decrease(float value)
