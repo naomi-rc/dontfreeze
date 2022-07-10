@@ -10,6 +10,12 @@ public class SelectionMenuHandler : MonoBehaviour
     [SerializeField]
     private WorldSelectionHandler worldSelectionHandler;
 
+    private string skybox;
+    private int enemyNumber;
+    private string difficulty;
+
+    private string world;
+
     void Awake()
     {
         worldSelectionHandler.NextButtonAction += OnNextButtonClicked;
@@ -29,16 +35,32 @@ public class SelectionMenuHandler : MonoBehaviour
     {
         // TODO à compléter
         Debug.Log("Les paramètres du niveau sont : blablabla");
+        world = worldSelectionHandler.getWorldSelection();
+        difficulty = parametersSelectionHandler.getDifficultyChoicie();
+        skybox = parametersSelectionHandler.getSkybox();
+        enemyNumber = parametersSelectionHandler.getEnemyNumber();
+        
+        parametersSelectionHandler.setValues(skybox, difficulty, enemyNumber);
+        worldSelectionHandler.setWorld(world);
     }
     void OnNextButtonClicked()
     {
         worldSelectionHandler.gameObject.SetActive(false);
         parametersSelectionHandler.gameObject.SetActive(true);
+        world = worldSelectionHandler.getWorldSelection();
+
+        parametersSelectionHandler.setValues(skybox, difficulty, enemyNumber);
     }
 
     void OnBackButtonClicked()
     {
         worldSelectionHandler.gameObject.SetActive(true);
         parametersSelectionHandler.gameObject.SetActive(false);
+
+        difficulty = parametersSelectionHandler.getDifficultyChoicie();
+        skybox = parametersSelectionHandler.getSkybox();
+        enemyNumber = parametersSelectionHandler.getEnemyNumber();
+
+        worldSelectionHandler.setWorld(world);
     }
 }

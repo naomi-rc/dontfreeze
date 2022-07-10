@@ -12,13 +12,14 @@ public class WorldSelectionHandler : MonoBehaviour
 
     private Button nextButton;
 
+    private string world;
+
     private RadioButton world1Button;
     private RadioButton world2Button;
     private RadioButton world3Button;
     private RadioButton world4Button;
     private RadioButton world5Button;
 
-    private 
     void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
@@ -40,13 +41,13 @@ public class WorldSelectionHandler : MonoBehaviour
 
     void OnNextButtonClicked()
     {
-        string world = getWorldSelection();
-        Debug.Log("Monde choisi : " + world);
+        world = getWorldSelection();
+        //Debug.Log("Monde choisi : " + world);
         NextButtonAction.Invoke();
     }
 
     // TODO à améliorer
-    private string getWorldSelection()
+    public string getWorldSelection()
     {
         string world = "World1";
         if (world1Button.value)
@@ -70,5 +71,31 @@ public class WorldSelectionHandler : MonoBehaviour
             world = "World5";
         }
         return world;
+    }
+
+    public void setWorld(string world)
+    {
+        this.world = world;
+
+        if("World1" == world)
+        {
+            world1Button.SetSelected(true);
+        }
+        if ("World2" == world)
+        {
+            world2Button.SetSelected(true);
+        }
+        if ("World3" == world)
+        {
+            world3Button.SetSelected(true);
+        }
+        if ("World4" == world)
+        {
+            world4Button.SetSelected(true);
+        }
+        if ("World5" == world)
+        {
+            world5Button.SetSelected(true);
+        }
     }
 }
