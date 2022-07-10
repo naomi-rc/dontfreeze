@@ -22,13 +22,9 @@ public class ProceduralTerrainGenerator : MonoBehaviour
 
         //StartCoroutine(CreateShape());
         CreateShape();
-
-    }
-
-    private void Update()
-    {
         UpdateMesh();
     }
+
     void CreateShape()
     {
         vertices = new Vector3[(xSize + 1) * (zSize + 1)];
@@ -47,7 +43,7 @@ public class ProceduralTerrainGenerator : MonoBehaviour
         int tris = 0;
 
         triangles = new int[xSize * zSize * 6];
-        for (int z = 0; z < xSize; z++)
+        for (int z = 0; z < zSize; z++)
         {
             for (int x = 0; x < xSize; x++)
             {
@@ -63,19 +59,15 @@ public class ProceduralTerrainGenerator : MonoBehaviour
                 tris += 6;
                 //yield return new WaitForSeconds(0f);
             }
-            vert++;
+            //vert++;
+            vert = xSize * z + z;
         }
 
     }
 
     float CalculateHeight(int x, int z)
     {
-        /*float heightMultiplier = 5f;
-        if (6 < x && x < 14)
-            heightMultiplier = 2f;
-        */
-
-        float heightMultiplier = 0.04f * Mathf.Pow(x - (float)xSize / 2, 2) + baseDepth;
+        //float heightMultiplier = 0.04f * Mathf.Pow(x - (float)xSize / 2, 2) + baseDepth;
         return Mathf.PerlinNoise(x * .3f, z * .3f) * 2f;
     }
 
@@ -86,15 +78,5 @@ public class ProceduralTerrainGenerator : MonoBehaviour
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.RecalculateNormals();
-    }
-
-    public void OnDrawGizmos()
-    {
-        if (vertices == null)
-            return;
-        for (int i = 0; i < vertices.Length; i++)
-        {
-            Gizmos.DrawSphere(vertices[i], .1f);
-        }
     }
 }
