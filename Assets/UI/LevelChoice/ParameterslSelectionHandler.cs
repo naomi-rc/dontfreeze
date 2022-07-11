@@ -68,7 +68,6 @@ public class ParameterslSelectionHandler : MonoBehaviour
 
         enemyNumber = rootVisualElement.Q<SliderInt>("EnemyNumber");
         enemyValue = rootVisualElement.Q<Label>("EnemyValue");
-        Debug.Log("Ennemy value : " + enemyNumberChoice);
         enemyValue.text = enemyNumberChoice.ToString();
 
         minEnemy = rootVisualElement.Q<Label>("Min");
@@ -97,9 +96,6 @@ public class ParameterslSelectionHandler : MonoBehaviour
     void OnApplyButtonClicked()
     {
         ApplyButtonAction.Invoke();
-        Debug.Log("Difficulté : " + getDifficultyChoice());
-        //Debug.Log("Skybox choisi : " + getSkybox());
-        Debug.Log("Nombre d'enemy choisi : " + getEnemyNumber());
     }
 
     private void setMinEnemyValue(int value)
@@ -120,7 +116,6 @@ public class ParameterslSelectionHandler : MonoBehaviour
 
     private void setSkybox(string skybox)
     {
-        // TODO parcourir la liste pour trouver la sélection
         for(int i = 0; i < skyboxList.Count; i++)
         {
             if (skyboxList[i].ToString() == skybox)

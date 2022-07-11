@@ -33,8 +33,6 @@ public class SelectionMenuHandler : MonoBehaviour
 
     void OnApplyButtonClicked()
     {
-        // TODO à compléter
-        Debug.Log("Les paramètres du niveau sont : blablabla");
         world = worldSelectionHandler.getWorldSelection();
         difficulty = parametersSelectionHandler.getDifficultyChoice();
         skybox = parametersSelectionHandler.getSkybox();
@@ -42,6 +40,8 @@ public class SelectionMenuHandler : MonoBehaviour
         
         parametersSelectionHandler.setValues(skybox, difficulty, enemyNumber);
         worldSelectionHandler.setWorld(world);
+
+        Debug.Log("The user chose the " + world + " with the " + skybox + " skybox. The level of difficulty is " + difficulty + " and the user chose " + enemyNumber + " enemies!");
     }
     void OnNextButtonClicked()
     {
