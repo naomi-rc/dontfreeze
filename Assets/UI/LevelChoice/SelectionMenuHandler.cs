@@ -36,7 +36,7 @@ public class SelectionMenuHandler : MonoBehaviour
         // TODO à compléter
         Debug.Log("Les paramètres du niveau sont : blablabla");
         world = worldSelectionHandler.getWorldSelection();
-        difficulty = parametersSelectionHandler.getDifficultyChoicie();
+        difficulty = parametersSelectionHandler.getDifficultyChoice();
         skybox = parametersSelectionHandler.getSkybox();
         enemyNumber = parametersSelectionHandler.getEnemyNumber();
         
@@ -57,7 +57,7 @@ public class SelectionMenuHandler : MonoBehaviour
         worldSelectionHandler.gameObject.SetActive(true);
         parametersSelectionHandler.gameObject.SetActive(false);
 
-        difficulty = parametersSelectionHandler.getDifficultyChoicie();
+        difficulty = parametersSelectionHandler.getDifficultyChoice();
         skybox = parametersSelectionHandler.getSkybox();
         enemyNumber = parametersSelectionHandler.getEnemyNumber();
 

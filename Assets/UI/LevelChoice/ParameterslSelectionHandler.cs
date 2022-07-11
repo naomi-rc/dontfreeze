@@ -11,7 +11,7 @@ public class ParameterslSelectionHandler : MonoBehaviour
     public UnityAction ApplyButtonAction = delegate { };
 
     private string difficulty;
-    private  int enemyNumberChoice = 15;
+    private  int enemyNumberChoice = 10;
     private  string skybox = "Daylight";
 
     private Button backButton;
@@ -28,58 +28,57 @@ public class ParameterslSelectionHandler : MonoBehaviour
     private Label minEnemy;
     private Label maxEnemy;
 
-    //private RadioButtonGroup buttonGroup;
-   
-
     private List<string> skyboxList = new List<string>{ "Daylight", "Nightlight", "DarkMoon", "MoonNight" };
 
+    /* Ne fonctionne pas après avoir fait back puis next à nouveau
     private void Start()
     {
         enemyNumber.RegisterValueChangedCallback(x => updateValue());
         easyButton.RegisterValueChangedCallback(x => updateValue());
         normalButton.RegisterValueChangedCallback(x => updateValue());
         hardButton.RegisterValueChangedCallback(x => updateValue());
+    }*/
+
+    
+    public void Update()
+    {
+        updateValue();
     }
 
     private void updateValue()
     {
-        getDifficultyChoicie();
-        enemyValue.text = enemyNumber.value.ToString();
-
-        minEnemy.text = enemyNumber.lowValue.ToString();
-
-        maxEnemy.text = enemyNumber.highValue.ToString();
+        enemyValue.text = getEnemyNumber().ToString();
+        getDifficultyChoice();
+        
     }
     void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
 
-        backButton = rootVisualElement.Q<Button>("BackButton"); 
+        backButton = rootVisualElement.Q<Button>("BackButton");
         applyButton = rootVisualElement.Q<Button>("ApplyButton");
+
         skyboxDropDown = rootVisualElement.Q<DropdownField>("SkyboxList");
         skyboxDropDown.choices = skyboxList;
         skyboxDropDown.value = skyboxList[0]; // Default value
-
+        
         easyButton = rootVisualElement.Q<RadioButton>("EasyButton");
         normalButton = rootVisualElement.Q<RadioButton>("NormalButton");
         hardButton = rootVisualElement.Q<RadioButton>("HardButton");
 
         enemyNumber = rootVisualElement.Q<SliderInt>("EnemyNumber");
-        getDifficultyChoicie();
-        enemyNumber.value = enemyNumber.lowValue + 5;
-
         enemyValue = rootVisualElement.Q<Label>("EnemyValue");
-        enemyValue.text = enemyNumber.value.ToString();
-        
+        Debug.Log("Ennemy value : " + enemyNumberChoice);
+        enemyValue.text = enemyNumberChoice.ToString();
+
         minEnemy = rootVisualElement.Q<Label>("Min");
-        minEnemy.text = enemyNumber.lowValue.ToString();
-        
         maxEnemy = rootVisualElement.Q<Label>("Max");
-        maxEnemy.text = enemyNumber.highValue.ToString();
+
+        getDifficultyChoice();
 
         //buttonGroup = rootVisualElement.Q<RadioButtonGroup>("DifficultyGroup");
-       
-        backButton.clicked += OnBackButtonClicked; 
+
+        backButton.clicked += OnBackButtonClicked;
         applyButton.clicked += OnApplyButtonClicked;
     }
 
@@ -98,8 +97,8 @@ public class ParameterslSelectionHandler : MonoBehaviour
     void OnApplyButtonClicked()
     {
         ApplyButtonAction.Invoke();
-        Debug.Log("Difficulté : " + getDifficultyChoicie());
-        Debug.Log("Skybox choisi : " + getSkybox());
+        Debug.Log("Difficulté : " + getDifficultyChoice());
+        //Debug.Log("Skybox choisi : " + getSkybox());
         Debug.Log("Nombre d'enemy choisi : " + getEnemyNumber());
     }
 
@@ -113,9 +112,23 @@ public class ParameterslSelectionHandler : MonoBehaviour
         enemyNumber.highValue = value;
     }
 
+    private void setMinMaxValueText()
+    {
+        minEnemy.text = enemyNumber.lowValue.ToString();
+        maxEnemy.text = enemyNumber.highValue.ToString();
+    }
+
     private void setSkybox(string skybox)
     {
         // TODO parcourir la liste pour trouver la sélection
+        for(int i = 0; i < skyboxList.Count; i++)
+        {
+            if (skyboxList[i].ToString() == skybox)
+            {
+                skyboxDropDown.value = skyboxList[i];
+                return;
+            }
+        }
     }
 
     private void setDifficulty(string difficulty)
@@ -132,7 +145,7 @@ public class ParameterslSelectionHandler : MonoBehaviour
         {
             hardButton.SetSelected(true);
         }
-        getDifficultyChoicie();
+        getDifficultyChoice();
     }
 
     private void setEnemyNumber(int number)
@@ -141,7 +154,7 @@ public class ParameterslSelectionHandler : MonoBehaviour
         enemyValue.text = number.ToString();
     }
 
-    public string getDifficultyChoicie()
+    public string getDifficultyChoice()
     {
         string difficulty = "Normal";
         
@@ -163,10 +176,10 @@ public class ParameterslSelectionHandler : MonoBehaviour
             setMinEnemyValue(15);
             setMaxEnemyValue(30);
         }
-
+        setMinMaxValueText();
         return difficulty;
     }
-
+    
     public string getSkybox()
     {
         skybox = skyboxDropDown.value;

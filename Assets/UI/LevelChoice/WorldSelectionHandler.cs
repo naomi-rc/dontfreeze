@@ -42,14 +42,13 @@ public class WorldSelectionHandler : MonoBehaviour
     void OnNextButtonClicked()
     {
         world = getWorldSelection();
-        //Debug.Log("Monde choisi : " + world);
         NextButtonAction.Invoke();
     }
 
     // TODO à améliorer
     public string getWorldSelection()
     {
-        string world = "World1";
+        world = "World1";
         if (world1Button.value)
         {
             world = "World1";
