@@ -17,12 +17,12 @@ public class LocationLoader : MonoBehaviour
         currentSceneName = SceneManager.GetActiveScene().name;
     }
 
-    public void Load(SceneObject sceneToLoad)
+    public void Load(SceneSO sceneToLoad)
     {
         StartCoroutine(TransitionToLocation(sceneToLoad));
     }
 
-    private IEnumerator TransitionToLocation(SceneObject sceneToLoad)
+    private IEnumerator TransitionToLocation(SceneSO sceneToLoad)
     {
         AsyncOperationHandle<SceneInstance> operation = sceneToLoad.reference.LoadSceneAsync(LoadSceneMode.Single, true);
         operation.Completed += OnLoadComplete;

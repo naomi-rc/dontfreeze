@@ -13,17 +13,24 @@ public class EnemyHealthController : MonoBehaviour
     private void Start()
     {
         enemytHealth = maxHealth;
-        healthBarC.SetMaxHealth(maxHealth);
+
+        if (healthBarC is not null)
+        {
+            healthBarC.SetMaxHealth(maxHealth);
+        }
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        healthBarC.SetHealth(enemytHealth);
+        if (healthBarC is not null)
+        {
+            healthBarC.SetHealth(enemytHealth);
+        }
     }
 
-    
+
     public void TakeDamage(int damage)
     {
         enemytHealth -= damage;
@@ -31,10 +38,14 @@ public class EnemyHealthController : MonoBehaviour
 
     public void SetupHealthBar(Canvas Canvas, Camera Camera)
     {
-        healthBarC.transform.SetParent(Canvas.transform);
-        if (healthBarC.TryGetComponent<FaceCamera>(out FaceCamera faceCamera))
+        if (healthBarC is not null)
         {
-            faceCamera.Camera = Camera;
+            healthBarC.transform.SetParent(Canvas.transform);
+            if (healthBarC.TryGetComponent<FaceCamera>(out FaceCamera faceCamera))
+            {
+                faceCamera.Camera = Camera;
+            }
         }
+
     }
 }

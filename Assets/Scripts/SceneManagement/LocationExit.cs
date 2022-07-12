@@ -6,7 +6,7 @@ using UnityEngine;
 public class LocationExit : MonoBehaviour
 {
     [SerializeField]
-    private SceneObject scene;
+    private SceneSO scene;
 
     [SerializeField]
     private LocationLoader locationLoader;

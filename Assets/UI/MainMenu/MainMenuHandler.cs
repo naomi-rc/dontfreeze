@@ -17,7 +17,7 @@ public class MainMenuHandler : MonoBehaviour
     private LocationLoader locationLoader = default;
 
     [SerializeField]
-    private SceneObject firstScene;
+    private SceneSO firstScene;
 
     void OnEnable()
     {
