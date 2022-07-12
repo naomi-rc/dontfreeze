@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace ProceduralLevel {
     [RequireComponent(typeof(MeshFilter))]
@@ -30,13 +31,18 @@ namespace ProceduralLevel {
         private Vector3 addTerrain;
         int bottomTopRadioSelected = 0;
         private float shiftHeight = 0f;
+        GameObject terrainObject;
         Terrain terrainComponent;
-        List<Vector3> treePositions;
+        List<Vector3> nonPathPositions;
+        List<Vector3> pathPositions;
 
         // Tree generation 
         public GameObject[] treePrefabs;
         public int numberOfTrees = 1000;
 
+
+        // Test
+        public GameObject enemyPrefab;
         void Start()
         {
             mesh = new Mesh();
@@ -52,12 +58,15 @@ namespace ProceduralLevel {
             terrain = new TerrainData();
 
             //Tree generation
-            treePositions = new List<Vector3>();
+            nonPathPositions = new List<Vector3>();
+            pathPositions = new List<Vector3>();
 
             CreateTerrainShape();
             UpdateMesh();
             CreateTerrain();
             GenerateTrees();
+            Instantiate(enemyPrefab, pathPositions[5], Quaternion.identity);
+            GenerateNavMesh();
         }
 
         void CreateTerrainShape()
@@ -114,11 +123,12 @@ namespace ProceduralLevel {
                 height = Mathf.PerlinNoise(x * .3f, z * .3f);
                 heightMultiplier = 0.6f;
                 vertexHeight = height * heightMultiplier;
+                pathPositions.Add(new Vector3(x, vertexHeight, z));
             }
             else
             {
                 vertexHeight = height * heightMultiplier;
-                treePositions.Add(new Vector3(x, vertexHeight, z));
+                nonPathPositions.Add(new Vector3(x, vertexHeight, z));
             }
             /*else if ((pathPositionZ - pathSize >= z || z >= pathPositionZ + pathSize))
             {
@@ -160,7 +170,7 @@ namespace ProceduralLevel {
         {
 
             terrain.heightmapResolution = resolution;
-            GameObject terrainObject = Terrain.CreateTerrainGameObject(terrain);
+            terrainObject = Terrain.CreateTerrainGameObject(terrain);
 
             //Terrain terrainComponent  = terrainObject.GetComponent<Terrain>();
             terrainComponent = terrainObject.GetComponent<Terrain>();
@@ -246,9 +256,15 @@ namespace ProceduralLevel {
             GameObject treesParent = Instantiate(new GameObject("Trees"), transform);
             for (int i = 0; i < numberOfTrees; i++)
             {
-                Vector3 worldTreePos = treePositions[Random.Range(0, treePositions.Count)] + transform.position;
+                Vector3 worldTreePos = nonPathPositions[Random.Range(0, nonPathPositions.Count)] + transform.position;
                 Instantiate(treePrefabs[Random.Range(0, treePrefabs.Length)], worldTreePos, Quaternion.identity, treesParent.transform);
             }            
+        }
+
+        void GenerateNavMesh()
+        {
+            NavMeshSurface navMeshSurface = terrainObject.AddComponent<NavMeshSurface>();
+            navMeshSurface.BuildNavMesh();
         }
     }
 }

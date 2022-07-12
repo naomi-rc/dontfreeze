@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "19e237d5873f7c5a4dd8f231a3c6d4a052500cf2"
     },
+    "com.pixelwizards.navmeshcomponents": {
+      "version": "https://github.com/PixelWizards/navmesh-components.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "82a68afc255bdbff1f213f13d3bdb04317197a61"
+    },
     "com.unity.addressables": {
       "version": "1.19.19",
       "depth": 0,
