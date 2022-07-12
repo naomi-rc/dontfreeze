@@ -7,6 +7,10 @@ namespace ProceduralLevel {
     [RequireComponent(typeof(MeshFilter))]
     public class ProceduralTerrainGenerator : MonoBehaviour
     {
+        // Player data
+        public GameObject[] enemyPrefabs;
+        Vector3 playerSpawnPosition;        
+
         // Mesh generation
         Mesh mesh;
         List<Vector3> vertices;
@@ -41,8 +45,7 @@ namespace ProceduralLevel {
         public int numberOfTrees = 1000;
 
 
-        // Test
-        public GameObject enemyPrefab;
+       
         void Start()
         {
             mesh = new Mesh();
@@ -65,8 +68,10 @@ namespace ProceduralLevel {
             UpdateMesh();
             CreateTerrain();
             GenerateTrees();
-            Instantiate(enemyPrefab, pathPositions[5], Quaternion.identity);
+            Instantiate(enemyPrefabs[0], pathPositions[5], Quaternion.identity);
             GenerateNavMesh();
+            PlacePlayer();
+            PlaceCheckpoint();
         }
 
         void CreateTerrainShape()
@@ -265,6 +270,23 @@ namespace ProceduralLevel {
         {
             NavMeshSurface navMeshSurface = terrainObject.AddComponent<NavMeshSurface>();
             navMeshSurface.BuildNavMesh();
+        }
+
+        void PlacePlayer()
+        {
+            GameObject target = GameObject.FindGameObjectWithTag("Player");
+            target.transform.position = pathPositions[0] + transform.position;
+            GameObject[] agents = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject agent in agents)
+            {
+                agent.GetComponent<EnemyBehavior>().UpdateTarget(target);
+            }
+        }
+
+        void PlaceCheckpoint()
+        {
+            GameObject checkpoint = GameObject.FindGameObjectWithTag("Checkpoint");
+            checkpoint.transform.position = pathPositions[pathPositions.Count - 1] + transform.position;            
         }
     }
 }
