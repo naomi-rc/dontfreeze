@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public Level level;
-    //public SkyboxModifierHandler skyboxModifierHandler;
+
     void Start()
     {
         Print();

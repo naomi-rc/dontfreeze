@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class FaceCamera : MonoBehaviour
 {
-    public Camera Camera;
+    public Camera mainCamera;
 
+    private void Start()
+    {
+        mainCamera = FindObjectOfType<Camera>();
+    }
     private void Update()
     {
-        transform.LookAt(Camera.transform, Vector3.up);
+        transform.LookAt(mainCamera.transform, Vector3.up);
     }
 }

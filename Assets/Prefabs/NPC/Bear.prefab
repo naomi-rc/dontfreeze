@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5050331601684100553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.0483537, y: 0, z: -7.605431}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1945, y: 1.1945, z: 1.1945}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 863534826353487270}
@@ -182,8 +182,6 @@ MonoBehaviour:
   targetSpeed: 1
   targetMaxDistance: 15
   targetMinDistance: 2
-  lifeForce: 15
-  maxLifeForce: 15
 --- !u!114 &6141487766427586573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,9 +194,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799a79c308b2e11439e6d6271142a137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemytHealth: 0
   healthBarC: {fileID: 7153018737298569648}
   maxHealth: 100
-  healthbar: {fileID: 8930011673449865587}
 --- !u!4 &863534826353487270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d2cf5093f9467947a27e8f8b91feb42,
@@ -215,12 +213,12 @@ PrefabInstance:
     - target: {fileID: 5498677209133552113, guid: 75bfa865a255abe44bc6833e2d40ab1b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5498677209133552113, guid: 75bfa865a255abe44bc6833e2d40ab1b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6380305746677243086, guid: 75bfa865a255abe44bc6833e2d40ab1b,
         type: 3}
@@ -350,15 +348,9 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4009047560884339043}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8930011673449865587}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7924da63216d54f40a689208b904ad6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8930011673449865587 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5498677208953806864, guid: 75bfa865a255abe44bc6833e2d40ab1b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4009047560884339043}
-  m_PrefabAsset: {fileID: 0}

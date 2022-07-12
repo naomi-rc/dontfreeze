@@ -188,8 +188,6 @@ MonoBehaviour:
   targetSpeed: 1
   targetMaxDistance: 15
   targetMinDistance: 2
-  lifeForce: 15
-  maxLifeForce: 15
 --- !u!114 &3902162906381708123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,9 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799a79c308b2e11439e6d6271142a137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemytHealth: 0
   healthBarC: {fileID: 526603410573509893}
   maxHealth: 100
-  healthbar: {fileID: 2299010551093173702}
 --- !u!1001 &6028208991982779862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -215,12 +213,12 @@ PrefabInstance:
     - target: {fileID: 5498677209133552113, guid: 75bfa865a255abe44bc6833e2d40ab1b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5498677209133552113, guid: 75bfa865a255abe44bc6833e2d40ab1b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6380305746677243086, guid: 75bfa865a255abe44bc6833e2d40ab1b,
         type: 3}
@@ -340,15 +338,9 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6028208991982779862}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2299010551093173702}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7924da63216d54f40a689208b904ad6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2299010551093173702 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5498677208953806864, guid: 75bfa865a255abe44bc6833e2d40ab1b,
-    type: 3}
-  m_PrefabInstance: {fileID: 6028208991982779862}
-  m_PrefabAsset: {fileID: 0}
