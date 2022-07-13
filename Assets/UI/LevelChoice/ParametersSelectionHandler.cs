@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
-public class ParameterslSelectionHandler : MonoBehaviour
+public class ParametersSelectionHandler : MonoBehaviour
 {
     public UnityAction BackButtonAction = delegate { };
     public UnityAction ApplyButtonAction = delegate { };
