@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc5ecf8d0ead18d489ffe8e837fc69a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9277e42b7673ea742824dddb6c1bf761, type: 3}
   m_Name: Baseball Bat
   m_EditorClassIdentifier: 
   title: Baseball Bat
   icon: {fileID: 2800000, guid: ff034d95ed3b376419162249d8b09b33, type: 3}
-  type: 0
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero
     dui, malesuada quis dolor ut, mattis eleifend augue.
+  model: {fileID: 1128861725956847665, guid: ce9b6e92696585b42beea59231f3c367, type: 3}
+  damage: 5

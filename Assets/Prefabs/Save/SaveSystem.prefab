@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &738820788084144036
+--- !u!1 &7672325846935802045
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2203273761001409990}
-  - component: {fileID: 3019507811256003340}
+  - component: {fileID: 7672325846935802044}
+  - component: {fileID: 7672325846935802043}
   m_Layer: 0
-  m_Name: LocationLoader
+  m_Name: SaveSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2203273761001409990
+--- !u!4 &7672325846935802044
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738820788084144036}
+  m_GameObject: {fileID: 7672325846935802045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6614685, y: 0.9703226, z: -5.12185}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3019507811256003340
+--- !u!114 &7672325846935802043
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 738820788084144036}
+  m_GameObject: {fileID: 7672325846935802045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed46139adf0fe4c49acee711ce0158d8, type: 3}
+  m_Script: {fileID: 11500000, guid: d9f19be08b4e1be41834e36447198472, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onSceneReady: {fileID: 11400000, guid: 6c5193d76e7a33a499b4f4109e45e2fc, type: 2}
+  onLoadEvent: {fileID: 11400000, guid: e1abfe4eb5b8a4043965a3340433598a, type: 2}
+  onLoadSaveEvent: {fileID: 11400000, guid: 0e2594c3658502b48b1eedffeb1f7abe, type: 2}
+  playerInventory: {fileID: 11400000, guid: e3b88776d79ff6046931d3f095cb527f, type: 2}

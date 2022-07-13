@@ -4,8 +4,8 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - loadingHandler: {fileID: 11400000, guid: 7774ecdc9fd1d7e40b1a05d21c241bb0, type: 2}
-  - currentScene: {instanceID: 0}
+  - sceneEventChannel: {fileID: 11400000, guid: e1abfe4eb5b8a4043965a3340433598a,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
