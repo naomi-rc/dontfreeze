@@ -57,6 +57,8 @@ public class ThirdPersonController : MonoBehaviour
         inputReader.AttackEvent += AttackEnemy;
         inputReader.MoveEvent += ApplyMovement;
         onWeaponEquipEvent.OnEventRaised += EquipWeapon;
+        // Re-equip the current weapon on scene load 
+        EquipWeapon(inventoryDatabase.currentWeapon);
     }
 
     private void OnDisable()
