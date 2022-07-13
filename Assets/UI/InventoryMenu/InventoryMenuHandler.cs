@@ -15,6 +15,7 @@ public class InventoryMenuHandler : MonoBehaviour
     private VisualElement sideBar;
     private VisualElement inspectCard;
     private VisualElement ghostIcon;
+    private Button actionButton;
     private Button closeButton;
     private List<InventorySlot> slotElementsReferences = new List<InventorySlot>();
     private int selectedSlot = -1;
@@ -42,6 +43,7 @@ public class InventoryMenuHandler : MonoBehaviour
         inspectCard = rootElement.Q<VisualElement>("InspectCard");
         sideBar = rootElement.Q<VisualElement>("SideBar");
         closeButton = rootElement.Q<Button>("CloseButton");
+        actionButton = rootElement.Q<Button>("ActionButton");
         rootElement.RegisterCallback<PointerDownEvent>(OnSlotClick, TrickleDown.TrickleDown);
         rootElement.RegisterCallback<PointerMoveEvent>(OnSlotDrag, TrickleDown.TrickleDown);
         rootElement.RegisterCallback<PointerUpEvent>(OnSlotRelease, TrickleDown.TrickleDown);
@@ -66,6 +68,7 @@ public class InventoryMenuHandler : MonoBehaviour
         OnInventoryChanged();
 
         closeButton.clicked += OnCloseButtonClicked;
+        actionButton.clicked += OnActionButtonClicked;
     }
 
     void OnDisable()
@@ -75,6 +78,26 @@ public class InventoryMenuHandler : MonoBehaviour
         inventory.UnregisterCallback<PointerUpEvent>(OnSlotRelease, TrickleDown.TrickleDown);
         playerInventory.OnDatabaseChanged -= OnInventoryChanged;
         closeButton.clicked -= OnCloseButtonClicked;
+        actionButton.clicked -= OnActionButtonClicked;
+    }
+
+    void OnActionButtonClicked()
+    {
+        playerInventory.UseItem(selectedSlot);
+
+        var entry = playerInventory.GetEntry(selectedSlot);
+        if (entry == null)
+        {
+            FocusItem(null);
+        }
+        else if (entry.item is InventoryWeapon && playerInventory.currentWeapon == null)
+        {
+            actionButton.text = "Equip";
+        }
+        else if (entry.item is InventoryWeapon && playerInventory.currentWeapon != null)
+        {
+            actionButton.text = "Unequip";
+        }
     }
 
     void OnCloseButtonClicked()
@@ -161,6 +184,13 @@ public class InventoryMenuHandler : MonoBehaviour
 
     void FocusItem(InventoryItem item)
     {
+        if (item == null)
+        {
+            selectedSlot = -1;
+            sideBar.style.display = DisplayStyle.None;
+            return;
+        }
+
         if (sideBar.style.display == DisplayStyle.None)
         {
             sideBar.style.display = DisplayStyle.Flex;
@@ -171,7 +201,23 @@ public class InventoryMenuHandler : MonoBehaviour
         Label description = inspectCard.Q<Label>("Description");
 
         title.text = item.name;
-        type.text = item.type.ToString();
+        switch (item)
+        {
+            case InventoryWeapon _:
+                type.text = "Weapon";
+                actionButton.text = playerInventory.currentWeapon == item ? "Unequip" : "Equip";
+                actionButton.visible = true;
+                break;
+            case InventoryConsumable _:
+                type.text = "Consumable";
+                actionButton.text = "Use";
+                actionButton.visible = true;
+                break;
+            default:
+                type.text = "Item";
+                actionButton.visible = false;
+                break;
+        }
         description.text = item.description;
     }
 }

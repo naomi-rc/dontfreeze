@@ -15,8 +15,15 @@ public class InventoryEntry
 [CreateAssetMenu(fileName = "Database", menuName = "Inventory/Database")]
 public class InventoryDatabase : ScriptableObject
 {
+    [SerializeField]
+    private IntEventChannel restoreHealthEvent;
+
+    [SerializeField]
+    private InventoryItemEventChannel onWeaponEquipEvent;
+
     public UnityAction OnDatabaseChanged = delegate { };
     public List<InventoryEntry> entries = new List<InventoryEntry>();
+    public InventoryWeapon currentWeapon = null;
 
     private int maxInventorySize = 50;
 
@@ -28,6 +35,7 @@ public class InventoryDatabase : ScriptableObject
     private void OnEnable()
     {
         entries.Clear();
+        currentWeapon = null;
     }
 
     private int FindNextIndex()
@@ -43,6 +51,28 @@ public class InventoryDatabase : ScriptableObject
         return -1;
     }
 
+    public void UseItem(int index)
+    {
+        var entry = GetEntry(index);
+        if (entry == null) { return; }
+
+        switch (entry.item)
+        {
+            case InventoryConsumable consumable:
+                restoreHealthEvent.Raise(consumable.healthResorationValue);
+                RemoveItem(index);
+                break;
+            case InventoryWeapon weapon:
+                currentWeapon = currentWeapon != weapon ? weapon : null;
+                onWeaponEquipEvent.Raise(currentWeapon);
+                break;
+            default:
+                break;
+        }
+
+        OnDatabaseChanged.Invoke();
+    }
+
     public InventoryEntry GetEntry(int index)
     {
         return entries.FirstOrDefault(x => x.index == index);
@@ -54,6 +84,23 @@ public class InventoryDatabase : ScriptableObject
             return;
 
         entries.Add(new InventoryEntry() { index = FindNextIndex(), item = item, count = 1 });
+        OnDatabaseChanged.Invoke();
+    }
+
+    public void RemoveItem(int index)
+    {
+        var entry = GetEntry(index);
+        if (entry == null) { return; }
+
+        if (entry.count > 1)
+        {
+            entry.count--;
+        }
+        else
+        {
+            entries.RemoveAll(x => x.index == index);
+        }
+
         OnDatabaseChanged.Invoke();
     }
 

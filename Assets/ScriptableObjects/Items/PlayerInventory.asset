@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3592be4094811c47945bb773794794b, type: 3}
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
-  entries:
-  - index: 0
-    item: {fileID: 11400000, guid: be5849a8f4144a34fbf35311f30be0dc, type: 2}
-    count: 2
+  restoreHealthEvent: {fileID: 11400000, guid: 6d3aa06294a81be4d90f31ff302a9b42, type: 2}
+  onWeaponEquipEvent: {fileID: 11400000, guid: 772cf1bdbdc789d4f8563a5f53b35d9e, type: 2}
+  entries: []
+  currentWeapon: {fileID: 0}

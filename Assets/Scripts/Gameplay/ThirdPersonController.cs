@@ -22,9 +22,19 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField]
     private Transform groudCheckTransform;
 
+    [SerializeField]
+    private GameObject weaponHolder;
+
+    [SerializeField]
+    private InventoryDatabase inventoryDatabase;
+
+    [SerializeField]
+    private InventoryItemEventChannel onWeaponEquipEvent;
+
     public FloatReference speed;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
+    public int unarmedDamage = 2;
 
     private float targetAngle = 0f;
 
@@ -46,12 +56,14 @@ public class ThirdPersonController : MonoBehaviour
         inputReader.JumpEvent += ApplyJump;
         inputReader.AttackEvent += AttackEnemy;
         inputReader.MoveEvent += ApplyMovement;
+        onWeaponEquipEvent.OnEventRaised += EquipWeapon;
     }
 
     private void OnDisable()
     {
         inputReader.JumpEvent -= ApplyJump;
         inputReader.MoveEvent -= ApplyMovement;
+        onWeaponEquipEvent.OnEventRaised -= EquipWeapon;
     }
 
     private void ApplyJump()
@@ -60,7 +72,7 @@ public class ThirdPersonController : MonoBehaviour
         if (Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -0.5f * gravity);
-        }      
+        }
     }
 
     private void ApplyMovement(Vector2 value)
@@ -74,7 +86,7 @@ public class ThirdPersonController : MonoBehaviour
         Move();
         Gravity();
 
-        if(Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
+        if (Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
         {
             animator.SetBool("isGrounded", true);
             animator.SetBool("isJumping", false);
@@ -89,21 +101,22 @@ public class ThirdPersonController : MonoBehaviour
         else
         {
             animator.SetBool("isGrounded", false);
-            animator.SetBool("isFalling", true);        
+            animator.SetBool("isFalling", true);
         }
 
         if (isAttacking)
         {
             isAttacking = false;
             animator.SetBool("isAttacking", true);
-            foreach(var collider in colliderZone)
+            foreach (var collider in colliderZone)
             {
                 if (collider.gameObject.TryGetComponent<EnemyHealthController>(out EnemyHealthController enemyHealthController))
                 {
-                    enemyHealthController.TakeDamage(5);
+                    var damage = inventoryDatabase.currentWeapon != null ? inventoryDatabase.currentWeapon.damage : unarmedDamage;
+                    enemyHealthController.TakeDamage(damage);
                 }
-            }        
-        } 
+            }
+        }
         else
         {
             animator.SetBool("isAttacking", false);
@@ -158,5 +171,23 @@ public class ThirdPersonController : MonoBehaviour
     private void AttackEnemy()
     {
         isAttacking = true;
+    }
+
+    private void EquipWeapon(InventoryItem item)
+    {
+        if (weaponHolder == null)
+        {
+            return;
+        }
+
+        foreach (Transform child in weaponHolder.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        if (item != null)
+        {
+            Instantiate(item.model, weaponHolder.transform);
+        }
     }
 }
