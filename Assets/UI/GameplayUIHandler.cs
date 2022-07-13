@@ -129,7 +129,6 @@ public class GameplayUIHandler : MonoBehaviour
 
         foreach (Transform child in children)
         {
-            //  || child.gameObject.name == sceneTransitionHandler.gameObject.name)s
             if (child.gameObject.name != "EventSystem")
             {
                 child.gameObject.SetActive(false);
