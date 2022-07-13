@@ -182,8 +182,6 @@ MonoBehaviour:
   targetSpeed: 1
   targetMaxDistance: 15
   targetMinDistance: 2
-  lifeForce: 15
-  maxLifeForce: 15
 --- !u!114 &6141487766427586573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,9 +194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 799a79c308b2e11439e6d6271142a137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemytHealth: 0
+  lootTable: {fileID: 11400000, guid: 695610610d619364987cfa18765b8d6f, type: 2}
   healthBarC: {fileID: 7153018737298569648}
   maxHealth: 100
-  healthbar: {fileID: 8930011673449865587}
 --- !u!4 &863534826353487270 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1d2cf5093f9467947a27e8f8b91feb42,
@@ -350,15 +349,9 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4009047560884339043}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8930011673449865587}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7924da63216d54f40a689208b904ad6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8930011673449865587 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5498677208953806864, guid: 75bfa865a255abe44bc6833e2d40ab1b,
-    type: 3}
-  m_PrefabInstance: {fileID: 4009047560884339043}
-  m_PrefabAsset: {fileID: 0}

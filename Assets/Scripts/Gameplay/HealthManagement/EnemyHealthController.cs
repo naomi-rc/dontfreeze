@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class EnemyHealthController : MonoBehaviour
 {
     public float enemytHealth;
+    public LootTable lootTable;
 
     [SerializeField] private HealthBarController healthBarC;
     public float maxHealth = 100f;
@@ -23,7 +24,14 @@ public class EnemyHealthController : MonoBehaviour
         healthBarC.SetHealth(enemytHealth);
     }
 
-    
+    void OnDestroy()
+    {
+        if (lootTable && enemytHealth <= 0)
+        {
+            lootTable.DropLoot(transform.position);
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         enemytHealth -= damage;

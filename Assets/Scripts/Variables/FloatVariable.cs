@@ -21,6 +21,11 @@ public class FloatVariable : ScriptableObject
             OnValueChanged?.Invoke(_value);
         }
     }
+
+    private void OnValidate()
+    {
+        OnValueChanged?.Invoke(value);
+    }
 }
 
 [Serializable]
