@@ -114,16 +114,10 @@ public class ThirdPersonController : MonoBehaviour
             {
                 if (collider.gameObject.TryGetComponent<EnemyHealthController>(out EnemyHealthController enemyHealthController))
                 {
+                    collider.gameObject.TryGetComponent<EnemyBehavior>(out EnemyBehavior enemyBehavior);
                     var damage = inventoryDatabase.currentWeapon != null ? inventoryDatabase.currentWeapon.damage : unarmedDamage;
+                    FindObjectOfType<AudioManager>().Play(enemyBehavior.hurtSound);
                     enemyHealthController.TakeDamage(damage);
-                    if (collider.gameObject.name.Contains("wolf"))
-                    {
-                        FindObjectOfType<AudioManager>().Play("HurtWolf");
-                    }
-                    if (collider.gameObject.name.Contains("bear"))
-                    {
-                        FindObjectOfType<AudioManager>().Play("HurtBear");
-                    }
                 }
             }
         }
