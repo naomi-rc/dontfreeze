@@ -1,0 +1,9 @@
+#Screen
+{
+    background-color: black;
+}
+
+.animation-fade
+{
+    opacity: 0;
+}
