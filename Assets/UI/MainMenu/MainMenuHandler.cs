@@ -10,24 +10,27 @@ public class MainMenuHandler : MonoBehaviour
     public UnityAction SettingsButtonAction = delegate { };
 
     private Button playButton;
+    private Button resumeButton;
     private Button settingsButton;
     private Button quitButton;
 
     [SerializeField]
-    private LocationLoader locationLoader = default;
+    private Location startLocation = default;
 
     [SerializeField]
-    private SceneObject firstScene;
+    private VoidEventChannel onLoadSaveEvent = default;
 
     void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
 
         playButton = rootVisualElement.Q<Button>("PlayButton");
+        resumeButton = rootVisualElement.Q<Button>("ResumeButton");
         settingsButton = rootVisualElement.Q<Button>("SettingsButton");
         quitButton = rootVisualElement.Q<Button>("QuitButton");
 
         playButton.clicked += OnPlayButtonClicked;
+        resumeButton.clicked += OnResumeButtonClicked;
         settingsButton.clicked += OnSettingsButtonClicked;
         quitButton.clicked += OnQuitButtonClicked;
     }
@@ -35,13 +38,19 @@ public class MainMenuHandler : MonoBehaviour
     void OnDisable()
     {
         playButton.clicked -= OnPlayButtonClicked;
+        resumeButton.clicked -= OnResumeButtonClicked;
         settingsButton.clicked -= OnSettingsButtonClicked;
         quitButton.clicked -= OnQuitButtonClicked;
     }
 
     void OnPlayButtonClicked()
     {
-        locationLoader.Load(firstScene);
+        startLocation.Load();
+    }
+
+    void OnResumeButtonClicked()
+    {
+        onLoadSaveEvent.Raise();
     }
 
     void OnSettingsButtonClicked()

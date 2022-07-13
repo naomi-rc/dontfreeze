@@ -8,21 +8,20 @@ using UnityEngine.ResourceManagement.ResourceProviders;
 public class LocationLoader : MonoBehaviour
 {
     [SerializeField]
-    private VoidEventChannel onSceneReady = default;
+    private SceneEventChannel sceneEventChannel = default;
 
-    [SerializeField]
-    private VoidEventChannel onLoadingRequest = default;
-
-    private string currentSceneName;
-
-    private void Awake()
+    private void OnEnable()
     {
-        currentSceneName = SceneManager.GetActiveScene().name;
+        sceneEventChannel.OnEventRaised += Load;
+    }
+
+    private void OnDisable()
+    {
+        sceneEventChannel.OnEventRaised -= Load;
     }
 
     public void Load(SceneObject sceneToLoad)
     {
-        onLoadingRequest.Raise();
         StartCoroutine(TransitionToLocation(sceneToLoad));
     }
 
@@ -31,16 +30,11 @@ public class LocationLoader : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         AsyncOperationHandle<SceneInstance> operation = sceneToLoad.reference.LoadSceneAsync(LoadSceneMode.Single, true);
+        yield return operation;
 
-        yield return operation.WaitForCompletion();
-        operation.Completed += OnLoadComplete;
-    }
-
-    private void OnLoadComplete(AsyncOperationHandle<SceneInstance> obj)
-    {
-        if (obj.Status == AsyncOperationStatus.Succeeded)
+        if (operation.Status == AsyncOperationStatus.Succeeded)
         {
-            Debug.LogFormat("{0} successfully loaded.", obj.Result.Scene.name);
+            Debug.LogFormat("{0} successfully loaded.", operation.Result.Scene.name);
         }
     }
 }

@@ -471,7 +471,7 @@ MonoBehaviour:
   gameOverMenuHandler: {fileID: 8930217402292427220}
   sceneTransitionHandler: {fileID: 832401430847310524}
   onPlayerDeathEvent: {fileID: 11400000, guid: 52a90ecdcd475f141994dad5571d2299, type: 2}
-  onLoadingRequest: {fileID: 11400000, guid: 496db44e778a5784aae6d5155b0ab9ae, type: 2}
+  onLoadEvent: {fileID: 11400000, guid: e1abfe4eb5b8a4043965a3340433598a, type: 2}
   inputReader: {fileID: 11400000, guid: 03e55d179fcde374bb0cb89fc2a25faf, type: 2}
 --- !u!1 &7926962568536931137
 GameObject:

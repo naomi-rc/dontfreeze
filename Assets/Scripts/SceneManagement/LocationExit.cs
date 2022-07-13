@@ -6,10 +6,7 @@ using UnityEngine;
 public class LocationExit : MonoBehaviour
 {
     [SerializeField]
-    private SceneObject scene;
-
-    [SerializeField]
-    private LocationLoader locationLoader;
+    private Location location;
 
     private void Awake()
     {
@@ -19,9 +16,9 @@ public class LocationExit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && location is not null)
         {
-            locationLoader.Load(scene);
+            location.Load();
         }
     }
 }
