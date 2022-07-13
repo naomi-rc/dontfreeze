@@ -12,7 +12,7 @@ public class SelectionMenuHandler : MonoBehaviour
 
     private string skybox;
     private int enemyNumber;
-    private string difficulty;
+    private int difficulty;
 
     private string world;
 
@@ -41,7 +41,7 @@ public class SelectionMenuHandler : MonoBehaviour
         parametersSelectionHandler.setValues(skybox, difficulty, enemyNumber);
         worldSelectionHandler.setWorld(world);
 
-        Debug.Log("The user chose the " + world + " with the " + skybox + " skybox. The level of difficulty is " + difficulty + " and the user chose " + enemyNumber + " enemies!");
+        Debug.Log("The user chose the " + world + " with the " + skybox + " skybox. The level of difficulty is " + parametersSelectionHandler.getStringDifficulty() + " and the user chose " + enemyNumber + " enemies!");
     }
     void OnNextButtonClicked()
     {

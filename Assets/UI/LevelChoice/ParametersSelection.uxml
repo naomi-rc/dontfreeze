@@ -6,12 +6,8 @@
         <ui:VisualElement name="SkyboxSelection" style="width: 80%;">
             <ui:DropdownField label="Skybox" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="SkyboxList" style="font-size: 20px; height: 49px; -unity-background-image-tint-color: rgb(43, 34, 34);" />
         </ui:VisualElement>
-        <ui:GroupBox name="DifficultySelection" style="height: 154px;">
-            <ui:RadioButtonGroup label="Choose the difficulty" value="-1" name="DifficultyGroup" style="position: relative; flex-direction: column; align-items: flex-start; justify-content: center; font-size: 20px; height: 148px;">
-                <ui:RadioButton label="Easy" name="EasyButton" usage-hints="GroupTransform" />
-                <ui:RadioButton label="Normal" name="NormalButton" value="true" />
-                <ui:RadioButton label="Hard" name="HardButton" />
-            </ui:RadioButtonGroup>
+        <ui:GroupBox name="DifficultySelection" style="height: 161px;">
+            <ui:RadioButtonGroup label="Choose the difficulty" value="-1" name="DifficultyGroup" style="position: relative; flex-direction: column; align-items: flex-start; justify-content: center; font-size: 20px; height: 166px;" />
         </ui:GroupBox>
         <ui:VisualElement name="EnemySelection" style="height: 73px; color: rgb(0, 0, 0); align-items: center; flex-direction: row; justify-content: space-between;">
             <ui:SliderInt label="Number of enemy" value="10" high-value="30" show-input-field="false" direction="Horizontal" inverted="false" usage-hints="DynamicColor" name="EnemyNumber" style="font-size: 20px; flex-direction: column; height: 57px; justify-content: space-between; align-items: flex-start; color: rgb(0, 0, 0); opacity: 1; flex-wrap: nowrap; width: 440px; cursor: initial;" />
