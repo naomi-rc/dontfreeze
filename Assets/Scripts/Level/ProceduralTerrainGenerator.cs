@@ -14,6 +14,7 @@ namespace ProceduralLevel {
 
         //Level data
         LevelManager levelManager;
+        public GameObject snow;
 
         // Mesh generation
         Mesh mesh;
@@ -67,6 +68,7 @@ namespace ProceduralLevel {
             nonPathPositions = new List<Vector3>();
             pathPositions = new List<Vector3>();
 
+            snow.SetActive(levelManager.level.snow);
 
             defaultHeightMultiplier = levelManager.level.level * levelManager.level.numberOfEnemies;
             perlinNoiseX = (float)levelManager.level.difficulty/ defaultHeightMultiplier;
