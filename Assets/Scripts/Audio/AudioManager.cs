@@ -49,7 +49,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound " + name + " not found");
             return;
         }
-        if((name == "WolfAttack" || name == "BearAttack"))
+        if(name.Contains("Attack"))
         {
             if (canAttack)
             {
