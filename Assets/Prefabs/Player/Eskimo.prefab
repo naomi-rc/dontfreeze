@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35949c45015661f4abc4e686c1cbf18a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 11400000, guid: 0251537d497a6a2478b33fed4e70e34f, type: 2}
+  playerHealth: {fileID: 0}
   onPlayerDeathEvent: {fileID: 11400000, guid: 52a90ecdcd475f141994dad5571d2299, type: 2}
   healthBar: {fileID: 0}
   maxHealth: 100
@@ -232,17 +232,17 @@ PrefabInstance:
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -90.07735
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.62
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 48.61977
+      value: -3.8
       objectReference: {fileID: 0}
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
@@ -252,17 +252,17 @@ PrefabInstance:
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.19491969
+      value: 0.19491966
       objectReference: {fileID: 0}
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001063356
+      value: -0.00000000893376
       objectReference: {fileID: 0}
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000012406353
+      value: 0.0000000015784135
       objectReference: {fileID: 0}
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
@@ -302,27 +302,27 @@ PrefabInstance:
     - target: {fileID: 1296181621280615603, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.19491969
+      value: 0.19491968
       objectReference: {fileID: 0}
     - target: {fileID: 1296181621280615603, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008438175
+      value: -0.000000008438174
       objectReference: {fileID: 0}
     - target: {fileID: 1296181621280615603, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000016769313
+      value: 0.0000000016769309
       objectReference: {fileID: 0}
     - target: {fileID: 4322900001528984051, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.6112531
+      value: 1.4141201
       objectReference: {fileID: 0}
     - target: {fileID: 4751502685396687648, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.6112531
+      value: 1.4141201
       objectReference: {fileID: 0}
     - target: {fileID: 6610276308304020395, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
@@ -337,7 +337,7 @@ PrefabInstance:
     - target: {fileID: 7468836218415742007, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.6112531
+      value: 1.4141201
       objectReference: {fileID: 0}
     - target: {fileID: 7836599026651443587, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
@@ -352,7 +352,7 @@ PrefabInstance:
     - target: {fileID: 7836599026651443587, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.6112531
+      value: 1.4141201
       objectReference: {fileID: 0}
     - target: {fileID: 8252424577970191137, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
@@ -444,6 +444,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6744022717626134604}
     m_Modifications:
+    - target: {fileID: 149839492302720911, guid: 1065600a8fa3d4e479b472167710cf00,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ff63031c76a66d14ca3ad7525fe852d3, type: 2}
     - target: {fileID: 149839492311785585, guid: 1065600a8fa3d4e479b472167710cf00,
         type: 3}
       propertyPath: m_RootOrder
