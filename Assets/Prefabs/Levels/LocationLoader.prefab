@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onSceneReady: {fileID: 11400000, guid: 6c5193d76e7a33a499b4f4109e45e2fc, type: 2}
+  onLoadingRequest: {fileID: 11400000, guid: 496db44e778a5784aae6d5155b0ab9ae, type: 2}
