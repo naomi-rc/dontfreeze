@@ -4,8 +4,7 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - onSceneReady: {instanceID: 0}
-  - onSceneTransition: {fileID: 11400000, guid: 496db44e778a5784aae6d5155b0ab9ae,
+  - sceneEventChannel: {fileID: 11400000, guid: e1abfe4eb5b8a4043965a3340433598a,
       type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

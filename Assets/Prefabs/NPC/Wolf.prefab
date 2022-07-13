@@ -188,6 +188,9 @@ MonoBehaviour:
   targetSpeed: 1
   targetMaxDistance: 15
   targetMinDistance: 2
+  attackSound: WolfAttack
+  hurtSound: HurtWolf
+  deathSound: DyingWolf
 --- !u!114 &3902162906381708123
 MonoBehaviour:
   m_ObjectHideFlags: 0

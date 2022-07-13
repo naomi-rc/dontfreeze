@@ -65,11 +65,14 @@ public class InteractionManager : ScriptableObject
     public void PickUp()
     {
         PickableItem pickableItem = currentInteractable.interactableObject.GetComponent<PickableItem>();
-
+        
         if (pickableItem == null)
             return;
 
         inventoryDatabase.AddItem(pickableItem.inventoryItem);
+
+        FindObjectOfType<AudioManager>().Play("Collectable");
+
         Destroy(currentInteractable.interactableObject);
         RemoveInteraction();
     }

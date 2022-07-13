@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf312ee552945eb44be6b5036c762c4e, type: 3}
-  m_Name: MainMenu
+  m_Script: {fileID: 11500000, guid: dd67ab8458ba24a41b76cd29baf38319, type: 3}
+  m_Name: OnLoadSaveEvent
   m_EditorClassIdentifier: 
-  _reference:
-    m_AssetGUID: 34b8ed08c1711654083599c63fbe196c
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0

@@ -38,12 +38,12 @@ public class HealthController : MonoBehaviour
         if (isDefending)
         {
             animator.SetBool("isDefending", true);
+            FindObjectOfType<AudioManager>().Play("Defense");
             isDefending = false;
         }
         else
         {
             animator.SetBool("isDefending", false);
-
         }
     }
 
@@ -52,7 +52,7 @@ public class HealthController : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Life"))
         {
             playerHealth.value = (playerHealth.value + 10 <= maxHealth) ? playerHealth.value + 10 : maxHealth;
-
+            FindObjectOfType<AudioManager>().Play("Life");
             Destroy(other.gameObject);
         }
     }
@@ -70,6 +70,8 @@ public class HealthController : MonoBehaviour
         {
             isDead = true;
             animator.SetBool("isDead", true);
+            FindObjectOfType<AudioManager>().Play("Death");
+            FindObjectOfType<AudioManager>().StopAttack();
             onPlayerDeathEvent.Raise();
         }
         Decrease(1);
@@ -101,6 +103,4 @@ public class HealthController : MonoBehaviour
 
         bleedEffect.Deactivate();
     }
-
-
 }
