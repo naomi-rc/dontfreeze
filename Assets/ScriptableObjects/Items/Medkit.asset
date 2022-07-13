@@ -16,4 +16,5 @@ MonoBehaviour:
   icon: {fileID: 2800000, guid: 049b08feaf694584a9a1d87ce7081241, type: 3}
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero
     dui, malesuada quis dolor ut, mattis eleifend augue.
+  model: {fileID: 1535748476627388, guid: 80458c481b2b62d46a87a72ba119adbf, type: 3}
   healthResorationValue: 10

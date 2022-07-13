@@ -16,4 +16,5 @@ MonoBehaviour:
   icon: {fileID: 2800000, guid: db8f13f16c90bb24599752ae5b9aefd7, type: 3}
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero
     dui, malesuada quis dolor ut, mattis eleifend augue.
+  model: {fileID: 113808, guid: 89292b5cf2785d5458f850571ec1c9e4, type: 3}
   damage: 10

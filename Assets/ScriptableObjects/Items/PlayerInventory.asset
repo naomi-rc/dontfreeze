@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PlayerInventory
   m_EditorClassIdentifier: 
   restoreHealthEvent: {fileID: 11400000, guid: 6d3aa06294a81be4d90f31ff302a9b42, type: 2}
+  onWeaponEquipEvent: {fileID: 11400000, guid: 772cf1bdbdc789d4f8563a5f53b35d9e, type: 2}
   entries: []
   currentWeapon: {fileID: 0}
