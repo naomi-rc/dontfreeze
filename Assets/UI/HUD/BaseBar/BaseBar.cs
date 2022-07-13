@@ -75,7 +75,6 @@ public class BaseBar : BindableElement, INotifyValueChanged<float>
     private void UpdateWidth()
     {
         progress.style.width = Length.Percent(value);
-        Debug.Log(progress.style.width);
     }
 }
 
