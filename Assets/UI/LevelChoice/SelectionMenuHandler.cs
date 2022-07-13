@@ -5,7 +5,7 @@ using UnityEngine;
 public class SelectionMenuHandler : MonoBehaviour
 {
     [SerializeField]
-    private ParameterslSelectionHandler parametersSelectionHandler;
+    private ParametersSelectionHandler parametersSelectionHandler;
 
     [SerializeField]
     private WorldSelectionHandler worldSelectionHandler;
