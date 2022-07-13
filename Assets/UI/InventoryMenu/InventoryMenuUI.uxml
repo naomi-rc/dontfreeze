@@ -9,7 +9,7 @@
             <ui:ScrollView vertical-scroller-visibility="Hidden">
                 <ui:VisualElement name="Inventory" style="align-items: stretch; justify-content: flex-start; flex-direction: row; flex-wrap: wrap;" />
             </ui:ScrollView>
-            <ui:VisualElement name="SideBar" style="margin-left: 20px; flex-shrink: 0;">
+            <ui:VisualElement name="SideBar" style="margin-left: 20px; flex-shrink: 0; justify-content: space-between;">
                 <ui:VisualElement name="InspectCard" style="width: 200px;">
                     <ui:VisualElement name="TitleContainer" style="background-color: rgb(114, 119, 140); border-top-left-radius: 4px; border-top-right-radius: 4px;">
                         <ui:Label text="Title" name="Title" style="-unity-font-style: bold; color: rgb(255, 255, 255);" />
@@ -21,6 +21,7 @@
                         <ui:Label text="Description" name="Description" style="color: rgb(77, 89, 105); white-space: normal;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
+                <ui:Button text="Action" name="ActionButton" class="ActionButton" style="margin-bottom: 20px;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

@@ -27,6 +27,8 @@ public class LocationLoader : MonoBehaviour
 
     private IEnumerator TransitionToLocation(SceneObject sceneToLoad)
     {
+        yield return new WaitForSeconds(1f);
+
         AsyncOperationHandle<SceneInstance> operation = sceneToLoad.reference.LoadSceneAsync(LoadSceneMode.Single, true);
         yield return operation;
 

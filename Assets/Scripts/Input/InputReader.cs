@@ -48,6 +48,13 @@ public class InputReader : ScriptableObject, GameInput.IGameplayActions, GameInp
         Cursor.lockState = CursorLockMode.None;
     }
 
+    public void DisableInput()
+    {
+        gameInput.Gameplay.Disable();
+        gameInput.UI.Disable();
+
+    }
+
     #region Gameplay actions
     public void OnMove(InputAction.CallbackContext context)
     {
