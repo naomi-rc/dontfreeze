@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-[CreateAssetMenu(fileName = "SceneSO", menuName = "Scenes/SceneSO", order = 0)]
-public class SceneSO : ScriptableObject
+[CreateAssetMenu(fileName = "SceneObject", menuName = "Scenes/SceneObject", order = 0)]
+public class SceneObject : ScriptableObject
 {
     [SerializeField]
     private AssetReference _reference;
