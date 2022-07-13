@@ -20,7 +20,7 @@ public class WorldSelectionHandler : MonoBehaviour
         nextButton = rootVisualElement.Q<Button>("NextButton");
         worldChoices = rootVisualElement.Q<RadioButtonGroup>("Choices");
         worldChoices.choices = worldList;
-      
+        worldChoices.value = 0;
         nextButton.clicked += OnNextButtonClicked;
     }
 
