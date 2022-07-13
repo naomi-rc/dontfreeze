@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Leather
   icon: {fileID: 2800000, guid: e1c163c73f6c0244eb7603c759042912, type: 3}
-  type: 2
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero
     dui, malesuada quis dolor ut, mattis eleifend augue.
+  model: {fileID: 8182930921066948416, guid: fed3b6b58e192494d8637992edfdddd8, type: 3}

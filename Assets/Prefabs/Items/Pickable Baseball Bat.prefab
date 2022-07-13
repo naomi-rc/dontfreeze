@@ -169,7 +169,7 @@ PrefabInstance:
         type: 3}
       propertyPath: inventoryItem
       value: 
-      objectReference: {fileID: 11400000, guid: 1c3ec361c9e71094f96557b2829c7332,
+      objectReference: {fileID: 11400000, guid: fd8640272773d604a8f4542d6fd98707,
         type: 2}
     - target: {fileID: 8683973933478225643, guid: 037916e7f2e1e2143853ae6da7cfc559,
         type: 3}

@@ -9,7 +9,11 @@ public class HUDHandler : MonoBehaviour
     // Todo: use a database for managing status effect (similar to inventory)
     private Dictionary<StatusEffect, StatusEffectSlot> statusEffects = new Dictionary<StatusEffect, StatusEffectSlot>();
 
+    private BaseBar healthBar;
     private VisualElement statuses;
+
+    [SerializeField]
+    private FloatVariable playerHealth = default;
 
     [SerializeField]
     private StatusEventChannel playerStatusEventChannel = default;
@@ -18,11 +22,18 @@ public class HUDHandler : MonoBehaviour
     {
         var rootElement = GetComponent<UIDocument>().rootVisualElement;
 
-        statuses = rootElement.Q<VisualElement>("StatusBar");
+        healthBar = rootElement.Q<BaseBar>("HealthBar");
+        UpdateHealthBar(playerHealth.value);
 
+        statuses = rootElement.Q<VisualElement>("StatusBar");
         foreach (var slot in statusEffects.Values)
         {
             statuses.Add(slot);
+        }
+
+        if (playerHealth is not null)
+        {
+            playerHealth.OnValueChanged += UpdateHealthBar;
         }
 
         playerStatusEventChannel.OnStatusAppliedEvent += AddStatusEffect;
@@ -31,8 +42,19 @@ public class HUDHandler : MonoBehaviour
 
     private void OnDisable()
     {
+        if (playerHealth is not null)
+        {
+            playerHealth.OnValueChanged -= UpdateHealthBar;
+        }
+
         playerStatusEventChannel.OnStatusAppliedEvent -= AddStatusEffect;
         playerStatusEventChannel.OnStatuRemovedEvent -= RemoveStatusEffect;
+    }
+
+    private void UpdateHealthBar(float value)
+    {
+        // We assume the value is a percentage
+        healthBar.value = value;
     }
 
     private void AddStatusEffect(StatusEffect status)
