@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SaveManager", menuName = "Saves/SaveManager", order = 0)]
-public class SaveManager : ScriptableObject
+public class SaveManager : MonoBehaviour
 {
     [SerializeField]
     private SceneEventChannel onLoadEvent = default;
