@@ -8,6 +8,10 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] float targetMaxDistance = 15f;
     [SerializeField] float targetMinDistance = 2f;
 
+    public string attackSound;
+    public string hurtSound;
+    public string deathSound;
+
     private EnemyHealthController enemyController;
     bool canAttackAgain = true;
     BehaviorTree tree;    
@@ -166,9 +170,10 @@ public class EnemyBehavior : MonoBehaviour
              {
                  if (collider.gameObject.TryGetComponent(out HealthController playerHealthController))
                  {
-                     playerHealthController.TakeDamage();
+                    playerHealthController.TakeDamage();
+                    FindObjectOfType<AudioManager>().Play(attackSound);  
                  }
-             }
+            }
              canAttackAgain = false;
              Invoke("AttackAgain", 3);
          }
@@ -177,6 +182,8 @@ public class EnemyBehavior : MonoBehaviour
 
     public Node.Status Die()
     {
+        FindObjectOfType<AudioManager>().Play(deathSound);
+        
         state = ActionState.DEAD;
         Destroy(gameObject, 2f);
         return Node.Status.Success;

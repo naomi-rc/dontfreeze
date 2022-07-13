@@ -103,18 +103,22 @@ public class ThirdPersonController : MonoBehaviour
         else
         {
             animator.SetBool("isGrounded", false);
-            animator.SetBool("isFalling", true);
+            animator.SetBool("isFalling", true);                   
         }
 
         if (isAttacking)
         {
             isAttacking = false;
             animator.SetBool("isAttacking", true);
+            FindObjectOfType<AudioManager>().Play("Fight");
+
             foreach (var collider in colliderZone)
             {
                 if (collider.gameObject.TryGetComponent<EnemyHealthController>(out EnemyHealthController enemyHealthController))
                 {
+                    collider.gameObject.TryGetComponent<EnemyBehavior>(out EnemyBehavior enemyBehavior);
                     var damage = inventoryDatabase.currentWeapon != null ? inventoryDatabase.currentWeapon.damage : unarmedDamage;
+                    FindObjectOfType<AudioManager>().Play(enemyBehavior.hurtSound);
                     enemyHealthController.TakeDamage(damage);
                 }
             }

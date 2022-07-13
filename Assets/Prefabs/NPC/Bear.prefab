@@ -182,6 +182,9 @@ MonoBehaviour:
   targetSpeed: 1
   targetMaxDistance: 15
   targetMinDistance: 2
+  attackSound: BearAttack
+  hurtSound: HurtBear
+  deathSound: DyingBear
 --- !u!114 &6141487766427586573
 MonoBehaviour:
   m_ObjectHideFlags: 0
