@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +24,12 @@ public class SkyboxModifierHandler : MonoBehaviour
     void Start()
     {
         LevelManager levelManager = GetComponent<LevelManager>();
-        float[] skyboxValues = presets[(int)levelManager.level.timeSetting];
+        Level.TimeSetting timeSetting = levelManager.level.timeSetting;
+        if(timeSetting == Level.TimeSetting.TIMEBASED)
+        {
+            timeSetting = ChooseSkyboxBasedOnTime();
+        }
+        float[] skyboxValues = presets[(int)timeSetting];
 
         RenderSettings.skybox.SetFloat("_SunSize", skyboxValues[0]);
         RenderSettings.skybox.SetFloat("_AtmosphereThickness", skyboxValues[1]);
@@ -43,5 +49,28 @@ public class SkyboxModifierHandler : MonoBehaviour
         {
             lightSource.SetActive(true);
         }
+    }
+
+    private Level.TimeSetting ChooseSkyboxBasedOnTime()
+    {
+        int hour = DateTime.Now.Hour;
+        
+        if(6 <= hour && hour < 12)
+        {
+            return Level.TimeSetting.MORNING;
+        }
+        else if(12 <= hour && hour < 16)
+        {
+            return Level.TimeSetting.NOON;
+        }
+        else if(16 <= hour && hour < 20)
+        {
+            return Level.TimeSetting.EVENING;
+        }
+        else if(19 <= hour || hour < 6)
+        {
+            return Level.TimeSetting.NIGHT;
+        }
+        return Level.TimeSetting.DEFAULT;
     }
 }

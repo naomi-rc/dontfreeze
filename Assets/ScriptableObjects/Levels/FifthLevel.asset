@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e6465f32ac3a64580cb25ba46faaa9, type: 3}
-  m_Name: FirstLevel
+  m_Name: FifthLevel
   m_EditorClassIdentifier: 
-  level: 1
-  levelName: First Snow
-  numberOfEnemies: 4
-  snow: 0
-  levelDifficulty: 1
-  icon: {fileID: 2800000, guid: dcbd7bf485daf1842b2836b6820bea8c, type: 3}
+  level: 5
+  levelName: Subzero
+  numberOfEnemies: 11
+  snow: 1
+  levelDifficulty: 10
+  icon: {fileID: 2800000, guid: 22b7fee8a946e0e4189e61497364ea5d, type: 3}
   timeSetting: 5

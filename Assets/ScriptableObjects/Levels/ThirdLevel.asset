@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09e6465f32ac3a64580cb25ba46faaa9, type: 3}
-  m_Name: FirstLevel
+  m_Name: ThirdLevel
   m_EditorClassIdentifier: 
   level: 1
-  levelName: First Snow
-  numberOfEnemies: 4
+  levelName: FirstSnow
+  numberOfEnemies: 7
   snow: 0
-  levelDifficulty: 1
-  icon: {fileID: 2800000, guid: dcbd7bf485daf1842b2836b6820bea8c, type: 3}
-  timeSetting: 5
+  levelDifficulty: 4
+  icon: {fileID: 2800000, guid: 8debbcc189df4d6478686bdcbeb07e6e, type: 3}
+  timeSetting: 3

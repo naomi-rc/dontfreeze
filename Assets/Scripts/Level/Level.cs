@@ -10,6 +10,12 @@ public class Level : ScriptableObject
     public int numberOfEnemies;
     public bool snow;
     [SerializeField, Range(1,10)] int levelDifficulty;
+    public int difficulty
+    {
+        get { return levelDifficulty; }
+        set { levelDifficulty = Mathf.Clamp(value, 1, 10); }
+    }
+
     public Texture2D icon;
     public TimeSetting timeSetting;
     public enum TimeSetting
@@ -21,9 +27,6 @@ public class Level : ScriptableObject
         NIGHT,
         TIMEBASED
     }
-    /*private int difficulty
-    {
-        get { return levelDifficulty; }
-        set { levelDifficulty = Mathf.Clamp(value, 1, 10);  }
-    }*/
+
+    
 }
