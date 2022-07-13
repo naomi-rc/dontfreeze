@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -5014819075099320421}
   - component: {fileID: -3058085115484160012}
   m_Layer: 0
-  m_Name: Wisp Particles
+  m_Name: Wind Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
