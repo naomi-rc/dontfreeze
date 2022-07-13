@@ -14,7 +14,7 @@ public class SelectionMenuHandler : MonoBehaviour
     private int enemyNumber;
     private int difficulty;
 
-    private string world;
+    private int world;
 
     void Awake()
     {
@@ -28,7 +28,6 @@ public class SelectionMenuHandler : MonoBehaviour
         worldSelectionHandler.NextButtonAction -= OnNextButtonClicked;
         parametersSelectionHandler.BackButtonAction -= OnBackButtonClicked;
         parametersSelectionHandler.ApplyButtonAction -= OnApplyButtonClicked;
-
     }
 
     void OnApplyButtonClicked()
@@ -41,8 +40,9 @@ public class SelectionMenuHandler : MonoBehaviour
         parametersSelectionHandler.setValues(skybox, difficulty, enemyNumber);
         worldSelectionHandler.setWorld(world);
 
-        Debug.Log("The user chose the " + world + " with the " + skybox + " skybox. The level of difficulty is " + parametersSelectionHandler.getStringDifficulty() + " and the user chose " + enemyNumber + " enemies!");
+        Debug.Log("The user chose the " + worldSelectionHandler.getWorldSelectionString() + " with the " + skybox + " skybox. The level of difficulty is " + parametersSelectionHandler.getStringDifficulty() + " and the user chose " + enemyNumber + " enemies!");
     }
+
     void OnNextButtonClicked()
     {
         worldSelectionHandler.gameObject.SetActive(false);

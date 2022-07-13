@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -11,26 +9,18 @@ public class WorldSelectionHandler : MonoBehaviour
     public UnityAction NextButtonAction = delegate { };
 
     private Button nextButton;
+    private RadioButtonGroup worldChoices;
 
-    private string world;
-
-    private RadioButton world1Button;
-    private RadioButton world2Button;
-    private RadioButton world3Button;
-    private RadioButton world4Button;
-    private RadioButton world5Button;
+    private List<string> worldList = new List<string> { "World 1", "World 2", "World 3", "World 4", "World 5" };
 
     void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
 
         nextButton = rootVisualElement.Q<Button>("NextButton");
-        world1Button = rootVisualElement.Q< RadioButton > ("World1Button");
-        world2Button = rootVisualElement.Q<RadioButton>("World2Button");
-        world3Button = rootVisualElement.Q<RadioButton>("World3Button");
-        world4Button = rootVisualElement.Q<RadioButton>("World4Button");
-        world5Button = rootVisualElement.Q<RadioButton>("World5Button");
-
+        worldChoices = rootVisualElement.Q<RadioButtonGroup>("Choices");
+        worldChoices.choices = worldList;
+      
         nextButton.clicked += OnNextButtonClicked;
     }
 
@@ -41,60 +31,21 @@ public class WorldSelectionHandler : MonoBehaviour
 
     void OnNextButtonClicked()
     {
-        world = getWorldSelection();
+        setWorld(worldChoices.value);
         NextButtonAction.Invoke();
     }
-
-    // TODO à améliorer
-    public string getWorldSelection()
+    public string getWorldSelectionString()
     {
-        world = "World1";
-        if (world1Button.value)
-        {
-            world = "World1";
-        }
-        if (world2Button.value)
-        {
-            world = "World2";
-        }
-        if (world3Button.value)
-        {
-            world = "World3";
-        }
-        if (world4Button.value)
-        {
-            world = "World4";
-        }
-        if (world5Button.value)
-        {
-            world = "World5";
-        }
-        return world;
+        return worldList[worldChoices.value];
     }
 
-    public void setWorld(string world)
+    public int getWorldSelection()
     {
-        this.world = world;
+        return worldChoices.value;
+    }
 
-        if("World1" == world)
-        {
-            world1Button.SetSelected(true);
-        }
-        if ("World2" == world)
-        {
-            world2Button.SetSelected(true);
-        }
-        if ("World3" == world)
-        {
-            world3Button.SetSelected(true);
-        }
-        if ("World4" == world)
-        {
-            world4Button.SetSelected(true);
-        }
-        if ("World5" == world)
-        {
-            world5Button.SetSelected(true);
-        }
+    public void setWorld(int world)
+    {
+        worldChoices.value = world;
     }
 }

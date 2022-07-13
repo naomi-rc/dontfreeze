@@ -3,16 +3,10 @@
         <ui:VisualElement name="Info" style="height: 49px;">
             <ui:Label text="Select your world" display-tooltip-when-elided="true" name="Label" style="height: 49px; white-space: normal; font-size: 30px;" />
         </ui:VisualElement>
-        <ui:VisualElement name="WorldSelection" style="height: 279px; flex-direction: column;">
-            <ui:RadioButtonGroup label="World choice :" value="-1" name="Choices" style="flex-direction: column; justify-content: center; align-items: stretch; font-size: 40px;">
-                <ui:RadioButton label="World 1" name="World1Button" value="true" style="height: 38px; font-size: 30px; width: 541px;" />
-                <ui:RadioButton label="World 2" name="World2Button" style="height: 38px; font-size: 30px; width: 541px;" />
-                <ui:RadioButton label="World 3" name="World3Button" style="height: 38px; font-size: 30px; width: 541px;" />
-                <ui:RadioButton label="World 4" name="World4Button" style="height: 38px; font-size: 30px; width: 541px;" />
-                <ui:RadioButton label="World 5" name="World5Button" style="height: 38px; font-size: 30px; width: 541px;" />
-            </ui:RadioButtonGroup>
+        <ui:VisualElement name="WorldSelection" style="height: 414px; flex-direction: column;">
+            <ui:RadioButtonGroup label="World choice :" value="-1" name="Choices" style="flex-direction: column; justify-content: center; align-items: stretch; font-size: 40px; height: 412px; width: 675px;" />
         </ui:VisualElement>
-        <ui:VisualElement name="Buttons" style="justify-content: space-between; align-items: auto; background-color: rgb(0, 173, 167); height: 42px;">
+        <ui:VisualElement name="Buttons" style="justify-content: center; align-items: auto; background-color: rgb(0, 173, 167); height: 56px;">
             <ui:Button text="Next" display-tooltip-when-elided="true" name="NextButton" style="height: 33px; width: 112px; font-size: 20px;" />
         </ui:VisualElement>
     </ui:VisualElement>
