@@ -9,7 +9,6 @@ public class HealthController : MonoBehaviour
     [SerializeField] private FloatVariable playerHealth;
     [SerializeField] private VoidEventChannel onPlayerDeathEvent;
 
-    [SerializeField] private HealthBarController healthBar;
     [SerializeField] private int maxHealth = 100;
 
     [SerializeField] private DPSStatus bleedEffect = default;
@@ -21,11 +20,6 @@ public class HealthController : MonoBehaviour
     private void Start()
     {
         playerHealth.value = maxHealth;
-        if (healthBar != null)
-        {
-            healthBar.SetMaxHealth(maxHealth);
-        }
-
         bleedEffect.OnActivateEvent += ApplyBleed;
     }
 
@@ -38,11 +32,6 @@ public class HealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (healthBar != null)
-        {
-            healthBar.SetHealth(playerHealth.value);
-        }
-
         if (isDefending)
         {
             animator.SetBool("isDefending", true);
@@ -69,14 +58,14 @@ public class HealthController : MonoBehaviour
     {
         if (isDead)
             return;
-       
+
         bleedEffect.Activate();
 
         isDefending = true;
 
         if (playerHealth.value <= 0)
         {
-            isDead = true;            
+            isDead = true;
             animator.SetBool("isDead", true);
             onPlayerDeathEvent.Raise();
         }
