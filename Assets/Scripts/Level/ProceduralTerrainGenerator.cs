@@ -7,9 +7,13 @@ namespace ProceduralLevel {
     [RequireComponent(typeof(MeshFilter))]
     public class ProceduralTerrainGenerator : MonoBehaviour
     {
+        Transform worldParent;
         // Player data
         public GameObject[] enemyPrefabs;
-        Vector3 playerSpawnPosition;        
+        Vector3 playerSpawnPosition;
+
+        //Level data
+        LevelManager levelManager;
 
         // Mesh generation
         Mesh mesh;
@@ -44,10 +48,13 @@ namespace ProceduralLevel {
         public GameObject[] treePrefabs;
         public int numberOfTrees = 1000;
 
-
+       
        
         void Start()
         {
+            worldParent = transform.parent;
+            levelManager = FindObjectOfType<LevelManager>();
+
             mesh = new Mesh();
             mesh.indexFormat = UnityEngine.Rendering.IndexFormat.UInt32;
             GetComponent<MeshFilter>().mesh = mesh;
@@ -68,7 +75,7 @@ namespace ProceduralLevel {
             UpdateMesh();
             CreateTerrain();
             GenerateTrees();
-            Instantiate(enemyPrefabs[0], pathPositions[5], Quaternion.identity);
+            GenerateEnemies();
             GenerateNavMesh();
             PlacePlayer();
             PlaceCheckpoint();
@@ -265,6 +272,13 @@ namespace ProceduralLevel {
                 Instantiate(treePrefabs[Random.Range(0, treePrefabs.Length)], worldTreePos, Quaternion.identity, treesParent.transform);
             }            
         }
+        void GenerateEnemies()
+        {
+            for(int i = 0; i < levelManager.level.numberOfEnemies; i++)
+            {
+                Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], pathPositions[20], Quaternion.identity, transform);
+            }            
+        }
 
         void GenerateNavMesh()
         {
@@ -275,7 +289,7 @@ namespace ProceduralLevel {
         void PlacePlayer()
         {
             GameObject target = GameObject.FindGameObjectWithTag("Player");
-            target.transform.position = pathPositions[0] + transform.position;
+            target.transform.position = pathPositions[0];
             GameObject[] agents = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject agent in agents)
             {
@@ -286,7 +300,7 @@ namespace ProceduralLevel {
         void PlaceCheckpoint()
         {
             GameObject checkpoint = GameObject.FindGameObjectWithTag("Checkpoint");
-            checkpoint.transform.position = pathPositions[pathPositions.Count - 1] + transform.position;            
+            checkpoint.transform.position = pathPositions[pathPositions.Count - 1];            
         }
     }
 }

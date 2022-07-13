@@ -13,11 +13,11 @@ public class SkyboxModifierHandler : MonoBehaviour
     static private float[] evening = { 0.02f, 5f, 0.35f, 0f };
     static private float[] noon = { 0.04f, 2f, 2.5f, 0f };
     static private float[][] presets = {
+       defaultSkyboxValues,
        morning,
        noon,
        evening,
-       night,
-       defaultSkyboxValues
+       night       
     };
 
     void Start()

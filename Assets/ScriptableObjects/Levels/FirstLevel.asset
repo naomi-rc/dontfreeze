@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   levelName: FirstSnow
-  numberOfEnemies: 1
+  numberOfEnemies: 5
   snow: 0
   levelDifficulty: 1
   icon: {fileID: 2800000, guid: 65add896355d6c047b082417cd598c57, type: 3}
-  timeSetting: 0
+  timeSetting: 1
