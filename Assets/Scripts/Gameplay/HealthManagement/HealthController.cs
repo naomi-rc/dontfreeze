@@ -77,14 +77,7 @@ public class HealthController : MonoBehaviour
 
     public void RestoreHealth(int value)
     {
-        if (playerHealth.value + value > maxHealth)
-        {
-            playerHealth.value = maxHealth;
-        }
-        else
-        {
-            playerHealth.value += value;
-        }
+        playerHealth.value = Mathf.Clamp(playerHealth.value + value, 0, maxHealth);
     }
 
     public void Decrease(float value)
