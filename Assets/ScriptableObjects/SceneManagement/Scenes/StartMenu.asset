@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf312ee552945eb44be6b5036c762c4e, type: 3}
-  m_Name: MainMenu
+  m_Name: StartMenu
   m_EditorClassIdentifier: 
   _reference:
-    m_AssetGUID: 34b8ed08c1711654083599c63fbe196c
+    m_AssetGUID: c85005b73216f1f4187a67589fbd0fc8
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
