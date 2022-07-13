@@ -18,4 +18,9 @@ public class SaveObject
     {
         JsonUtility.FromJsonOverwrite(json, this);
     }
+
+    public bool isValid()
+    {
+        return (inventoryEntries is not null && playerLocation is not null);
+    }
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 public class SaveManager : MonoBehaviour
 {
     [SerializeField]
+    private string fileName = "SaveGameInfo.frz";
+
+    [SerializeField]
     private SceneEventChannel onLoadEvent = default;
 
     [SerializeField]
@@ -29,7 +32,7 @@ public class SaveManager : MonoBehaviour
 
     private void UpdateSave(SceneObject scene)
     {
-        Debug.Log("Updating save..");
+        Debug.Log("Updating save...");
 
         saveObject.playerLocation = scene;
 
@@ -39,13 +42,19 @@ public class SaveManager : MonoBehaviour
             saveObject.inventoryEntries.Add(entry);
         }
 
-        FileManager.Write(saveObject.ToJson());
+        FileManager.Write(fileName, saveObject.ToJson());
     }
 
     private void LoadSave()
     {
-        FileManager.Read(out string json);
+        FileManager.Read(fileName, out string json);
         saveObject.FromJsonOverwrite(json);
+
+        if (!saveObject.isValid())
+        {
+            Debug.LogWarningFormat("The save file failed to produce a valid game state.");
+            return;
+        }
 
         playerInventory.entries.Clear();
         foreach (var entry in saveObject.inventoryEntries)

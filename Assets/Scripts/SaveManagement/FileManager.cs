@@ -4,9 +4,9 @@ using UnityEngine;
 
 public static class FileManager
 {
-    public static void Write(string json)
+    public static void Write(string fileName, string json)
     {
-        string path = Path.Combine(Application.persistentDataPath, "gamesave.frz");
+        string path = Path.Combine(Application.persistentDataPath, fileName);
 
         try
         {
@@ -15,13 +15,13 @@ public static class FileManager
         }
         catch
         {
-            Debug.LogError("Error writing to file");
+            Debug.LogErrorFormat("Could not write to path: \"{0}\"", path);
         }
     }
 
-    public static void Read(out string json)
+    public static void Read(string fileName, out string json)
     {
-        string path = Path.Combine(Application.persistentDataPath, "gamesave.frz");
+        string path = Path.Combine(Application.persistentDataPath, fileName);
 
         json = "";
 
@@ -31,7 +31,7 @@ public static class FileManager
         }
         catch
         {
-            Debug.LogError("Error reading file");
+            Debug.LogErrorFormat("Could not read path: \"{0}\"", path);
         }
     }
 }
