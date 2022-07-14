@@ -188,6 +188,9 @@ MonoBehaviour:
   targetSpeed: 1
   targetMaxDistance: 15
   targetMinDistance: 2
+  attackSound: WolfAttack
+  hurtSound: HurtWolf
+  deathSound: DyingWolf
 --- !u!114 &3902162906381708123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,12 +217,12 @@ PrefabInstance:
     - target: {fileID: 5498677209133552113, guid: 75bfa865a255abe44bc6833e2d40ab1b,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5498677209133552113, guid: 75bfa865a255abe44bc6833e2d40ab1b,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6380305746677243086, guid: 75bfa865a255abe44bc6833e2d40ab1b,
         type: 3}
