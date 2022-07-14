@@ -7,6 +7,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField] float targetSpeed = 1f;
     [SerializeField] float targetMaxDistance = 15f;
     [SerializeField] float targetMinDistance = 2f;
+    [SerializeField] Animator animator;
 
     public string attackSound;
     public string hurtSound;
@@ -14,10 +15,10 @@ public class EnemyBehavior : MonoBehaviour
 
     private EnemyHealthController enemyController;
     bool canAttackAgain = true;
-    BehaviorTree tree;    
+    BehaviorTree tree;
     GameObject target;
     UnityEngine.AI.NavMeshAgent agent;
-    Animator anim;
+
     private Collider[] colliderZone;
 
     public enum ActionState { IDLE, WANDER, PURSUE, EVADE, ATTACK, DEAD };
@@ -27,7 +28,6 @@ public class EnemyBehavior : MonoBehaviour
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        anim = GetComponent<Animator>();
         enemyController = GetComponent<EnemyHealthController>();
         tree = new BehaviorTree();
 
@@ -73,9 +73,9 @@ public class EnemyBehavior : MonoBehaviour
         Leaf attack = new Leaf("Attack", Attack);
         s9.AddChild(targetAttained);
         s9.AddChild(attack);
-                
+
         Leaf idle = new Leaf("Idle", Idle);
-        Leaf roam = new Leaf("Wander", Wander);        
+        Leaf roam = new Leaf("Wander", Wander);
         s5.AddChild(idle);
         s5.AddChild(roam);
 
@@ -84,7 +84,7 @@ public class EnemyBehavior : MonoBehaviour
     private void Update()
     {
         tree.Process();
-        anim.SetInteger("state", ((int)state));
+        animator.SetInteger("state", ((int)state));
     }
 
     private void FixedUpdate()
@@ -155,12 +155,12 @@ public class EnemyBehavior : MonoBehaviour
         agent.SetDestination(transform.position + (transform.position - predictedPosition));
         return Node.Status.Running;
     }
-        
+
     void AttackAgain()
     {
         canAttackAgain = true;
     }
-    
+
     public Node.Status Attack()
     {
         state = ActionState.ATTACK;
@@ -194,14 +194,14 @@ public class EnemyBehavior : MonoBehaviour
     /* Behaviour tree conditions */
     public Node.Status HasLife()
     {
-        if(enemyController.enemytHealth > 0)
+        if (enemyController.enemytHealth > 0)
             return Node.Status.Success;
         return Node.Status.Failure;
     }
 
     public Node.Status TargetCloseby()
     {
-        if(agent.hasPath && Vector3.Distance(agent.pathEndPosition, agent.destination) >= targetMinDistance)
+        if (agent.hasPath && Vector3.Distance(agent.pathEndPosition, agent.destination) >= targetMinDistance)
         {
             agent.isStopped = true;
 

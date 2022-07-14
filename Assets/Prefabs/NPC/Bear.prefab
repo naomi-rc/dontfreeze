@@ -182,6 +182,7 @@ MonoBehaviour:
   targetSpeed: 1
   targetMaxDistance: 15
   targetMinDistance: 2
+  animator: {fileID: 896600211593318844}
   attackSound: BearAttack
   hurtSound: HurtBear
   deathSound: DyingBear
