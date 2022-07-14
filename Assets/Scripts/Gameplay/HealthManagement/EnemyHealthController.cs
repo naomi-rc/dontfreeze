@@ -48,11 +48,7 @@ public class EnemyHealthController : MonoBehaviour
     {
         if (healthBarC is not null)
         {
-            healthBarC.transform.SetParent(Canvas.transform);
-            if (healthBarC.TryGetComponent<FaceCamera>(out FaceCamera faceCamera))
-            {
-                faceCamera.Camera = Camera;
-            }
+            faceCamera.mainCamera = Camera;
         }
 
     }

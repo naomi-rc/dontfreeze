@@ -189,6 +189,9 @@ MonoBehaviour:
   targetMaxDistance: 15
   targetMinDistance: 2
   animator: {fileID: 2394152779530038281}
+  attackSound: WolfAttack
+  hurtSound: HurtWolf
+  deathSound: DyingWolf
 --- !u!114 &3902162906381708123
 MonoBehaviour:
   m_ObjectHideFlags: 0
