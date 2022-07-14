@@ -12,8 +12,7 @@ namespace ProceduralLevel {
         public GameObject[] enemyPrefabs;
 
         // Level data
-        LevelManager levelManager;
-        public GameObject snow;
+        LevelManager levelManager;        
 
         // Terrain mesh generation
         Mesh mesh;
@@ -39,9 +38,7 @@ namespace ProceduralLevel {
         void Start()
         {
             worldParent = transform.parent;
-
-            levelManager = FindObjectOfType<LevelManager>();
-            snow.SetActive(levelManager.level.snow);
+            levelManager = FindObjectOfType<LevelManager>();            
 
             // Terrain mesh generation
             mesh = new Mesh();
