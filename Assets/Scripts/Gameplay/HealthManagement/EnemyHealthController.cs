@@ -42,7 +42,7 @@ public class EnemyHealthController : MonoBehaviour
         healthBarC.transform.SetParent(Canvas.transform);
         if (healthBarC.TryGetComponent<FaceCamera>(out FaceCamera faceCamera))
         {
-            faceCamera.Camera = Camera;
+            faceCamera.mainCamera = Camera;
         }
     }
 }
