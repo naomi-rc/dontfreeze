@@ -5,12 +5,7 @@ public class AgentManager : MonoBehaviour
     GameObject[] agents;
     [SerializeField] GameObject target;
 
-    void Start()
-    {
-        UpdateEnemyTarget();
-    }
-
-    public GameObject getTarget()
+    public GameObject GetTarget()
     {
         return target;
     }

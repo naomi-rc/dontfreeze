@@ -8,9 +8,6 @@ namespace ProceduralLevel {
     {
         Transform worldParent;
 
-        // Player data
-        public GameObject[] enemyPrefabs;
-
         // Level data
         LevelManager levelManager;        
 
@@ -59,7 +56,7 @@ namespace ProceduralLevel {
             CreateTerrain();
             UpdateMesh();
             GenerateTrees();
-            GenerateEnemies();
+            GenerateEnemySpawnpoints();
             GenerateNavMesh();
             PlacePlayer();
             PlaceCheckpoint();
@@ -136,16 +133,14 @@ namespace ProceduralLevel {
                 Instantiate(treePrefabs[Random.Range(0, treePrefabs.Length)], position, Quaternion.identity, parent.transform);
             }            
         }
-        void GenerateEnemies()
+        void GenerateEnemySpawnpoints()
         {
-            GameObject parent = Instantiate(new GameObject("Enemies"), worldParent);
-            for (int i = 0; i < levelManager.level.numberOfEnemies; i++)
+            GameObject enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner");
+            LineSpawner lineSpawner = enemySpawner.GetComponent<LineSpawner>();
+            for (int i = 1000; i < pathPositions.Count; i+=1600)
             {
-                Vector3 position = pathPositions[Random.Range(0, pathPositions.Count)];
-                Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], position, Quaternion.identity, parent.transform);
+                lineSpawner.AddWaypoint(Instantiate(new GameObject("Waypoint"), pathPositions[i], Quaternion.identity, enemySpawner.transform));
             }
-            AgentManager agentManager = FindObjectOfType<AgentManager>();
-            agentManager.UpdateEnemyTarget();
         }
 
         void GenerateNavMesh()
@@ -167,7 +162,7 @@ namespace ProceduralLevel {
         void PlaceCheckpoint()
         {            
             GameObject checkpoint = GameObject.FindGameObjectWithTag("Checkpoint");
-            checkpoint.transform.position = pathPositions[pathPositions.Count - 1];
+            checkpoint.transform.position = pathPositions[pathPositions.Count - 100];
         }
     }
 }

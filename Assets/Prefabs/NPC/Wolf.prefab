@@ -206,7 +206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemytHealth: 0
   lootTable: {fileID: 11400000, guid: 3439a2143a2b3d74292861a75c1a7824, type: 2}
-  healthBarC: {fileID: 526603410573509893}
+  healthBarController: {fileID: 526603410573509893}
   maxHealth: 100
 --- !u!1001 &6028208991982779862
 PrefabInstance:

@@ -78,6 +78,12 @@ public class LineSpawner : MonoBehaviour
 
     }
 
+    public void AddWaypoint(GameObject waypoint)
+    {
+        waypoints.Add(waypoint);
+    }
+
+
     void OnDrawGizmos()
     {
         if (!drawGizmos)

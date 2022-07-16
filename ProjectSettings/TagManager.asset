@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Pickable
   - Checkpoint
+  - EnemySpawner
+  - ItemSpawner
   layers:
   - Default
   - TransparentFX

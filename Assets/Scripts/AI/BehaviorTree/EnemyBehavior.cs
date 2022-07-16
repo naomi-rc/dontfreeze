@@ -29,6 +29,7 @@ public class EnemyBehavior : MonoBehaviour
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         enemyController = GetComponent<EnemyHealthController>();
+        UpdateTarget(FindObjectOfType<AgentManager>().GetTarget());        
         tree = new BehaviorTree();
 
         Selector s1 = new Selector("s1");

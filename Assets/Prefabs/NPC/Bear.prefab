@@ -200,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemytHealth: 0
   lootTable: {fileID: 11400000, guid: 695610610d619364987cfa18765b8d6f, type: 2}
-  healthBarC: {fileID: 7153018737298569648}
+  healthBarController: {fileID: 7153018737298569648}
   maxHealth: 100
 --- !u!4 &863534826353487270 stripped
 Transform:
