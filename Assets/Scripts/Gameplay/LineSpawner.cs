@@ -29,7 +29,7 @@ public class LineSpawner : MonoBehaviour
 
     void Start()
     {
-        //Spawn();
+        Spawn();
     }
 
     public IEnumerable<(T, T)> Pairwise<T>(IEnumerable<T> source)

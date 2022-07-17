@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class PickableItem : MonoBehaviour
 {
-    [SerializeField]
     public InventoryItem inventoryItem;
 
-    [SerializeField]
     public GameObject pickableItemModel;
 
     private void Update()

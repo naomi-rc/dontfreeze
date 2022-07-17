@@ -1,11 +1,14 @@
-public class BehaviorTree : Node
+namespace AI
 {
-    public BehaviorTree() : base("Tree") { }
-
-    public BehaviorTree(string n) : base(n) { }
-
-    public override Status Process()
+    public class BehaviorTree : Node
     {
-        return children[currentChild].Process();
+        public BehaviorTree() : base("Tree") { }
+
+        public BehaviorTree(string n) : base(n) { }
+
+        public override Status Process()
+        {
+            return children[currentChild].Process();
+        }
     }
 }

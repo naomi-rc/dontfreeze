@@ -2,18 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * get #enemies from levelmanager 
- * get enemyspawnmanager
- * set enemies and random number of enemies
- * set items and random number of items
- */
 public class SpawnerManager : MonoBehaviour
 {
     [SerializeField] GameObject[] enemyPrefabs;
     public void GenerateEnemySpawnpoints(List<Vector3> pathPositions)
     {
-        Debug.Log(pathPositions);
         GameObject enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner");
         LineSpawner lineSpawner = enemySpawner.GetComponent<LineSpawner>();
         List<GameObject> waypoints = new List<GameObject>();
@@ -36,24 +29,11 @@ public class SpawnerManager : MonoBehaviour
         {
             int numberAdded = Random.Range(1, enemy);
             lineSpawner.AddEnemy(enemyPrefabs[prefab], numberAdded);
-            Debug.Log($"Spawning {numberAdded} {enemyPrefabs[prefab].name}");
             enemy -= numberAdded;
             prefab++;
             
         }
         lineSpawner.AddEnemy(enemyPrefabs[enemyPrefabs.Length - 1], enemy);
-        Debug.Log($"Spawning {enemy} {enemyPrefabs[prefab].name}");
-        /* for (int i = numberOfEnemies, prefab = 0; i > 0 && prefab < enemyPrefabs.Length-1; prefab++)
-         {            
-             int numberAdded = Random.Range(1, i);
-             lineSpawner.AddEnemy(enemyPrefabs[prefab], numberAdded);
-             i -= numberAdded;
-             Debug.Log($"Spawning {numberAdded} {enemyPrefabs[prefab].name}");
-         }*/
-
-        /*lineSpawner.AddEnemy(enemyPrefabs[0], 0);
-        lineSpawner.AddEnemy(enemyPrefabs[1], 2);
-        lineSpawner.AddEnemy(enemyPrefabs[2], 2);*/
         lineSpawner.Spawn();
     }
 }

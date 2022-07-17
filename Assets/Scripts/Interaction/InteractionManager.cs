@@ -8,10 +8,8 @@ public class InteractionManager : ScriptableObject
 {
     public UnityAction<Interactable> OnInteractableChanged;
 
-    [SerializeField]
     public InputReader inputReader;
 
-    [SerializeField]
     public InventoryDatabase inventoryDatabase;
 
     private Interactable currentInteractable = new Interactable(InteractionType.None, null);

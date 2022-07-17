@@ -1,22 +1,25 @@
 using System.Collections.Generic;
 
-public abstract class Node
+namespace AI
 {
-    public enum Status { Success, Failure, Running }
-    public Status status;
-    public List<Node> children = new List<Node>();
-    protected int currentChild = 0;
-    public string name { get; }
-
-    public Node(string n)
+    public abstract class Node
     {
-        name = n;
-    }
+        public enum Status { Success, Failure, Running }
+        public Status status;
+        public List<Node> children = new List<Node>();
+        protected int currentChild = 0;
+        public string name { get; }
 
-    public void AddChild(Node node)
-    {
-        children.Add(node);
-    }
+        public Node(string n)
+        {
+            name = n;
+        }
 
-    public abstract Status Process();
+        public void AddChild(Node node)
+        {
+            children.Add(node);
+        }
+
+        public abstract Status Process();
+    }
 }
