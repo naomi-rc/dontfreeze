@@ -56,7 +56,7 @@ namespace ProceduralLevel {
             CreateTerrain();
             UpdateMesh();
             GenerateTrees();
-            GenerateEnemySpawnpoints();
+            FindObjectOfType<SpawnerManager>().GenerateEnemySpawnpoints(pathPositions);
             GenerateNavMesh();
             PlacePlayer();
             PlaceCheckpoint();
@@ -132,15 +132,6 @@ namespace ProceduralLevel {
                 Vector3 position = nonPathPositions[Random.Range(0, nonPathPositions.Count)];
                 Instantiate(treePrefabs[Random.Range(0, treePrefabs.Length)], position, Quaternion.identity, parent.transform);
             }            
-        }
-        void GenerateEnemySpawnpoints()
-        {
-            GameObject enemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner");
-            LineSpawner lineSpawner = enemySpawner.GetComponent<LineSpawner>();
-            for (int i = 1000; i < pathPositions.Count; i+=1600)
-            {
-                lineSpawner.AddWaypoint(Instantiate(new GameObject("Waypoint"), pathPositions[i], Quaternion.identity, enemySpawner.transform));
-            }
         }
 
         void GenerateNavMesh()

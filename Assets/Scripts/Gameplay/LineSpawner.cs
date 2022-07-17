@@ -29,7 +29,7 @@ public class LineSpawner : MonoBehaviour
 
     void Start()
     {
-        Spawn();
+        //Spawn();
     }
 
     public IEnumerable<(T, T)> Pairwise<T>(IEnumerable<T> source)
@@ -45,7 +45,7 @@ public class LineSpawner : MonoBehaviour
         }
     }
 
-    void Spawn()
+    public void Spawn()
     {
         var pairs = Pairwise(waypoints).ToList();
         foreach (var enemy in enemies)
@@ -78,11 +78,15 @@ public class LineSpawner : MonoBehaviour
 
     }
 
-    public void AddWaypoint(GameObject waypoint)
+    public void AddWaypoints(List<GameObject> wps)
     {
-        waypoints.Add(waypoint);
+        waypoints = wps;
     }
 
+    public void AddEnemy(GameObject prefab, int count)
+    {
+        enemies.Add(new Enemy() { prefab = prefab, count = count});
+    }
 
     void OnDrawGizmos()
     {
