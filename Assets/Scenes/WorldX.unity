@@ -282,8 +282,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3848288108869427670, guid: 3925fed5d06630c4fa1cb38ad27fc434,
         type: 3}
+      propertyPath: xSize
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848288108869427670, guid: 3925fed5d06630c4fa1cb38ad27fc434,
+        type: 3}
+      propertyPath: zSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848288108869427670, guid: 3925fed5d06630c4fa1cb38ad27fc434,
+        type: 3}
       propertyPath: voxelSize
       value: 0.0625
+      objectReference: {fileID: 0}
+    - target: {fileID: 3848288108869427670, guid: 3925fed5d06630c4fa1cb38ad27fc434,
+        type: 3}
+      propertyPath: pathLength
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3848288108869427670, guid: 3925fed5d06630c4fa1cb38ad27fc434,
         type: 3}
@@ -1136,6 +1151,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1084478353728666402, guid: f9402c9c1b7dfcc49938d176388a1d9b,
+        type: 3}
+      propertyPath: lootPool.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1084478353728666402, guid: f9402c9c1b7dfcc49938d176388a1d9b,
+        type: 3}
+      propertyPath: lootPool.Array.data[0].count
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1084478353728666402, guid: f9402c9c1b7dfcc49938d176388a1d9b,
+        type: 3}
+      propertyPath: lootPool.Array.data[1].count
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -1084478353728666402, guid: f9402c9c1b7dfcc49938d176388a1d9b,
+        type: 3}
+      propertyPath: lootPool.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 4824187673084968321, guid: 2f4420d38d126cf469c3145c863dd861,
+        type: 3}
+    - target: {fileID: -1084478353728666402, guid: f9402c9c1b7dfcc49938d176388a1d9b,
+        type: 3}
+      propertyPath: lootPool.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 8135139957567151184, guid: 0fb8c3b99bdc6e44eb5fcc5671d78255,
+        type: 3}
     - target: {fileID: 1418635401677497984, guid: f9402c9c1b7dfcc49938d176388a1d9b,
         type: 3}
       propertyPath: m_RootOrder

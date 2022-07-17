@@ -16,6 +16,7 @@ namespace ProceduralLevel {
         List<Vector3> vertices;
         List<Vector3> nonPathPositions;
         List<Vector3> pathPositions;
+        List<Vector3> pathShoulderPositions;
         int[] triangles;
         public float defaultHeightMultiplier = 3f;
         public float perlinNoiseX = 0.3f;
@@ -23,8 +24,10 @@ namespace ProceduralLevel {
 
         public int xSize = 20;
         public int zSize = 20;
-        int pathSize = 5;
-        int pathHalfLength = 200;
+        public int pathLength = 16;
+        int pathHalfLength;
+        int pathWidth = 5;
+        
         float pathPositionZ;
         float xSizeMidpoint;
 
@@ -35,7 +38,8 @@ namespace ProceduralLevel {
         void Start()
         {
             worldParent = transform.parent;
-            levelManager = FindObjectOfType<LevelManager>();            
+            levelManager = FindObjectOfType<LevelManager>();
+            SpawnerManager spawnerManager = FindObjectOfType<SpawnerManager>();
 
             // Terrain mesh generation
             mesh = new Mesh();
@@ -44,6 +48,7 @@ namespace ProceduralLevel {
             vertices = new List<Vector3>();
             pathPositionZ = (float)zSize / 4 * 3;
             xSizeMidpoint = xSize / 2;
+            pathHalfLength = pathLength / 2;
 
             defaultHeightMultiplier = levelManager.level.level * levelManager.level.numberOfEnemies;
             perlinNoiseX = levelManager.level.difficulty / defaultHeightMultiplier;
@@ -51,12 +56,14 @@ namespace ProceduralLevel {
 
             //Tree generation
             nonPathPositions = new List<Vector3>();
-            pathPositions = new List<Vector3>();                        
+            pathPositions = new List<Vector3>();                   
+            pathShoulderPositions = new List<Vector3>();                   
 
             CreateTerrain();
             UpdateMesh();
             GenerateTrees();
-            FindObjectOfType<SpawnerManager>().GenerateEnemySpawnpoints(pathPositions);
+            spawnerManager.GenerateEnemyWaypoints(pathPositions);
+            //spawnerManager.GenerateCollectibleSpawnpoints(pathShoulderPositions);
             GenerateNavMesh();
             PlacePlayer();
             PlaceCheckpoint();
@@ -99,7 +106,7 @@ namespace ProceduralLevel {
             float heightMultiplier = defaultHeightMultiplier;
             float height = Mathf.PerlinNoise(x * perlinNoiseX, z * perlinNoiseY);
             float vertexHeight;
-            if (pathPositionZ - pathSize < z && z < pathPositionZ + pathSize && xSizeMidpoint - pathHalfLength < x && x < xSizeMidpoint + pathHalfLength)
+            if (pathPositionZ - pathWidth < z && z < pathPositionZ + pathWidth && xSizeMidpoint - pathHalfLength < x && x < xSizeMidpoint + pathHalfLength)
             {
                 //Level travel path
                 height = Mathf.PerlinNoise(x * perlinNoiseX, z * perlinNoiseY);
@@ -111,6 +118,13 @@ namespace ProceduralLevel {
             {
                 vertexHeight = height * heightMultiplier;
                 nonPathPositions.Add(new Vector3(x, vertexHeight, z));
+                if ((pathPositionZ - pathWidth - 2 < z && z < pathPositionZ - pathWidth  ||
+                    pathPositionZ + pathWidth < z && z < pathPositionZ + pathWidth + 2) &&
+                    (xSizeMidpoint - pathHalfLength - 2 < x &&  x < xSizeMidpoint - pathHalfLength || 
+                    xSizeMidpoint + pathHalfLength < x && x < xSizeMidpoint + pathHalfLength + 2))
+                {
+                    pathShoulderPositions.Add(new Vector3(x, vertexHeight, z));
+                }
             }
             return vertexHeight;
         }
@@ -125,8 +139,9 @@ namespace ProceduralLevel {
         }
                         
         void GenerateTrees()
-        {            
-            GameObject parent = Instantiate(new GameObject("Trees"), worldParent);
+        {
+            GameObject parent = new GameObject("Trees");
+            parent.transform.parent = worldParent;
             for (int i = 0; i < numberOfTrees; i++)
             {
                 Vector3 position = nonPathPositions[Random.Range(0, nonPathPositions.Count)];
