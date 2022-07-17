@@ -62,8 +62,8 @@ namespace ProceduralLevel {
             CreateTerrain();
             UpdateMesh();
             GenerateTrees();
-            spawnerManager.GenerateEnemyWaypoints(pathPositions);
-            //spawnerManager.GenerateCollectibleSpawnpoints(pathShoulderPositions);
+            spawnerManager.GenerateEnemies(pathPositions, worldParent, levelManager.level.numberOfEnemies);
+            spawnerManager.GenerateCollectibles(pathShoulderPositions, worldParent, levelManager.level.numberOfCollectibles);
             GenerateNavMesh();
             PlacePlayer();
             PlaceCheckpoint();
@@ -120,8 +120,7 @@ namespace ProceduralLevel {
                 nonPathPositions.Add(new Vector3(x, vertexHeight, z));
                 if ((pathPositionZ - pathWidth - 2 < z && z < pathPositionZ - pathWidth  ||
                     pathPositionZ + pathWidth < z && z < pathPositionZ + pathWidth + 2) &&
-                    (xSizeMidpoint - pathHalfLength - 2 < x &&  x < xSizeMidpoint - pathHalfLength || 
-                    xSizeMidpoint + pathHalfLength < x && x < xSizeMidpoint + pathHalfLength + 2))
+                    (xSizeMidpoint - pathHalfLength < x && x < xSizeMidpoint + pathHalfLength))
                 {
                     pathShoulderPositions.Add(new Vector3(x, vertexHeight, z));
                 }

@@ -15,7 +15,8 @@ MonoBehaviour:
   level: 1
   levelName: FirstSnow
   numberOfEnemies: 7
+  numberOfCollectibles: 4
   snow: 0
   levelDifficulty: 4
   icon: {fileID: 2800000, guid: 8debbcc189df4d6478686bdcbeb07e6e, type: 3}
-  timeSetting: 3
+  timeSetting: 5
