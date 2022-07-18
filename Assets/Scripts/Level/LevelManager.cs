@@ -8,7 +8,10 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         Print();
-        snowSystem.gameObject.SetActive(level.snow);
+        if (level.snow)
+            snowSystem.Play();
+        else
+            snowSystem.Stop();
     }
 
     public void Print()

@@ -1,18 +1,22 @@
 using System;
-public class Leaf : Node
+
+namespace AI
 {
-    public Func<Status> ProcessFct;
-
-    public Leaf(string name, Func<Status> processFct) : base(name)
+    public class Leaf : Node
     {
-        ProcessFct = processFct;
-    }
+        public Func<Status> ProcessFct;
 
-    public override Status Process()
-    {
-        if (ProcessFct != null)
-            return ProcessFct.Invoke();
+        public Leaf(string name, Func<Status> processFct) : base(name)
+        {
+            ProcessFct = processFct;
+        }
 
-        return Status.Failure;
+        public override Status Process()
+        {
+            if (ProcessFct != null)
+                return ProcessFct.Invoke();
+
+            return Status.Failure;
+        }
     }
 }

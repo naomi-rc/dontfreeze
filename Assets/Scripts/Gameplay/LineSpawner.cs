@@ -45,7 +45,7 @@ public class LineSpawner : MonoBehaviour
         }
     }
 
-    void Spawn()
+    public void Spawn()
     {
         var pairs = Pairwise(waypoints).ToList();
         foreach (var enemy in enemies)
@@ -76,6 +76,16 @@ public class LineSpawner : MonoBehaviour
             }
         }
 
+    }
+
+    public void AddWaypoints(List<GameObject> wps)
+    {
+        waypoints = wps;
+    }
+
+    public void AddEnemy(GameObject prefab, int count)
+    {
+        enemies.Add(new Enemy() { prefab = prefab, count = count});
     }
 
     void OnDrawGizmos()

@@ -1,31 +1,29 @@
 using UnityEngine;
 
-public class AgentManager : MonoBehaviour
+namespace AI
 {
-    GameObject[] agents;
-    [SerializeField] GameObject target;
-
-    void Start()
+    public class AgentManager : MonoBehaviour
     {
-        UpdateEnemyTarget();
-    }
+        GameObject[] agents;
+        [SerializeField] GameObject target;
 
-    public GameObject getTarget()
-    {
-        return target;
-    }
-
-    public void SetTarget(GameObject t)
-    {
-        target = t;
-    }
-
-    public void UpdateEnemyTarget()
-    {
-        agents = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject agent in agents)
+        public GameObject GetTarget()
         {
-            agent.GetComponent<EnemyBehavior>().UpdateTarget(target);
+            return target;
+        }
+
+        public void SetTarget(GameObject t)
+        {
+            target = t;
+        }
+
+        public void UpdateEnemyTarget()
+        {
+            agents = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject agent in agents)
+            {
+                agent.GetComponent<EnemyBehavior>().UpdateTarget(target);
+            }
         }
     }
 }

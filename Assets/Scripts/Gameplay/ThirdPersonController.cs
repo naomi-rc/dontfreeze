@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using AI;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(PlayerInput))]
@@ -114,9 +115,9 @@ public class ThirdPersonController : MonoBehaviour
 
             foreach (var collider in colliderZone)
             {
-                if (collider.gameObject.TryGetComponent<EnemyHealthController>(out EnemyHealthController enemyHealthController))
+                if (collider.gameObject.TryGetComponent(out EnemyHealthController enemyHealthController))
                 {
-                    collider.gameObject.TryGetComponent<EnemyBehavior>(out EnemyBehavior enemyBehavior);
+                    collider.gameObject.TryGetComponent(out EnemyBehavior enemyBehavior);
                     var damage = inventoryDatabase.currentWeapon != null ? inventoryDatabase.currentWeapon.damage : unarmedDamage;
                     FindObjectOfType<AudioManager>().Play(enemyBehavior.hurtSound);
                     enemyHealthController.TakeDamage(damage);

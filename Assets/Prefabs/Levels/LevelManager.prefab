@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7522338785965530328}
   - component: {fileID: 7522338785965530329}
+  - component: {fileID: 574157164601298135}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -45,3 +46,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: {fileID: 11400000, guid: a9fe161de78475b478283e7fd90182e3, type: 2}
+  snowSystem: {fileID: 0}
+--- !u!114 &574157164601298135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7522338785965530330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbe6a5585f1532e409d67f4b400c216f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightSource: {fileID: 0}

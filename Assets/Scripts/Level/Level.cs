@@ -6,6 +6,7 @@ public class Level : ScriptableObject
     public int level;
     public string levelName;
     public int numberOfEnemies;
+    public int numberOfCollectibles;
     public bool snow;
     [SerializeField, Range(1,10)] int levelDifficulty;
     public int difficulty

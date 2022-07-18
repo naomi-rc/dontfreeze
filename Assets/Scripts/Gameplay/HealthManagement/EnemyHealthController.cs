@@ -8,16 +8,19 @@ public class EnemyHealthController : MonoBehaviour
     public float enemytHealth;
     public LootTable lootTable;
 
-    [SerializeField] private HealthBarController healthBarC;
+    [SerializeField] private HealthBarController healthBarController;
     public float maxHealth = 100f;
+
+    FaceCamera faceCamera;
 
     private void Start()
     {
         enemytHealth = maxHealth;
+        faceCamera = FindObjectOfType<FaceCamera>();
 
-        if (healthBarC is not null)
+        if (healthBarController is not null)
         {
-            healthBarC.SetMaxHealth(maxHealth);
+            healthBarController.SetMaxHealth(maxHealth);
         }
     }
 
@@ -25,9 +28,9 @@ public class EnemyHealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (healthBarC is not null)
+        if (healthBarController is not null)
         {
-            healthBarC.SetHealth(enemytHealth);
+            healthBarController.SetHealth(enemytHealth);
         }
     }
 
@@ -44,11 +47,11 @@ public class EnemyHealthController : MonoBehaviour
         enemytHealth -= damage;
     }
 
-    public void SetupHealthBar(Canvas Canvas, Camera Camera)
+    public void SetupHealthBar(Canvas canvas, Camera camera)
     {
-        if (healthBarC is not null)
+        if (healthBarController is not null)
         {
-            faceCamera.mainCamera = Camera;
+            faceCamera.mainCamera = camera;
         }
 
     }
