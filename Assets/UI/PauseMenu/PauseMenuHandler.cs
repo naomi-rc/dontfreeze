@@ -14,6 +14,9 @@ public class PauseMenuHandler : MonoBehaviour
     private Button settingsButton;
     private Button quitButton;
 
+    [SerializeField]
+    private Location MainMenu = default;
+
     void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
@@ -55,7 +58,6 @@ public class PauseMenuHandler : MonoBehaviour
 
     void OnQuitButtonClicked()
     {
-        // TODO: When we setup scene management, move to the start menu
-        Debug.LogWarning("Unimplemented Quit Button Clicked");
+        MainMenu.Load();
     }
 }

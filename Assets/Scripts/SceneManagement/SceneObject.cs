@@ -8,11 +8,12 @@ public class SceneObject : ScriptableObject
 {
     [SerializeField]
     private AssetReference _reference;
-
     public AssetReference reference
     {
         get => _reference;
     }
+
+    public SceneType type = SceneType.None;
 
     public string GetName()
     {
@@ -20,4 +21,11 @@ public class SceneObject : ScriptableObject
     }
 
     // Other scene related data
+}
+
+public enum SceneType
+{
+    Level,
+    Menu,
+    None
 }
