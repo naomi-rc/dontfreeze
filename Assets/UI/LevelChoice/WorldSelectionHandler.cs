@@ -10,8 +10,6 @@ public class WorldSelectionHandler : MonoBehaviour
 
     private Button nextButton;
 
-    private string world;
-
     private RadioButton firstButton;
     private RadioButton secondButton;
     private RadioButton thirdButton;
@@ -19,12 +17,16 @@ public class WorldSelectionHandler : MonoBehaviour
     private RadioButton fifthButton;
 
     private RadioButtonGroup worldChoices;
+    
+    public Sprite worldNotSelected;
+    public Sprite worldSelected;
 
-    //private List<string> worldList = new List<string> { "World 1", "World 2", "World 3", "World 4", "World 5" };
-
+    private List<string> worldList = new List<string> { "First world", "Second world", "Third world", "Fourth world", "Fifth world" };
+    private List<RadioButton> radioButtons = new List<RadioButton>();
     void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
+        nextButton = 
 
         nextButton = rootVisualElement.Q<Button>("NextButton");
         worldChoices = rootVisualElement.Q<RadioButtonGroup>("WorldChoices");
@@ -34,6 +36,12 @@ public class WorldSelectionHandler : MonoBehaviour
         thirdButton = rootVisualElement.Q<RadioButton>("ThirdWorldButton");
         fourthButton = rootVisualElement.Q<RadioButton>("FourthWorldButton");
         fifthButton = rootVisualElement.Q<RadioButton>("FifthWorldButton");
+
+        radioButtons.Add(firstButton);
+        radioButtons.Add(secondButton);
+        radioButtons.Add(thirdButton);
+        radioButtons.Add(fourthButton);
+        radioButtons.Add(fifthButton);
 
         //worldChoices.choices = worldList;
         //worldChoices.value = 0;
@@ -54,24 +62,42 @@ public class WorldSelectionHandler : MonoBehaviour
     public string getWorldSelectionString()
     {
         //return worldList[worldChoices.value];
-        return world;
+        return worldList[getWorldSelection()];
     }
 
 
     public int getWorldSelection()
     {
-        int i = 0;
-
+        int i;
+        for (i = 0; i < radioButtons.Count; i++)
+        {
+            if (radioButtons[i].value)
+            {
+                Debug.Log("Monde choisi : " + i);
+                return i;
+            }
+        }
+        /*
         if (firstButton.value)
         {
-            Debug.Log("Premier monde sélectionner");
-            this.world = "First world";
+            i = 0;
         }
         if (secondButton.value)
         {
-            Debug.Log("Deuxième monde sélectionner");
-            this.world = "Second world";
+            i = 1;
         }
+        if (thirdButton.value)
+        {
+            i = 2;
+        }
+        if (fourthButton.value)
+        {
+            i = 3;
+        }
+        if (fifthButton.value)
+        {
+            i = 4;
+        }*/
 
         //return worldChoices.value;
         return i;
