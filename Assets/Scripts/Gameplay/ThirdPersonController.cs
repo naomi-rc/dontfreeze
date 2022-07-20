@@ -32,7 +32,7 @@ public class ThirdPersonController : MonoBehaviour
     [SerializeField]
     private InventoryItemEventChannel onWeaponEquipEvent;
 
-    public FloatReference speed;
+    public MovementController movementController;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
     public int unarmedDamage = 2;
@@ -57,6 +57,7 @@ public class ThirdPersonController : MonoBehaviour
         inputReader.JumpEvent += ApplyJump;
         inputReader.AttackEvent += AttackEnemy;
         inputReader.MoveEvent += ApplyMovement;
+        inputReader.SprintEvent += SetMovementState;
         onWeaponEquipEvent.OnEventRaised += EquipWeapon;
         // Re-equip the current weapon on scene load 
         EquipWeapon(inventoryDatabase.currentWeapon);
@@ -66,6 +67,7 @@ public class ThirdPersonController : MonoBehaviour
     {
         inputReader.JumpEvent -= ApplyJump;
         inputReader.MoveEvent -= ApplyMovement;
+        inputReader.SprintEvent -= SetMovementState;
         onWeaponEquipEvent.OnEventRaised -= EquipWeapon;
     }
 
@@ -81,6 +83,18 @@ public class ThirdPersonController : MonoBehaviour
     private void ApplyMovement(Vector2 value)
     {
         movement = value;
+    }
+
+    private void SetMovementState(bool isRunning)
+    {
+        if (isRunning)
+        {
+            movementController.Run();
+        }
+        else
+        {
+            movementController.Walk();
+        }
     }
 
     // Update is called once per frame
@@ -104,7 +118,7 @@ public class ThirdPersonController : MonoBehaviour
         else
         {
             animator.SetBool("isGrounded", false);
-            animator.SetBool("isFalling", true);                   
+            animator.SetBool("isFalling", true);
         }
 
         if (isAttacking)
@@ -141,7 +155,7 @@ public class ThirdPersonController : MonoBehaviour
 
     private void Move()
     {
-        float targetSpeed = (movement != Vector2.zero) ? speed.value : 0f;
+        float targetSpeed = (movement != Vector2.zero) ? movementController.Speed : 0f;
 
         // We could implement 'accelerate to target speed'
 
