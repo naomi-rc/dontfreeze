@@ -4,19 +4,19 @@
         <ui:VisualElement style="width: 80%; height: 466px; align-items: center; justify-content: flex-start; flex-direction: column; translate: 0 10%; background-color: rgb(255, 255, 255);">
             <ui:Label text="Choose your world" display-tooltip-when-elided="true" name="Label" style="position: relative; top: 23px; left: 16px; height: 63px; width: 411px; font-size: 40px; -unity-text-align: upper-left; -unity-font: url(&apos;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#Arial&apos;); -unity-font-style: bold; color: rgb(135, 186, 221); -unity-text-outline-color: rgb(34, 34, 34);" />
             <ui:RadioButtonGroup value="-1" name="WorldChoices" style="position: relative; height: 356px; width: 686px; top: 0; left: 0;">
-                <ui:RadioButton name="FirstWorldButton" value="false" label=" " style="height: 94px; width: 105px; position: absolute; top: 200px; left: 40px; background-image: url(&apos;project://database/Assets/Images/LevelChoice/World.JPG?fileID=2800000&amp;guid=d2dbc287849cb994eafd1f5cb0b278df&amp;type=3#World&apos;);">
+                <ui:RadioButton name="FirstWorldButton" value="false" label=" " style="position: absolute; width: 105px; height: 94px; top: 208px; left: 31px;">
                     <ui:Label text="1" display-tooltip-when-elided="true" name="1" style="position: absolute; color: rgb(25, 45, 56); font-size: 30px; top: 19px; left: 29px; height: 46px; width: 35px; -unity-text-align: upper-center; background-color: rgb(255, 255, 255);" />
                 </ui:RadioButton>
-                <ui:RadioButton name="SecondWorldButton" value="false" label=" " class="worldSelected worldNotSelected" style="background-image: url(&apos;project://database/Assets/Images/LevelChoice/World.JPG?fileID=2800000&amp;guid=d2dbc287849cb994eafd1f5cb0b278df&amp;type=3#World&apos;); height: 94px; width: 105px; position: absolute; top: 52px; left: 163px;">
+                <ui:RadioButton name="SecondWorldButton" value="false" label=" " style="height: 94px; width: 105px; position: absolute; top: 52px; left: 163px; visibility: visible; overflow: hidden; display: flex;">
                     <ui:Label text="2" display-tooltip-when-elided="true" name="2" style="position: relative; color: rgb(25, 45, 56); font-size: 30px; top: 18px; left: -142px; height: 36px; width: 16px;" />
                 </ui:RadioButton>
-                <ui:RadioButton name="ThirdWorldButton" value="false" label=" " class="worldNotSelected" style="background-image: url(&apos;project://database/Assets/Images/LevelChoice/World.JPG?fileID=2800000&amp;guid=d2dbc287849cb994eafd1f5cb0b278df&amp;type=3#World&apos;); height: 94px; width: 105px; position: absolute; top: 204px; left: 295px;">
-                    <ui:Label text="3" display-tooltip-when-elided="true" name="3" style="position: relative; color: rgb(25, 45, 56); font-size: 30px; top: 21px; left: -142px;" />
+                <ui:RadioButton name="ThirdWorldButton" value="false" label=" " style="height: 94px; width: 105px; position: absolute; top: 204px; left: 295px;">
+                    <ui:Label text="3" display-tooltip-when-elided="true" name="3" style="position: relative; color: rgb(25, 45, 56); font-size: 30px; top: 21px; left: -144px; height: 40px; width: 28px;" />
                 </ui:RadioButton>
-                <ui:RadioButton name="FourthWorldButton" value="false" label=" " class="worldSelected" style="background-image: url(&apos;project://database/Assets/Images/LevelChoice/World.JPG?fileID=2800000&amp;guid=d2dbc287849cb994eafd1f5cb0b278df&amp;type=3#World&apos;); height: 94px; width: 105px; position: absolute; top: 47px; left: 410px;">
+                <ui:RadioButton name="FourthWorldButton" value="false" label=" " style="height: 94px; width: 105px; position: absolute; top: 47px; left: 412px;">
                     <ui:Label text="4" display-tooltip-when-elided="true" name="4" style="position: relative; color: rgb(25, 45, 56); font-size: 30px; top: 20px; left: -144px; height: 35px; width: 21px;" />
                 </ui:RadioButton>
-                <ui:RadioButton name="FifthWorldButton" value="false" label=" " class="worldSelected worldNotSelected" style="background-image: url(&apos;project://database/Assets/Images/LevelChoice/World.JPG?fileID=2800000&amp;guid=d2dbc287849cb994eafd1f5cb0b278df&amp;type=3#World&apos;); height: 94px; width: 105px; position: absolute; top: 199px; left: 527px;">
+                <ui:RadioButton name="FifthWorldButton" value="false" label=" " style="height: 94px; width: 105px; position: absolute; top: 199px; left: 527px;">
                     <ui:Label text="5" display-tooltip-when-elided="true" name="5" style="position: relative; color: rgb(25, 45, 56); font-size: 30px; top: 21px; left: -143px; height: 34px; width: 19px;" />
                 </ui:RadioButton>
             </ui:RadioButtonGroup>

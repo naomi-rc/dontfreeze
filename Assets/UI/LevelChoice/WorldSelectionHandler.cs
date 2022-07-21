@@ -47,7 +47,7 @@ public class WorldSelectionHandler : MonoBehaviour
         //worldChoices.value = 0;
         nextButton.clicked += OnNextButtonClicked;
     }
-
+   
     void OnDisable()
     {
         nextButton.clicked -= OnNextButtonClicked;
@@ -73,7 +73,6 @@ public class WorldSelectionHandler : MonoBehaviour
         {
             if (radioButtons[i].value)
             {
-                Debug.Log("Monde choisi : " + i);
                 return i;
             }
         }
