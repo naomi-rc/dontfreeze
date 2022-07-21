@@ -9,6 +9,9 @@ TagManager:
   - Checkpoint
   - EnemySpawner
   - ItemSpawner
+  - SafehouseLocationExit
+  - SnowSystem
+  - LightSource
   layers:
   - Default
   - TransparentFX
