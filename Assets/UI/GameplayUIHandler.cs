@@ -199,6 +199,7 @@ public class GameplayUIHandler : MonoBehaviour
     {
         DisableEverything();
         gameOverMenuHandler.gameObject.SetActive(true);
+        StartCoroutine(Blur());
     }
 
     void OnSubmitSound(AudioClip clip)
