@@ -4,15 +4,23 @@
         <OnScreenJoystick name="Joystick" style="bottom: 40px; position: absolute; left: 40px;" />
         <ui:VisualElement name="Buttons" style="position: absolute; right: 40px; bottom: 40px; width: 150px;">
             <ui:VisualElement style="align-items: flex-end;">
-                <ui:Button text="Interact" name="InteractButton" class="OnScreenButton" style="display: none;" />
+                <ui:Button name="InteractButton" class="OnScreenButton" style="display: none;">
+                    <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/MobileControls/hand_token.png?fileID=2800000&amp;guid=18b33f7a038bc804fb49865fac1e8873&amp;type=3#hand_token&apos;); flex-grow: 1; -unity-background-image-tint-color: rgb(146, 150, 156);" />
+                </ui:Button>
             </ui:VisualElement>
             <ui:VisualElement>
-                <ui:Button text="Jump" focusable="false" name="JumpButton" class="OnScreenButton" />
+                <ui:Button focusable="false" name="JumpButton" class="OnScreenButton">
+                    <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/MobileControls/character_lift.png?fileID=2800000&amp;guid=d7974fa3fb538a1439fc63bd5f4a0817&amp;type=3#character_lift&apos;); flex-grow: 1; -unity-background-image-tint-color: rgb(146, 150, 156);" />
+                </ui:Button>
             </ui:VisualElement>
             <ui:VisualElement style="align-items: flex-end;">
-                <ui:Button text="Attack" focusable="false" name="AttackButton" class="OnScreenButton" />
+                <ui:Button focusable="false" name="AttackButton" class="OnScreenButton">
+                    <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/MobileControls/sword.png?fileID=2800000&amp;guid=d6db45bab383c4442a12ed54bc4c11ab&amp;type=3#sword&apos;); flex-grow: 1; -unity-background-image-tint-color: rgb(146, 150, 156);" />
+                </ui:Button>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:Button text="Inventory" name="InventoryButton" class="OnScreenButton" style="position: absolute; right: 40px; top: 20px;" />
+        <ui:Button name="InventoryButton" class="OnScreenButton" style="position: absolute; right: 40px; top: 20px;">
+            <ui:VisualElement style="background-image: url(&apos;project://database/Assets/UI/MobileControls/pouch.png?fileID=2800000&amp;guid=7b865006f81cf804a8b32d0edc646ade&amp;type=3#pouch&apos;); flex-grow: 1; -unity-background-image-tint-color: rgb(146, 150, 156);" />
+        </ui:Button>
     </ui:VisualElement>
 </ui:UXML>

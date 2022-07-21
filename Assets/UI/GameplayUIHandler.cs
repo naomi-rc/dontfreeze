@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GameplayUIHandler : MonoBehaviour
 {
@@ -34,6 +35,12 @@ public class GameplayUIHandler : MonoBehaviour
     [SerializeField]
     private InputReader inputReader;
 
+    [SerializeField]
+    private Volume blurVolume;
+
+    [SerializeField]
+    private AudioSource audioSource;
+
     void Awake()
     {
         inputReader.EnableGameplayInput();
@@ -43,6 +50,7 @@ public class GameplayUIHandler : MonoBehaviour
         inputReader.OpenInventoryEvent += OnOpenInventory;
         pauseMenuHandler.ResumeButtonAction += OnPauseResumeButtonClicked;
         pauseMenuHandler.SettingsButtonAction += OnPauseSettingsButtonClicked;
+        pauseMenuHandler.SubmitSoundAction += OnSubmitSound;
         settingsMenuHandler.OnSettingsBackButtonClicked += OnSettingsBackButtonClicked;
         inventoryMenuHandler.OnInventoryCloseButtonClicked += OnInventoryCloseButtonClicked;
         onPlayerDeathEvent.OnEventRaised += OnPlayerDeath;
@@ -72,22 +80,45 @@ public class GameplayUIHandler : MonoBehaviour
 #endif
     }
 
+    private IEnumerator Blur()
+    {
+        LeanTween.value(gameObject, 0.4f, 1f, 0.5f).setEase(LeanTweenType.easeInSine).setOnUpdate((float value) =>
+        {
+            blurVolume.weight = value;
+        });
+
+        yield return null;
+    }
+
+    private IEnumerator Unblur()
+    {
+        LeanTween.value(gameObject, 1f, 0f, 0.5f).setEase(LeanTweenType.easeOutSine).setOnUpdate((float value) =>
+        {
+            blurVolume.weight = value;
+        });
+
+        yield return null;
+    }
+
     void OnPause()
     {
         inputReader.EnableUiInput();
         EnablePauseMenu();
+        StartCoroutine(Blur());
     }
 
     void OnOpenInventory()
     {
         inputReader.EnableUiInput();
         EnableInventoryMenu();
+        StartCoroutine(Blur());
     }
 
     void OnPauseResumeButtonClicked()
     {
         inputReader.EnableGameplayInput();
         DisableMenus();
+        StartCoroutine(Unblur());
     }
 
     void OnPauseSettingsButtonClicked()
@@ -98,7 +129,7 @@ public class GameplayUIHandler : MonoBehaviour
 
     void OnSettingsBackButtonClicked()
     {
-        inputReader.EnableGameplayInput();
+        inputReader.EnableUiInput();
         EnablePauseMenu();
     }
 
@@ -106,6 +137,7 @@ public class GameplayUIHandler : MonoBehaviour
     {
         inputReader.EnableGameplayInput();
         DisableMenus();
+        StartCoroutine(Unblur());
     }
 
     void OnPlayerDeath()
@@ -129,7 +161,7 @@ public class GameplayUIHandler : MonoBehaviour
 
         foreach (Transform child in children)
         {
-            if (child.gameObject.name != "EventSystem")
+            if (child.gameObject.name != "EventSystem" && child.gameObject.name != "BlurVolume" && child.gameObject.name != "AudioSource")
             {
                 child.gameObject.SetActive(false);
             }
@@ -167,5 +199,10 @@ public class GameplayUIHandler : MonoBehaviour
     {
         DisableEverything();
         gameOverMenuHandler.gameObject.SetActive(true);
+    }
+
+    void OnSubmitSound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }
