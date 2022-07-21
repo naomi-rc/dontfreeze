@@ -388,7 +388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: b70cc9aed38033142b0c858e52defb2b, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 1eb21b3a841480a42ba16b5f247aa54c,
+  sourceAsset: {fileID: 9197481963319205126, guid: 80df745131776a74eae3a100feaf4628,
     type: 3}
   m_SortingOrder: 0
 --- !u!4 &766755336
@@ -480,6 +480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d191d38be7518a40b87d6ae12ae4234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldNotSelected: {fileID: 0}
+  worldSelected: {fileID: 0}
 --- !u!1 &1439904466
 GameObject:
   m_ObjectHideFlags: 0
