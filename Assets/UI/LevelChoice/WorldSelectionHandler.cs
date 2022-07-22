@@ -18,15 +18,17 @@ public class WorldSelectionHandler : MonoBehaviour
 
     private RadioButtonGroup worldChoices;
     
-    public Sprite worldNotSelected;
-    public Sprite worldSelected;
+    //public Sprite worldNotSelected;
+    //public Sprite worldSelected;
+
+    public LevelSettings levelSettings;
+
 
     private List<string> worldList = new List<string> { "First world", "Second world", "Third world", "Fourth world", "Fifth world" };
     private List<RadioButton> radioButtons = new List<RadioButton>();
     void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
-        nextButton = 
 
         nextButton = rootVisualElement.Q<Button>("NextButton");
         worldChoices = rootVisualElement.Q<RadioButtonGroup>("WorldChoices");
@@ -42,6 +44,7 @@ public class WorldSelectionHandler : MonoBehaviour
         radioButtons.Add(thirdButton);
         radioButtons.Add(fourthButton);
         radioButtons.Add(fifthButton);
+        lockLevel();
 
         //worldChoices.choices = worldList;
         //worldChoices.value = 0;
@@ -65,7 +68,53 @@ public class WorldSelectionHandler : MonoBehaviour
         return worldList[getWorldSelection()];
     }
 
+    public void lockLevel()
+    {   
+        secondButton.SetEnabled(false);
+        secondButton.AddToClassList("world-lock");
 
+        // Vérouiller le niveau 3
+        thirdButton.SetEnabled(false);
+        thirdButton.AddToClassList("world-lock");
+
+        // Vérouiller le niveau 4
+        fourthButton.SetEnabled(false);
+        fourthButton.AddToClassList("world-lock");
+
+        // Vérouiller le niveau 5
+        fifthButton.SetEnabled(false);
+        fifthButton.AddToClassList("world-lock");
+        
+    }
+
+    public void updateImage()
+    {
+        // TODO changer pour un event system par exemple
+        if (levelSettings.world1Complete)
+        {
+            // Dévérouiller le niveau 2
+            secondButton.SetEnabled(true);
+            secondButton.RemoveFromClassList("world-lock");
+            if (levelSettings.world2Complete)
+            {
+                // Dévérouiller le niveau 3
+                thirdButton.SetEnabled(true);
+                thirdButton.RemoveFromClassList("world-lock");
+                if (levelSettings.world3Complete)
+                {
+                    // Dévérouiller le niveau 4
+                    fourthButton.SetEnabled(true);
+                    fourthButton.RemoveFromClassList("world-lock");
+                    if (levelSettings.world4Complete)
+                    {
+                        // Dévérouiller le niveau 5
+                        fifthButton.SetEnabled(true);
+                        fifthButton.RemoveFromClassList("world-lock");
+                    }
+                }
+            }
+        }
+    }
     public int getWorldSelection()
     {
         int i;
@@ -105,5 +154,10 @@ public class WorldSelectionHandler : MonoBehaviour
     public void setWorld(int world)
     {
         worldChoices.value = world;
+    }
+
+    private void Update()
+    {
+        updateImage();
     }
 }

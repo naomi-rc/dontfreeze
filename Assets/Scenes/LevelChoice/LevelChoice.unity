@@ -480,8 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d191d38be7518a40b87d6ae12ae4234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldNotSelected: {fileID: 0}
-  worldSelected: {fileID: 0}
+  levelSettings: {fileID: 11400000, guid: 4cb9e224e84abd340acd03188114e6ce, type: 2}
 --- !u!1 &1439904466
 GameObject:
   m_ObjectHideFlags: 0
