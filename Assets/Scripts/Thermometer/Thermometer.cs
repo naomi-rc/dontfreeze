@@ -14,8 +14,10 @@ public class Thermometer : MonoBehaviour
     private FloatReference coldTemperature;
 
     [SerializeField]
-    private StatusEffect coldStatusEffect = default;
+    private InventoryDatabase inventoryDatabase;
 
+    [SerializeField]
+    private StatusEffect coldStatusEffect = default;
     private bool hasColdStatus = false;
 
     private void Awake()
@@ -56,6 +58,13 @@ public class Thermometer : MonoBehaviour
     public void ChangeTowards(float target, float intensity)
     {
         int direction = target.CompareTo(temperature.value);
+
+        // Apply cold resistance only when it's getting cold
+        if (direction < 0)
+        {
+            float resistance = inventoryDatabase?.currentClothes?.coldResistance ?? 0f;
+            intensity -= (intensity * resistance);
+        }
 
         float result = temperature.value + (intensity * direction);
 

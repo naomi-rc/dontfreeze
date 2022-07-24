@@ -90,14 +90,17 @@ public class InventoryMenuHandler : MonoBehaviour
         {
             FocusItem(null);
         }
-        else if (entry.item is InventoryWeapon && playerInventory.currentWeapon == null)
+        else if ((entry.item is InventoryWeapon && playerInventory.currentWeapon == null)
+            || (entry.item is InventoryClothes && playerInventory.currentClothes == null))
         {
             actionButton.text = "Equip";
         }
-        else if (entry.item is InventoryWeapon && playerInventory.currentWeapon != null)
+        else if ((entry.item is InventoryWeapon && playerInventory.currentWeapon != null)
+        || (entry.item is InventoryClothes && playerInventory.currentClothes != null))
         {
             actionButton.text = "Unequip";
         }
+
     }
 
     void OnCloseButtonClicked()
@@ -206,6 +209,11 @@ public class InventoryMenuHandler : MonoBehaviour
             case InventoryWeapon _:
                 type.text = "Weapon";
                 actionButton.text = playerInventory.currentWeapon == item ? "Unequip" : "Equip";
+                actionButton.visible = true;
+                break;
+            case InventoryClothes _:
+                type.text = "Clothes";
+                actionButton.text = playerInventory.currentClothes == item ? "Unequip" : "Equip";
                 actionButton.visible = true;
                 break;
             case InventoryConsumable _:

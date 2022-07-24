@@ -21,9 +21,13 @@ public class InventoryDatabase : ScriptableObject
     [SerializeField]
     private InventoryItemEventChannel onWeaponEquipEvent;
 
+    [SerializeField]
+    private InventoryItemEventChannel onClothesEquipEvent;
+
     public UnityAction OnDatabaseChanged = delegate { };
     public List<InventoryEntry> entries = new List<InventoryEntry>();
     public InventoryWeapon currentWeapon = null;
+    public InventoryClothes currentClothes = null;
 
     private int maxInventorySize = 50;
 
@@ -36,6 +40,7 @@ public class InventoryDatabase : ScriptableObject
     {
         entries.Clear();
         currentWeapon = null;
+        currentClothes = null;
     }
 
     private int FindNextIndex()
@@ -65,6 +70,9 @@ public class InventoryDatabase : ScriptableObject
             case InventoryWeapon weapon:
                 currentWeapon = currentWeapon != weapon ? weapon : null;
                 onWeaponEquipEvent.Raise(currentWeapon);
+                break;
+            case InventoryClothes clothes:
+                currentClothes = currentClothes != clothes ? clothes : null;
                 break;
             default:
                 break;
@@ -131,4 +139,3 @@ public class InventoryDatabase : ScriptableObject
         OnDatabaseChanged.Invoke();
     }
 }
-
