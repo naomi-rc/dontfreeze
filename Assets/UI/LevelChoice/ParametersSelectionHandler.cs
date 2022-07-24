@@ -15,12 +15,22 @@ public class ParametersSelectionHandler : MonoBehaviour
     private Button backButton;
     private Button applyButton;
 
-    private SliderInt enemyNumber;
-    private Label enemyValue;
-    private Label minEnemy;
-    private Label maxEnemy;
+    private SliderInt animalEnemyNumber;
+    private SliderInt wispEnemyNumber;
 
-    private RadioButtonGroup buttonGroup;
+    private Label animalEnemyValue;
+    private Label wispEnemyValue;
+
+    private Label minAnimalEnemy;
+    private Label maxAnimalEnemy;
+
+    private Label minWispEnemy;
+    private Label maxWispEnemy;
+
+    private List<DifficultyPair> animalPair;
+    private List<DifficultyPair> wispPair;
+
+    //private RadioButtonGroup buttonGroup;
 
     private List<string> skyboxList = new List<string>{ "Daylight", "Nightlight", "DarkMoon", "MoonNight" };
     private List<string> difficultyList = new List<string> { "Easy", "Normal", "Hard" };
@@ -32,8 +42,9 @@ public class ParametersSelectionHandler : MonoBehaviour
 
     private void updateValue()
     {
-        enemyValue.text = getEnemyNumber().ToString();
-        setMinMaxEnemyValue(buttonGroup.value);
+        animalEnemyValue.text = getAnimalEnemyNumber().ToString();
+        wispEnemyValue.text = getWispEnemyNumber().ToString();
+        //setMinMaxEnemyValue(buttonGroup.value);
     }
 
     void OnEnable()
@@ -47,18 +58,26 @@ public class ParametersSelectionHandler : MonoBehaviour
         skyboxDropDown.choices = skyboxList;
         skyboxDropDown.value = skyboxList[0];
 
-        enemyNumber = rootVisualElement.Q<SliderInt>("EnemyNumber");
-        enemyValue = rootVisualElement.Q<Label>("EnemyValue");
-        enemyValue.text = enemyNumber.value.ToString();
+        animalEnemyNumber = rootVisualElement.Q<SliderInt>("AnimalEnemyNumber");
+        animalEnemyValue = rootVisualElement.Q<Label>("AnimalEnemyValue");
+        animalEnemyValue.text = animalEnemyNumber.value.ToString();
 
-        minEnemy = rootVisualElement.Q<Label>("Min");
-        maxEnemy = rootVisualElement.Q<Label>("Max");
+        wispEnemyNumber = rootVisualElement.Q<SliderInt>("WispEnemyNumber");
+        wispEnemyValue = rootVisualElement.Q<Label>("WispEnemyValue");
+        wispEnemyValue.text = wispEnemyNumber.value.ToString();
 
-        buttonGroup = rootVisualElement.Q<RadioButtonGroup>("DifficultyGroup");
-        buttonGroup.choices = difficultyList;
-        buttonGroup.value = 1;
+        minAnimalEnemy = rootVisualElement.Q<Label>("MinAnimal");
+        maxAnimalEnemy = rootVisualElement.Q<Label>("MaxAnimal");
 
-        setMinMaxEnemyValue(buttonGroup.value);
+        minWispEnemy = rootVisualElement.Q<Label>("MinWisp");
+        maxWispEnemy = rootVisualElement.Q<Label>("MaxWisp");
+
+        // TODO Remplacer par autre chose
+        //buttonGroup = rootVisualElement.Q<RadioButtonGroup>("DifficultyGroup");
+        //buttonGroup.choices = difficultyList;
+        //buttonGroup.value = 1;
+
+        //setMinMaxEnemyValue(buttonGroup.value);
 
         backButton.clicked += OnBackButtonClicked;
         applyButton.clicked += OnApplyButtonClicked;
@@ -82,18 +101,21 @@ public class ParametersSelectionHandler : MonoBehaviour
 
     private void setMinEnemyValue(int value)
     {
-        enemyNumber.lowValue = value;
+        animalEnemyNumber.lowValue = value;
     }
 
     private void setMaxEnemyValue(int value)
     {
-        enemyNumber.highValue = value;
+        animalEnemyNumber.highValue = value;
     }
 
     private void setMinMaxValueText()
     {
-        minEnemy.text = enemyNumber.lowValue.ToString();
-        maxEnemy.text = enemyNumber.highValue.ToString();
+        minAnimalEnemy.text = animalEnemyNumber.lowValue.ToString();
+        maxAnimalEnemy.text = animalEnemyNumber.highValue.ToString();
+
+        minWispEnemy.text = animalEnemyNumber.lowValue.ToString();
+        maxWispEnemy.text = animalEnemyNumber.highValue.ToString();
     }
 
     private void setSkybox(string skybox)
@@ -110,15 +132,22 @@ public class ParametersSelectionHandler : MonoBehaviour
 
     private void setDifficulty(int difficulty)
     {
-        buttonGroup.value = difficulty;
+        //buttonGroup.value = difficulty;
         setMinMaxEnemyValue(difficulty);
     }
 
-    private void setEnemyNumber(int number)
+    private void setAnimalEnemyNumber(int number)
     {
-        enemyNumber.value = number;
-        enemyValue.text = number.ToString();
+        animalEnemyNumber.value = number;
+        animalEnemyValue.text = number.ToString();
     }
+
+    private void setWispEnemyNumber(int number)
+    {
+        wispEnemyNumber.value = number;
+        wispEnemyValue.text = number.ToString();
+    }
+
     public void setMinMaxEnemyValue(int difficulty)
     {
         if (difficulty == 0)
@@ -141,12 +170,14 @@ public class ParametersSelectionHandler : MonoBehaviour
 
     public int getDifficultyChoice()
     {
-        return buttonGroup.value;
+        return 1;
+        //return buttonGroup.value;
     }
 
     public string getStringDifficulty()
     {
-        return difficultyList[buttonGroup.value];
+        //return difficultyList[buttonGroup.value];
+        return difficultyList[1];
     }
     
     public string getSkybox()
@@ -154,15 +185,21 @@ public class ParametersSelectionHandler : MonoBehaviour
         return skyboxDropDown.value;
     }
 
-    public int getEnemyNumber()
+    public int getAnimalEnemyNumber()
     {
-        return enemyNumber.value;
+        return animalEnemyNumber.value;
     }
 
-    public void setValues(string skybox, int difficulty, int enemyNumber)
+    public int getWispEnemyNumber()
     {
-        setDifficulty(difficulty);
+        return wispEnemyNumber.value;
+    }
+
+    public void setValues(string skybox, int difficulty, int animalEnemyNumber, int wispEnemyNumber)
+    {
+        //setDifficulty(difficulty);
         setSkybox(skybox);
-        setEnemyNumber(enemyNumber);
+        setAnimalEnemyNumber(animalEnemyNumber);
+        setWispEnemyNumber(wispEnemyNumber);
     }
 }

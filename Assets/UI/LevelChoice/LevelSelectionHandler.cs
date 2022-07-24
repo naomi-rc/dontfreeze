@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 
-public class WorldSelectionHandler : MonoBehaviour
+public class LevelSelectionHandler : MonoBehaviour
 {
     public UnityAction SettingsButtonAction = delegate { };
     public UnityAction NextButtonAction = delegate { };
@@ -17,21 +17,19 @@ public class WorldSelectionHandler : MonoBehaviour
     private RadioButton fifthButton;
 
     private RadioButtonGroup worldChoices;
-    
-    //public Sprite worldNotSelected;
-    //public Sprite worldSelected;
+    private int levelNumber = 0;
 
     public LevelSettings levelSettings;
 
-
-    private List<string> worldList = new List<string> { "First world", "Second world", "Third world", "Fourth world", "Fifth world" };
+    // TODO Peut-être utiliser la liste des niveaux de LevelManager à la place
+    private List<string> levelList = new List<string> { "First world", "Second world", "Third world", "Fourth world", "Fifth world" };
     private List<RadioButton> radioButtons = new List<RadioButton>();
     void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
 
         nextButton = rootVisualElement.Q<Button>("NextButton");
-        worldChoices = rootVisualElement.Q<RadioButtonGroup>("WorldChoices");
+        //worldChoices = rootVisualElement.Q<RadioButtonGroup>("WorldChoices");
 
         firstButton = rootVisualElement.Q<RadioButton>("FirstWorldButton");
         secondButton = rootVisualElement.Q<RadioButton>("SecondWorldButton");
@@ -45,6 +43,7 @@ public class WorldSelectionHandler : MonoBehaviour
         radioButtons.Add(fourthButton);
         radioButtons.Add(fifthButton);
         lockLevel();
+        setLevel(levelNumber);
 
         //worldChoices.choices = worldList;
         //worldChoices.value = 0;
@@ -58,14 +57,18 @@ public class WorldSelectionHandler : MonoBehaviour
 
     void OnNextButtonClicked()
     {
-        setWorld(worldChoices.value);
+        //setLevel(worldChoices.value);
+        
+        levelNumber = getWorldSelection();
+        setLevel(levelNumber);
+
         NextButtonAction.Invoke();
     }
     
     public string getWorldSelectionString()
     {
         //return worldList[worldChoices.value];
-        return worldList[getWorldSelection()];
+        return levelList[getWorldSelection()];
     }
 
     public void lockLevel()
@@ -125,35 +128,23 @@ public class WorldSelectionHandler : MonoBehaviour
                 return i;
             }
         }
-        /*
-        if (firstButton.value)
-        {
-            i = 0;
-        }
-        if (secondButton.value)
-        {
-            i = 1;
-        }
-        if (thirdButton.value)
-        {
-            i = 2;
-        }
-        if (fourthButton.value)
-        {
-            i = 3;
-        }
-        if (fifthButton.value)
-        {
-            i = 4;
-        }*/
-
-        //return worldChoices.value;
         return i;
     }
 
-    public void setWorld(int world)
+    public void setLevel(int level)
     {
-        worldChoices.value = world;
+        for (int i = 0; i < radioButtons.Count; ++i)
+        {
+            if (i == level)
+            {
+                // TODO corriger l'image de sélection ne n'affiche pas
+                radioButtons[i].SetSelected(true);
+                //radioButtons[i].value = true;
+                //radioButtons[i].SetValueWithoutNotify(true);
+                levelNumber = i;
+                return;
+            }  
+        }
     }
 
     private void Update()

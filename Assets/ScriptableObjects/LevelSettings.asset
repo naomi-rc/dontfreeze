@@ -13,6 +13,15 @@ MonoBehaviour:
   m_Name: LevelSettings
   m_EditorClassIdentifier: 
   world1Complete: 1
-  world2Complete: 1
+  world2Complete: 0
   world3Complete: 0
   world4Complete: 0
+  prefabBear: {fileID: 5050331601684100553, guid: 9517eaed0235e9547931d13d9dd8bf80,
+    type: 3}
+  prefabWolf: {fileID: 9109889493818067255, guid: bc240aac3bd3dd44089f0935fe35c653,
+    type: 3}
+  prefabWisp: {fileID: 9102090470229177761, guid: dfea3dda62780234283444236fa45db6,
+    type: 3}
+  wispNumber: 1
+  animalNumber: 2
+  levelNumber: 2

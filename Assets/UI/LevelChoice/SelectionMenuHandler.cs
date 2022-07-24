@@ -8,59 +8,76 @@ public class SelectionMenuHandler : MonoBehaviour
     private ParametersSelectionHandler parametersSelectionHandler;
 
     [SerializeField]
-    private WorldSelectionHandler worldSelectionHandler;
+    private LevelSelectionHandler levelSelectionHandler;
+
+    [SerializeField]
+    private LevelSettings levelSettings;
+
 
     private string skybox;
-    private int enemyNumber;
-    private int difficulty;
+    private int animalEnemyNumber;
+    private int wispEnemyNumber;
 
-    private int world;
+
+    //private int difficulty;
+
+    private int level;
 
     void Awake()
     {
-        worldSelectionHandler.NextButtonAction += OnNextButtonClicked;
+        levelSelectionHandler.NextButtonAction += OnNextButtonClicked;
         parametersSelectionHandler.BackButtonAction += OnBackButtonClicked;
         parametersSelectionHandler.ApplyButtonAction += OnApplyButtonClicked;
     }
 
     private void OnDisable()
     {
-        worldSelectionHandler.NextButtonAction -= OnNextButtonClicked;
+        levelSelectionHandler.NextButtonAction -= OnNextButtonClicked;
         parametersSelectionHandler.BackButtonAction -= OnBackButtonClicked;
         parametersSelectionHandler.ApplyButtonAction -= OnApplyButtonClicked;
     }
 
     void OnApplyButtonClicked()
     {
-        world = worldSelectionHandler.getWorldSelection();
-        difficulty = parametersSelectionHandler.getDifficultyChoice();
+        level = levelSelectionHandler.getWorldSelection();
+        //difficulty = parametersSelectionHandler.getDifficultyChoice();
         skybox = parametersSelectionHandler.getSkybox();
-        enemyNumber = parametersSelectionHandler.getEnemyNumber();
-        
-        parametersSelectionHandler.setValues(skybox, difficulty, enemyNumber);
-        worldSelectionHandler.setWorld(world);
 
-        Debug.Log("The user chose the " + worldSelectionHandler.getWorldSelectionString() + " with the " + skybox + " skybox. The level of difficulty is " + parametersSelectionHandler.getStringDifficulty() + " and the user chose " + enemyNumber + " enemies!");
+        animalEnemyNumber = parametersSelectionHandler.getAnimalEnemyNumber();
+        wispEnemyNumber = parametersSelectionHandler.getWispEnemyNumber();
+
+        parametersSelectionHandler.setValues(skybox, 1, animalEnemyNumber, wispEnemyNumber);
+        levelSelectionHandler.setLevel(level);
+
+        Debug.Log("The user chose the " + levelSelectionHandler.getWorldSelectionString() + " with the " 
+            + skybox + " skybox. And the user chose " + animalEnemyNumber + "animal enemies and " + wispEnemyNumber + " wisp enemies!");
+        Debug.Log("The user chose the level : " + level);
+
+        levelSettings.wispNumber = wispEnemyNumber;
+        levelSettings.animalNumber = animalEnemyNumber;
+        levelSettings.levelNumber = level+1;
     }
 
     void OnNextButtonClicked()
     {
-        worldSelectionHandler.gameObject.SetActive(false);
+        levelSelectionHandler.gameObject.SetActive(false);
         parametersSelectionHandler.gameObject.SetActive(true);
-        world = worldSelectionHandler.getWorldSelection();
+        level = levelSelectionHandler.getWorldSelection();
 
-        parametersSelectionHandler.setValues(skybox, difficulty, enemyNumber);
+        parametersSelectionHandler.setValues(skybox, 1, animalEnemyNumber, wispEnemyNumber);
     }
 
     void OnBackButtonClicked()
     {
-        worldSelectionHandler.gameObject.SetActive(true);
+        levelSelectionHandler.gameObject.SetActive(true);
         parametersSelectionHandler.gameObject.SetActive(false);
 
-        difficulty = parametersSelectionHandler.getDifficultyChoice();
+        //difficulty = parametersSelectionHandler.getDifficultyChoice();
         skybox = parametersSelectionHandler.getSkybox();
-        enemyNumber = parametersSelectionHandler.getEnemyNumber();
 
-        worldSelectionHandler.setWorld(world);
+        animalEnemyNumber = parametersSelectionHandler.getAnimalEnemyNumber();
+        wispEnemyNumber = parametersSelectionHandler.getWispEnemyNumber();
+
+        levelSelectionHandler.setLevel(level);
     }
 }

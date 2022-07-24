@@ -11,4 +11,11 @@ public class LevelSettings : ScriptableObject
     public bool world3Complete = false;
     public bool world4Complete = false;
 
+    public GameObject prefabBear;
+    public GameObject prefabWolf;
+    public GameObject prefabWisp;
+
+    public int wispNumber;
+    public int animalNumber;
+    public int levelNumber;
 }

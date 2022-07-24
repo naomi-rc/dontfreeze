@@ -529,7 +529,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parametersSelectionHandler: {fileID: 766755337}
-  worldSelectionHandler: {fileID: 1181621886}
+  levelSelectionHandler: {fileID: 1181621886}
+  levelSettings: {fileID: 11400000, guid: 4cb9e224e84abd340acd03188114e6ce, type: 2}
 --- !u!1 &1867700556
 GameObject:
   m_ObjectHideFlags: 0
