@@ -13,13 +13,12 @@ public class SelectionMenuHandler : MonoBehaviour
     [SerializeField]
     private LevelSettings levelSettings;
 
+    [SerializeField]
+    private Location startLocation = default;
 
     private string skybox;
     private int animalEnemyNumber;
     private int wispEnemyNumber;
-
-
-    //private int difficulty;
 
     private int level;
 
@@ -40,13 +39,11 @@ public class SelectionMenuHandler : MonoBehaviour
     void OnApplyButtonClicked()
     {
         level = levelSelectionHandler.getWorldSelection();
-        //difficulty = parametersSelectionHandler.getDifficultyChoice();
-        skybox = parametersSelectionHandler.getSkybox();
 
         animalEnemyNumber = parametersSelectionHandler.getAnimalEnemyNumber();
         wispEnemyNumber = parametersSelectionHandler.getWispEnemyNumber();
 
-        parametersSelectionHandler.setValues(skybox, 1, animalEnemyNumber, wispEnemyNumber);
+        parametersSelectionHandler.setValues(level, animalEnemyNumber, wispEnemyNumber);
         levelSelectionHandler.setLevel(level);
 
         Debug.Log("The user chose the " + levelSelectionHandler.getWorldSelectionString() + " with the " 
@@ -55,7 +52,10 @@ public class SelectionMenuHandler : MonoBehaviour
 
         levelSettings.wispNumber = wispEnemyNumber;
         levelSettings.animalNumber = animalEnemyNumber;
+        
         levelSettings.levelNumber = level+1;
+
+        startLocation.Load();
     }
 
     void OnNextButtonClicked()
@@ -63,8 +63,8 @@ public class SelectionMenuHandler : MonoBehaviour
         levelSelectionHandler.gameObject.SetActive(false);
         parametersSelectionHandler.gameObject.SetActive(true);
         level = levelSelectionHandler.getWorldSelection();
-
-        parametersSelectionHandler.setValues(skybox, 1, animalEnemyNumber, wispEnemyNumber);
+        
+        parametersSelectionHandler.setValues(level, animalEnemyNumber, wispEnemyNumber);
     }
 
     void OnBackButtonClicked()
@@ -72,12 +72,10 @@ public class SelectionMenuHandler : MonoBehaviour
         levelSelectionHandler.gameObject.SetActive(true);
         parametersSelectionHandler.gameObject.SetActive(false);
 
-        //difficulty = parametersSelectionHandler.getDifficultyChoice();
-        skybox = parametersSelectionHandler.getSkybox();
-
         animalEnemyNumber = parametersSelectionHandler.getAnimalEnemyNumber();
         wispEnemyNumber = parametersSelectionHandler.getWispEnemyNumber();
 
         levelSelectionHandler.setLevel(level);
+        parametersSelectionHandler.setSelectedLevel(level);
     }
 }
