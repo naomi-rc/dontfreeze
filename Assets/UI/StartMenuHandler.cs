@@ -18,6 +18,7 @@ public class StartMenuHandler : MonoBehaviour
         mainMenuHandler.SettingsButtonAction += OnSettingsButtonClicked;
         mainMenuHandler.SubmitSoundAction += OnSubmitSound;
         settingsMenuHandler.OnSettingsBackButtonClicked += OnSettingsBackButtonClicked;
+        settingsMenuHandler.SubmitSoundAction += OnSubmitSound;
     }
 
     private void OnDisable()
@@ -25,17 +26,16 @@ public class StartMenuHandler : MonoBehaviour
         mainMenuHandler.SettingsButtonAction -= OnSettingsButtonClicked;
         mainMenuHandler.SubmitSoundAction -= OnSubmitSound;
         settingsMenuHandler.OnSettingsBackButtonClicked -= OnSettingsBackButtonClicked;
+        settingsMenuHandler.SubmitSoundAction -= OnSubmitSound;
     }
 
     void OnSettingsButtonClicked()
     {
-        mainMenuHandler.gameObject.SetActive(false);
         settingsMenuHandler.gameObject.SetActive(true);
     }
 
     void OnSettingsBackButtonClicked()
     {
-        mainMenuHandler.gameObject.SetActive(true);
         settingsMenuHandler.gameObject.SetActive(false);
     }
 
