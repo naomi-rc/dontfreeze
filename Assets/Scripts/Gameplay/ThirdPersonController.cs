@@ -90,10 +90,12 @@ public class ThirdPersonController : MonoBehaviour
         if (isRunning)
         {
             movementController.Run();
+            animator.SetBool("isRunning", true);
         }
         else
         {
             movementController.Walk();
+            animator.SetBool("isRunning", false);
         }
     }
 
