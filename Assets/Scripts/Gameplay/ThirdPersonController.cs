@@ -47,6 +47,7 @@ public class ThirdPersonController : MonoBehaviour
 
     private bool jumpActivated;
     private bool isAttacking;
+    private bool isGrounded;
 
     private Collider[] colliderZone;
 
@@ -72,7 +73,7 @@ public class ThirdPersonController : MonoBehaviour
     private void ApplyJump()
     {
         jumpActivated = true;
-        if (Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
+        if(characterController.isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -0.5f * gravity);
         }
@@ -89,22 +90,22 @@ public class ThirdPersonController : MonoBehaviour
         Move();
         Gravity();
 
-        if (Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
+        if (characterController.isGrounded)
         {
             animator.SetBool("isGrounded", true);
             animator.SetBool("isJumping", false);
             animator.SetBool("isFalling", false);
 
-            if (jumpActivated)
-            {
-                animator.SetBool("isJumping", true);
-                jumpActivated = false;
-            }
+            isGrounded = true;
         }
-        else
+
+        if (jumpActivated && isGrounded)
         {
             animator.SetBool("isGrounded", false);
-            animator.SetBool("isFalling", true);                   
+            animator.SetBool("isJumping", true);
+            animator.SetBool("isFalling", true);
+
+            jumpActivated = false;
         }
 
         if (isAttacking)
