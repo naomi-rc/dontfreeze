@@ -53,12 +53,13 @@ public class AudioManager : MonoBehaviour
         {
             if (canAttack)
             {
-                s.source.Play();
+                s.source.PlayDelayed(0.1f);
             }
+            
         } 
         else
         {
-            s.source.Play();
+            s.source.PlayDelayed(0.1f);
         }
         
     }
