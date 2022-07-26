@@ -24,7 +24,7 @@ public class SkyboxModifierHandler : MonoBehaviour
     void Start()
     {
         LevelManager levelManager = GetComponent<LevelManager>();
-        Level.TimeSetting timeSetting = levelManager.level.timeSetting;
+        Level.TimeSetting timeSetting = levelManager.GetCurrentLevel().timeSetting;
         if(timeSetting == Level.TimeSetting.TIMEBASED)
         {
             timeSetting = ChooseSkyboxBasedOnTime();

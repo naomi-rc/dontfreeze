@@ -157,12 +157,12 @@ PrefabInstance:
     - target: {fileID: 444730093491775028, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000018763528
+      value: 0.000000018763528
       objectReference: {fileID: 0}
     - target: {fileID: 444730093491775028, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000004243156
+      value: -0.000000004243156
       objectReference: {fileID: 0}
     - target: {fileID: 1868199064922173605, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
@@ -187,17 +187,17 @@ PrefabInstance:
     - target: {fileID: 2036525821103991952, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.19491966
+      value: 0.19491969
       objectReference: {fileID: 0}
     - target: {fileID: 2036525821103991952, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000029436954
+      value: -0.000000004955187
       objectReference: {fileID: 0}
     - target: {fileID: 2036525821103991952, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000005847884
+      value: 3.782404e-10
       objectReference: {fileID: 0}
     - target: {fileID: 3047135772398367776, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
@@ -212,32 +212,37 @@ PrefabInstance:
     - target: {fileID: 3391514535679041214, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001878716
+      value: -0.00000001878716
       objectReference: {fileID: 0}
     - target: {fileID: 3391514535679041214, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000041372683
+      value: 0.0000000041372683
       objectReference: {fileID: 0}
     - target: {fileID: 5506603543227173164, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.19491966
+      value: 0.19491968
       objectReference: {fileID: 0}
     - target: {fileID: 5506603543227173164, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000029431144
+      value: -0.0000000034291778
       objectReference: {fileID: 0}
     - target: {fileID: 5506603543227173164, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000058488947
+      value: 6.8148576e-10
       objectReference: {fileID: 0}
     - target: {fileID: 5698920573283256557, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698920573283256557, guid: d6f6edb2214723a438d095fc1c11f5cc,
+        type: 3}
+      propertyPath: m_TagString
+      value: SnowSystem
       objectReference: {fileID: 0}
     - target: {fileID: 6744022717626134604, guid: d6f6edb2214723a438d095fc1c11f5cc,
         type: 3}
@@ -399,6 +404,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1417224891, guid: 875f6c8c97fa90444be14e54d640ddd4, type: 3}
+      propertyPath: m_TagString
+      value: LightSource
+      objectReference: {fileID: 0}
     - target: {fileID: 1671396058, guid: 875f6c8c97fa90444be14e54d640ddd4, type: 3}
       propertyPath: m_BoundingSphereOverride.w
       value: 4.700254e-39
@@ -558,6 +567,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: e5a982dfa5cee5543a164b2411486ffc,
         type: 2}
+    - target: {fileID: 5251744870126921036, guid: ba5cf0079b46be240bb462ddea4b3a25,
+        type: 3}
+      propertyPath: m_TagString
+      value: SafehouseLocationExit
+      objectReference: {fileID: 0}
     - target: {fileID: 8820685793509800039, guid: ba5cf0079b46be240bb462ddea4b3a25,
         type: 3}
       propertyPath: scene
@@ -636,7 +650,7 @@ PrefabInstance:
     - target: {fileID: 2600884318265514739, guid: ca94b3c5e5216474999e0ba381abcdd9,
         type: 3}
       propertyPath: m_Name
-      value: LevelManagers
+      value: GameManagers
       objectReference: {fileID: 0}
     - target: {fileID: 3373426443627430732, guid: ca94b3c5e5216474999e0ba381abcdd9,
         type: 3}
@@ -648,5 +662,11 @@ PrefabInstance:
       propertyPath: snowSystem
       value: 
       objectReference: {fileID: 1166601628}
+    - target: {fileID: 4702803480379822914, guid: ca94b3c5e5216474999e0ba381abcdd9,
+        type: 3}
+      propertyPath: levelSequence
+      value: 
+      objectReference: {fileID: 11400000, guid: c9626871d0ebe4d4bb46e208936ae469,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca94b3c5e5216474999e0ba381abcdd9, type: 3}
