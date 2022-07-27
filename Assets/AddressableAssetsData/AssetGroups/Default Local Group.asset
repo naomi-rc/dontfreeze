@@ -39,6 +39,8 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: aaeae8677528ffd45bf31bad77f63c44
     m_Address: Assets/Scenes/WorldX.unity
+  - m_GUID: 5745117e44bf46e418975bdff263dd68
+    m_Address: Assets/Scenes/CutScenes/BeginningCutScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
