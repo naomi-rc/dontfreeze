@@ -6,7 +6,7 @@ public class AudioEffect : MonoBehaviour
 {
     private void Step()
     {
-        FindObjectOfType<AudioManager>().Play("Moving");
+        FindObjectOfType<AudioManager>().PlayMovingSound(); 
     }
 
     private void Land()
