@@ -50,9 +50,9 @@ namespace ProceduralLevel {
             xSizeMidpoint = xSize / 2;
             pathHalfLength = pathLength / 2;
 
-            defaultHeightMultiplier = levelManager.level.level * levelManager.level.numberOfEnemies;
-            perlinNoiseX = levelManager.level.difficulty / defaultHeightMultiplier;
-            perlinNoiseY = levelManager.level.difficulty / defaultHeightMultiplier;
+            defaultHeightMultiplier = levelManager.GetCurrentLevel().level * levelManager.GetCurrentLevel().numberOfEnemies;
+            perlinNoiseX = levelManager.GetCurrentLevel().difficulty / defaultHeightMultiplier;
+            perlinNoiseY = levelManager.GetCurrentLevel().difficulty / defaultHeightMultiplier;
 
             //Tree generation
             nonPathPositions = new List<Vector3>();
@@ -62,8 +62,8 @@ namespace ProceduralLevel {
             CreateTerrain();
             UpdateMesh();
             GenerateTrees();
-            spawnerManager.GenerateEnemies(pathPositions, worldParent, levelManager.level.numberOfEnemies);
-            spawnerManager.GenerateCollectibles(pathShoulderPositions, worldParent, levelManager.level.numberOfCollectibles);
+            spawnerManager.GenerateEnemies(pathPositions, worldParent, levelManager.GetCurrentLevel().numberOfEnemies);
+            spawnerManager.GenerateCollectibles(pathShoulderPositions, worldParent, levelManager.GetCurrentLevel().numberOfCollectibles);
             GenerateNavMesh();
             PlacePlayer();
             PlaceCheckpoint();
