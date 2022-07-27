@@ -135,9 +135,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _MainNormalStrength: 0
+    - _MainNormalStrength: 1
     - _Metallic: 0
-    - _OcclusionStregth: 1
+    - _OcclusionStregth: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
