@@ -72,22 +72,22 @@ public class LevelSelectionHandler : MonoBehaviour
     public void updateImage()
     {
         // TODO Améliorer le code
-        if (levelSettings.world1Complete)
+        if (levelSettings.level1Complete)
         {
             // Dévérouiller le niveau 2
             secondButton.SetEnabled(true);
             secondButton.RemoveFromClassList("world-lock");
-            if (levelSettings.world2Complete)
+            if (levelSettings.level2Complete)
             {
                 // Dévérouiller le niveau 3
                 thirdButton.SetEnabled(true);
                 thirdButton.RemoveFromClassList("world-lock");
-                if (levelSettings.world3Complete)
+                if (levelSettings.level3Complete)
                 {
                     // Dévérouiller le niveau 4
                     fourthButton.SetEnabled(true);
                     fourthButton.RemoveFromClassList("world-lock");
-                    if (levelSettings.world4Complete)
+                    if (levelSettings.level4Complete)
                     {
                         // Dévérouiller le niveau 5
                         fifthButton.SetEnabled(true);

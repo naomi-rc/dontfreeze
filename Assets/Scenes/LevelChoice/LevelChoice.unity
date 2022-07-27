@@ -668,7 +668,7 @@ PrefabInstance:
         type: 3}
       propertyPath: location
       value: 
-      objectReference: {fileID: 11400000, guid: a39e2fd4dfab7cd458caae292378f9a2,
+      objectReference: {fileID: 11400000, guid: 742f00d7f71be8c4aafea8b2007bc569,
         type: 2}
     - target: {fileID: 4766012251400592662, guid: e251a42539af795499724b01ccdfd4c1,
         type: 3}

@@ -6,10 +6,10 @@ using UnityEngine;
 public class LevelSettings : ScriptableObject
 {
     // TODO Améliorer (pour afficher/cacher le cadenas)
-    public bool world1Complete = false;
-    public bool world2Complete = false;
-    public bool world3Complete = false;
-    public bool world4Complete = false;
+    public bool level1Complete = false;
+    public bool level2Complete = false;
+    public bool level3Complete = false;
+    public bool level4Complete = false;
 
     public GameObject prefabBear;
     public GameObject prefabWolf;
