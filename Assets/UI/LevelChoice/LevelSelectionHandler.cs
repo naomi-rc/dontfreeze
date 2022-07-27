@@ -16,20 +16,15 @@ public class LevelSelectionHandler : MonoBehaviour
     private RadioButton fourthButton;
     private RadioButton fifthButton;
 
-    private RadioButtonGroup worldChoices;
-    private int levelNumber = 0;
+    private int levelNumber = 1;
 
     public LevelSettings levelSettings;
 
-    // TODO Peut-être utiliser la liste des niveaux de LevelManager à la place
-    private List<string> levelList = new List<string> { "First world", "Second world", "Third world", "Fourth world", "Fifth world" };
-    private List<RadioButton> radioButtons = new List<RadioButton>();
     void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
 
         nextButton = rootVisualElement.Q<Button>("NextButton");
-        //worldChoices = rootVisualElement.Q<RadioButtonGroup>("WorldChoices");
 
         firstButton = rootVisualElement.Q<RadioButton>("FirstWorldButton");
         secondButton = rootVisualElement.Q<RadioButton>("SecondWorldButton");
@@ -37,16 +32,10 @@ public class LevelSelectionHandler : MonoBehaviour
         fourthButton = rootVisualElement.Q<RadioButton>("FourthWorldButton");
         fifthButton = rootVisualElement.Q<RadioButton>("FifthWorldButton");
 
-        radioButtons.Add(firstButton);
-        radioButtons.Add(secondButton);
-        radioButtons.Add(thirdButton);
-        radioButtons.Add(fourthButton);
-        radioButtons.Add(fifthButton);
+        
         lockLevel();
         setLevel(levelNumber);
 
-        //worldChoices.choices = worldList;
-        //worldChoices.value = 0;
         nextButton.clicked += OnNextButtonClicked;
     }
    
@@ -57,18 +46,8 @@ public class LevelSelectionHandler : MonoBehaviour
 
     void OnNextButtonClicked()
     {
-        //setLevel(worldChoices.value);
-        
         levelNumber = getWorldSelection();
-        setLevel(levelNumber);
-
         NextButtonAction.Invoke();
-    }
-    
-    public string getWorldSelectionString()
-    {
-        //return worldList[worldChoices.value];
-        return levelList[getWorldSelection()];
     }
 
     public void lockLevel()
@@ -92,7 +71,7 @@ public class LevelSelectionHandler : MonoBehaviour
 
     public void updateImage()
     {
-        // TODO changer pour un event system par exemple
+        // TODO Améliorer le code
         if (levelSettings.world1Complete)
         {
             // Dévérouiller le niveau 2
@@ -120,30 +99,54 @@ public class LevelSelectionHandler : MonoBehaviour
     }
     public int getWorldSelection()
     {
-        int i;
-        for (i = 0; i < radioButtons.Count; i++)
+        int level = 1;
+
+        if (firstButton.value)
         {
-            if (radioButtons[i].value)
-            {
-                return i;
-            }
+            level = 1;
         }
-        return i;
+        if (secondButton.value)
+        {
+            level = 2;
+        }
+        if (thirdButton.value)
+        {
+            level = 3;
+        }
+        if (fourthButton.value)
+        {
+            level = 4;
+        }
+        if (fifthButton.value)
+        {
+            level = 5;
+        }
+        return level;
     }
 
     public void setLevel(int level)
     {
-        for (int i = 0; i < radioButtons.Count; ++i)
+        levelNumber = level;
+       
+        if(level == 1)
         {
-            if (i == level)
-            {
-                // TODO corriger l'image de sélection ne n'affiche pas
-                radioButtons[i].SetSelected(true);
-                //radioButtons[i].value = true;
-                //radioButtons[i].SetValueWithoutNotify(true);
-                levelNumber = i;
-                return;
-            }  
+            firstButton.SetSelected(true);
+        }
+        if (level == 2)
+        {
+            secondButton.SetSelected(true);
+        }
+        if (level == 3)
+        {
+            thirdButton.SetSelected(true);
+        }
+        if (level == 4)
+        {
+            fourthButton.SetSelected(true);
+        }
+        if (level == 5)
+        {
+            fifthButton.SetSelected(true);
         }
     }
 

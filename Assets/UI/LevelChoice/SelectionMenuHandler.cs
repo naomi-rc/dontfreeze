@@ -46,14 +46,14 @@ public class SelectionMenuHandler : MonoBehaviour
         parametersSelectionHandler.setValues(level, animalEnemyNumber, wispEnemyNumber);
         levelSelectionHandler.setLevel(level);
 
-        Debug.Log("The user chose the " + levelSelectionHandler.getWorldSelectionString() + " with the " 
+        Debug.Log("The user chose level " + levelSelectionHandler.getWorldSelection() + " with the " 
             + skybox + " skybox. And the user chose " + animalEnemyNumber + "animal enemies and " + wispEnemyNumber + " wisp enemies!");
         Debug.Log("The user chose the level : " + level);
 
         levelSettings.wispNumber = wispEnemyNumber;
         levelSettings.animalNumber = animalEnemyNumber;
         
-        levelSettings.levelNumber = level+1;
+        levelSettings.levelNumber = level;
 
         startLocation.Load();
     }
