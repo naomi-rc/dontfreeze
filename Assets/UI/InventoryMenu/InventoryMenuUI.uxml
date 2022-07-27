@@ -6,6 +6,14 @@
             <ui:Button text="X" display-tooltip-when-elided="true" name="CloseButton" class="InventoryCloseButton" />
         </ui:VisualElement>
         <ui:VisualElement name="Container" style="flex-direction: row; flex-grow: 1; border-bottom-width: 2px; border-bottom-color: rgb(108, 139, 159);">
+            <ui:VisualElement name="EquipBar" style="margin-right: 20px; justify-content: flex-start;">
+                <InventorySlot name="Clothes">
+                    <ui:Label text="Clothes" display-tooltip-when-elided="true" style="align-items: stretch; color: rgb(219, 219, 219); position: absolute; bottom: 0;" />
+                </InventorySlot>
+                <InventorySlot name="Weapon">
+                    <ui:Label text="Weapon" display-tooltip-when-elided="true" style="align-items: stretch; color: rgb(219, 219, 219); bottom: 0; position: absolute;" />
+                </InventorySlot>
+            </ui:VisualElement>
             <ui:ScrollView vertical-scroller-visibility="Hidden">
                 <ui:VisualElement name="Inventory" style="align-items: stretch; justify-content: flex-start; flex-direction: row; flex-wrap: wrap;" />
             </ui:ScrollView>
@@ -21,7 +29,7 @@
                         <ui:Label text="Description" name="Description" style="color: rgb(77, 89, 105); white-space: normal;" />
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:Button text="Action" name="ActionButton" class="ActionButton" style="margin-bottom: 20px;" />
+                <ui:Button text="Action" name="ActionButton" class="ActionButton" style="margin-bottom: 20px; flex-shrink: 0;" />
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

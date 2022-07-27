@@ -21,6 +21,9 @@ public class InventoryMenuHandler : MonoBehaviour
     private int selectedSlot = -1;
     private InventoryEntry draggedEntry;
 
+    private InventorySlot clothes;
+    private InventorySlot weapon;
+
     void Awake()
     {
         ghostIcon = new VisualElement();
@@ -44,6 +47,8 @@ public class InventoryMenuHandler : MonoBehaviour
         sideBar = rootElement.Q<VisualElement>("SideBar");
         closeButton = rootElement.Q<Button>("CloseButton");
         actionButton = rootElement.Q<Button>("ActionButton");
+        clothes = rootElement.Q<InventorySlot>("Clothes");
+        weapon = rootElement.Q<InventorySlot>("Weapon");
         rootElement.RegisterCallback<PointerDownEvent>(OnSlotClick, TrickleDown.TrickleDown);
         rootElement.RegisterCallback<PointerMoveEvent>(OnSlotDrag, TrickleDown.TrickleDown);
         rootElement.RegisterCallback<PointerUpEvent>(OnSlotRelease, TrickleDown.TrickleDown);
@@ -63,6 +68,9 @@ public class InventoryMenuHandler : MonoBehaviour
         {
             inventory.Add(slot);
         }
+
+        clothes.SetItem(playerInventory.currentClothes);
+        weapon.SetItem(playerInventory.currentWeapon);
 
         playerInventory.OnDatabaseChanged += OnInventoryChanged;
         OnInventoryChanged();
@@ -90,14 +98,25 @@ public class InventoryMenuHandler : MonoBehaviour
         {
             FocusItem(null);
         }
-        else if ((entry.item is InventoryWeapon && playerInventory.currentWeapon == null)
-            || (entry.item is InventoryClothes && playerInventory.currentClothes == null))
+        else if (playerInventory.canEquip(entry.item))
         {
+            if (entry.item is InventoryClothes)
+                clothes.ClearItem();
+            if (entry.item is InventoryWeapon)
+                weapon.ClearItem();
+
+
             actionButton.text = "Equip";
         }
-        else if ((entry.item is InventoryWeapon && playerInventory.currentWeapon != null)
-        || (entry.item is InventoryClothes && playerInventory.currentClothes != null))
+
+        else if (playerInventory.canUnequip(entry.item))
         {
+            if (entry.item is InventoryClothes)
+                clothes.SetItem(entry.item);
+            else if (entry.item is InventoryWeapon)
+                weapon.SetItem(entry.item);
+
+
             actionButton.text = "Unequip";
         }
 
@@ -136,7 +155,7 @@ public class InventoryMenuHandler : MonoBehaviour
     private void OnSlotClick(PointerDownEvent evt)
     {
         var slotElement = evt.target as InventorySlot;
-        if (evt.button != 0 || slotElement == null)
+        if (evt.button != 0 || slotElement == null || slotElement == clothes || slotElement == weapon)
             return;
 
         var slotIndex = slotElementsReferences.IndexOf(slotElement);
@@ -168,7 +187,7 @@ public class InventoryMenuHandler : MonoBehaviour
             return;
 
         var slotElement = evt.target as InventorySlot;
-        if (slotElement == null)
+        if (slotElement == null || slotElement == clothes || slotElement == weapon)
         {
             ghostIcon.visible = false;
             selectedSlot = -1;

@@ -138,4 +138,16 @@ public class InventoryDatabase : ScriptableObject
 
         OnDatabaseChanged.Invoke();
     }
+
+    public bool canEquip(InventoryItem item)
+    {
+        return (item is InventoryWeapon && currentWeapon == null
+        || item is InventoryClothes && currentClothes == null);
+    }
+
+    public bool canUnequip(InventoryItem item)
+    {
+        return (item is InventoryWeapon && currentWeapon != null
+        || item is InventoryClothes && currentClothes != null);
+    }
 }
