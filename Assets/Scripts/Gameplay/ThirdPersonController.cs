@@ -124,13 +124,14 @@ public class ThirdPersonController : MonoBehaviour
                 if (collider.gameObject.TryGetComponent(out EnemyHealthController enemyHealthController))
                 {
                     collider.gameObject.TryGetComponent(out EnemyBehavior enemyBehavior);
+                    enemyBehavior.Hurt();
                     var damage = inventoryDatabase.currentWeapon != null ? inventoryDatabase.currentWeapon.damage : unarmedDamage;
                     FindObjectOfType<AudioManager>().Play(enemyBehavior.hurtSound);
                     enemyHealthController.TakeDamage(damage);
                 }
             }
             canAttackAgain = false;
-            Invoke("AttackAgain", 2);
+            Invoke("AttackAgain", 1);
         }
         else
         {

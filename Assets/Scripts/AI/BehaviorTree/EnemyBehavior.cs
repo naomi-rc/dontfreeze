@@ -16,6 +16,7 @@ namespace AI
 
         private EnemyHealthController enemyController;
         bool canAttackAgain = true;
+        bool isHurt = false;
         BehaviorTree tree;
         GameObject target;
         UnityEngine.AI.NavMeshAgent agent;
@@ -166,14 +167,17 @@ namespace AI
         public Node.Status Attack()
         {
             state = ActionState.ATTACK;
-            if (canAttackAgain)
+            if (canAttackAgain && !isHurt)
             {
                 foreach (var collider in colliderZone)
                 {
                     if (collider.gameObject.TryGetComponent(out HealthController playerHealthController))
                     {
-                        playerHealthController.TakeDamage();
-                        FindObjectOfType<AudioManager>().Play(attackSound);
+                        if (playerHealthController.enemyCanAttack())
+                        {
+                            playerHealthController.TakeDamage();
+                            FindObjectOfType<AudioManager>().Play(attackSound);
+                        }
                     }
                 }
                 canAttackAgain = false;
@@ -228,6 +232,17 @@ namespace AI
             if (target && Vector3.Distance(target.transform.position, transform.position) <= targetMinDistance)
                 return Node.Status.Success;
             return Node.Status.Failure;
+        }
+
+        public void Hurt()
+        {
+            isHurt = true;
+            Invoke("Healed", 4);
+        }
+
+        public void Healed()
+        {
+            isHurt = false;
         }
     }
 }

@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] sounds;
     public static AudioManager instance;
-    private bool canAttack;
+    private bool canAttack = true;
 
     void Awake()
     {
@@ -53,15 +53,19 @@ public class AudioManager : MonoBehaviour
         {
             if (canAttack)
             {
-                s.source.PlayDelayed(0.1f);
+                s.source.Play();
             }
-            
         } 
         else
         {
-            s.source.PlayDelayed(0.1f);
+            s.source.Play();
         }
-        
+
+        if (name == "Death")
+        {
+            canAttack = false;
+        }
+
     }
 
     public void Stop(string name)
@@ -74,10 +78,4 @@ public class AudioManager : MonoBehaviour
         }
         s.source.Stop();
     }
-
-    public void StopAttack()
-    {
-        canAttack = false;
-    }
-
 }

@@ -14,6 +14,11 @@ public class AudioEffect : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Landing");
     }
 
+    private void Defending()
+    {
+        FindObjectOfType<AudioManager>().Play("Defense");
+    }
+
     private void Jump()
     {
         FindObjectOfType<AudioManager>().Play("Jump");
