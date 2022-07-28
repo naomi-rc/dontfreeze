@@ -38,7 +38,11 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        Play("Wind");
+        foreach(var s in sounds)
+        {
+            if(s.loop)
+                Play(s.name);
+        }        
     }
 
     public void Play(string name)

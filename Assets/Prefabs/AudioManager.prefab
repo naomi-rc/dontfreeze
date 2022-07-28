@@ -51,6 +51,12 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: Music
+    clip: {fileID: 8300000, guid: 5e36dac4bf61bea499537b546f6c5b00, type: 3}
+    volume: 0.063
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
   - name: Fight
     clip: {fileID: 8300000, guid: 14c29170221041840a33d8ac921250a2, type: 3}
     volume: 0.186
