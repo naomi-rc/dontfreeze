@@ -139,13 +139,58 @@ public class InventoryDatabase : ScriptableObject
         OnDatabaseChanged.Invoke();
     }
 
-    public bool canEquip(InventoryItem item)
+    public void UpgradeEntry(InventoryEntry entry)
+    {
+        if (entry is null || !IsUpgradable(entry.item))
+        {
+            Debug.Log("not upgradable");
+            return;
+        }
+
+
+        foreach (var ingredient in (entry.item as InventoryUpgradable).Ingredients)
+        {
+            int amount = ingredient.Amount;
+            while (0 < amount)
+            {
+                RemoveItem(entries.FirstOrDefault(x => x.item == ingredient.Item).index);
+                amount--;
+            }
+        }
+
+        if (entry.item is InventoryClothes)
+        {
+            var upgrade = (entry.item as InventoryClothes).Upgrade;
+
+            if (entry.item == currentClothes)
+                currentClothes = upgrade;
+
+            entry.item = upgrade;
+            OnDatabaseChanged.Invoke();
+        }
+    }
+
+    public bool IsUpgradable(InventoryItem item)
+    {
+        if (item is null || item is not InventoryUpgradable)
+            return false;
+
+        foreach (var ingredient in (item as InventoryUpgradable).Ingredients)
+        {
+            if (entries.Where(x => x.item == ingredient.Item).Select(x => x.count).Sum() < ingredient.Amount)
+                return false;
+        }
+
+        return true;
+    }
+
+    public bool IsEquipable(InventoryItem item)
     {
         return (item is InventoryWeapon && currentWeapon == null
         || item is InventoryClothes && currentClothes == null);
     }
 
-    public bool canUnequip(InventoryItem item)
+    public bool IsUnequipable(InventoryItem item)
     {
         return (item is InventoryWeapon && currentWeapon != null
         || item is InventoryClothes && currentClothes != null);

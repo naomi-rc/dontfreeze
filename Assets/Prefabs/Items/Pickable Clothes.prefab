@@ -77,7 +77,8 @@ PrefabInstance:
         type: 3}
       propertyPath: pickableItemModel
       value: 
-      objectReference: {fileID: 2530249839125724303}
+      objectReference: {fileID: 1198997370615946, guid: a50c00e828644ed4a8fdf78eb641f8d6,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 037916e7f2e1e2143853ae6da7cfc559, type: 3}
 --- !u!4 &2517220806137149520 stripped
@@ -155,9 +156,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fed3b6b58e192494d8637992edfdddd8, type: 3}
---- !u!1 &2530249839125724303 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8182930921066948416, guid: fed3b6b58e192494d8637992edfdddd8,
-    type: 3}
-  m_PrefabInstance: {fileID: 5950060517032893391}
-  m_PrefabAsset: {fileID: 0}

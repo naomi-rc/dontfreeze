@@ -16,6 +16,7 @@ public class InventoryMenuHandler : MonoBehaviour
     private VisualElement inspectCard;
     private VisualElement ghostIcon;
     private Button actionButton;
+    private Button upgradeButton;
     private Button closeButton;
     private List<InventorySlot> slotElementsReferences = new List<InventorySlot>();
     private int selectedSlot = -1;
@@ -47,6 +48,7 @@ public class InventoryMenuHandler : MonoBehaviour
         sideBar = rootElement.Q<VisualElement>("SideBar");
         closeButton = rootElement.Q<Button>("CloseButton");
         actionButton = rootElement.Q<Button>("ActionButton");
+        upgradeButton = rootElement.Q<Button>("UpgradeButton");
         clothes = rootElement.Q<InventorySlot>("Clothes");
         weapon = rootElement.Q<InventorySlot>("Weapon");
         rootElement.RegisterCallback<PointerDownEvent>(OnSlotClick, TrickleDown.TrickleDown);
@@ -77,6 +79,7 @@ public class InventoryMenuHandler : MonoBehaviour
 
         closeButton.clicked += OnCloseButtonClicked;
         actionButton.clicked += OnActionButtonClicked;
+        upgradeButton.clicked += OnUpgradeButtonClicked;
     }
 
     void OnDisable()
@@ -87,6 +90,7 @@ public class InventoryMenuHandler : MonoBehaviour
         playerInventory.OnDatabaseChanged -= OnInventoryChanged;
         closeButton.clicked -= OnCloseButtonClicked;
         actionButton.clicked -= OnActionButtonClicked;
+        upgradeButton.clicked -= OnUpgradeButtonClicked;
     }
 
     void OnActionButtonClicked()
@@ -98,7 +102,7 @@ public class InventoryMenuHandler : MonoBehaviour
         {
             FocusItem(null);
         }
-        else if (playerInventory.canEquip(entry.item))
+        else if (playerInventory.IsEquipable(entry.item))
         {
             if (entry.item is InventoryClothes)
                 clothes.ClearItem();
@@ -109,7 +113,7 @@ public class InventoryMenuHandler : MonoBehaviour
             actionButton.text = "Equip";
         }
 
-        else if (playerInventory.canUnequip(entry.item))
+        else if (playerInventory.IsUnequipable(entry.item))
         {
             if (entry.item is InventoryClothes)
                 clothes.SetItem(entry.item);
@@ -120,6 +124,18 @@ public class InventoryMenuHandler : MonoBehaviour
             actionButton.text = "Unequip";
         }
 
+    }
+
+    public void OnUpgradeButtonClicked()
+    {
+        var entry = playerInventory.GetEntry(selectedSlot);
+        if (entry == null)
+        {
+            FocusItem(null);
+        }
+
+        playerInventory.UpgradeEntry(entry);
+        FocusItem(entry.item);
     }
 
     void OnCloseButtonClicked()
@@ -155,7 +171,10 @@ public class InventoryMenuHandler : MonoBehaviour
     private void OnSlotClick(PointerDownEvent evt)
     {
         var slotElement = evt.target as InventorySlot;
-        if (evt.button != 0 || slotElement == null || slotElement == clothes || slotElement == weapon)
+        if (evt.button != 0 || slotElement == null)
+            return;
+
+        if (slotElement == clothes || slotElement == weapon)
             return;
 
         var slotIndex = slotElementsReferences.IndexOf(slotElement);
@@ -229,20 +248,24 @@ public class InventoryMenuHandler : MonoBehaviour
                 type.text = "Weapon";
                 actionButton.text = playerInventory.currentWeapon == item ? "Unequip" : "Equip";
                 actionButton.visible = true;
+                upgradeButton.visible = false;
                 break;
             case InventoryClothes _:
                 type.text = "Clothes";
                 actionButton.text = playerInventory.currentClothes == item ? "Unequip" : "Equip";
                 actionButton.visible = true;
+                upgradeButton.visible = true;
                 break;
             case InventoryConsumable _:
                 type.text = "Consumable";
                 actionButton.text = "Use";
                 actionButton.visible = true;
+                upgradeButton.visible = false;
                 break;
             default:
                 type.text = "Item";
                 actionButton.visible = false;
+                upgradeButton.visible = false;
                 break;
         }
         description.text = item.description;

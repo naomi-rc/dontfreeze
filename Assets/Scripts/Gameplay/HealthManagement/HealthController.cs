@@ -87,7 +87,7 @@ public class HealthController : MonoBehaviour
 
     public void Decrease(float value)
     {
-        float resistance = inventoryDatabase?.currentClothes?.damageResistance ?? 0f;
+        float resistance = inventoryDatabase.currentClothes?.damageResistance ?? 0f;
         playerHealth.value -= value - (value * resistance);
     }
 

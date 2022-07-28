@@ -62,7 +62,7 @@ public class Thermometer : MonoBehaviour
         // Apply cold resistance only when it's getting cold
         if (direction < 0)
         {
-            float resistance = inventoryDatabase?.currentClothes?.coldResistance ?? 0f;
+            float resistance = inventoryDatabase.currentClothes?.coldResistance ?? 0f;
             intensity -= (intensity * resistance);
         }
 
