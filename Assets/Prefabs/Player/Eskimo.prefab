@@ -4935,10 +4935,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec3159239f71b7478c1253b592a952f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {fileID: 11400000, guid: 04c631093c936ea4dabf3198e2ea56cc, type: 2}
-  initialSpeed:
+  defaultSpeed:
+    useConstant: 0
+    constant: 0
+    variable: {fileID: 11400000, guid: 04c631093c936ea4dabf3198e2ea56cc, type: 2}
+  sprintSpeed:
     useConstant: 1
-    constant: 4
+    constant: 6
     variable: {fileID: 0}
   coldStatusEffect: {fileID: 11400000, guid: 0e79687d4e996dc44a98299ff89f1263, type: 2}
 --- !u!114 &6150416803883452092
@@ -4996,10 +4999,7 @@ MonoBehaviour:
   weaponHolder: {fileID: 9216753781150309518}
   inventoryDatabase: {fileID: 11400000, guid: e3b88776d79ff6046931d3f095cb527f, type: 2}
   onWeaponEquipEvent: {fileID: 11400000, guid: 772cf1bdbdc789d4f8563a5f53b35d9e, type: 2}
-  speed:
-    useConstant: 0
-    constant: 0
-    variable: {fileID: 11400000, guid: 04c631093c936ea4dabf3198e2ea56cc, type: 2}
+  movementController: {fileID: 6645909542732442889}
   gravity: -9.81
   jumpHeight: 3
   unarmedDamage: 2

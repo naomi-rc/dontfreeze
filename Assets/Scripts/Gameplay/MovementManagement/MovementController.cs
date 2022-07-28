@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    [SerializeField]
-    private FloatVariable speed;
+    private float speed;
+    public float Speed
+    {
+        get => speed;
+    }
 
     [SerializeField]
-    private FloatReference initialSpeed;
+    private FloatReference defaultSpeed;
+
+    [SerializeField]
+    private FloatReference sprintSpeed;
 
     [SerializeField]
     private PermanentStatus coldStatusEffect = default;
 
     private void Awake()
     {
-        speed.value = initialSpeed.value;
+        speed = defaultSpeed.value;
 
         coldStatusEffect.OnActivateEvent += ApplyCold;
         coldStatusEffect.OnDeactivateEvent += RemoveCold;
@@ -27,12 +33,22 @@ public class MovementController : MonoBehaviour
         coldStatusEffect.OnDeactivateEvent -= RemoveCold;
     }
 
+    public void Run()
+    {
+        speed = sprintSpeed.value;
+    }
+
+    public void Walk()
+    {
+        speed = defaultSpeed.value;
+    }
+
     public void ApplyCold()
     {
-        speed.value -= coldStatusEffect.value;
+        speed -= coldStatusEffect.value;
     }
     public void RemoveCold()
     {
-        speed.value += coldStatusEffect.value;
+        speed += coldStatusEffect.value;
     }
 }
