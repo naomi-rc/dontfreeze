@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectionMenuHandler : MonoBehaviour
@@ -16,7 +14,6 @@ public class SelectionMenuHandler : MonoBehaviour
     [SerializeField]
     private Location startLocation = default;
 
-    private string skybox;
     private int animalEnemyNumber;
     private int wispEnemyNumber;
 
@@ -45,10 +42,6 @@ public class SelectionMenuHandler : MonoBehaviour
 
         parametersSelectionHandler.setValues(level, animalEnemyNumber, wispEnemyNumber);
         levelSelectionHandler.setLevel(level);
-
-        Debug.Log("The user chose level " + levelSelectionHandler.getWorldSelection() + " with the " 
-            + skybox + " skybox. And the user chose " + animalEnemyNumber + "animal enemies and " + wispEnemyNumber + " wisp enemies!");
-        Debug.Log("The user chose the level : " + level);
 
         levelSettings.wispNumber = wispEnemyNumber;
         levelSettings.animalNumber = animalEnemyNumber;

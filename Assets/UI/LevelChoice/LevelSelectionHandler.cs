@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -17,7 +16,6 @@ public class LevelSelectionHandler : MonoBehaviour
     private RadioButton fifthButton;
 
     private int levelNumber = 1;
-
     public LevelSettings levelSettings;
 
     void OnEnable()
@@ -31,8 +29,7 @@ public class LevelSelectionHandler : MonoBehaviour
         thirdButton = rootVisualElement.Q<RadioButton>("ThirdWorldButton");
         fourthButton = rootVisualElement.Q<RadioButton>("FourthWorldButton");
         fifthButton = rootVisualElement.Q<RadioButton>("FifthWorldButton");
-
-        
+  
         lockLevel();
         setLevel(levelNumber);
 
@@ -55,15 +52,12 @@ public class LevelSelectionHandler : MonoBehaviour
         secondButton.SetEnabled(false);
         secondButton.AddToClassList("world-lock");
 
-        // Vérouiller le niveau 3
         thirdButton.SetEnabled(false);
         thirdButton.AddToClassList("world-lock");
 
-        // Vérouiller le niveau 4
         fourthButton.SetEnabled(false);
         fourthButton.AddToClassList("world-lock");
 
-        // Vérouiller le niveau 5
         fifthButton.SetEnabled(false);
         fifthButton.AddToClassList("world-lock");
         
@@ -71,25 +65,20 @@ public class LevelSelectionHandler : MonoBehaviour
 
     public void updateImage()
     {
-        // TODO Améliorer le code
         if (levelSettings.level1Complete)
         {
-            // Dévérouiller le niveau 2
             secondButton.SetEnabled(true);
             secondButton.RemoveFromClassList("world-lock");
             if (levelSettings.level2Complete)
             {
-                // Dévérouiller le niveau 3
                 thirdButton.SetEnabled(true);
                 thirdButton.RemoveFromClassList("world-lock");
                 if (levelSettings.level3Complete)
                 {
-                    // Dévérouiller le niveau 4
                     fourthButton.SetEnabled(true);
                     fourthButton.RemoveFromClassList("world-lock");
                     if (levelSettings.level4Complete)
                     {
-                        // Dévérouiller le niveau 5
                         fifthButton.SetEnabled(true);
                         fifthButton.RemoveFromClassList("world-lock");
                     }
@@ -97,31 +86,30 @@ public class LevelSelectionHandler : MonoBehaviour
             }
         }
     }
+
     public int getWorldSelection()
     {
-        int level = 1;
-
         if (firstButton.value)
         {
-            level = 1;
+            levelNumber = 1;
         }
         if (secondButton.value)
         {
-            level = 2;
+            levelNumber = 2;
         }
         if (thirdButton.value)
         {
-            level = 3;
+            levelNumber = 3;
         }
         if (fourthButton.value)
         {
-            level = 4;
+            levelNumber = 4;
         }
         if (fifthButton.value)
         {
-            level = 5;
+            levelNumber = 5;
         }
-        return level;
+        return levelNumber;
     }
 
     public void setLevel(int level)
