@@ -17,14 +17,6 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 1b7492a8ba620a546bfe41eb4400b601
   m_SerializeEntries:
-  - m_GUID: 02a0ef5d6291bbe45b14d1a6242444de
-    m_Address: Assets/Scenes/SafeHouse.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e989f95f93a6b854585785b8b1afadfe
-    m_Address: Assets/Scenes/FirstWorld.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 34b8ed08c1711654083599c63fbe196c
     m_Address: Assets/UI/StartMenuUITestScene.unity
     m_ReadOnly: 0
@@ -39,8 +31,26 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: aaeae8677528ffd45bf31bad77f63c44
     m_Address: Assets/Scenes/WorldX.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 2709edb3cf3a9bb4d85ce201a09968c5
+    m_Address: Assets/Scenes/StartMenu.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 02a0ef5d6291bbe45b14d1a6242444de
+    m_Address: Assets/Scenes/SafeHouse.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e989f95f93a6b854585785b8b1afadfe
+    m_Address: Assets/Scenes/FirstWorld.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 5745117e44bf46e418975bdff263dd68
     m_Address: Assets/Scenes/CutScenes/BeginningCutScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: e0721b86c841b2d4d85e0be462c9cee5
+    m_Address: Assets/Scenes/CutScenes/EndCutScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
