@@ -29,7 +29,7 @@ public class OnScreenJoystick : VisualElement
         joystickBackground = new VisualElement();
         joystickBackground.style.width = new StyleLength(new Length(100, LengthUnit.Percent));
         joystickBackground.style.height = new StyleLength(new Length(100, LengthUnit.Percent));
-        joystickBackground.style.backgroundColor = (Color)new Color32(115, 115, 115, 255);
+        joystickBackground.style.backgroundColor = (Color)new Color32(146, 150, 156, 255);
         joystickBackground.style.borderBottomLeftRadius = new StyleLength(new Length(100, LengthUnit.Percent));
         joystickBackground.style.borderBottomRightRadius = new StyleLength(new Length(100, LengthUnit.Percent));
         joystickBackground.style.borderTopLeftRadius = new StyleLength(new Length(100, LengthUnit.Percent));
@@ -40,7 +40,7 @@ public class OnScreenJoystick : VisualElement
         joystickHandle = new VisualElement();
         joystickHandle.style.width = new StyleLength(new Length(75, LengthUnit.Percent));
         joystickHandle.style.height = new StyleLength(new Length(75, LengthUnit.Percent));
-        joystickHandle.style.backgroundColor = (Color)new Color32(166, 166, 166, 255);
+        joystickHandle.style.backgroundColor = (Color)new Color32(236, 229, 217, 255);
         joystickHandle.style.borderBottomLeftRadius = new StyleLength(new Length(100, LengthUnit.Percent));
         joystickHandle.style.borderBottomRightRadius = new StyleLength(new Length(100, LengthUnit.Percent));
         joystickHandle.style.borderTopLeftRadius = new StyleLength(new Length(100, LengthUnit.Percent));

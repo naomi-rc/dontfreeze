@@ -10,15 +10,20 @@ public class StartMenuHandler : MonoBehaviour
     [SerializeField]
     private SettingsMenuHandler settingsMenuHandler;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
     void Awake()
     {
         mainMenuHandler.SettingsButtonAction += OnSettingsButtonClicked;
+        mainMenuHandler.SubmitSoundAction += OnSubmitSound;
         settingsMenuHandler.OnSettingsBackButtonClicked += OnSettingsBackButtonClicked;
     }
 
     private void OnDisable()
     {
         mainMenuHandler.SettingsButtonAction -= OnSettingsButtonClicked;
+        mainMenuHandler.SubmitSoundAction -= OnSubmitSound;
         settingsMenuHandler.OnSettingsBackButtonClicked -= OnSettingsBackButtonClicked;
     }
 
@@ -32,5 +37,10 @@ public class StartMenuHandler : MonoBehaviour
     {
         mainMenuHandler.gameObject.SetActive(true);
         settingsMenuHandler.gameObject.SetActive(false);
+    }
+
+    void OnSubmitSound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }

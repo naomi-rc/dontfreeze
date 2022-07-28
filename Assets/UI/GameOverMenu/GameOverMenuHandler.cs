@@ -7,7 +7,6 @@ public class GameOverMenuHandler : MonoBehaviour
 {
     private VisualElement screen;
     private Label title;
-    private VisualElement buttons;
     private Button restartButton;
     private Button quitButton;
 
@@ -16,9 +15,12 @@ public class GameOverMenuHandler : MonoBehaviour
         var rootElement = GetComponent<UIDocument>().rootVisualElement;
         screen = rootElement.Q<VisualElement>("Screen");
         title = rootElement.Q<Label>("Title");
-        buttons = rootElement.Q<VisualElement>("Buttons");
         restartButton = rootElement.Q<Button>("RestartButton");
         quitButton = rootElement.Q<Button>("QuitButton");
+
+        title.style.opacity = 0;
+        restartButton.style.opacity = 0;
+        quitButton.style.opacity = 0;
 
         restartButton.clicked += OnRestartButtonClicked;
         quitButton.clicked += OnQuitButtonClicked;
@@ -60,12 +62,13 @@ public class GameOverMenuHandler : MonoBehaviour
     IEnumerator ChangeTitleOpacity()
     {
         yield return new WaitForSeconds(2.0f);
-        title.style.opacity = 100;
+        title.style.opacity = 1;
     }
 
     IEnumerator ChangeButtonsOpacity()
     {
         yield return new WaitForSeconds(1.0f);
-        buttons.style.opacity = 100;
+        restartButton.style.opacity = 1;
+        quitButton.style.opacity = 1;
     }
 }
