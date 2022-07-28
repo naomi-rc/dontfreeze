@@ -27,8 +27,12 @@ public class LineSpawner : MonoBehaviour
     [SerializeField]
     private GameObject spawnParent = default;
 
+    [SerializeField]
+    private LevelSettings levelSettings;
+
     void Start()
     {
+        AddSelectedEnnemies();
         Spawn();
     }
 
@@ -86,6 +90,13 @@ public class LineSpawner : MonoBehaviour
     public void AddEnemy(GameObject prefab, int count)
     {
         enemies.Add(new Enemy() { prefab = prefab, count = count});
+    }
+
+    public void AddSelectedEnnemies()
+    {
+        AddEnemy(levelSettings.prefabBear, levelSettings.animalNumber);
+        AddEnemy(levelSettings.prefabWolf, levelSettings.animalNumber);
+        AddEnemy(levelSettings.prefabWisp, levelSettings.wispNumber);
     }
 
     void OnDrawGizmos()

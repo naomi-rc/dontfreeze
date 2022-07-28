@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectionMenuHandler : MonoBehaviour
@@ -8,59 +6,69 @@ public class SelectionMenuHandler : MonoBehaviour
     private ParametersSelectionHandler parametersSelectionHandler;
 
     [SerializeField]
-    private WorldSelectionHandler worldSelectionHandler;
+    private LevelSelectionHandler levelSelectionHandler;
 
-    private string skybox;
-    private int enemyNumber;
-    private int difficulty;
+    [SerializeField]
+    private LevelSettings levelSettings;
 
-    private int world;
+    [SerializeField]
+    private Location startLocation = default;
+
+    private int animalEnemyNumber;
+    private int wispEnemyNumber;
+
+    private int level;
 
     void Awake()
     {
-        worldSelectionHandler.NextButtonAction += OnNextButtonClicked;
+        levelSelectionHandler.NextButtonAction += OnNextButtonClicked;
         parametersSelectionHandler.BackButtonAction += OnBackButtonClicked;
         parametersSelectionHandler.ApplyButtonAction += OnApplyButtonClicked;
     }
 
     private void OnDisable()
     {
-        worldSelectionHandler.NextButtonAction -= OnNextButtonClicked;
+        levelSelectionHandler.NextButtonAction -= OnNextButtonClicked;
         parametersSelectionHandler.BackButtonAction -= OnBackButtonClicked;
         parametersSelectionHandler.ApplyButtonAction -= OnApplyButtonClicked;
     }
 
     void OnApplyButtonClicked()
     {
-        world = worldSelectionHandler.getWorldSelection();
-        difficulty = parametersSelectionHandler.getDifficultyChoice();
-        skybox = parametersSelectionHandler.getSkybox();
-        enemyNumber = parametersSelectionHandler.getEnemyNumber();
-        
-        parametersSelectionHandler.setValues(skybox, difficulty, enemyNumber);
-        worldSelectionHandler.setWorld(world);
+        level = levelSelectionHandler.getWorldSelection();
 
-        Debug.Log("The user chose the " + worldSelectionHandler.getWorldSelectionString() + " with the " + skybox + " skybox. The level of difficulty is " + parametersSelectionHandler.getStringDifficulty() + " and the user chose " + enemyNumber + " enemies!");
+        animalEnemyNumber = parametersSelectionHandler.getAnimalEnemyNumber();
+        wispEnemyNumber = parametersSelectionHandler.getWispEnemyNumber();
+
+        parametersSelectionHandler.setValues(level, animalEnemyNumber, wispEnemyNumber);
+        levelSelectionHandler.setLevel(level);
+
+        levelSettings.wispNumber = wispEnemyNumber;
+        levelSettings.animalNumber = animalEnemyNumber;
+        
+        levelSettings.levelNumber = level;
+
+        startLocation.Load();
     }
 
     void OnNextButtonClicked()
     {
-        worldSelectionHandler.gameObject.SetActive(false);
+        levelSelectionHandler.gameObject.SetActive(false);
         parametersSelectionHandler.gameObject.SetActive(true);
-        world = worldSelectionHandler.getWorldSelection();
-
-        parametersSelectionHandler.setValues(skybox, difficulty, enemyNumber);
+        level = levelSelectionHandler.getWorldSelection();
+        
+        parametersSelectionHandler.setValues(level, animalEnemyNumber, wispEnemyNumber);
     }
 
     void OnBackButtonClicked()
     {
-        worldSelectionHandler.gameObject.SetActive(true);
+        levelSelectionHandler.gameObject.SetActive(true);
         parametersSelectionHandler.gameObject.SetActive(false);
 
-        difficulty = parametersSelectionHandler.getDifficultyChoice();
-        skybox = parametersSelectionHandler.getSkybox();
-        enemyNumber = parametersSelectionHandler.getEnemyNumber();
+        animalEnemyNumber = parametersSelectionHandler.getAnimalEnemyNumber();
+        wispEnemyNumber = parametersSelectionHandler.getWispEnemyNumber();
 
-        worldSelectionHandler.setWorld(world);
+        levelSelectionHandler.setLevel(level);
+        parametersSelectionHandler.setSelectedLevel(level);
     }
 }

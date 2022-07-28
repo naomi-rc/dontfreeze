@@ -3,12 +3,19 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     public LevelSequence levelSequence;
+    public LevelSettings levelSettings;
+
     public static int currentLevelIndex = -1;
-    public Level currentLevel { get { return levelSequence.levels[currentLevelIndex < 0? 0 : currentLevelIndex]; } }    
+
+    //public Level currentLevel { get { return levelSequence.levels[currentLevelIndex < 0? 0 : currentLevelIndex]; } }
+    public Level currentLevel;
     private ParticleSystem snowSystem;
     
     void Start()
-    {        
+    {
+        currentLevelIndex = levelSettings.levelNumber - 1;
+        currentLevel = levelSequence.levels[currentLevelIndex];
+
         GameObject locationExitSelection =  GameObject.FindGameObjectWithTag("SafehouseLocationExit");
         snowSystem = GameObject.FindGameObjectWithTag("SnowSystem").GetComponent<ParticleSystem>();
         if (currentLevel.snow && !locationExitSelection)
@@ -19,7 +26,7 @@ public class LevelManager : MonoBehaviour
         if (locationExitSelection != null)
         {
             currentLevelIndex++;
-            locationExitSelection.GetComponent<Location>().SetNextLocation(currentLevel.location);
+           locationExitSelection.GetComponent<Location>().SetNextLocation(currentLevel.location);
         }
 
         Print();
