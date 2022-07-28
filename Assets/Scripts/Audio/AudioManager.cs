@@ -6,10 +6,9 @@ using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-
     public Sound[] sounds;
     public static AudioManager instance;
-    private bool canAttack;
+    private bool canAttack = true;
 
     void Awake()
     {
@@ -49,18 +48,23 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound " + name + " not found");
             return;
         }
-        if(name.Contains("Attack"))
+        if (name.Contains("Attack"))
         {
             if (canAttack)
             {
                 s.source.Play();
             }
-        } 
+        }
         else
         {
             s.source.Play();
         }
-        
+
+        if (name == "Death")
+        {
+            canAttack = false;
+        }
+
     }
 
     public void Stop(string name)
@@ -74,9 +78,18 @@ public class AudioManager : MonoBehaviour
         s.source.Stop();
     }
 
-    public void StopAttack()
-    {
-        canAttack = false;
-    }
+    public void PlayMovingSound(){
+        
+        Location location = FindObjectOfType<Location>();
 
+        if (location != null && location.gameObject.tag == "SafeHouseLocation")
+        {
+            Debug.Log("Nom du location " + location.ToString());
+            Play("MovingSafeHouse");
+        }
+        else
+        {
+            Play("Moving");  
+        }
+    }
 }

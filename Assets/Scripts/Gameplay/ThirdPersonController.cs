@@ -47,6 +47,9 @@ public class ThirdPersonController : MonoBehaviour
 
     private bool jumpActivated;
     private bool isAttacking;
+    private bool canAttackAgain = true;
+
+    private bool isGrounded;
 
     private Collider[] colliderZone;
 
@@ -72,7 +75,7 @@ public class ThirdPersonController : MonoBehaviour
     private void ApplyJump()
     {
         jumpActivated = true;
-        if (Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
+        if(characterController.isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -0.5f * gravity);
         }
@@ -89,25 +92,28 @@ public class ThirdPersonController : MonoBehaviour
         Move();
         Gravity();
 
-        if (Physics.OverlapSphere(groudCheckTransform.position, 0.3f).Length > 1)
+        if (characterController.isGrounded)
         {
             animator.SetBool("isGrounded", true);
             animator.SetBool("isJumping", false);
             animator.SetBool("isFalling", false);
 
-            if (jumpActivated)
-            {
-                animator.SetBool("isJumping", true);
-                jumpActivated = false;
-            }
-        }
-        else
-        {
-            animator.SetBool("isGrounded", false);
-            animator.SetBool("isFalling", true);                   
+            isGrounded = true;
         }
 
-        if (isAttacking)
+        if (jumpActivated && isGrounded)
+        {
+            animator.SetBool("isGrounded", false);
+            animator.SetBool("isJumping", true);
+            animator.SetBool("isFalling", true);
+
+            canAttackAgain = false;
+            Invoke("AttackAgain", 1);
+
+            jumpActivated = false;
+        }
+
+        if (isAttacking && canAttackAgain)
         {
             isAttacking = false;
             animator.SetBool("isAttacking", true);
@@ -118,15 +124,19 @@ public class ThirdPersonController : MonoBehaviour
                 if (collider.gameObject.TryGetComponent(out EnemyHealthController enemyHealthController))
                 {
                     collider.gameObject.TryGetComponent(out EnemyBehavior enemyBehavior);
+                    enemyBehavior.Hurt();
                     var damage = inventoryDatabase.currentWeapon != null ? inventoryDatabase.currentWeapon.damage : unarmedDamage;
                     FindObjectOfType<AudioManager>().Play(enemyBehavior.hurtSound);
                     enemyHealthController.TakeDamage(damage);
                 }
             }
+            canAttackAgain = false;
+            Invoke("AttackAgain", 1);
         }
         else
         {
             animator.SetBool("isAttacking", false);
+            isAttacking = false;
         }
     }
     private void FixedUpdate()
@@ -138,7 +148,7 @@ public class ThirdPersonController : MonoBehaviour
     {
         Look();
     }
-
+    
     private void Move()
     {
         float targetSpeed = (movement != Vector2.zero) ? speed.value : 0f;
@@ -178,6 +188,10 @@ public class ThirdPersonController : MonoBehaviour
     private void AttackEnemy()
     {
         isAttacking = true;
+    }
+    public void AttackAgain()
+    {
+        canAttackAgain = true;
     }
 
     private void EquipWeapon(InventoryItem item)
