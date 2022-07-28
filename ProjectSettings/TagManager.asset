@@ -7,6 +7,11 @@ TagManager:
   - Enemy
   - Pickable
   - Checkpoint
+  - EnemySpawner
+  - ItemSpawner
+  - SafehouseLocationExit
+  - SnowSystem
+  - LightSource
   layers:
   - Default
   - TransparentFX

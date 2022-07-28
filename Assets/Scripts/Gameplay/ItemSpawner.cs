@@ -41,7 +41,17 @@ public class ItemSpawner : MonoBehaviour
         Spawn();
     }
 
-    void Spawn()
+    public void AddSpawnpoints(List<GameObject> sps)
+    {
+        spawnpoints = sps;
+    }
+
+    public void AddLoot(GameObject prefab, int count)
+    {
+        lootPool.Add(new Loot() { prefab = prefab, count = count });
+    }
+
+    public void Spawn()
     {
         var selectedSpawnpointsIndex = new List<int>();
 

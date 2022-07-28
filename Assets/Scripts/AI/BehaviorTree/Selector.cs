@@ -1,18 +1,21 @@
-public class Selector : Node
+namespace AI
 {
-    public Selector() : base("Selector") { }
-    public Selector(string name) : base(name) { }
-    public override Status Process()
+    public class Selector : Node
     {
-        foreach (var c in children)
+        public Selector() : base("Selector") { }
+        public Selector(string name) : base(name) { }
+        public override Status Process()
         {
-            Status s = c.Process();
-            if (s == Status.Running || s == Status.Success)
+            foreach (var c in children)
             {
-                return s;
+                Status s = c.Process();
+                if (s == Status.Running || s == Status.Success)
+                {
+                    return s;
+                }
+
             }
-                
+            return Status.Failure;
         }
-        return Status.Failure;
     }
 }

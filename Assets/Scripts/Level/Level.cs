@@ -6,6 +6,7 @@ public class Level : ScriptableObject
     public int level;
     public string levelName;
     public int numberOfEnemies;
+    public int numberOfCollectibles;
     public bool snow;
     [SerializeField, Range(1,10)] int levelDifficulty;
     public int difficulty
@@ -14,6 +15,7 @@ public class Level : ScriptableObject
         set { levelDifficulty = Mathf.Clamp(value, 1, 10); }
     }
 
+    public SceneObject location;
     public Texture2D icon;
     public TimeSetting timeSetting;
     public enum TimeSetting

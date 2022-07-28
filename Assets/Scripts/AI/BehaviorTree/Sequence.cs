@@ -1,18 +1,21 @@
-public class Sequence : Node
+namespace AI
 {
-    public Sequence() : base("Sequence") { }
-    public Sequence(string name) : base(name) { }
-    public override Status Process()
+    public class Sequence : Node
     {
-        foreach (var c in children)
+        public Sequence() : base("Sequence") { }
+        public Sequence(string name) : base(name) { }
+        public override Status Process()
         {
-            Status s = c.Process();
-            if (s == Status.Running || s == Status.Failure)
+            foreach (var c in children)
             {
-                return s;
+                Status s = c.Process();
+                if (s == Status.Running || s == Status.Failure)
+                {
+                    return s;
+                }
+
             }
-                
+            return Status.Success;
         }
-        return Status.Success;
     }
 }
