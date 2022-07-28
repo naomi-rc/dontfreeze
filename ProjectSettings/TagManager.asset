@@ -10,6 +10,9 @@ TagManager:
   - EnemySpawner
   - ItemSpawner
   - SafeHouseLocation
+  - SafehouseLocationExit
+  - SnowSystem
+  - LightSource
   layers:
   - Default
   - TransparentFX

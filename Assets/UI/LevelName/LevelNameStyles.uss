@@ -1,0 +1,5 @@
+.TitleStyle {
+    transition-property: opacity;
+    transition-timing-function: ease-in-out-back;
+    transition-duration: 5s;
+}
