@@ -331,7 +331,7 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: eeb5292a221ad064e837ab06f628ac15,
     type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!114 &6258818642009825972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca369993600334346bc348e5e529baf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHoverSound: {fileID: 8300000, guid: a60c09471ca847d449f76a8ddbf14638, type: 3}
+  onClickSound: {fileID: 8300000, guid: ea51d99f7bc10e0499de2391110c8783, type: 3}
 --- !u!1 &7370635458519304045
 GameObject:
   m_ObjectHideFlags: 0
