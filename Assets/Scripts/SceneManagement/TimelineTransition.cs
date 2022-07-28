@@ -5,12 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class TimelineTransition : MonoBehaviour
 {
-    [SerializeField] Location location = default;
+    [SerializeField] string sceneName;
 
-    void Start()
+    public void LoadScene()
     {
-        Debug.Log("Loading scene...");
-        //location.Load();
-        SceneManager.LoadScene("SafeHouse", LoadSceneMode.Additive);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }
