@@ -8,6 +8,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartMenu.unity
     guid: 2709edb3cf3a9bb4d85ce201a09968c5
+  - enabled: 1
+    path: Assets/Scenes/CutScenes/BeginningCutScene.unity
+    guid: 5745117e44bf46e418975bdff263dd68
+  - enabled: 1
+    path: Assets/Scenes/SafeHouse.unity
+    guid: 02a0ef5d6291bbe45b14d1a6242444de
+  - enabled: 1
+    path: Assets/Scenes/FirstWorld.unity
+    guid: e989f95f93a6b854585785b8b1afadfe
+  - enabled: 1
+    path: Assets/Scenes/WorldX.unity
+    guid: aaeae8677528ffd45bf31bad77f63c44
+  - enabled: 1
+    path: Assets/Scenes/CutScenes/EndCutScene.unity
+    guid: e0721b86c841b2d4d85e0be462c9cee5
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: cfd01954f79131c4fb7b523deac918c6,
       type: 2}

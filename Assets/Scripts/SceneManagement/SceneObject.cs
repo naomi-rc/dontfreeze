@@ -16,7 +16,7 @@ public class SceneObject : ScriptableObject
 
     public string GetName()
     {
-        return _reference.editorAsset.name;
+        return ""; //_reference.editorAsset.name;
     }
 
     // Other scene related data
