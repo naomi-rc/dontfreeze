@@ -290,6 +290,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""7031b343-cd1d-4cd4-ae91-20a56336766f"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""9ab3e03e-7c05-438a-94ac-d5a922a2d2ef"",
                     ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",

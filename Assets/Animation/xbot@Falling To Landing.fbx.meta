@@ -60,7 +60,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.25414366
+      - time: 0.94949496
         functionName: Land
         data: 
         objectReferenceParameter: {instanceID: 0}
