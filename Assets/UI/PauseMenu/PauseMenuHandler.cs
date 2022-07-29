@@ -104,6 +104,7 @@ public class PauseMenuHandler : MonoBehaviour
 
     void OnQuitButtonClicked()
     {
+        if (onClickSound != null)
         {
             SubmitSoundAction.Invoke(onClickSound);
         }
