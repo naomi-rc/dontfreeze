@@ -15,11 +15,6 @@ public class SceneObject : ScriptableObject
 
     public SceneType type = SceneType.None;
 
-    public string GetName()
-    {
-        return _reference.editorAsset.name;
-    }
-
     // Other scene related data
 }
 
