@@ -16,6 +16,9 @@ public class PauseMenuHandler : MonoBehaviour
     private Button quitButton;
 
     [SerializeField]
+    private Location MainMenu = default;
+
+    [SerializeField]
     private AudioClip onHoverSound = default;
 
     [SerializeField]
@@ -105,8 +108,7 @@ public class PauseMenuHandler : MonoBehaviour
         {
             SubmitSoundAction.Invoke(onClickSound);
         }
-        // TODO: When we setup scene management, move to the start menu
-        Debug.LogWarning("Unimplemented Quit Button Clicked");
+        MainMenu.Load();
     }
 
     void OnButtonMouseEnter(MouseEnterEvent _)

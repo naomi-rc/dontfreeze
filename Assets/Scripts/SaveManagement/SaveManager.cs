@@ -32,6 +32,8 @@ public class SaveManager : MonoBehaviour
 
     private void UpdateSave(SceneObject scene)
     {
+        if (scene.type != SceneType.Level) return;
+
         Debug.Log("Updating save...");
 
         saveObject.playerLocation = scene;
