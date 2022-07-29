@@ -30,15 +30,5 @@ public class MobileControlsHandler : MonoBehaviour
     {
         DisplayStyle style = interactable.type != InteractionType.None ? DisplayStyle.Flex : DisplayStyle.None;
         interactButton.style.display = style;
-
-        switch (interactable.type)
-        {
-            case InteractionType.PickUp:
-                interactButton.text = "Pick Up";
-                break;
-            case InteractionType.None:
-            default:
-                break;
-        }
     }
 }

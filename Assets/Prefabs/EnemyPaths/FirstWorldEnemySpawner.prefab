@@ -329,9 +329,10 @@ PrefabInstance:
       objectReference: {fileID: 739097726464710537}
     - target: {fileID: 4395657717878280680, guid: 1e68d972f59957c4da33e84e312d4d83,
         type: 3}
-      propertyPath: enemies.Array.size
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: levelSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 4cb9e224e84abd340acd03188114e6ce,
+        type: 2}
     - target: {fileID: 4395657717878280680, guid: 1e68d972f59957c4da33e84e312d4d83,
         type: 3}
       propertyPath: waypoints.Array.size
@@ -387,28 +388,6 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[9]
       value: 
       objectReference: {fileID: 1958543584}
-    - target: {fileID: 4395657717878280680, guid: 1e68d972f59957c4da33e84e312d4d83,
-        type: 3}
-      propertyPath: enemies.Array.data[0].count
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4395657717878280680, guid: 1e68d972f59957c4da33e84e312d4d83,
-        type: 3}
-      propertyPath: enemies.Array.data[1].count
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4395657717878280680, guid: 1e68d972f59957c4da33e84e312d4d83,
-        type: 3}
-      propertyPath: enemies.Array.data[0].prefab
-      value: 
-      objectReference: {fileID: 9109889493818067255, guid: bc240aac3bd3dd44089f0935fe35c653,
-        type: 3}
-    - target: {fileID: 4395657717878280680, guid: 1e68d972f59957c4da33e84e312d4d83,
-        type: 3}
-      propertyPath: enemies.Array.data[1].prefab
-      value: 
-      objectReference: {fileID: 5050331601684100553, guid: 9517eaed0235e9547931d13d9dd8bf80,
-        type: 3}
     - target: {fileID: 4929295182366654259, guid: 1e68d972f59957c4da33e84e312d4d83,
         type: 3}
       propertyPath: m_RootOrder

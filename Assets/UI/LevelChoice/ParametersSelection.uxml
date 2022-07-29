@@ -1,23 +1,27 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="Screen" usage-hints="None" style="width: 100%; height: 100%; -unity-background-image-tint-color: rgb(25, 168, 147); background-color: rgb(0, 173, 167); justify-content: space-around; flex-grow: initial; flex-direction: column; flex-wrap: wrap; font-size: 20px;">
-        <ui:VisualElement name="Info" style="height: 81px;">
-            <ui:Label text="Here you can select different parameters for the level" display-tooltip-when-elided="true" name="Label" style="height: 82px; white-space: normal; font-size: 30px;" />
+    <ui:VisualElement name="Screen" usage-hints="None" style="width: 100%; height: 100%; justify-content: center; flex-grow: initial; flex-direction: column; flex-wrap: wrap; font-size: 20px; background-image: url(&apos;project://database/Assets/Images/LevelChoice/Background%20image.jpg?fileID=2800000&amp;guid=4e7a6909f0efafe46b8890f055fb90a6&amp;type=3#Background image&apos;); align-items: center;">
+        <ui:VisualElement style="width: 100%; height: 100%; justify-content: center; align-items: center;">
+            <ui:VisualElement name="Content" style="width: 70%; height: 90%; justify-content: space-around; border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; background-color: rgb(255, 255, 255); color: rgb(76, 161, 200); margin-left: 0; margin-top: 5%; align-items: center;">
+                <ui:VisualElement name="Info" style="height: 55px;">
+                    <ui:Label text="Select the number of enemy" display-tooltip-when-elided="true" name="Label" style="height: auto; white-space: normal; font-size: 30px; -unity-text-align: upper-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="EnemyAnimalSelection" style="height: 105px; color: rgb(49, 103, 128); align-items: center; flex-direction: row; justify-content: space-between; width: 490px;">
+                    <ui:SliderInt label="Number of animal enemies" value="10" high-value="30" show-input-field="false" direction="Horizontal" inverted="false" usage-hints="DynamicColor" name="AnimalEnemyNumber" style="font-size: 20px; flex-direction: column; height: 57px; justify-content: space-between; align-items: flex-start; color: rgb(61, 129, 160); opacity: 1; flex-wrap: nowrap; width: 440px; cursor: initial;" />
+                    <ui:Label text="10" display-tooltip-when-elided="true" name="MinAnimal" style="position: absolute; top: 70px; left: -2px;" />
+                    <ui:Label text="10" display-tooltip-when-elided="true" name="AnimalEnemyValue" style="font-size: 30px; height: 39px; width: 65px; -unity-text-align: upper-left; white-space: normal; align-items: auto; position: absolute; top: 33px; left: 458px; color: rgb(61, 129, 160);" />
+                    <ui:Label text="30" display-tooltip-when-elided="true" name="MaxAnimal" style="position: absolute; top: 69px; left: 417px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="EnemyWispSelection" style="height: 100px; color: rgb(61, 129, 160); align-items: center; flex-direction: row; justify-content: space-between; width: 499px;">
+                    <ui:SliderInt label="Number of wisp enemies" value="10" high-value="30" show-input-field="false" direction="Horizontal" inverted="false" usage-hints="DynamicColor" name="WispEnemyNumber" style="font-size: 20px; flex-direction: column; height: 57px; justify-content: space-between; align-items: flex-start; color: rgb(61, 129, 160); opacity: 1; flex-wrap: nowrap; width: 440px; cursor: initial;" />
+                    <ui:Label text="10" display-tooltip-when-elided="true" name="WispEnemyValue" style="font-size: 30px; height: 39px; width: 65px; -unity-text-align: upper-left; white-space: normal; align-items: auto; position: absolute; top: 26px; left: 459px; color: rgb(61, 129, 160);" />
+                    <ui:Label text="30" display-tooltip-when-elided="true" name="MaxWisp" style="position: absolute; top: 74px; left: 417px;" />
+                    <ui:Label text="10" display-tooltip-when-elided="true" name="MinWisp" style="position: absolute; top: 78px; left: -2px;" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:GroupBox name="Buttons" style="flex-direction: row; justify-content: space-between; height: 76px; align-items: flex-end; width: 582px;">
+                <ui:Button display-tooltip-when-elided="true" name="BackButton" style="height: 56px; width: 116px; font-size: 20px; background-image: url(&apos;project://database/Assets/Images/LevelChoice/Back%20arrow.png?fileID=2800000&amp;guid=30ea081a9de40e54e9670e16747f84ae&amp;type=3#Back arrow&apos;); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); background-color: rgba(88, 88, 88, 0);" />
+                <ui:Button display-tooltip-when-elided="true" name="ApplyButton" style="height: 58px; width: 93px; font-size: 20px; background-image: url(&apos;project://database/Assets/Images/LevelChoice/Done%20arrow.png?fileID=2800000&amp;guid=647b8eebd7a928a4b97b16b51cd5f5b3&amp;type=3#Done arrow&apos;); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); background-color: rgba(88, 88, 88, 0);" />
+            </ui:GroupBox>
         </ui:VisualElement>
-        <ui:VisualElement name="SkyboxSelection" style="width: 80%;">
-            <ui:DropdownField label="Skybox" index="-1" choices="System.Collections.Generic.List`1[System.String]" name="SkyboxList" style="font-size: 20px; height: 49px; -unity-background-image-tint-color: rgb(43, 34, 34);" />
-        </ui:VisualElement>
-        <ui:GroupBox name="DifficultySelection" style="height: 161px;">
-            <ui:RadioButtonGroup label="Choose the difficulty" value="-1" name="DifficultyGroup" style="position: relative; flex-direction: column; align-items: flex-start; justify-content: center; font-size: 20px; height: 166px;" />
-        </ui:GroupBox>
-        <ui:VisualElement name="EnemySelection" style="height: 73px; color: rgb(0, 0, 0); align-items: center; flex-direction: row; justify-content: space-between;">
-            <ui:SliderInt label="Number of enemy" value="10" high-value="30" show-input-field="false" direction="Horizontal" inverted="false" usage-hints="DynamicColor" name="EnemyNumber" style="font-size: 20px; flex-direction: column; height: 57px; justify-content: space-between; align-items: flex-start; color: rgb(0, 0, 0); opacity: 1; flex-wrap: nowrap; width: 440px; cursor: initial;" />
-            <ui:Label text="10" display-tooltip-when-elided="true" name="EnemyValue" style="font-size: 30px; height: 39px; width: 65px; -unity-text-align: upper-left; white-space: normal; align-items: auto; position: absolute; top: 32px; left: 472px;" />
-            <ui:Label text="10" display-tooltip-when-elided="true" name="Min" style="position: absolute; top: 66px; left: -2px;" />
-            <ui:Label text="30" display-tooltip-when-elided="true" name="Max" style="position: absolute; top: 66px; left: 417px;" />
-        </ui:VisualElement>
-        <ui:GroupBox name="Buttons" style="flex-direction: row; justify-content: space-around; height: 43px;">
-            <ui:Button text="Back" display-tooltip-when-elided="true" name="BackButton" style="height: 35px; width: 118px; font-size: 20px;" />
-            <ui:Button text="Apply" display-tooltip-when-elided="true" name="ApplyButton" style="height: 35px; width: 118px; font-size: 20px;" />
-        </ui:GroupBox>
     </ui:VisualElement>
 </ui:UXML>

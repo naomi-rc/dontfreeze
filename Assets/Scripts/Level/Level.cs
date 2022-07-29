@@ -15,6 +15,7 @@ public class Level : ScriptableObject
         set { levelDifficulty = Mathf.Clamp(value, 1, 10); }
     }
 
+    public SceneObject location;
     public Texture2D icon;
     public TimeSetting timeSetting;
     public enum TimeSetting

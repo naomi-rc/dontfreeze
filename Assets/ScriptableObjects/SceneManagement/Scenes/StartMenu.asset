@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: StartMenu
   m_EditorClassIdentifier: 
   _reference:
-    m_AssetGUID: c85005b73216f1f4187a67589fbd0fc8
+    m_AssetGUID: 2709edb3cf3a9bb4d85ce201a09968c5
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  type: 2

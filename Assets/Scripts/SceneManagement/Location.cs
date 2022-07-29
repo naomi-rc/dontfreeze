@@ -17,4 +17,9 @@ public class Location : MonoBehaviour
             sceneEventChannel.Raise(location);
         }
     }
+
+    public void SetNextLocation(SceneObject nextLocation)
+    {
+        location = nextLocation;
+    }
 }

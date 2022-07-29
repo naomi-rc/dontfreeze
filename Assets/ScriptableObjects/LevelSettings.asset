@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ee31f4c3fd74c6488332da79efe7cb0, type: 3}
+  m_Name: LevelSettings
+  m_EditorClassIdentifier: 
+  level1Complete: 0
+  level2Complete: 0
+  level3Complete: 0
+  level4Complete: 0
+  prefabBear: {fileID: 5050331601684100553, guid: 9517eaed0235e9547931d13d9dd8bf80,
+    type: 3}
+  prefabWolf: {fileID: 9109889493818067255, guid: bc240aac3bd3dd44089f0935fe35c653,
+    type: 3}
+  prefabWisp: {fileID: 9102090470229177761, guid: dfea3dda62780234283444236fa45db6,
+    type: 3}
+  wispNumber: 0
+  animalNumber: 0
+  levelNumber: 1

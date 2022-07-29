@@ -1,6 +1,36 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="Screen" style="flex-grow: 1; background-color: rgb(0, 0, 0);">
-        <ui:Label text="Placeholder Settings Menu" style="font-size: 62px; color: rgb(123, 123, 123);" />
-        <ui:Button text="Back" name="BackButton" />
+    <Style src="project://database/Assets/UI/SettingsMenu/SettingsMenuStyles.uss?fileID=7433441132597879392&amp;guid=9a9a6c94cba8c98418a134f17f14fb75&amp;type=3#SettingsMenuStyles" />
+    <Style src="project://database/Assets/UI/GlobalStyles.uss?fileID=7433441132597879392&amp;guid=180de4022c543ea4eb4c9ba7afc44ba3&amp;type=3#GlobalStyles" />
+    <ui:VisualElement name="Screen" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.78); align-items: center; justify-content: center;">
+        <ui:VisualElement name="Modal" style="width: 400px; height: 400px; background-color: rgb(217, 217, 217); border-top-left-radius: 20px; border-bottom-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-left-width: 3px; border-right-width: 3px; border-top-width: 3px; border-bottom-width: 3px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+            <ui:VisualElement name="Tabs" style="height: 60px; flex-direction: row;">
+                <ui:Button text="General" name="GeneralTab" class="SettingsButton" style="border-top-left-radius: 15px; flex-grow: 1; margin-left: 4px; margin-right: 4px; margin-top: 4px; margin-bottom: 4px;" />
+                <ui:Button text="Graphics" name="GraphicsTab" class="SettingsButton" style="flex-grow: 1; margin-left: 0; margin-right: 4px; margin-top: 4px; margin-bottom: 4px;" />
+                <ui:Button text="Audio" name="AudioTab" class="SettingsButton" style="flex-grow: 1; margin-left: 0; margin-right: 4px; margin-top: 4px; margin-bottom: 4px; border-top-right-radius: 15px;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Separator" style="background-color: rgb(0, 0, 0); height: 3px;" />
+            <ui:VisualElement name="General" style="flex-grow: 1; justify-content: flex-start;">
+                <ui:VisualElement class="Setting">
+                    <ui:DropdownField label="Resolution" index="-1" name="ResolutionDropdown" />
+                </ui:VisualElement>
+                <ui:VisualElement class="Setting">
+                    <ui:Toggle label="Fullscreen" name="FullscreenToggle" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Graphics" style="flex-grow: 1; justify-content: flex-start; display: none;">
+                <ui:VisualElement class="Setting">
+                    <ui:DropdownField label="Quality" index="-1" name="QualityDropdown" />
+                </ui:VisualElement>
+                <ui:VisualElement class="Setting">
+                    <ui:Toggle label="Vsync" name="VsyncToggle" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="Audio" style="flex-grow: 1; justify-content: flex-start; display: none;">
+                <ui:VisualElement class="Setting">
+                    <ui:Slider label="Master volume" high-value="1" name="MasterVolumeSlider" value="0" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:Button text="Close" display-tooltip-when-elided="true" name="CloseButton" class="Button" style="position: absolute; right: -50px; bottom: -20px; width: 120px;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

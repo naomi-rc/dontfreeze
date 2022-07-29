@@ -53,6 +53,5 @@ public class EnemyHealthController : MonoBehaviour
         {
             faceCamera.mainCamera = camera;
         }
-
     }
 }
