@@ -324,6 +324,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7522338785965530329, guid: a6e2009559245ef43ad0bd59da9816e3,
+        type: 3}
+      propertyPath: levelSequence.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522338785965530329, guid: a6e2009559245ef43ad0bd59da9816e3,
+        type: 3}
+      propertyPath: levelSequence.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: a9fe161de78475b478283e7fd90182e3,
+        type: 2}
+    - target: {fileID: 7522338785965530329, guid: a6e2009559245ef43ad0bd59da9816e3,
+        type: 3}
+      propertyPath: levelSequence.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b99a9fd8fc7ee514b97510b66a2db189,
+        type: 2}
+    - target: {fileID: 7522338785965530329, guid: a6e2009559245ef43ad0bd59da9816e3,
+        type: 3}
+      propertyPath: levelSequence.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 74406abef2bc6e34f89061c1b45528f3,
+        type: 2}
+    - target: {fileID: 7522338785965530329, guid: a6e2009559245ef43ad0bd59da9816e3,
+        type: 3}
+      propertyPath: levelSequence.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: bc28b081b66acbe469612ad4299bf7b0,
+        type: 2}
+    - target: {fileID: 7522338785965530329, guid: a6e2009559245ef43ad0bd59da9816e3,
+        type: 3}
+      propertyPath: levelSequence.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7da87096426f5cd42bcbd332af54ece1,
+        type: 2}
     - target: {fileID: 7522338785965530330, guid: a6e2009559245ef43ad0bd59da9816e3,
         type: 3}
       propertyPath: m_Name

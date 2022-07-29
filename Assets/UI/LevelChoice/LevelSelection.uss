@@ -1,0 +1,22 @@
+.unity-radio-button {
+    background-image: url('project://database/Assets/Images/LevelChoice/World.JPG?fileID=21300000&guid=d2dbc287849cb994eafd1f5cb0b278df&type=3#World');
+    -unity-background-scale-mode: stretch-to-fill;
+}
+
+.unity-radio-button:checked {
+    background-image: url('project://database/Assets/Images/LevelChoice/World%20selected.jpg?fileID=21300000&guid=e3fd162681d71f24a814ba40f3c54b94&type=3#World selected');
+    height: 94px;
+    width: 107px;
+    position: absolute;
+    top: 200px;
+    left: 32px;
+}
+
+.world-lock {
+    position: absolute;
+    width: 105px;
+    height: 94px;
+    top: 208px;
+    left: 31px;
+    background-image: url('project://database/Assets/Images/LevelChoice/World%20lock.png?fileID=21300000&guid=5b3b98529437ecb4d8cf0d73936dc29b&type=3#World lock');
+}

@@ -25,6 +25,7 @@ public class SceneObject : ScriptableObject
 
 public enum SceneType
 {
+    Cutscene,
     Level,
     Menu,
     None

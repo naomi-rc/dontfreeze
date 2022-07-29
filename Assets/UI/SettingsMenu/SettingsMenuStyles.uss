@@ -1,0 +1,40 @@
+.SettingsButton {
+    background-color: rgb(175, 204, 221);
+    border-bottom-width: 0;
+    -unity-font-definition: url('project://database/Assets/UI/MainMenu/Acme-Regular%20SDF.asset?fileID=11400000&guid=80359fcad4924724996401ff6e82e10a&type=2#Acme-Regular SDF');
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    -unity-font-style: normal;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+}
+
+.SettingsButton:hover {
+    background-color: rgba(0, 162, 254, 255);
+}
+
+.SettingsButton:active {
+    background-color: rgba(52, 120, 222, 255);
+}
+
+.Setting {
+    -unity-font-definition: url('project://database/Assets/UI/MainMenu/Acme-Regular%20SDF.asset?fileID=11400000&guid=80359fcad4924724996401ff6e82e10a&type=2#Acme-Regular SDF');
+    -unity-text-align: middle-left;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    background-color: rgba(255, 255, 255, 255);
+    height: 40px;
+    justify-content: center;
+}
+
+.Setting Toggle Label {
+    flex-grow: 1;
+}
+
+.Setting Toggle VisualElement {
+    flex-direction: row-reverse;
+}

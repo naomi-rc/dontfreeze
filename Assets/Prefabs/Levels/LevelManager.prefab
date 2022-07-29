@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a6178b87870c84098210c8361abd52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: {fileID: 11400000, guid: a9fe161de78475b478283e7fd90182e3, type: 2}
-  snowSystem: {fileID: 0}
+  levelSequence: {fileID: 11400000, guid: c9626871d0ebe4d4bb46e208936ae469, type: 2}
+  levelSettings: {fileID: 11400000, guid: 4cb9e224e84abd340acd03188114e6ce, type: 2}
+  currentLevel: {fileID: 0}
 --- !u!114 &574157164601298135
 MonoBehaviour:
   m_ObjectHideFlags: 0

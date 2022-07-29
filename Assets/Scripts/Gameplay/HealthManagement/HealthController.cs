@@ -17,6 +17,7 @@ public class HealthController : MonoBehaviour
     private bool isDead = false;
     [SerializeField] private Animator animator;
     private bool isDefending;
+    private bool canDefend = true;
 
     private void Start()
     {
@@ -35,11 +36,12 @@ public class HealthController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isDefending)
-        {
+        if (isDefending && canDefend)
+        { 
             animator.SetBool("isDefending", true);
-            FindObjectOfType<AudioManager>().Play("Defense");
             isDefending = false;
+            canDefend = false;
+            Invoke("EnableDefend", 2f);
         }
         else
         {
@@ -71,9 +73,9 @@ public class HealthController : MonoBehaviour
             isDead = true;
             animator.SetBool("isDead", true);
             FindObjectOfType<AudioManager>().Play("Death");
-            FindObjectOfType<AudioManager>().StopAttack();
             onPlayerDeathEvent.Raise();
         }
+
         Decrease(1);
     }
 
@@ -92,6 +94,11 @@ public class HealthController : MonoBehaviour
         StartCoroutine(BleedCoroutine(bleedEffect));
     }
 
+    private void EnableDefend()
+    {
+        canDefend = true;
+    }
+
     private IEnumerator BleedCoroutine(DPSStatus bleedEffect)
     {
         for (int time = 0; time < bleedEffect.duration; ++time)
@@ -103,4 +110,10 @@ public class HealthController : MonoBehaviour
 
         bleedEffect.Deactivate();
     }
+
+    public bool enemyCanAttack()
+    {
+        return canDefend;
+    }
+
 }
