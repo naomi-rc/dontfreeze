@@ -86,9 +86,8 @@ public class AudioManager : MonoBehaviour
         
         Location location = FindObjectOfType<Location>();
 
-        if (location != null && location.gameObject.tag == "SafeHouseLocation")
+        if (location != null && location.gameObject.tag == "SafeHouseLocationExit")
         {
-            Debug.Log("Nom du location " + location.ToString());
             Play("MovingSafeHouse");
         }
         else
