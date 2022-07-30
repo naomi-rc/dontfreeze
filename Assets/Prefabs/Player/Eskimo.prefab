@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5698920573283256546}
   - component: {fileID: 5698920573283256544}
   - component: {fileID: 5698920573283256547}
+  - component: {fileID: 8888498149542658756}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -4812,6 +4813,23 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1818360609 &8888498149542658756
+RotationConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5698920573283256557}
+  m_Enabled: 1
+  m_Weight: 1
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_RotationOffset: {x: 0, y: 0, z: 0}
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_IsContraintActive: 0
+  m_IsLocked: 1
+  m_Sources: []
 --- !u!1 &6744022717365590785
 GameObject:
   m_ObjectHideFlags: 0
@@ -5165,12 +5183,12 @@ PrefabInstance:
     - target: {fileID: 4322900001528984051, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.9623656
+      value: 1.8972713
       objectReference: {fileID: 0}
     - target: {fileID: 4751502685396687648, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.9623656
+      value: 1.8972713
       objectReference: {fileID: 0}
     - target: {fileID: 6610276308304020395, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
@@ -5190,7 +5208,7 @@ PrefabInstance:
     - target: {fileID: 7468836218415742007, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.9623656
+      value: 1.8972713
       objectReference: {fileID: 0}
     - target: {fileID: 7836599026651443587, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
@@ -5205,7 +5223,7 @@ PrefabInstance:
     - target: {fileID: 7836599026651443587, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.9623656
+      value: 1.8972713
       objectReference: {fileID: 0}
     - target: {fileID: 8252424577970191137, guid: 5a6493fd840f543419f54816b5196e51,
         type: 3}
