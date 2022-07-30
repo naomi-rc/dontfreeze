@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class SelectionMenuHandler : MonoBehaviour
 {
     [SerializeField]
     private ParametersSelectionHandler parametersSelectionHandler;
+
+    public UnityAction<AudioClip> SubmitSoundAction = delegate { };
 
     [SerializeField]
     private LevelSelectionHandler levelSelectionHandler;
@@ -14,21 +18,30 @@ public class SelectionMenuHandler : MonoBehaviour
     [SerializeField]
     private Location startLocation = default;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
     private int animalEnemyNumber;
     private int wispEnemyNumber;
 
     private int level;
 
-    void Awake()
+    private void OnEnable()
     {
+        levelSelectionHandler.SubmitSoundAction += OnSubmitSound;
         levelSelectionHandler.NextButtonAction += OnNextButtonClicked;
+
+        parametersSelectionHandler.SubmitSoundAction += OnSubmitSound;
         parametersSelectionHandler.BackButtonAction += OnBackButtonClicked;
         parametersSelectionHandler.ApplyButtonAction += OnApplyButtonClicked;
     }
 
     private void OnDisable()
     {
+        levelSelectionHandler.SubmitSoundAction -= OnSubmitSound;
         levelSelectionHandler.NextButtonAction -= OnNextButtonClicked;
+
+        parametersSelectionHandler.SubmitSoundAction -= OnSubmitSound;
         parametersSelectionHandler.BackButtonAction -= OnBackButtonClicked;
         parametersSelectionHandler.ApplyButtonAction -= OnApplyButtonClicked;
     }
@@ -56,7 +69,7 @@ public class SelectionMenuHandler : MonoBehaviour
         levelSelectionHandler.gameObject.SetActive(false);
         parametersSelectionHandler.gameObject.SetActive(true);
         level = levelSelectionHandler.getWorldSelection();
-        
+
         parametersSelectionHandler.setValues(level, animalEnemyNumber, wispEnemyNumber);
     }
 
@@ -70,5 +83,10 @@ public class SelectionMenuHandler : MonoBehaviour
 
         levelSelectionHandler.setLevel(level);
         parametersSelectionHandler.setSelectedLevel(level);
+    }
+
+    void OnSubmitSound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }
