@@ -6,20 +6,21 @@
                 <ui:VisualElement name="Info" style="height: 55px;">
                     <ui:Label text="Select the number of enemy" display-tooltip-when-elided="true" name="Label" style="height: auto; white-space: normal; font-size: 30px; -unity-text-align: upper-center;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="EnemyAnimalSelection" style="height: 105px; color: rgb(49, 103, 128); align-items: center; flex-direction: row; justify-content: space-between; width: 490px;">
-                    <ui:SliderInt label="Number of animal enemies" value="10" high-value="30" show-input-field="false" direction="Horizontal" inverted="false" usage-hints="DynamicColor" name="AnimalEnemyNumber" style="font-size: 20px; flex-direction: column; height: 57px; justify-content: space-between; align-items: flex-start; color: rgb(61, 129, 160); opacity: 1; flex-wrap: nowrap; width: 440px; cursor: initial;" />
-                    <ui:Label text="10" display-tooltip-when-elided="true" name="MinAnimal" style="position: absolute; top: 70px; left: -2px;" />
-                    <ui:Label text="10" display-tooltip-when-elided="true" name="AnimalEnemyValue" style="font-size: 30px; height: 39px; width: 65px; -unity-text-align: upper-left; white-space: normal; align-items: auto; position: absolute; top: 33px; left: 458px; color: rgb(61, 129, 160);" />
-                    <ui:Label text="30" display-tooltip-when-elided="true" name="MaxAnimal" style="position: absolute; top: 69px; left: 417px;" />
+                <ui:VisualElement name="EnemyAnimalSelection" style="height: 105px; color: rgb(76, 161, 200); align-items: center; flex-direction: row; justify-content: center; width: 490px;">
+                    <ui:Label text="10" display-tooltip-when-elided="true" name="MinAnimal" style="position: absolute; top: 79px; left: 11px; font-size: 22px;" />
+                    <ui:SliderInt label="Number of animal enemies (2x) :" value="10" high-value="30" show-input-field="false" direction="Horizontal" inverted="false" usage-hints="DynamicColor" name="AnimalEnemyNumber" style="font-size: 25px; flex-direction: column; height: 77px; justify-content: space-between; align-items: flex-start; color: rgb(61, 129, 160); opacity: 1; flex-wrap: nowrap; width: 460px; cursor: initial;" />
+                    <ui:Label text="10" display-tooltip-when-elided="true" name="AnimalEnemyValue" style="font-size: 30px; height: 39px; width: 65px; -unity-text-align: upper-left; white-space: normal; align-items: auto; position: absolute; top: 11px; left: 411px; color: rgb(76, 161, 200);" />
+                    <ui:Label text="30" display-tooltip-when-elided="true" name="MaxAnimal" style="position: absolute; top: 81px; left: 452px; font-size: 22px;" />
                 </ui:VisualElement>
-                <ui:VisualElement name="EnemyWispSelection" style="height: 100px; color: rgb(61, 129, 160); align-items: center; flex-direction: row; justify-content: space-between; width: 499px;">
-                    <ui:SliderInt label="Number of wisp enemies" value="10" high-value="30" show-input-field="false" direction="Horizontal" inverted="false" usage-hints="DynamicColor" name="WispEnemyNumber" style="font-size: 20px; flex-direction: column; height: 57px; justify-content: space-between; align-items: flex-start; color: rgb(61, 129, 160); opacity: 1; flex-wrap: nowrap; width: 440px; cursor: initial;" />
-                    <ui:Label text="10" display-tooltip-when-elided="true" name="WispEnemyValue" style="font-size: 30px; height: 39px; width: 65px; -unity-text-align: upper-left; white-space: normal; align-items: auto; position: absolute; top: 26px; left: 459px; color: rgb(61, 129, 160);" />
-                    <ui:Label text="30" display-tooltip-when-elided="true" name="MaxWisp" style="position: absolute; top: 74px; left: 417px;" />
-                    <ui:Label text="10" display-tooltip-when-elided="true" name="MinWisp" style="position: absolute; top: 78px; left: -2px;" />
+                <ui:VisualElement name="EnemyWispSelection" style="height: 134px; color: rgb(76, 161, 200); align-items: center; flex-direction: row; justify-content: space-around; width: 499px;">
+                    <ui:SliderInt label="Number of wisp enemies :" value="10" high-value="30" show-input-field="false" direction="Horizontal" inverted="false" usage-hints="DynamicColor" name="WispEnemyNumber" style="font-size: 25px; flex-direction: column; height: 77px; justify-content: space-between; align-items: flex-start; color: rgb(61, 129, 160); opacity: 1; flex-wrap: nowrap; width: 460px; cursor: initial;">
+                        <ui:Label text="10" display-tooltip-when-elided="true" name="WispEnemyValue" style="font-size: 30px; height: 39px; width: 65px; -unity-text-align: upper-left; white-space: normal; align-items: auto; position: absolute; top: -2px; left: 321px; color: rgb(76, 161, 200);" />
+                    </ui:SliderInt>
+                    <ui:Label text="10" display-tooltip-when-elided="true" name="MinWisp" style="position: absolute; top: 93px; left: 14px; font-size: 22px;" />
+                    <ui:Label text="30" display-tooltip-when-elided="true" name="MaxWisp" style="position: absolute; top: 96px; left: 453px; font-size: 22px;" />
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:GroupBox name="Buttons" style="flex-direction: row; justify-content: space-between; height: 76px; align-items: stretch; width: 587px; flex-wrap: nowrap;">
+            <ui:GroupBox name="Buttons" style="flex-direction: row; justify-content: space-between; height: 122px; align-items: stretch; width: 587px; flex-wrap: nowrap;">
                 <ui:Button display-tooltip-when-elided="true" name="BackButton" text="Back" style="height: 72px; width: 152px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0);" />
                 <ui:Button display-tooltip-when-elided="true" name="ApplyButton" text="Apply" style="height: 72px; width: 152px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0);" />
             </ui:GroupBox>
