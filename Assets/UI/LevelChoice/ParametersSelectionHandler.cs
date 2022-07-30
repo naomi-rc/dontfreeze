@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
@@ -9,8 +6,8 @@ public class ParametersSelectionHandler : MonoBehaviour
 {
     public UnityAction BackButtonAction = delegate { };
     public UnityAction ApplyButtonAction = delegate { };
+    public UnityAction<AudioClip> SubmitSoundAction = delegate { };
 
-    private DropdownField skyboxDropDown;
 
     private Button backButton;
     private Button applyButton;
@@ -27,14 +24,16 @@ public class ParametersSelectionHandler : MonoBehaviour
     private Label minWispEnemy;
     private Label maxWispEnemy;
 
+    [SerializeField]
+    private AudioClip onHoverSound = default;
+
+    [SerializeField]
+    private AudioClip onClickSound = default;
+
     private int[] animalPair = new int[2];
     private int[] wispPair = new int[2];
 
     private int selectedLevel = 1;
-
-    //private RadioButtonGroup buttonGroup;
-
-    private List<string> difficultyList = new List<string> { "Easy", "Normal", "Hard" };
 
     private void Update()
     {
@@ -52,10 +51,12 @@ public class ParametersSelectionHandler : MonoBehaviour
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
 
         backButton = rootVisualElement.Q<Button>("BackButton");
-        applyButton = rootVisualElement.Q<Button>("ApplyButton");
+        backButton.RegisterCallback<MouseEnterEvent>(OnButtonMouseEnter);
 
-        skyboxDropDown = rootVisualElement.Q<DropdownField>("SkyboxList");
-        
+        applyButton = rootVisualElement.Q<Button>("ApplyButton");
+        applyButton.RegisterCallback<MouseEnterEvent>(OnButtonMouseEnter);
+
+
         animalEnemyNumber = rootVisualElement.Q<SliderInt>("AnimalEnemyNumber");
         animalEnemyValue = rootVisualElement.Q<Label>("AnimalEnemyValue");
         animalEnemyValue.text = animalEnemyNumber.value.ToString();
@@ -80,17 +81,38 @@ public class ParametersSelectionHandler : MonoBehaviour
     void OnDisable()
     {
         backButton.clicked -= OnBackButtonClicked;
+        backButton.UnregisterCallback<MouseEnterEvent>(OnButtonMouseEnter);
+
         applyButton.clicked -= OnApplyButtonClicked;
+        backButton.UnregisterCallback<MouseEnterEvent>(OnButtonMouseEnter);
+
     }
 
     void OnBackButtonClicked()
     {
+        if (onClickSound != null)
+        {
+            SubmitSoundAction.Invoke(onClickSound);
+        }
+
         BackButtonAction.Invoke();
     }
 
     void OnApplyButtonClicked()
     {
+        if (onClickSound != null)
+        {
+            SubmitSoundAction.Invoke(onClickSound);
+        }
+
         ApplyButtonAction.Invoke();
+    }
+    void OnButtonMouseEnter(MouseEnterEvent _)
+    {
+        if (onHoverSound != null)
+        {
+            SubmitSoundAction.Invoke(onHoverSound);
+        }
     }
 
     private void setMinMaxValueText()

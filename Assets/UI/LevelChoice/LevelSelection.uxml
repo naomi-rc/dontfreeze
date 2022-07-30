@@ -25,6 +25,8 @@
             <ui:VisualElement name="Path34" style="position: absolute; height: 110px; width: 142px; top: 184px; left: 487px; background-image: url(&apos;project://database/Assets/Images/LevelChoice/Path.png?fileID=2800000&amp;guid=cd626d560dea7e54db6e39147b0b2a2c&amp;type=3#Path&apos;);" />
             <ui:VisualElement name="Path45" style="position: absolute; height: 110px; width: 142px; top: 177px; left: 594px; background-image: url(&apos;project://database/Assets/Images/LevelChoice/Path%20inverse.png?fileID=2800000&amp;guid=2a900ba82455cbf4eaac5b3d6ed6b8d7&amp;type=3#Path inverse&apos;); -unity-background-scale-mode: stretch-to-fill;" />
         </ui:VisualElement>
-        <ui:Button display-tooltip-when-elided="true" name="NextButton" style="position: relative; top: 0; left: 374px; height: 72px; width: 134px; background-image: url(&apos;project://database/Assets/Images/LevelChoice/Next%20arrow.png?fileID=2800000&amp;guid=eda358c9ba2625a47851cbf74ae1d069&amp;type=3#Next arrow&apos;); background-color: rgba(88, 88, 88, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0);" />
+        <ui:VisualElement style="height: -64px; width: 956px; justify-content: space-around; align-items: auto;">
+            <ui:Button display-tooltip-when-elided="true" name="NextButton" text="Next" class="unity-button" style="white-space: nowrap; width: 152px;" />
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

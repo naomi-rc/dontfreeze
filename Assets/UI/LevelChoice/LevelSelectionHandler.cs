@@ -6,6 +6,17 @@ public class LevelSelectionHandler : MonoBehaviour
 {
     public UnityAction SettingsButtonAction = delegate { };
     public UnityAction NextButtonAction = delegate { };
+    public UnityAction<AudioClip> SubmitSoundAction = delegate { };
+
+
+    [SerializeField]
+    private AudioClip onHoverSound = default;
+
+    [SerializeField]
+    private AudioClip onClickSound = default;
+
+    [SerializeField]
+    private InputReader inputReader = default;
 
     private Button nextButton;
 
@@ -23,6 +34,7 @@ public class LevelSelectionHandler : MonoBehaviour
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
 
         nextButton = rootVisualElement.Q<Button>("NextButton");
+        nextButton.RegisterCallback<MouseEnterEvent>(OnButtonMouseEnter);
 
         firstButton = rootVisualElement.Q<RadioButton>("FirstWorldButton");
         secondButton = rootVisualElement.Q<RadioButton>("SecondWorldButton");
@@ -33,18 +45,34 @@ public class LevelSelectionHandler : MonoBehaviour
         lockLevel();
         setLevel(levelNumber);
 
+        inputReader.EnableUiInput();
+
         nextButton.clicked += OnNextButtonClicked;
     }
    
     void OnDisable()
     {
         nextButton.clicked -= OnNextButtonClicked;
+        nextButton.UnregisterCallback<MouseEnterEvent>(OnButtonMouseEnter);
     }
 
     void OnNextButtonClicked()
     {
+        if (onClickSound != null)
+        {
+            SubmitSoundAction.Invoke(onClickSound);
+        }
+
         levelNumber = getWorldSelection();
         NextButtonAction.Invoke();
+    }
+
+    void OnButtonMouseEnter(MouseEnterEvent _)
+    {
+        if (onHoverSound != null)
+        {
+            SubmitSoundAction.Invoke(onHoverSound);
+        }
     }
 
     public void lockLevel()
