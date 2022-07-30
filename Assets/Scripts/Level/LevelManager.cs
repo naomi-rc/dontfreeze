@@ -7,15 +7,11 @@ public class LevelManager : MonoBehaviour
 
     public static int currentLevelIndex = -1;
 
-    //public Level currentLevel { get { return levelSequence.levels[currentLevelIndex < 0? 0 : currentLevelIndex]; } }
-    public Level currentLevel;
+    public Level currentLevel { get { return levelSequence.levels[currentLevelIndex < 0? 0 : currentLevelIndex]; } }
     private ParticleSystem snowSystem;
     
     void Start()
     {
-        currentLevelIndex = levelSettings.levelNumber - 1;
-        currentLevel = levelSequence.levels[currentLevelIndex];
-
         GameObject locationExitSelection =  GameObject.FindGameObjectWithTag("SafehouseLocationExit");
         snowSystem = GameObject.FindGameObjectWithTag("SnowSystem").GetComponent<ParticleSystem>();
         if (currentLevel.snow && !locationExitSelection)

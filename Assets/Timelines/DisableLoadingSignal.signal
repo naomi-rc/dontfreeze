@@ -9,12 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf312ee552945eb44be6b5036c762c4e, type: 3}
-  m_Name: Intro
+  m_Script: {fileID: 11500000, guid: d6fa2d92fc1b3f34da284357edf89c3b, type: 3}
+  m_Name: DisableLoadingSignal
   m_EditorClassIdentifier: 
-  _reference:
-    m_AssetGUID: 5745117e44bf46e418975bdff263dd68
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  type: 0
