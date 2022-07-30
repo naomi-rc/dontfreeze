@@ -29,7 +29,6 @@ namespace AI
 
         void Start()
         {
-            Random.InitState(458);
             agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
             enemyController = GetComponent<EnemyHealthController>();
             UpdateTarget(FindObjectOfType<AgentManager>().GetTarget());
@@ -79,9 +78,9 @@ namespace AI
             s9.AddChild(attack);
 
             Leaf idle = new Leaf("Idle", Idle);
-            Leaf roam = new Leaf("Wander", Wander);            
-            s5.AddChild(roam);
+            Leaf roam = new Leaf("Wander", Wander);
             s5.AddChild(idle);
+            s5.AddChild(roam);
 
         }
 
@@ -106,24 +105,17 @@ namespace AI
         public Node.Status Idle()
         {
             //0.5% chance of failing
-           /* if (agent.hasPath && agent.remainingDistance < targetMinDistance && Random.Range(0f, 1f) * 100 < 40)
+            if (state == ActionState.WANDER || Random.Range(0f, 1f) * 1000 < 5)
             {
                 return Node.Status.Failure;
-
-            }*/
-            
+            }
             state = ActionState.IDLE;
             return Node.Status.Running;
         }
 
         public Node.Status Wander()
         {
-
-            if (agent.remainingDistance > 1f)
-            {
-                return Node.Status.Running;
-            }
-            else if (Random.Range(0f, 1f) * 100 < 40)
+            if (state != ActionState.WANDER)
             {
                 //Choose random angle to rotate by
                 float angle = Random.Range(-10, 10);
@@ -133,16 +125,17 @@ namespace AI
                 float distance = Random.Range(5, 15);
                 agent.SetDestination(agent.transform.forward * distance);
                 state = ActionState.WANDER;
-                return Node.Status.Running;
             }
-            /*if (agent.hasPath && Vector3.Distance(agent.pathEndPosition, agent.destination) >= targetMinDistance)
+            else if (agent.remainingDistance < 0.1f)
             {
-                return Node.Status.Failure;
-                //agent.ResetPath();
-                //state = ActionState.IDLE;
+                state = ActionState.IDLE;
+            }
+            else if (agent.hasPath && Vector3.Distance(agent.pathEndPosition, agent.destination) >= targetMinDistance)
+            {
+                agent.ResetPath();
 
-            }*/
-            return Node.Status.Failure;
+            }
+            return Node.Status.Running;
         }
 
         public Node.Status Pursue()
