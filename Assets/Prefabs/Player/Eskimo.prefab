@@ -4935,12 +4935,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35949c45015661f4abc4e686c1cbf18a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 11400000, guid: 5a165dfd9a2392e449f556b5649c1582, type: 2}
-  onPlayerDeathEvent: {fileID: 11400000, guid: 52a90ecdcd475f141994dad5571d2299, type: 2}
-  restoreHealthEvent: {fileID: 11400000, guid: 6d3aa06294a81be4d90f31ff302a9b42, type: 2}
   maxHealth: 100
+  playerHealth: {fileID: 11400000, guid: 5a165dfd9a2392e449f556b5649c1582, type: 2}
+  inventoryDatabase: {fileID: 11400000, guid: e3b88776d79ff6046931d3f095cb527f, type: 2}
   bleedEffect: {fileID: 11400000, guid: 1476b42b6079be34daf168fd49edbc71, type: 2}
   animator: {fileID: 6882558884451116998}
+  restoreHealthEvent: {fileID: 11400000, guid: 6d3aa06294a81be4d90f31ff302a9b42, type: 2}
+  onPlayerDeathEvent: {fileID: 11400000, guid: 52a90ecdcd475f141994dad5571d2299, type: 2}
 --- !u!114 &6645909542732442889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4983,6 +4984,7 @@ MonoBehaviour:
     useConstant: 1
     constant: 25
     variable: {fileID: 0}
+  inventoryDatabase: {fileID: 11400000, guid: e3b88776d79ff6046931d3f095cb527f, type: 2}
   coldStatusEffect: {fileID: 11400000, guid: 0e79687d4e996dc44a98299ff89f1263, type: 2}
 --- !u!114 &8524240975359390290
 MonoBehaviour:
@@ -5098,17 +5100,17 @@ PrefabInstance:
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -90.07735
       objectReference: {fileID: 0}
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.7
+      value: -5.62
       objectReference: {fileID: 0}
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.8
+      value: 48.61977
       objectReference: {fileID: 0}
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
@@ -5118,17 +5120,17 @@ PrefabInstance:
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.19491966
+      value: 0.19491969
       objectReference: {fileID: 0}
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000000893376
+      value: 0.000000010633491
       objectReference: {fileID: 0}
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000015784135
+      value: -0.000000001240371
       objectReference: {fileID: 0}
     - target: {fileID: 4743598414020496899, guid: d07943c1826891f44b6ebc5ba5812e4a,
         type: 3}

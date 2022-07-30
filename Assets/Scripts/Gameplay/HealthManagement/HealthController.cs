@@ -6,11 +6,10 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] private FloatVariable playerHealth;
-    [SerializeField] private VoidEventChannel onPlayerDeathEvent;
-    [SerializeField] private IntEventChannel restoreHealthEvent;
-
     [SerializeField] private int maxHealth = 100;
+    [SerializeField] private FloatVariable playerHealth;
+
+    [SerializeField] private InventoryDatabase inventoryDatabase;
 
     [SerializeField] private DPSStatus bleedEffect = default;
 
@@ -18,6 +17,9 @@ public class HealthController : MonoBehaviour
     [SerializeField] private Animator animator;
     private bool isDefending;
     private bool canDefend = true;
+
+    [SerializeField] private IntEventChannel restoreHealthEvent;
+    [SerializeField] private VoidEventChannel onPlayerDeathEvent;
 
     private void Start()
     {
@@ -86,7 +88,8 @@ public class HealthController : MonoBehaviour
 
     public void Decrease(float value)
     {
-        playerHealth.value -= value;
+        float resistance = inventoryDatabase.currentClothes?.damageResistance ?? 0f;
+        playerHealth.value -= value - (value * resistance);
     }
 
     private void ApplyBleed()

@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-class InventorySlot : VisualElement
+public class InventorySlot : VisualElement
 {
     public new class UxmlFactory : UxmlFactory<InventorySlot, UxmlTraits> { }
 
     public InventoryItem item;
-
-    private VisualElement itemIcon;
-    private Label itemCount;
+    protected VisualElement itemIcon;
+    protected Label itemCount;
 
     public InventorySlot() : base()
     {
@@ -37,8 +36,21 @@ class InventorySlot : VisualElement
         Add(itemCount);
     }
 
+    public void SetItem(InventoryItem item)
+    {
+        if (item is null)
+            return;
+
+        this.item = item;
+        itemIcon.style.backgroundImage = new StyleBackground(item.icon);
+        itemCount.text = "";
+    }
+
     public void SetItem(InventoryItem item, int count)
     {
+        if (item is null)
+            return;
+
         this.item = item;
         itemIcon.style.backgroundImage = new StyleBackground(item.icon);
         itemCount.text = count.ToString();
