@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d25d7ebe3bd394fbcc3d4087cf05e1, type: 3}
   m_Name: Coat
   m_EditorClassIdentifier: 
-  title: Coat
+  title: Winter Coat
   icon: {fileID: 2800000, guid: b3c98234e0c5cde4fb04cef72b708633, type: 3}
   description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero
     dui, malesuada quis dolor ut, mattis eleifend augue.
-  model: {fileID: 1198997370615946, guid: a50c00e828644ed4a8fdf78eb641f8d6, type: 3}
+  model: {fileID: 3844449924942529173, guid: ab01947146d9d144fbf42c5dbc93ab2e, type: 3}
   ingredients:
   - item: {fileID: 11400000, guid: a0b646c6839b789429a190cea206f700, type: 2}
     amount: 2
