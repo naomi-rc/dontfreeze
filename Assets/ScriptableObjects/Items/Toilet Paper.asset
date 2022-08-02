@@ -14,6 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Toilet Paper
   icon: {fileID: 2800000, guid: dab69730ef1b862438f27fa33e6d5e79, type: 3}
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris libero
-    dui, malesuada quis dolor ut, mattis eleifend augue.
+  description: When nature calls...
   model: {fileID: 1067867320851098, guid: 9580b3e45b460de4a90f3fa8491c89a4, type: 3}

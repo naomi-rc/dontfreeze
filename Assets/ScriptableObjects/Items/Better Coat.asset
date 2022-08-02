@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Sport Winter Coat
   icon: {fileID: 2800000, guid: b3c98234e0c5cde4fb04cef72b708633, type: 3}
-  description: The Cooler Coat
-  model: {fileID: 3844449924942529173, guid: ab01947146d9d144fbf42c5dbc93ab2e, type: 3}
+  description: A coat enhanced by animal hide.
+  model: {fileID: 1198997370615946, guid: a50c00e828644ed4a8fdf78eb641f8d6, type: 3}
   ingredients: []
   coldResistance: 0.5
   damageResistance: 0.5
