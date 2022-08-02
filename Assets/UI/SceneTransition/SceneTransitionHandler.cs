@@ -31,13 +31,13 @@ public partial class SceneTransitionHandler : MonoBehaviour
 
     public IEnumerator FadeInAnimation()
     {
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSecondsRealtime(2.0f);
         screen.AddToClassList("animation-fade");
     }
 
     public IEnumerator FadeOutAnimation()
     {
-        yield return new WaitForSeconds(0f);
+        yield return new WaitForSecondsRealtime(0f);
         screen.RemoveFromClassList("animation-fade");
     }
 }

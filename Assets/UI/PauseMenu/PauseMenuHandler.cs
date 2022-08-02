@@ -24,6 +24,9 @@ public class PauseMenuHandler : MonoBehaviour
     [SerializeField]
     private AudioClip onClickSound = default;
 
+    [SerializeField]
+    private VoidEventChannel onRestartEvent = default;
+
     void OnEnable()
     {
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
@@ -64,13 +67,13 @@ public class PauseMenuHandler : MonoBehaviour
 
     private IEnumerator FadeInAnimation()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         resumeButton.style.opacity = 1;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         restartButton.style.opacity = 1;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         settingsButton.style.opacity = 1;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         quitButton.style.opacity = 1;
     }
 
@@ -89,8 +92,8 @@ public class PauseMenuHandler : MonoBehaviour
         {
             SubmitSoundAction.Invoke(onClickSound);
         }
-        // TODO: When we setup scene management, restart the game
-        Debug.LogWarning("Unimplemented Restart Button Clicked");
+        onRestartEvent.Raise();
+        Time.timeScale = 1.0f;
     }
 
     void OnSettingsButtonClicked()
@@ -109,6 +112,7 @@ public class PauseMenuHandler : MonoBehaviour
             SubmitSoundAction.Invoke(onClickSound);
         }
         MainMenu.Load();
+        Time.timeScale = 1.0f;
     }
 
     void OnButtonMouseEnter(MouseEnterEvent _)

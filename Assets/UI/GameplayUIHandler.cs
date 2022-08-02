@@ -30,6 +30,9 @@ public class GameplayUIHandler : MonoBehaviour
     private VoidEventChannel onPlayerDeathEvent;
 
     [SerializeField]
+    private VoidEventChannel onRestartEvent;
+
+    [SerializeField]
     private SceneEventChannel onLoadEvent;
 
     [SerializeField]
@@ -55,6 +58,7 @@ public class GameplayUIHandler : MonoBehaviour
         inventoryMenuHandler.OnInventoryCloseButtonClicked += OnInventoryCloseButtonClicked;
         onPlayerDeathEvent.OnEventRaised += OnPlayerDeath;
         onLoadEvent.OnEventRaised += OnLoadEvent;
+        onRestartEvent.OnEventRaised += OnRestartEvent;
     }
 
     private void OnDisable()
@@ -67,6 +71,7 @@ public class GameplayUIHandler : MonoBehaviour
         inventoryMenuHandler.OnInventoryCloseButtonClicked -= OnInventoryCloseButtonClicked;
         onPlayerDeathEvent.OnEventRaised -= OnPlayerDeath;
         onLoadEvent.OnEventRaised -= OnLoadEvent;
+        onRestartEvent.OnEventRaised -= OnRestartEvent;
     }
 
     private IEnumerator Start()
@@ -149,6 +154,16 @@ public class GameplayUIHandler : MonoBehaviour
     }
 
     void OnLoadEvent(SceneObject sceneToLoad)
+    {
+        HandleTransition();
+    }
+
+    void OnRestartEvent()
+    {
+        HandleTransition();
+    }
+
+    void HandleTransition()
     {
         DisableEverything();
         inputReader.DisableInput();
