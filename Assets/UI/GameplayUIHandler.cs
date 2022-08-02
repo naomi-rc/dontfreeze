@@ -103,6 +103,7 @@ public class GameplayUIHandler : MonoBehaviour
     void OnPause()
     {
         inputReader.EnableUiInput();
+        Time.timeScale = 0.0f;
         EnablePauseMenu();
         StartCoroutine(Blur());
     }
@@ -110,6 +111,7 @@ public class GameplayUIHandler : MonoBehaviour
     void OnOpenInventory()
     {
         inputReader.EnableUiInput();
+        Time.timeScale = 0.0f;
         EnableInventoryMenu();
         StartCoroutine(Blur());
     }
@@ -171,6 +173,7 @@ public class GameplayUIHandler : MonoBehaviour
     void DisableMenus()
     {
         DisableEverything();
+        Time.timeScale = 1.0f;
         HUDHandler.gameObject.SetActive(true);
 #if UNITY_ANDROID || UNITY_IOS || UNITY_EDITOR
         mobileControlsDocument.SetActive(true);
