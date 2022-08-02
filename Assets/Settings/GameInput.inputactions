@@ -213,6 +213,17 @@
                 },
                 {
                     "name": "",
+                    "id": "521bd6c0-01f0-4884-805e-b54c35678593",
+                    "path": "<Touchscreen>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Camera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "848d9635-9c13-46b9-a5bb-bc66e42846c8",
                     "path": "<Keyboard>/i",
                     "interactions": "",
