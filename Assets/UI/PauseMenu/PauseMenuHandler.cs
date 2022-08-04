@@ -29,6 +29,8 @@ public class PauseMenuHandler : MonoBehaviour
 
     void OnEnable()
     {
+        Time.timeScale = 0.0f;
+
         var rootVisualElement = GetComponent<UIDocument>().rootVisualElement;
 
         resumeButton = rootVisualElement.Q<Button>("ResumeButton");
@@ -63,6 +65,8 @@ public class PauseMenuHandler : MonoBehaviour
         restartButton.UnregisterCallback<MouseEnterEvent>(OnButtonMouseEnter);
         settingsButton.UnregisterCallback<MouseEnterEvent>(OnButtonMouseEnter);
         quitButton.UnregisterCallback<MouseEnterEvent>(OnButtonMouseEnter);
+
+        Time.timeScale = 1.0f;
     }
 
     private IEnumerator FadeInAnimation()
@@ -93,7 +97,6 @@ public class PauseMenuHandler : MonoBehaviour
             SubmitSoundAction.Invoke(onClickSound);
         }
         onRestartEvent.Raise();
-        Time.timeScale = 1.0f;
     }
 
     void OnSettingsButtonClicked()
@@ -112,7 +115,6 @@ public class PauseMenuHandler : MonoBehaviour
             SubmitSoundAction.Invoke(onClickSound);
         }
         MainMenu.Load();
-        Time.timeScale = 1.0f;
     }
 
     void OnButtonMouseEnter(MouseEnterEvent _)
