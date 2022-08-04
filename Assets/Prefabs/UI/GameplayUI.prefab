@@ -588,6 +588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca369993600334346bc348e5e529baf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onHoverSound: {fileID: 0}
+  onClickSound: {fileID: 0}
 --- !u!1 &7899367826283253583
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,6 +652,7 @@ MonoBehaviour:
   gameOverMenuHandler: {fileID: 8930217402292427220}
   sceneTransitionHandler: {fileID: 832401430847310524}
   onPlayerDeathEvent: {fileID: 11400000, guid: 52a90ecdcd475f141994dad5571d2299, type: 2}
+  onRestartEvent: {fileID: 11400000, guid: 74268e304a6481740a30d2c37cb8e17e, type: 2}
   onLoadEvent: {fileID: 11400000, guid: e1abfe4eb5b8a4043965a3340433598a, type: 2}
   inputReader: {fileID: 11400000, guid: 03e55d179fcde374bb0cb89fc2a25faf, type: 2}
   blurVolume: {fileID: 6991010555300166278}
@@ -720,6 +723,7 @@ MonoBehaviour:
   MainMenu: {fileID: 1943683573103855497}
   onHoverSound: {fileID: 8300000, guid: a60c09471ca847d449f76a8ddbf14638, type: 3}
   onClickSound: {fileID: 8300000, guid: ea51d99f7bc10e0499de2391110c8783, type: 3}
+  onRestartEvent: {fileID: 11400000, guid: 74268e304a6481740a30d2c37cb8e17e, type: 2}
 --- !u!1 &7984193209756219206
 GameObject:
   m_ObjectHideFlags: 0

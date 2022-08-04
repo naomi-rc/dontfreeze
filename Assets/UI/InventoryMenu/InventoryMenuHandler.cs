@@ -42,6 +42,8 @@ public class InventoryMenuHandler : MonoBehaviour
 
     void OnEnable()
     {
+        Time.timeScale = 0.0f;
+
         var rootElement = GetComponent<UIDocument>().rootVisualElement;
         inventory = rootElement.Q<VisualElement>("Inventory");
         inspectCard = rootElement.Q<VisualElement>("InspectCard");
@@ -91,6 +93,8 @@ public class InventoryMenuHandler : MonoBehaviour
         closeButton.clicked -= OnCloseButtonClicked;
         actionButton.clicked -= OnActionButtonClicked;
         upgradeButton.clicked -= OnUpgradeButtonClicked;
+
+        Time.timeScale = 1.0f;
     }
 
     void OnActionButtonClicked()

@@ -45,3 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneEventChannel: {fileID: 11400000, guid: e1abfe4eb5b8a4043965a3340433598a, type: 2}
+  onRestartEvent: {fileID: 11400000, guid: 74268e304a6481740a30d2c37cb8e17e, type: 2}
