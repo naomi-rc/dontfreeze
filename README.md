@@ -6,14 +6,14 @@ Don't Freeze est un jeu d'action-survie se déroulant dans un monde apocalyptiqu
 Don't Freeze is an action-survival game that takes place in a frozen and snowy apocalyptic world. Threatened by the freezing cold and enemies on all sides, you must find a way to endure and progress through each level by defending against enemies and finding equipment to improve your chances of survival. Each action has an impact on your journey : collect fur to keep warm, discover bonus health, and reach the next safehouse before it's too late! Regain your strength, health and safely craft items in the safehouses at the end of each level. As you embark on your quest, discover the dark story behind how the world froze over and find the forces needed to take back what's yours.
 
 ## Gameplay : 
-![Gameplay Video](https://www.youtube.com/watch?v=A-33RIKvzIc)
+[Gameplay Video](https://www.youtube.com/watch?v=A-33RIKvzIc)
 
 <div align="center">
-    <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2c5a1a56-e70f-4a59-83be-fa3e21fcd5a2" />
-    <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/55c41f08-8a09-4334-b922-565a4ca1d94a" />
-    <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/ccd47f93-f6de-4fd8-8119-10bf51bb4ecb" />
-    <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/062d239a-7e40-4e9e-8c0a-d28cac0cf508" />
-    <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/de65e75c-6c45-4b70-9da6-f62877301472" />
+    <img width="500px" height="500px" alt="image" src="https://github.com/user-attachments/assets/2c5a1a56-e70f-4a59-83be-fa3e21fcd5a2" />
+    <img width="500px" height="500px" alt="image" src="https://github.com/user-attachments/assets/55c41f08-8a09-4334-b922-565a4ca1d94a" />
+    <img width="500px" height="500px" alt="image" src="https://github.com/user-attachments/assets/ccd47f93-f6de-4fd8-8119-10bf51bb4ecb" />
+    <img width="500px" height="500px" alt="image" src="https://github.com/user-attachments/assets/062d239a-7e40-4e9e-8c0a-d28cac0cf508" />
+    <img width="500px" height="500px" alt="image" src="https://github.com/user-attachments/assets/de65e75c-6c45-4b70-9da6-f62877301472" />
 </div>
 
 
