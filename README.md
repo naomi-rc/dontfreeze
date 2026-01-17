@@ -9,11 +9,11 @@ Don't Freeze is an action-survival game that takes place in a frozen and snowy a
 [Gameplay Video](https://www.youtube.com/watch?v=A-33RIKvzIc)
 
 <div align="center">
-    <img width="200px" height="200px" alt="image" src="https://github.com/user-attachments/assets/2c5a1a56-e70f-4a59-83be-fa3e21fcd5a2" />
-    <img width="200px" height="200px" alt="image" src="https://github.com/user-attachments/assets/55c41f08-8a09-4334-b922-565a4ca1d94a" />
-    <img width="200px" height="200px" alt="image" src="https://github.com/user-attachments/assets/ccd47f93-f6de-4fd8-8119-10bf51bb4ecb" />
-    <img width="200px" height="200px" alt="image" src="https://github.com/user-attachments/assets/062d239a-7e40-4e9e-8c0a-d28cac0cf508" />
-    <img width="200px" height="200px" alt="image" src="https://github.com/user-attachments/assets/de65e75c-6c45-4b70-9da6-f62877301472" />
+    <img width="350px" height="350px" alt="image" src="https://github.com/user-attachments/assets/2c5a1a56-e70f-4a59-83be-fa3e21fcd5a2" />
+    <img width="350px" height="350px" alt="image" src="https://github.com/user-attachments/assets/55c41f08-8a09-4334-b922-565a4ca1d94a" />
+    <img width="350px" height="350px" alt="image" src="https://github.com/user-attachments/assets/ccd47f93-f6de-4fd8-8119-10bf51bb4ecb" />
+    <img width="350px" height="350px" alt="image" src="https://github.com/user-attachments/assets/062d239a-7e40-4e9e-8c0a-d28cac0cf508" />
+    <img width="350px" height="350px" alt="image" src="https://github.com/user-attachments/assets/de65e75c-6c45-4b70-9da6-f62877301472" />
 </div>
 
 
