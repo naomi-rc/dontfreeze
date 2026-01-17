@@ -1,5 +1,12 @@
 # Don't Freeze
-* English translation follows * 
+
+
+**Project Links:**  
+[Demo Page @ itch.io](https://subzero-studios.itch.io/dont-freeze) | [Gameplay Video](https://www.youtube.com/watch?v=A-33RIKvzIc)
+
+\* Forked from team organization
+
+** English translation follows
 
 Don't Freeze est un jeu d'action-survie se déroulant dans un monde apocalyptique gelé et aride. Menacé par une tempête mordante et des ennemis de tout côté, vous devez survivre et progresser à travers chaque niveau en se défendant contre des ennemis et en trouvant de l'équipement pour améliorer vos chances de survie. Chaque action a un impact sur votre survie : collectionner des fourrures pour vous garder au chaud, trouver des soins bonus pour ne pas mourir et atteindre l'abris avant qu'il ne soit trop tard! Chaque niveau se termine lorsque vous atteingniez un refuge où vous pouvez vous réchauffer, vous soigner et fabriquer en toute sécurité pour le prochain défi. En allant de plus en plus loin dans l'univers, vous pourrez entrevoir le sombre secret qui a gelé le monde entier et trouver les forces nécessaires pour reprendre ce qui vous appartient. 
 
@@ -73,9 +80,9 @@ Low Poly Ultimate Pack
 
 
 ## Keyboard controls :
-Move - WASD 
-Run - Shift WASD
-Jump - Spacebar
-Camera orientation - mouse
-Fight - F
-Collect items - E
+- Move - WASD 
+- Run - Shift WASD
+- Jump - Spacebar
+- Camera orientation - mouse
+- Fight - F
+- Collect items - E
